@@ -1,0 +1,93 @@
+/***************** MOBILE *****************/
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    .main {
+      background-color: white;
+      height: 100vh;
+    }
+    .titleContainer {
+      display: none;
+    }
+    .logoTitle {
+      opacity: 0;
+      margin: 0 auto;
+    }
+  }
+  
+  /***************** TABLET *****************/
+  @media screen and (min-width: 768px) and (max-width:1280px) {
+    .main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      justify-items: center;
+      height: 100%;
+    }
+    .logoPicture {
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 260px;
+      height: 400px;
+      background-size: contain;
+      /* background-image: url(../../images/RegistrationPageIcon.svg); */
+    }
+    .titleContainer {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 70px;
+      margin-top: 60px;
+      align-items: center;
+      gap: 30px;
+    }
+    .registrationFormContainer {
+      width: 100%;
+    }
+    .registartionIcon {
+      max-width: 300px;
+    }
+    .logoTitle {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+    }
+  }
+  
+  /***************** DESKTOP *****************/
+  @media screen and (min-width: 1280px) {
+    .main {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      width: 100%;
+      justify-items: center;
+      grid-template-rows: 100vh;
+    }
+    .registrationFormContainer {
+      background-color: rgba(255, 255, 255, 0.625);
+      width: 100%;
+    }
+    .titleContainer {
+      display: flex;
+      flex-direction: column;
+      margin-top: 150px;
+      width: 436px;
+      height: 420px;
+    }
+    .logoPicture {
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 500px;
+      height: 800px;
+      background-size: contain;
+  
+      /* background-image: url(../../images/RegistrationPageIcon.svg); */
+    }
+    .registartionIcon {
+      max-width: 500px;
+    }
+    .logoTitle {
+      font-family: 'Open Sans', sans-serif;
+      margin-top: 0px;
+      padding-top: 0px;
+      font-weight: 400;
+    }
+  }
+  
+  /* poprawić css dla mobilki bo coś jest zbugowane */

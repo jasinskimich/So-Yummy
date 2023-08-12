@@ -1,0 +1,180 @@
+/* ============================== mobile =========================== */
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    .loginBox {
+      margin: 10px auto;
+      padding: 10px;
+    }
+    .loginButton,
+    .registrationButton {
+      max-width: 280px;
+    }
+    .inputWidth {
+      max-width: 300px;
+    }
+    .inputWidthFirst {
+      max-width: 300px;
+    }
+  }
+  /* ============================== Tablet =========================== */
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    .loginBox {
+      padding: 30px;
+      margin: 0px auto 200px auto;
+    }
+    .loginButton,
+    .registrationButton,
+    .loginInput {
+      max-width: 410px;
+    }
+  }
+  /* ======================Desktop=========================== */
+  
+  @media screen and (min-width: 1280px) {
+    .loginBox {
+      padding: 15px 40px 40px 40px;
+      margin: 120px auto;
+    }
+  }
+  /* ============================================================= */
+  .loginBox {
+    background-color: white;
+    border-radius: 20px;
+    max-width: 533px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 150px; */
+  }
+  .loginFormHeader {
+    display: flex;
+    font-size: 22px;
+  }
+  .loginBoxTitle {
+    padding-right: 30px;
+  }
+  .loginInput {
+    margin-bottom: 30px;
+  }
+  .loginInput:focus {
+    outline: none;
+  }
+  .loginInputEmail {
+    /* background-image: url("../../images/email.svg"); Ścieżka do pliku SVG z ikoną koperty */
+    background-size: 30px;
+    background-repeat: no-repeat;
+    justify-items: center;
+  }
+  .loginInputPassword {
+    /* background-image: url("../../images/lock.svg"); Ścieżka do pliku SVG z ikoną koperty */
+    background-size: 20px;
+    background-repeat: no-repeat;
+  }
+  
+  .inputBox {
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 5px;
+  }
+  .registrationButton,
+  .loginButton {
+    padding: 10px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .loginButton {
+    padding: 10px;
+    width: 300px;
+    background-color: #24cca7;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+    padding-bottom: 45px;
+  }
+  
+  .loginButton:hover {
+    background-color: #60eecf;
+    color: white;
+    box-shadow: 0 0 25px #24cca780;
+    transition: 0.3s;
+  }
+  .registrationButton {
+    background-color: white;
+    border: 1px solid #4a56e2;
+    width: 300px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #4a56e2;
+    padding: 10px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+    padding-bottom: 45px;
+  }
+  
+  .registrationButton:hover {
+    background-color: #4a56e2;
+    color: white;
+    box-shadow: 0 0 25px #4a56e2;
+    transition: 0.3s;
+  }
+  
+  .walletIcon {
+    margin-right: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .inputWidthFirst {
+    width: 410px;
+    margin-bottom: 100px;
+  }
+  
+  .inputWidth {
+    width: 410px;
+  }
+  
+  .iconMargin {
+    margin-bottom: 7px;
+    margin-left: 10px;
+  }
+  
+  .iconMarginPost {
+    margin-left: 10px;
+    margin-right: 16px;
+  }
+  
+  .inputMarginFirst {
+    margin-bottom: 5px;
+  }
+  
+  .inputMargin {
+    margin-bottom: 30px;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .verifyLink {
+    font-family: "Open Sans", sans-serif;
+    color: #24cca7;
+    font-size: 14px;
+  }
+  
+  .verifyLink:hover {
+    text-decoration: underline;
+    text-decoration-color: #24cca7;
+  }

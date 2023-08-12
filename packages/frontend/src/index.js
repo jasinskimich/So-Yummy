@@ -1,14 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Provider } from "react-redux";
+// import { store } from "./redux/store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const theme = createTheme({
+	palette: {
+		primary: {
+			main: "#fff",
+			secondary: "#4A56E2",
+			green: "#24CCA7",
+			red: "#FF6596",
+		},
+		text: {
+			standard: "#00838f",
+			gray: "#BDBDBD",
+		},
+		button: {
+			active: "#4A56E2",
+			disactive: "#6E78E8",
+		},
+	},
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+	<Provider >
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <BrowserRouter basename="/">
+      <ThemeProvider theme={theme}>
+          <App /> {/* Your main application component */}
+      </ThemeProvider>
+    </BrowserRouter>
+	</React.StrictMode>
+</Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

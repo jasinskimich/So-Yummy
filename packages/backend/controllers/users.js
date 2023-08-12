@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
-const { nanoid } = require("nanoid");
 const crypto = require('crypto');
-
+// const { nanoid } = require("nanoid");
+const { v4: uuidv4 } = require("uuid");
 const User = require("../models/users");
-const Finances = require("../models/finances");
+const Recipes = require("../models/recipes");
 
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -146,18 +146,18 @@ const signUp = async (req, res, next) => {
   
       newUser.setPassword(password);
   
-      newUser.verificationToken = nanoid();
+      newUser.verificationToken = uuidv4();
   
       await newUser.save();
   
       await sendVerificationEmail(email, newUser.verificationToken);
   
-      const newFinances = new Finances({
+      const newRecipes = new Recipes({
         owner: newUser._id,
         sum: 0,
-        transactions: [],
+        receipes: [],
       });
-      await newFinances.save();
+      await newRecipes.save();
   
       res.json({
         status: "success",
@@ -166,7 +166,7 @@ const signUp = async (req, res, next) => {
         message: "Register complete! Check your email to confirm verification.",
       });
     } catch (error) {
-      next(error);
+      next(errverifyUseror);
     }
 }
   
@@ -284,7 +284,7 @@ const verifyUser = async (req, res, next) => {
       await user.save();
   
       res.send(
-        `<h1>Registration Complete!</h1><p>Click <a href="https://main--avengers-wallet-app.netlify.app/login"><strong>here</strong></a> to go to the login page.</p>`
+        `<h1>Registration Complete!</h1><p>Click <a href="https://localhost:3000/login"><strong>here</strong></a> to go to the login page.</p>`
       );
     } catch (error) {
       next(error);

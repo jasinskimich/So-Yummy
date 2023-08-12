@@ -34,11 +34,12 @@
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.2",
     "morgan": "^1.10.0",
-    "nanoid": "^4.0.2",
+    "nanoid": "3",
     "nodemailer": "^6.9.4",
     "now": "^21.0.1",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
+    "uuid": "^9.0.0",
     "vercel": "^31.2.2"
   }
 }
