@@ -34,7 +34,7 @@ const PasswordStrength = ({ password }) => {
       case 3:
         return "Normal";
       case 4:
-        return "Strong :)";
+        return "Strong";
       default:
         return "";
     }

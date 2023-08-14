@@ -5,9 +5,7 @@ import { useState } from "react";
 import { Box, FormControl, InputAdornment, Input } from "@mui/material";
 import LockIcon from '@mui/icons-material/Lock';
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
-// import walletIcon from "../../images/Wallet.svg"
 import styles from "./LoginForm.module.css";
-
 
 const LoginForm = ({ setLoggedName }) => {
   const [email, setEmail] = useState("");
@@ -71,19 +69,18 @@ const LoginForm = ({ setLoggedName }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ '& > :not(style)': { m: 2 } }} className={styles.loginBox}>
+      <Box sx={{ '& > :not(style)': { m: 1 } }} className={styles.loginBox}>
         <div className={styles.loginFormHeader}>
-          {/* <img src={walletIcon} alt="wallet-icon" className={styles.walletIcon} /> */}
-          <h1>Wallet</h1>
+          <p>Sign In</p>
         </div>
-        <FormControl variant="standard" className={styles.inputWidthFirst}>
+        <FormControl variant="outlined" className={styles.inputWidthFirst}>
           <Input 
             type="email" 
             id="email"
             name="email"
             value={email} 
             onChange={(e) => handleInputChange(e)} 
-            placeholder="E-mail"
+            placeholder="Email"
             autoComplete="userName"
             required 
             className={styles.inputMarginFirst}
@@ -92,9 +89,12 @@ const LoginForm = ({ setLoggedName }) => {
                 <LocalPostOfficeIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={styles.iconMarginPost} />
               </InputAdornment>
             }
+            inputProps={{
+              style: { color: 'white' }
+            }}
           />
         </FormControl>
-        <FormControl variant="standard" className={styles.inputWidth}>
+        <FormControl variant="outlined" className={styles.inputWidth}>
           <Input 
             type="password" 
             id="password" 
@@ -112,15 +112,18 @@ const LoginForm = ({ setLoggedName }) => {
                 <LockIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={styles.iconMargin} />
               </InputAdornment>
             }
+            inputProps={{
+              style: { color: 'white' }
+            }}
           />
         </FormControl>
-
+        
         <button variant="contained" type="submit" className={styles.loginButton}>
-          LOG IN
+          Sign In
         </button>
 
         <Link to="/register">
-          <button className={styles.registrationButton}>REGISTER</button>
+          <button className={styles.registrationButton}>Sign Up</button>
         </Link>
 
         <div>

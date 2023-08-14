@@ -1,104 +1,104 @@
 /* ============================== mobile =========================== */
 @media screen and (min-width: 0px) and (max-width: 767px) {
-    .main {
-      background-color: white;
-      height: 100vh;
-    }
-    .logoTitle {
-      opacity: 0;
-      margin: 0 auto;
-    }
+  .main {
+    background-color: white;
+    height: 100vh;
   }
-  
-  /* ============================== Tablet =========================== */
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .main {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      justify-items: center;
-      height: 100%;
-    }
-  
-    .titleContainer {
-      display: flex;
-      flex-direction: row;
-      
-    
-      align-items: center;
-      gap: 60px;
-    }
-  
-    .loginFormContainer {
-      width: 100%;
-    }
-  
-    .logoTitle {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 400;
-    }
-  
+  .logoTitle {
+    opacity: 0;
+    margin: 0 auto;
+  }
+}
+
+/* ============================== Tablet =========================== */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+    height: 100%;
+  }
+
+  .titleContainer {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    gap: 60px;
+  }
+
+  .loginFormContainer {
+    width: 100%;
+  }
+
+  .logoTitle {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+  }
+
+  .logoPicture {
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 260px;
+    height: 400px;
+    background-size: contain;
+    background-image: url(../../images/RegisterImagex1.png);
+  }
+
+  @media screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
     .logoPicture {
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 260px;
-      height: 400px;
-      background-size: contain;
-      /* background-image: url(../../images/login-pictures/login-tablet.png); */
-    }
-  
-    @media screen and (min-resolution: 192dpi),
-      screen and (min-resolution: 2dppx) {
-      .logoPicture {
-        /* background-image: url(../../images/login-pictures/login-tablet@2x.png); */
-      }
+      background-image: url(../../images/RegisterImagex2.png);
     }
   }
-  
-  /* ======================Desktop=========================== */
-  
-  @media screen and (min-width: 1280px) {
-    .main {
-      display: grid;
-      grid-template-columns: 2fr 3fr;
-      width: 100%;
-      justify-items: center;
-      grid-template-rows: 100vh;
-    }
-  
-    .logoTitle {
-      font-family: 'Open Sans', sans-serif;
-      margin-top: 20px;
-      padding-top: 0px;
-      font-weight: 400;
-    }
-  
-    .titleContainer {
-      margin-top: 150px;
-      width: 436px;
-      height: 420px;
-    }
-    
-    .loginFormContainer {
-      background-color: rgba(255, 255, 255, 0.385);
-      width: 100%;
-       backdrop-filter: blur(8px);
-    }
+}
+
+/* ======================Desktop=========================== */
+
+@media screen and (min-width: 1280px) {
+  .main {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    width: 100%;
+    justify-items: center;
+    grid-template-rows: 100vh;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(../../images/BlackBackground.svg);
+  }
+
+  .logoTitle {
+    font-family: "Open Sans", sans-serif;
+    margin-top: 20px;
+    padding-top: 0px;
+    font-weight: 400;
+  }
+
+  .titleContainer {
+    margin-top: 150px;
+    width: 600px;
+    height: 420px;
+  }
+
+  .loginFormContainer {
+    width: 100%;
+  }
+  .logoPicture {
+    margin-left: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 532px;
+    height: 468px;
+    background-size: contain;
+    background-image: url(../../images/RegisterImagex1.png);
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
     .logoPicture {
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 435px;
-      height: 420px;
-      background-size: contain;
-  
-      /* background-image: url(../../images/login-pictures/login-desktop.png); */
-    }
-    @media screen and (min-device-pixel-ratio: 2),
-      screen and (min-resolution: 192dpi),
-      screen and (min-resolution: 2dppx) {
-      .logoPicture {
-        /* background-image: url(../../images/login-pictures/login-desktop@2x.png); */
-      }
+      background-image: url(../../images/RegisterImagex2.png);
     }
   }
-  
+}

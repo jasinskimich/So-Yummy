@@ -45,7 +45,7 @@ const RegistrationForm = () => {
     }
 
     try{
-      let response = await fetch(`https://avengers-wallet-app.onrender.com/api/users/checkEmail/${email}`);
+      let response = await fetch(`https://localhost:5000/api/users/checkEmail/${email}`);
       response = await response.json();
 
       if(response.exists) {
@@ -53,7 +53,7 @@ const RegistrationForm = () => {
         return;
       }
       
-      let result = await fetch('https://avengers-wallet-app.onrender.com/api/users/signup', {
+      let result = await fetch('https://localhost:5000/api/users/signup', {
         method: "post",
         body: JSON.stringify({ name, email, password }),
         headers: {
@@ -77,10 +77,9 @@ const RegistrationForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ "& > :not(style)": { m: 2 } }} className={css.registerBox}>
+      <Box sx={{ "& > :not(style)": { m: 1.7 } }} className={css.registerBox}>
         <div className={css.registrationFormHeader}>
-          {/* <img src={walletIcon} alt="wallet-icon" className={css.walletIcon} /> */}
-          <h1>Wallet</h1>
+          <p className={css.registrationHeaerText}>Sign Up</p>
         </div>
         <FormControl variant="standard" className={css.inputWidth}>
           <Input
@@ -98,6 +97,9 @@ const RegistrationForm = () => {
                 />
               </InputAdornment>
             }
+            inputProps={{
+              style: { color: 'white' }
+            }}
           />
         </FormControl>
         <FormControl variant="standard" className={css.inputWidth}>
@@ -119,6 +121,9 @@ const RegistrationForm = () => {
                 />
               </InputAdornment>
             }
+            inputProps={{
+              style: { color: 'white' }
+            }}
           />
         </FormControl>
         <FormControl variant="standard" className={css.inputWidth}>
@@ -141,6 +146,9 @@ const RegistrationForm = () => {
                 <PasswordStrength password={password} />
               </InputAdornment>
             }
+            inputProps={{
+              style: { color: 'white' }
+            }}
           />
         </FormControl>
 
@@ -162,6 +170,9 @@ const RegistrationForm = () => {
                 />
               </InputAdornment>
             }
+            inputProps={{
+              style: { color: 'white' }
+            }}
           />
         </FormControl>
 

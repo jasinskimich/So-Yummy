@@ -1,0 +1,42 @@
+@media screen and (min-width: 1080px) {
+  .startContainter {
+    background-image: url("../../images/StartBackground.png");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+  }
+
+  .form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 400px;
+    margin-top: -200px;
+    width: 450px;
+    margin-left: -225px;
+    /* margin-bottom: 20px; */
+  }
+
+  .startHeadline {
+    color: white;
+  }
+
+  .startText {
+    color: white;
+    padding-bottom: 20px;
+  }
+  .startButton {
+    background-color: transparent;
+    border: none;
+  }
+
+  .registrationButton:hover {
+    cursor: pointer;
+    fill: #fafafa;
+  }
+
+  .signInButton:hover {
+    cursor: pointer;
+    fill: #8BAA36;
+  }
+}

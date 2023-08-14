@@ -23,12 +23,13 @@
       height: 100%;
     }
     .logoPicture {
+      margin-left: 100px;
       background-position: center;
       background-repeat: no-repeat;
-      width: 260px;
-      height: 400px;
+      width: 532px;
+      height: 468px;
       background-size: contain;
-      /* background-image: url(../../images/RegistrationPageIcon.svg); */
+      background-image: url(../../images/RegisterImagex1.png);
     }
     .titleContainer {
       display: flex;
@@ -58,26 +59,28 @@
       width: 100%;
       justify-items: center;
       grid-template-rows: 100vh;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(../../images/BlackBackground.svg);
     }
     .registrationFormContainer {
-      background-color: rgba(255, 255, 255, 0.625);
+      
       width: 100%;
     }
     .titleContainer {
-      display: flex;
-      flex-direction: column;
       margin-top: 150px;
-      width: 436px;
+      width: 600px;
       height: 420px;
     }
     .logoPicture {
+      margin-left: 100px;
       background-position: center;
       background-repeat: no-repeat;
-      width: 500px;
-      height: 800px;
+      width: 532px;
+      height: 468px;
       background-size: contain;
-  
-      /* background-image: url(../../images/RegistrationPageIcon.svg); */
+      background-image: url(../../images/RegisterImagex1.png);
     }
     .registartionIcon {
       max-width: 500px;
@@ -88,6 +91,13 @@
       padding-top: 0px;
       font-weight: 400;
     }
+    @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .logoPicture {
+      background-image: url(../../images/RegisterImagex2.png);
+    }
+  }
   }
   
   /* poprawić css dla mobilki bo coś jest zbugowane */

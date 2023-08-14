@@ -8,7 +8,7 @@ import NewPasswordPage from "./pages/NewPasswordPage/NewPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage";
 import Login from "./pages/LoginPages/LoginPages";
 import Layout from "./Layout";
-
+import StartPage from './pages/StartPage/StartPage'
 
 // import "./stylesheet/fonts.css";
 
@@ -27,14 +27,16 @@ function App() {
     
     <Box className="App">
       <Routes>
-        {/* <Route path="/register" element={<RegistrationPages />} />
+        <Route path="/register" element={<RegistrationPages />} />
         <Route path="/verify" element={<VerifyPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/reset-password/:resetToken" element={<NewPasswordPage />} /> */}
+        <Route path="/reset-password/:resetToken" element={<NewPasswordPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<Navigate to="/login" />} />
-        {/* <Route element={<AuthGuardedRoute element={Layout} />}>
-         */}
+        <Route path="*" element={<StartPage />}  />
+        <Route element={<AuthGuardedRoute element={Layout} />}>
+         
+        </Route>
+        
       </Routes>
     </Box>
   );
