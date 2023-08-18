@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 import Logo from "../../images/logo.svg";
 import styles from "./StartPage.module.css";
-import { ReactComponent as RegistrationButton } from "../../images/Registration.svg";
+import { ReactComponent as RegistrationButton } from "../../images/Registration2.svg";
 import { ReactComponent as SignIn } from "../../images/SignIn.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function StartPage() {
   return (

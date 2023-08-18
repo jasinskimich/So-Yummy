@@ -181,11 +181,11 @@ const RegistrationForm = () => {
           type="submit"
           className={css.registrationButton}
         >
-          REGISTER
+          Sing Up
         </button>
 
         <Link to="/login">
-          <button className={css.loginButton}>LOG IN</button>
+          <button className={css.loginButton}>Sign In</button>
         </Link>
 
         <div>

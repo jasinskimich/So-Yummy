@@ -24,7 +24,7 @@ const ResetPasswordForm = () => {
         }
 
         try {
-            let response = await fetch(`https://avengers-wallet-app.onrender.com/api/users/checkEmail/${email}`);
+            let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
             response = await response.json();
 
             if (response.exists === false) {
@@ -32,7 +32,7 @@ const ResetPasswordForm = () => {
                 return;
             }
 
-            let result = await fetch('https://avengers-wallet-app.onrender.com/api/users/forgot-password', {
+            let result = await fetch('http://localhost:5000/api/users/forgot-password', {
                 method: "post",
                 body: JSON.stringify({ email }),
                 headers: {
@@ -40,6 +40,7 @@ const ResetPasswordForm = () => {
                 }
             })
             result = await result.json();
+            console.log(result, "result")
             console.warn(result);
             if (result && email) {
                 setEmail("");
@@ -55,8 +56,8 @@ const ResetPasswordForm = () => {
         <form onSubmit={handleSubmit} className={css.resetPasswordForm}>
             <Box sx={{ '& > :not(style)': { m: 2 } }} className={css.resetPasswordBox}>
                 <div className={css.resetPasswordHeader}>
-                    {/* <img src={walletIcon} alt="wallet-icon" className={css.walletIcon} /> */}
-                    <h1>Wallet</h1>
+                
+                    <h1>Reset your password</h1>
                 </div>
 
                 <FormControl variant="standard" className={css.inputWidth}>
@@ -65,7 +66,7 @@ const ResetPasswordForm = () => {
                         id="email"
                         value={email}
                         onChange={(e) => handleInputChange(e)}
-                        placeholder="E-mail"
+                        placeholder="Email"
                         required
                         className={css.inputMargin}
                         startAdornment={
@@ -75,6 +76,9 @@ const ResetPasswordForm = () => {
 
                             </InputAdornment>
                         }
+                        inputProps={{
+                            style: { color: "white" },
+                          }}
                     />
                 </FormControl>
 

@@ -60,13 +60,13 @@
     outline: none;
   }
   .loginInputEmail {
-    /* background-image: url("../../images/email.svg"); Ścieżka do pliku SVG z ikoną koperty */
+    
     background-size: 30px;
     background-repeat: no-repeat;
     justify-items: center;
   }
   .loginInputPassword {
-    /* background-image: url("../../images/lock.svg"); Ścieżka do pliku SVG z ikoną koperty */
+   
     background-size: 20px;
     background-repeat: no-repeat;
   }

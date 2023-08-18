@@ -30,7 +30,7 @@ const sendVerificationEmail = async (email, verificationToken) => {
       from: "walletavengersapp@gmail.com",
       subject: "Please verify your email and registration.",
       text: `URL to mail verification: ${verificationToken}`,
-      html: `<p>Click <a href="https://avengers-wallet-app.onrender.com/api/users/verify/${verificationToken}"><strong>here</strong></a> to verify your email and registration.</p>`,
+      html: `<p>Click <a href="https://localhost:5000/api/users/verify/${verificationToken}"><strong>here</strong></a> to verify your email and registration.</p>`,
 };
   
 return sgMail
@@ -58,8 +58,8 @@ const sendPasswordResetEmail = async (email) => {
       to: email,
       from: "walletavengersapp@gmail.com",
       subject: "Reset Your Password",
-      text: `Click on the link to reset your password: https://main--avengers-wallet-app.netlify.app/reset-password/${resetToken}`,
-      html: `<p>Click <a href="https://main--avengers-wallet-app.netlify.app/reset-password/${resetToken}"><strong>here</strong></a> to reset your password.</p>`,
+      text: `Click on the link to reset your password: http:/localhost:3000/reset-password/${resetToken}`,
+      html: `<p>Click <a href="http:/localhost:3000/reset-password/${resetToken}"><strong>here</strong></a> to reset your password.</p>`,
     };
   
     return sgMail.send(msg);
@@ -166,7 +166,7 @@ const signUp = async (req, res, next) => {
         message: "Register complete! Check your email to confirm verification.",
       });
     } catch (error) {
-      next(errverifyUseror);
+      next(error);
     }
 }
   

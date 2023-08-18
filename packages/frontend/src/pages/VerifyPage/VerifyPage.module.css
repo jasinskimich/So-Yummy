@@ -33,9 +33,19 @@
         width: 100%;
         justify-items: center;
         grid-template-rows: 77vh;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(../../images/BlackBackground.svg);
+        height: 100%;
+        overflow: hidden;
     }
 
     .verifyHeader {
-        margin-bottom: 150px;
+        margin-bottom: 15px;
+        color: #8BAA36;
+    }
+    .verifyLink {
+        color: #8BAA36;
     }
 }

@@ -1,3 +1,93 @@
+@media screen and (min-width: 320px) {
+  .startContainter {
+    background-image: url("../../images/mobileStartBackground.png");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+  }
+
+  .form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 400px;
+    margin-top: -200px;
+    width: 320px;
+    margin-left: -160px;
+    /* margin-bottom: 20px; */
+  }
+  .startHeadline {
+    color: white;
+  }
+
+  .startText {
+    color: white;
+    padding-bottom: 20px;
+  }
+  .startButton {
+    background-color: transparent;
+    border: none;
+  }
+
+  .registrationButton {
+    fill: #8baa36;
+  }
+  .registrationButton:hover {
+    cursor: pointer;
+    fill: transparent;
+  }
+
+  .signInButton:hover {
+    cursor: pointer;
+    fill: #8baa36;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .startContainter {
+    background-image: url("../../images/tabletStartBackground.png");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+  }
+
+  .form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 400px;
+    margin-top: -200px;
+    width: 500px;
+    margin-left: -235px;
+    /* margin-bottom: 20px; */
+  }
+  .startHeadline {
+    color: white;
+  }
+
+  .startText {
+    color: white;
+    padding-bottom: 20px;
+  }
+  .startButton {
+    background-color: transparent;
+    border: none;
+  }
+
+  .registrationButton {
+    fill: #8baa36;
+  }
+  .registrationButton:hover {
+    cursor: pointer;
+    fill: transparent;
+  }
+
+  .signInButton:hover {
+    cursor: pointer;
+    fill: #8baa36;
+  }
+}
+
 @media screen and (min-width: 1080px) {
   .startContainter {
     background-image: url("../../images/StartBackground.png");
@@ -30,13 +120,16 @@
     border: none;
   }
 
+  .registrationButton {
+    fill: #8baa36;
+  }
   .registrationButton:hover {
     cursor: pointer;
-    fill: #fafafa;
+    fill: transparent;
   }
 
   .signInButton:hover {
     cursor: pointer;
-    fill: #8BAA36;
+    fill: #8baa36;
   }
 }

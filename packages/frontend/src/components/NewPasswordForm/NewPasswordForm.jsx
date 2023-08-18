@@ -64,8 +64,8 @@ const NewPasswordForm = () => {
     <form onSubmit={handleSubmit} className={css.newPasswordForm}>
       <Box sx={{ "& > :not(style)": { m: 2 } }} className={css.newPasswordBox}>
         <div className={css.newPasswordHeader}>
-          {/* <img src={walletIcon} alt="wallet-icon" className={css.walletIcon} /> */}
-          <h1>Wallet</h1>
+          
+          <h1>Enter new password</h1>
         </div>
 
         <FormControl variant="standard" className={css.inputWidth}>
@@ -82,8 +82,12 @@ const NewPasswordForm = () => {
             startAdornment={
               <InputAdornment position="start">
                 <LockIcon sx={{ color: "lightgrey", mr: 1, my: 0.5 }} className={css.iconMargin} />
+                
               </InputAdornment>
             }
+            inputProps={{
+              style: { color: 'white' }
+            }}
           />
         </FormControl>
 
@@ -99,10 +103,14 @@ const NewPasswordForm = () => {
             required
             startAdornment={
               <InputAdornment position="start">
+                
                 <LockIcon sx={{ color: "lightgrey", mr: 1, my: 0.5 }} className={css.iconMargin} />
                 <PasswordStrength password={password} />
               </InputAdornment>
             }
+            inputProps={{
+              style: { color: 'white' }
+            }}
           />
         </FormControl>
         <button variant="contained" type="submit" className={css.newPasswordButton}>
