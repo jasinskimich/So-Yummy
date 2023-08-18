@@ -23,13 +23,72 @@
 /* ============================== Tablet =========================== */
 @media screen and (min-width: 768px) and (max-width: 1280px) {
   .registerBox {
-    padding: 30px;
-    margin: 0px auto 200px auto;
+    padding: 15px 10px 10px 10px;
+    margin: 100px auto;
+    background-color: #2a2c36;
+    border-radius: 20px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-
-  .loginButton,
+  .registrationFormHeader {
+    display: flex;
+    font-weight: 500;
+    font-size: 30px;
+    color: #fafafa;
+    text-align: left;
+    width: 400px;
+  }
+  .registrationHeaerText {
+    margin: 0 0 10px 0;
+  }
   .registrationButton {
-    max-width: 330px;
+    margin: 0;
+    padding: 10px;
+    width: 300px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border: none;
+    border-radius: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .registrationButton:hover {
+    background-color: #fafafa;
+    color: #8baa36;
+    transition: 0.3s;
+  }
+  .loginButton {
+    background-color: transparent;
+    border: 2px solid #8baa36;
+    width: 300px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #FAFAFA;
+    padding: 10px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .loginButton:hover {
+    background-color: #FAFAFA;
+    color: #8baa36;
+   
+    transition: 0.3s;
+  }
+  .verifyLink {
+    font-family: "Open Sans", sans-serif;
+    color: #8baa36;
+  
+    font-size: 14px;
+  }
+  
+  .verifyLink:hover {
+    color: #FAFAFA;
+    
   }
 }
 
