@@ -71,7 +71,7 @@ const LoginForm = ({ setLoggedName }) => {
     <form onSubmit={handleSubmit}>
       <Box sx={{ '& > :not(style)': { m: 1 } }} className={styles.loginBox}>
         <div className={styles.loginFormHeader}>
-          <p>Sign In</p>
+          <p className={styles.loginHeaderText}>Sign In</p>
         </div>
         <FormControl variant="outlined" className={styles.inputWidthFirst}>
           <Input 
@@ -122,7 +122,7 @@ const LoginForm = ({ setLoggedName }) => {
           Sign In
         </button>
 
-        <Link to="/register">
+        <Link to="/register" className={styles.regLink}>
           <button className={styles.registrationButton}>Sign Up</button>
         </Link>
 

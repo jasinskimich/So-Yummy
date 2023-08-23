@@ -1,58 +1,25 @@
 /* ============================== Mobile =========================== */
-@media screen and (min-width: 0px) and (max-width: 768px) {
-  .verifyBox {
-    margin: 10px auto;
-  }
-
-  .verifyButton {
-    max-width: 280px;
-  }
-
-  .inputWidth {
-    max-width: 300px;
-  }
+@media screen and (min-width: 320px) {
   .verifyForm {
-    padding-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* width: 400px; */
-  }
-}
-
-/* ============================== Tablet =========================== */
-@media screen and (min-width: 768px) and (max-width: 1080px) {
-  .verifyBox {
-    padding: 30px;
-    margin: 0px auto 200px auto;
-  }
-
-  .verifyButton {
-    max-width: 330px;
-  }
-}
-
-/* ====================== Desktop =========================== */
-@media screen and (min-width: 1080px) {
-  .verifyBox {
     background-color: #2a2c36;
     border-radius: 20px;
+    min-width: 300px;
+    width: 100%;
     max-width: 533px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 40px 40px 40px;
-    margin: 50px auto;
-    height: 400px;
+    margin: 100px auto 0;
   }
   .verifyFormHeader {
-    display: flex;
     color: #fafafa;
+    font-size: 16px;
   }
+  
+
   .verifyButton {
     padding: 10px;
-    width: 300px;
+    width: 80%;
+    height: 60px;
     background-color: #8baa36;
     color: white;
     border: none;
@@ -76,46 +43,22 @@
 
   .verifyLink:focus,
   .verifyLink:hover {
+    font-family: "Open Sans", sans-serif;
     color: #fafafa;
+    font-size: 18px;
   }
-  .verifyForm {
-    height: 400px;
+  .inputWidth {
+    width: 80%;
   }
   .verifyLinkSection {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+  }
+
+  .verifyLinkMargin {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 
-/* ============================================================= */
-
-.iconMarginPost {
-  margin-bottom: 7px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.walletIcon {
-  margin-right: 20px;
-  margin-bottom: 5px;
-}
-
-.inputWidth {
-  width: 410px;
-}
-
-.inputMargin {
-  margin-bottom: 10px;
-}
-
-a {
-  text-decoration: none;
-}
-
-
-
-.verifyLinkMargin {
-  margin-top: 10px;
-}

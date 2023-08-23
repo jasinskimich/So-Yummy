@@ -1,53 +1,136 @@
 /* ============================== Mobile =========================== */
-@media screen and (min-width: 0px) and (max-width: 768px) {
+@media screen and (min-width: 320px) {
   .registerBox {
-    margin: 0px auto;
+    padding: 15px 10px 10px 10px;
+    margin: 0 auto 10px;
+    background-color: #2a2c36;
+    border-radius: 20px;
+    min-width: 300px;
+    width: 80%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .registrationFormHeader {
+    font-weight: 500;
+    font-size: 30px;
+    color: #fafafa;
+    min-width: 210px;
+    width: 80%;
+    max-width: 350px;
+  }
+  .registrationHeaderText {
+    margin: 0 0 10px 0;
+    text-align: left;
+  }
+  .registrationButton {
+    margin: 0;
     padding: 10px;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border: none;
+    border-radius: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .registrationButton:hover {
+    background-color: #fafafa;
+    color: #8baa36;
+    transition: 0.3s;
+  }
+  .loginLink {
+    background-color: transparent;
+    border: 2px solid #8baa36;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fafafa;
+    margin-top: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .loginButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fafafa;
+    padding: 10px;
+    width: 100%;
+    border-radius: 7px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .loginButton:hover {
+    background-color: #fafafa;
+    color: #8baa36;
+
+    transition: 0.3s;
+  }
+  .verifyLink {
+    font-family: "Open Sans", sans-serif;
+    color: #8baa36;
+
+    font-size: 14px;
   }
 
-  .loginButton,
-  .registrationButton {
-    max-width: 260px;
+  .verifyLink:hover {
+    color: #fafafa;
   }
 
   .inputWidth {
-    max-width: 300px;
+    width: 80%;
   }
 
   .inputWidthLast {
-    max-width: 300px;
+    width: 80%;
     padding-bottom: 10px;
+    margin-bottom: 40px;
   }
 }
 
 /* ============================== Tablet =========================== */
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) {
   .registerBox {
     padding: 15px 10px 10px 10px;
-    margin: 100px auto;
+    margin: 0 auto 10px;
     background-color: #2a2c36;
     border-radius: 20px;
-    max-width: 500px;
+    min-width: 300px;
+    width: 80%;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   .registrationFormHeader {
-    display: flex;
     font-weight: 500;
     font-size: 30px;
     color: #fafafa;
-    text-align: left;
-    width: 400px;
+    min-width: 210px;
+    width: 80%;
+    max-width: 350px;
   }
-  .registrationHeaerText {
+  .registrationHeaderText {
     margin: 0 0 10px 0;
+    text-align: left;
   }
   .registrationButton {
     margin: 0;
     padding: 10px;
-    width: 300px;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
     background-color: #8baa36;
     color: #fafafa;
     border: none;
@@ -61,39 +144,62 @@
     color: #8baa36;
     transition: 0.3s;
   }
-  .loginButton {
+  .loginLink {
     background-color: transparent;
     border: 2px solid #8baa36;
-    width: 300px;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
     border-radius: 8px;
     cursor: pointer;
-    color: #FAFAFA;
+    color: #fafafa;
+    margin-top: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .loginButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fafafa;
     padding: 10px;
+    width: 100%;
+    border-radius: 7px;
     font-family: "Open Sans", sans-serif;
     font-size: 24px;
     letter-spacing: 1px;
   }
   .loginButton:hover {
-    background-color: #FAFAFA;
+    background-color: #fafafa;
     color: #8baa36;
-   
+
     transition: 0.3s;
   }
   .verifyLink {
     font-family: "Open Sans", sans-serif;
     color: #8baa36;
-  
+
     font-size: 14px;
   }
-  
+
   .verifyLink:hover {
-    color: #FAFAFA;
-    
+    color: #fafafa;
+  }
+
+  .inputWidth {
+    width: 80%;
+  }
+
+  .inputWidthLast {
+    width: 80%;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
   }
 }
 
 /* ====================== Desktop =========================== */
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1080px) {
   .registerBox {
     padding: 15px 10px 10px 10px;
     margin: 100px auto;
@@ -113,13 +219,15 @@
     text-align: left;
     width: 400px;
   }
-  .registrationHeaerText {
+  .registrationHeaderText {
     margin: 0 0 10px 0;
   }
   .registrationButton {
     margin: 0;
     padding: 10px;
-    width: 300px;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
     background-color: #8baa36;
     color: #fafafa;
     border: none;
@@ -133,34 +241,47 @@
     color: #8baa36;
     transition: 0.3s;
   }
-  .loginButton {
+  .loginLink {
     background-color: transparent;
     border: 2px solid #8baa36;
-    width: 300px;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
     border-radius: 8px;
     cursor: pointer;
-    color: #FAFAFA;
+    color: #fafafa;
+    margin-top: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .loginButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fafafa;
     padding: 10px;
+    width: 100%;
+    border-radius: 7px;
     font-family: "Open Sans", sans-serif;
     font-size: 24px;
     letter-spacing: 1px;
   }
   .loginButton:hover {
-    background-color: #FAFAFA;
+    background-color: #fafafa;
     color: #8baa36;
-   
+
     transition: 0.3s;
   }
   .verifyLink {
     font-family: "Open Sans", sans-serif;
     color: #8baa36;
-  
+
     font-size: 14px;
   }
-  
+
   .verifyLink:hover {
-    color: #FAFAFA;
-    
+    color: #fafafa;
   }
 }
 /* ============================================================= */
@@ -176,7 +297,6 @@
   margin-right: 10px;
 }
 
-
 .loginFormHeader {
   display: flex;
   font-weight: 500;
@@ -185,24 +305,4 @@
   text-align: left;
   width: 400px;
 }
-
-.walletIcon {
-  margin-right: 20px;
-  margin-bottom: 5px;
-}
-
-.inputWidth {
-  width: 410px;
-}
-
-.inputWidthLast {
-  width: 410px;
-  padding-bottom: 10px;
-  margin-bottom: 40px;
-}
-
-
-
-
-
 

@@ -79,7 +79,7 @@ const RegistrationForm = () => {
     <form onSubmit={handleSubmit}>
       <Box sx={{ "& > :not(style)": { m: 1.7 } }} className={css.registerBox}>
         <div className={css.registrationFormHeader}>
-          <p className={css.registrationHeaerText}>Sign Up</p>
+          <p className={css.registrationHeaderText}>Sign Up</p>
         </div>
         <FormControl variant="standard" className={css.inputWidth}>
           <Input
@@ -184,7 +184,7 @@ const RegistrationForm = () => {
           Sing Up
         </button>
 
-        <Link to="/login">
+        <Link to="/login" className={css.loginLink}>
           <button className={css.loginButton}>Sign In</button>
         </Link>
 

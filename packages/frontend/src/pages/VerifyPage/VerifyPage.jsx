@@ -6,16 +6,18 @@ import { Link } from "react-router-dom";
 
 function Verify() {
   return (
-    <Box className={css.margins}>
-      <div className={css.verifyHeader}>
-        <Link to="/" className={css.verifyLink}>
-          <h1>So Yummy!</h1>
-          <img src={Logo} alt="logo icon" />
-        </Link>
-      </div>
+    <Box >
+      <div className={css.verifyContainer}> 
+        <div className={css.verifyHeader}>
+          <Link to="/" className={css.verifyLink}>
+            <h1>So Yummy!</h1>
+            <img src={Logo} alt="logo icon" />
+          </Link>
+        </div>
 
-      <div className={css.main}>
-        <VerifyForm />
+        <div className={css.verifyFormContainer}>
+          <VerifyForm />
+        </div>
       </div>
     </Box>
   );

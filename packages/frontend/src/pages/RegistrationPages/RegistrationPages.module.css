@@ -1,25 +1,44 @@
 /***************** MOBILE *****************/
-@media screen and (min-width: 0px) and (max-width: 767px) {
+@media screen and (min-width: 320px) {
   .main {
-    background-color: white;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-items: center;
+    grid-template-rows: 100vh;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(../../images/BlackBackgroundMobile.svg);
+  }
+  .logoPicture {
+    margin: 0 auto;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    width: 286px;
+    height: 250px;
+    background-size: contain;
+    background-image: url(../../images/RegisterMobileImagex1.png);
   }
   .titleContainer {
-    display: none;
+    margin: 30px auto 0;
+    width: 286px;
+    height: 250px;
   }
-  .logoTitle {
-    opacity: 0;
-    margin: 0 auto;
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .logoPicture {
+      background-position: bottom;
+      background-image: url(../../images/RegisterMobileImagex2.png);
+    }
   }
 }
-
-/***************** TABLET *****************/
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 420px) {
   .main {
-    display: column;
-    grid-template-columns: 2fr 3fr;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 1024px;
     justify-items: center;
     grid-template-rows: 100vh;
     background-position: bottom;
@@ -27,32 +46,6 @@
     background-size: contain;
     background-image: url(../../images/BlackBackgroundTablet.svg);
   }
-  .registrationFormContainer {
-    width: 100%;
-  }
-  .titleContainer {
-    margin: 30px auto 0;
-    width: 359px;
-    height: 359px;
-  }
-  .logoPicture {
-    background-position: bottom;
-    background-repeat: no-repeat;
-    width: 409px;
-    height: 359px;
-    background-size: contain;
-    background-image: url(../../images/RegisterTabletImagex1.png);
-  }
-  .registartionIcon {
-    max-width: 500px;
-  }
-  .logoTitle {
-    font-family: "Open Sans", sans-serif;
-    margin-top: 0px;
-    padding-top: 0px;
-    font-weight: 400;
-  }
-
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx) {
@@ -62,7 +55,63 @@
     }
   }
 }
-@media screen and (min-width: 1080px) { 
+
+/***************** TABLET *****************/
+@media screen and (min-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-items: center;
+    grid-template-rows: 100vh;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(../../images/BlackBackgroundTablet.svg);
+  }
+  .logoPicture {
+    margin: 0 auto;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    width: 409px;
+    height: 333px;
+    background-size: contain;
+    background-image: url(../../images/RegisterTabletImagex1.png);
+  }
+  .titleContainer {
+    margin: 30px auto 0;
+    width: 409px;
+    height: 333px;
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .logoPicture {
+      background-position: bottom;
+      background-image: url(../../images/RegisterTabletImagex2.png);
+    }
+  }
+}
+@media screen and (min-width: 800px) {
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-items: center;
+    grid-template-rows: 100vh;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(../../images/BlackBackground.svg);
+  }
+}
+
+/***************** DESKTOP *****************/
+
+
+
+@media screen and (min-width: 1080px) {
   .main {
     display: grid;
     grid-template-columns: 2fr 3fr;
@@ -84,7 +133,7 @@
     height: 420px;
   }
   .logoPicture {
-    margin-left: 100px;
+    margin-left: 50px;
     background-position: center;
     background-repeat: no-repeat;
     width: 532px;
@@ -109,7 +158,7 @@
     }
   }
 }
-/***************** DESKTOP *****************/
+
 @media screen and (min-width: 1240px) {
   .main {
     display: grid;
@@ -157,5 +206,3 @@
     }
   }
 }
-
-

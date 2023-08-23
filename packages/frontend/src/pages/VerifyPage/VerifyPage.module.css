@@ -1,51 +1,52 @@
-@media screen and (min-width: 0px) and (max-width: 768px) {
-    .main {
-      background-color: white;
-      height: 95.3vh;
-      /* width: 100vh; */
+@media screen and (min-width: 320px) {
+    .verifyContainer {
+      display: flex;
+      flex-direction: column;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(../../images/BlackBackgroundMobile.svg);
     }
     .verifyHeader {
-      opacity: 0;
+      width: 80%;
       margin: 0 auto;
-      visibility: hidden;
-    }
-    .margins {
-        background-color: white;
-    }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1080px) {
-    .main {
-        display: grid;
-        width: 100%;
-        grid-template-rows: 77vh;
-        justify-items: center;
-        height: 100%;
-    }
-    .verifyHeader {
-        margin-bottom: 150px;
-    }
-}
-
-@media screen and (min-width: 1080px) {
-    .main {
-        display: grid;
-        width: 100%;
-        justify-items: center;
-        grid-template-rows: 77vh;
-        background-position: bottom;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-image: url(../../images/BlackBackground.svg);
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .verifyHeader {
-        margin-bottom: 15px;
-        color: #8BAA36;
     }
     .verifyLink {
-        color: #8BAA36;
+      color: #8baa36;
     }
-}
+  
+    .verifyFormContainer {
+      margin: 0 auto;
+      height: 643px;
+      width: 90%;
+      min-width: 300px;
+      
+    }
+  }
+  
+  @media screen and (min-width: 420px) {
+  
+    .verifyContainer {
+      display: flex;
+      flex-direction: column;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(../../images/BlackBackgroundTablet.svg);
+    }
+  }
+  
+  @media screen and (min-width: 780px) {
+  
+    .verifyContainer {
+      display: flex;
+      flex-direction: column;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(../../images/BlackBackground.svg);
+    }
+  }
+  
+  
+  

@@ -1,38 +1,207 @@
 /* ============================== mobile =========================== */
-@media screen and (min-width: 0px) and (max-width: 768px) {
+@media screen and (min-width: 320px) {
   .loginBox {
-    margin: 10px auto;
+    padding: 15px 10px 10px 10px;
+    margin: 0 auto 110px;
+    background-color: #2a2c36;
+    border-radius: 20px;
+    min-width: 300px;
+    width: 80%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loginFormHeader {
+    font-weight: 500;
+    font-size: 30px;
+    color: #fafafa;
+    min-width: 210px;
+    width: 80%;
+    max-width: 350px;
+  }
+  .loginHeaderText {
+    text-align: left;
+  }
+  .loginButton {
+    margin: 0;
     padding: 10px;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border: none;
+    border-radius: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
   }
-  .loginButton,
+  .loginButton:hover {
+    background-color: #fafafa;
+    color: #8baa36;
+    transition: 0.3s;
+  }
+  .regLink {
+    background-color: transparent;
+    border: 2px solid #8baa36;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fafafa;
+    margin-top: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
   .registrationButton {
-    max-width: 280px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fafafa;
+    padding: 10px;
+    width: 100%;
+    border-radius: 7px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
   }
-  .inputWidth {
-    max-width: 300px;
+  .registrationButton:hover {
+    background-color: #fafafa;
+    color: #8baa36;
+
+    transition: 0.3s;
   }
+  .verifyLink {
+    font-family: "Open Sans", sans-serif;
+    color: #8baa36;
+
+    font-size: 14px;
+  }
+
+  .verifyLink:hover {
+    color: #fafafa;
+  }
+
   .inputWidthFirst {
-    max-width: 300px;
+    width: 80%;
+  }
+
+  .inputWidth {
+    width: 80%;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
   }
 }
 /* ============================== Tablet =========================== */
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) {
   .loginBox {
-    padding: 30px;
-    margin: 0px auto 200px auto;
+    padding: 15px 10px 10px 10px;
+    margin: 0 auto 100px;
+    background-color: #2a2c36;
+    border-radius: 20px;
+    min-width: 300px;
+    width: 80%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-  .loginButton,
-  .registrationButton,
-  .loginInput {
-    max-width: 410px;
+  .loginFormHeader {
+    font-weight: 500;
+    font-size: 30px;
+    color: #fafafa;
+    min-width: 210px;
+    width: 80%;
+    max-width: 350px;
+  }
+  .loginHeaderText {
+    margin: 0 0 10px 0;
+    text-align: left;
+  }
+  .loginButton {
+    margin: 0;
+    padding: 10px;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border: none;
+    border-radius: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .loginButton:hover {
+    background-color: #fafafa;
+    color: #8baa36;
+    transition: 0.3s;
+  }
+  .regLink {
+    background-color: transparent;
+    border: 2px solid #8baa36;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fafafa;
+    margin-top: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .registrationButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fafafa;
+    padding: 10px;
+    width: 100%;
+    border-radius: 7px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .registrationButton:hover {
+    background-color: #fafafa;
+    color: #8baa36;
+
+    transition: 0.3s;
+  }
+  .verifyLink {
+    font-family: "Open Sans", sans-serif;
+    color: #8baa36;
+
+    font-size: 14px;
+  }
+
+  .verifyLink:hover {
+    color: #fafafa;
+  }
+
+  .inputWidthFirst {
+    width: 80%;
+  }
+
+  .inputWidth {
+    width: 80%;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
   }
 }
 /* ======================Desktop=========================== */
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1080px) {
   .loginBox {
     padding: 15px 10px 10px 10px;
-    margin: 160px auto;
+    margin: 200px auto;
     background-color: #2a2c36;
     border-radius: 20px;
     max-width: 500px;
@@ -40,144 +209,88 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* margin-top: 150px; */
   }
   .loginFormHeader {
-    display: flex;
     font-weight: 500;
     font-size: 30px;
     color: #fafafa;
-    text-align: left;
-    width: 400px;
+    min-width: 210px;
+    width: 80%;
+    max-width: 350px;
   }
-  .loginBoxTitle {
-    padding-right: 30px;
-  }
-  .loginInput {
-    margin-bottom: 30px;
-  }
-  .loginInput:focus {
-    outline: none;
-  }
-  .loginInputEmail {
-    
-    background-size: 30px;
-    background-repeat: no-repeat;
-    justify-items: center;
-  }
-  .loginInputPassword {
-   
-    background-size: 20px;
-    background-repeat: no-repeat;
-  }
-
-  .inputBox {
-    display: flex;
-    flex-direction: column;
-    margin: 40px auto;
-  }
-
-  .error {
-    color: red;
-    margin-top: 5px;
-  }
-  .registrationButton,
-  .loginButton {
-    padding: 10px;
-    width: 300px;
-    height: 30px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
+  .loginHeaderText {
+    margin: 0 0 10px 0;
   }
   .loginButton {
+    margin: 0;
     padding: 10px;
-    width: 300px;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
     background-color: #8baa36;
     color: #fafafa;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
     font-family: "Open Sans", sans-serif;
     font-size: 24px;
     letter-spacing: 1px;
-    padding-bottom: 40px;
   }
-
   .loginButton:hover {
     background-color: #fafafa;
     color: #8baa36;
     transition: 0.3s;
   }
-  .registrationButton {
+  .regLink {
     background-color: transparent;
-    color: #fafafa;
     border: 2px solid #8baa36;
-    width: 300px;
+    min-width: 250px;
+    width: 80%;
+    max-width: 350px;
     border-radius: 8px;
     cursor: pointer;
-
-    padding: 10px;
+    color: #fafafa;
+    margin-top: 0;
     font-family: "Open Sans", sans-serif;
     font-size: 24px;
     letter-spacing: 1px;
-    padding-bottom: 40px;
   }
-
+  .registrationButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fafafa;
+    padding: 10px;
+    width: 100%;
+    border-radius: 7px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
   .registrationButton:hover {
     background-color: #fafafa;
     color: #8baa36;
+
     transition: 0.3s;
   }
-
-  .walletIcon {
-    margin-right: 20px;
-    margin-bottom: 5px;
-  }
-
-  .inputWidthFirst {
-    width: 410px;
-    color: #fafafa;
-    /* margin-bottom: 100px; */
-  }
-
-  .inputWidth {
-    width: 410px;
-  }
-
-  .iconMargin {
-    margin-bottom: 7px;
-    margin-left: 10px;
-  }
-
-  .iconMarginPost {
-    margin-left: 10px;
-    margin-right: 16px;
-  }
-
-  .inputMarginFirst {
-    margin-bottom: 5px;
-    color: #fafafa;
-  }
-
-  .inputMargin {
-    margin-bottom: 30px;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
   .verifyLink {
     font-family: "Open Sans", sans-serif;
     color: #8baa36;
+
     font-size: 14px;
   }
 
   .verifyLink:hover {
-    
-    
     color: #fafafa;
   }
+}
+
+.iconMargin {
+  margin-bottom: 7px;
+  margin-left: 10px;
+}
+
+.iconMarginPost {
+  margin-bottom: 7px;
+  margin-left: 10px;
+  margin-right: 10px;
 }

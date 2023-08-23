@@ -4,19 +4,19 @@ import css from "./ResetPasswordPage.module.css";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo.svg";
 
-
-
 function ResetPassword() {
   return (
-    <Box className={css.margins}>
-      <div className={css.verifyHeader}>
-        <Link to="/" className={css.verifyLink}>
-          <h1>So Yummy!</h1>
-          <img src={Logo} alt="logo icon" />
-        </Link>
-      </div>
-      <div className={css.main}>
-        <ResetPasswordForm />
+    <Box >
+      <div className={css.resetContainer}>
+        <div className={css.resetHeader}>
+          <Link to="/" className={css.resetLink}>
+            <h1>So Yummy!</h1>
+            <img src={Logo} alt="logo icon" />
+          </Link>
+        </div>
+        <div className={css.resetFormConteiner}>
+          <ResetPasswordForm />
+        </div>
       </div>
     </Box>
   );
