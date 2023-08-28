@@ -5,6 +5,9 @@ const crypto = require('crypto');
 const { v4: uuidv4 } = require("uuid");
 const User = require("../models/users");
 const Recipes = require("../models/recipes");
+const fs = require("fs");
+const path = require("path");
+const Jimp = require("jimp");
 
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -363,6 +366,54 @@ const checkVerifyEmail = async (req, res, next) => {
     }
 };
 
+const updateAvatar = async (req, res, next) => {
+  try {
+    const userId = req.params.userId; 
+    const avatar = req.file;
+
+    if (!userId) {
+      return res.status(401).json({ message: "Not authorized from the controller" });
+    }
+
+    const user = await User.findById(userId); 
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const avatarFilename = `${userId}${path.extname(avatar.originalname)}`;
+    const avatarDirectory = "./public/avatars";
+
+    if (!fs.existsSync(avatarDirectory)) {
+      fs.mkdirSync(avatarDirectory, { recursive: true });
+    }
+
+    const tmpPath = path.join(__dirname, `../tmp/${avatarFilename}`);
+    const avatarPath = path.join(__dirname, `../public/avatars/${avatarFilename}`);
+
+    try {
+      await Jimp.read(avatar.path);
+      const processedAvatar = await Jimp.read(avatar.path);
+      processedAvatar.resize(250, 250);
+      await processedAvatar.writeAsync(tmpPath);
+
+      await fs.promises.rename(tmpPath, avatarPath);
+
+      await fs.promises.unlink(avatar.path);
+
+      user.avatarURL = `/avatars/${avatarFilename}`;
+      await user.save();
+
+      res.json({ avatarURL: user.avatarURL });
+    } catch (error) {
+      await fs.promises.unlink(avatar.path);
+      throw error;
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
     auth, 
     sendVerificationEmail, 
@@ -377,5 +428,6 @@ module.exports = {
     verify, 
     checkEmail, 
     getUserName, 
-    checkVerifyEmail
+    checkVerifyEmail,
+    updateAvatar
 }

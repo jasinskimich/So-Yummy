@@ -8,7 +8,10 @@ import NewPasswordPage from "./pages/NewPasswordPage/NewPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage";
 import Login from "./pages/LoginPages/LoginPages";
 import Layout from "./Layout";
-import StartPage from './pages/StartPage/StartPage'
+import StartPage from "./pages/StartPage/StartPage";
+import Home from "./pages/Home/Home";
+import { createContext, useState } from "react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // import "./stylesheet/fonts.css";
 
@@ -21,24 +24,34 @@ function AuthGuardedRoute({ element: Element, ...rest }) {
     return <Navigate to="/login" />;
   }
 }
+const theme = createTheme({
+	palette: {
+		type: "dark"
+	},
+});
+
+export const ThemeContext = createContext(null);
 
 function App() {
   return (
-    
-    <Box className="App">
-      <Routes>
-        <Route path="/register" element={<RegistrationPages />} />
-        <Route path="/verify" element={<VerifyPage />} />
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/reset-password/:resetToken" element={<NewPasswordPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<StartPage />}  />
-        <Route element={<AuthGuardedRoute element={Layout} />}>
-         
-        </Route>
-        
-      </Routes>
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box className="App">
+        <Routes>
+          <Route path="/register" element={<RegistrationPages />} />
+          <Route path="/verify" element={<VerifyPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route
+            path="/reset-password/:resetToken"
+            element={<NewPasswordPage />}
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<StartPage />} />
+          <Route element={<AuthGuardedRoute element={Layout} />}>
+            <Route path="/home/:owner" element={<Home />} />
+          </Route>
+        </Routes>
+      </Box>
+    </ThemeProvider>
   );
 }
 

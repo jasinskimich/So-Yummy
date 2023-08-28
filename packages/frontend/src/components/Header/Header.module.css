@@ -1,0 +1,93 @@
+.main {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoIcon {
+  width: 44px;
+  height: 44px;
+}
+
+.navContainer {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.navItem {
+  height: 15px;
+  padding: 0;
+  line-height: 22.4%;
+  letter-spacing: 0%;
+  font-size: 14px;
+  color: #2A2C36;
+  background-color: transparent;
+  border: none;
+}
+
+
+.navItem:hover {
+  color: #8baa36;
+  cursor: pointer;
+}
+.navLink {
+  height: 15px;
+}
+
+.userNav {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchIcon {
+  height: 24px;
+  width: 24px;
+}
+.searchIcon:hover {
+  fill: #8baa36;
+}
+.avatar {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.avatar:hover {
+  cursor: pointer;
+}
+.avatarImage {
+  width: 35px;
+  height: 35px;
+
+}
+
+.username {
+  height: 15px;
+  padding: 0;
+  line-height: 22.4%;
+  letter-spacing: 0%;
+  font-size: 14px;
+  color: #23262a;
+  background-color: transparent;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+.username:hover {
+  cursor: pointer;
+  color: #8baa36;
+}
+.usernameText {
+  margin: 0;
+  height: 30px;
+}
