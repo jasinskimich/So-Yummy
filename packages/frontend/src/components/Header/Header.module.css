@@ -6,6 +6,7 @@
   gap: 100px;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px #23262a solid;
 }
 
 .logoIcon {

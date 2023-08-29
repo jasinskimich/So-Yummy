@@ -10,7 +10,7 @@ import Login from "./pages/LoginPages/LoginPages";
 import Layout from "./Layout";
 import StartPage from "./pages/StartPage/StartPage";
 import Home from "./pages/Home/Home";
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // import "./stylesheet/fonts.css";
