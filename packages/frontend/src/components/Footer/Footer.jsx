@@ -12,6 +12,35 @@ import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
 export const Footer = () => {
   const { owner } = useParams();
 
+  const onSubmit = async (data) => {
+    const { email } = data;
+
+    // Check if the email is in the database
+    const response = await fetch(`http://localhost:5000/api/users/${email}`);
+    const user = await response.json();
+
+    if (user) {
+      if (user.newsletter) {
+        // Email is already signed up for the newsletter
+        console.log('This email is already signed up for the newsletter');
+      } else {
+        // Update the newsletter field to true
+        await fetch(`http://localhost:5000/api/users/${email}`, {
+          method: 'PUT',
+          body: JSON.stringify({ newsletter: true }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        console.log('Successfully subscribed to the newsletter');
+      }
+    } else {
+      // Email not found in the database
+      console.log('Email not found');
+    }
+  };
+
   return (
     <div>
       <div className={styles.topContainer}>
@@ -86,6 +115,7 @@ export const Footer = () => {
                 type="email"
                 id="email"
                 name="email"
+                onSubmit={handleSubmit(onSubmit)}
                 // value={email}
                 // onChange={(e) => handleInputChange(e)}
                 placeholder="Email"
@@ -105,7 +135,7 @@ export const Footer = () => {
                 }}
               />
             </FormControl>
-            <button className={styles.submitButton}>Subscribe</button>
+            <button className={styles.submitButton} type="submit">Subscribe</button>
           </div>
         </div>
       </div>
