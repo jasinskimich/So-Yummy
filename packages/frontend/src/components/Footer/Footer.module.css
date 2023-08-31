@@ -1,0 +1,150 @@
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 414px;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  background-color: #22252a;
+}
+
+.titleContainer {
+  width: 360px;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: flex-start;
+  width: 400px;
+  height: 48px;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+}
+.description {
+  width: 400px;
+  text-align: left;
+  line-height: 1.5;
+}
+.descriptionList {
+  margin: 0;
+  color: #fafafa;
+}
+
+.logoText {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fafafa;
+}
+
+.midContainer {
+  display: flex;
+  flex-direction: column;
+  width: 110px;
+  align-items: center;
+  gap: 80px;
+  padding-top: 70px;
+}
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 110px;
+}
+.navItem:hover {
+    color: #8baa36;
+    cursor: pointer;
+}
+.navItem {
+  width: 100px;
+  border: none;
+  background-color: transparent;
+  color: #fafafa;
+}
+.socialContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.socialIcon:hover svg path {
+cursor: pointer;
+fill: #fafafa;
+}
+
+.newsletterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 338px;
+}
+
+.newsletterTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fafafa;
+  text-align: left;
+}
+.newsletterText {
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: -2%;
+  line-height: 18px;
+  color: #fafafa;
+}
+.inputContainer {
+  width: 338px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.input {
+  width: 100%;
+  height: 59px;
+  border-radius: 10px;
+}
+.submitButton {
+  width: 100%;
+  height: 59px;
+  border-radius: 10px;
+  background-color: #8baa36;
+  border: none;
+  font-size: 18px;
+  color: #fafafa;
+}
+.bottomContainer {
+  height: 80px;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.rightsText {
+  font-size: 14px;
+  font-weight: 400;
+  color: #595b5f;
+}
+.tremOfUse {
+  height: 15px;
+  width: 120px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #595b5f;
+  border: none;
+  background-color: transparent;
+}
+
+.tremOfUse:hover {
+  cursor: pointer;
+  color: #8baa36;
+}
