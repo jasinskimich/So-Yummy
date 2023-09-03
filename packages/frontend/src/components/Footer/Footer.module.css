@@ -42,7 +42,10 @@
   font-weight: 700;
   color: #fafafa;
 }
-
+.logoTex:hover {
+  color: #8baa36;
+  cursor: pointer;
+}
 .midContainer {
   display: flex;
   flex-direction: column;
@@ -58,8 +61,8 @@
   width: 110px;
 }
 .navItem:hover {
-    color: #8baa36;
-    cursor: pointer;
+  color: #8baa36;
+  cursor: pointer;
 }
 .navItem {
   width: 100px;
@@ -75,8 +78,8 @@
   align-items: center;
 }
 .socialIcon:hover svg path {
-cursor: pointer;
-fill: #fafafa;
+  cursor: pointer;
+  fill: #fafafa;
 }
 
 .newsletterContainer {
@@ -119,6 +122,12 @@ fill: #fafafa;
   font-size: 18px;
   color: #fafafa;
 }
+.submitButton:hover {
+  background-color: transparent;
+  border: 2px solid #8baa36;
+  cursor: pointer;
+}
+
 .bottomContainer {
   height: 80px;
   width: 100%;

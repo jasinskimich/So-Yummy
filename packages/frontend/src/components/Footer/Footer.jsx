@@ -8,9 +8,11 @@ import { ReactComponent as Instagram } from "../../images/ig.svg";
 import { ReactComponent as YouTube } from "../../images/yt.svg";
 import { FormControl, InputAdornment, Input } from "@mui/material";
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
+import { useForm } from "react-hook-form";
 
 export const Footer = () => {
   const { owner } = useParams();
+  const { handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
     const { email } = data;
@@ -22,22 +24,22 @@ export const Footer = () => {
     if (user) {
       if (user.newsletter) {
         // Email is already signed up for the newsletter
-        console.log('This email is already signed up for the newsletter');
+        console.log("This email is already signed up for the newsletter");
       } else {
         // Update the newsletter field to true
         await fetch(`http://localhost:5000/api/users/${email}`, {
-          method: 'PUT',
+          method: "PUT",
           body: JSON.stringify({ newsletter: true }),
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         });
 
-        console.log('Successfully subscribed to the newsletter');
+        console.log("Successfully subscribed to the newsletter");
       }
     } else {
       // Email not found in the database
-      console.log('Email not found');
+      console.log("Email not found");
     }
   };
 
@@ -53,7 +55,9 @@ export const Footer = () => {
                 className={styles.logoIcon}
               ></img>
             </NavLink>
-            <span className={styles.logoText}>So Yummy</span>
+            <NavLink to={`/home/${owner}`}>
+              <span className={styles.logoText}>So Yummy</span>
+            </NavLink>
           </div>
           <div className={styles.description}>
             <ul className={styles.descriptionList}>
@@ -85,19 +89,19 @@ export const Footer = () => {
           <div className={styles.socialContainer}>
             <div className={styles.socialIcon}>
               {" "}
-              <Facebook  />
+              <Facebook />
             </div>
             <div className={styles.socialIcon}>
               {" "}
-              <YouTube  />
+              <YouTube />
             </div>
             <div className={styles.socialIcon}>
               {" "}
-              <Twitter  />
+              <Twitter />
             </div>
             <div className={styles.socialIcon}>
               {" "}
-              <Instagram  />
+              <Instagram />
             </div>
           </div>
         </div>
@@ -135,7 +139,9 @@ export const Footer = () => {
                 }}
               />
             </FormControl>
-            <button className={styles.submitButton} type="submit">Subscribe</button>
+            <button className={styles.submitButton} type="submit">
+              Subscribe
+            </button>
           </div>
         </div>
       </div>
