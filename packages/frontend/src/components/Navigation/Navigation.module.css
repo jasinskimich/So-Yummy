@@ -1,0 +1,114 @@
+@media screen and (min-width: 320px) {
+  .navContainer {
+    display: none;
+    height: 30px;
+    flex-direction: row;
+    gap: 30px;
+  }
+  .navItem {
+    height: 15px;
+    padding: 0;
+    line-height: 22.4%;
+    letter-spacing: 0%;
+    font-size: 14px;
+    color: #2a2c36;
+    background-color: transparent;
+    border: none;
+  }
+
+  .navItem:hover {
+    color: #8baa36;
+    cursor: pointer;
+  }
+  .navLink {
+    height: 15px;
+  }
+  .searchIcon {
+    height: 24px;
+    width: 24px;
+  }
+  .searchIcon:hover {
+    fill: #8baa36;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navContainer {
+    height: 30px;
+    display: none;
+    flex-direction: row;
+    gap: 30px;
+  }
+  .navItem {
+    height: 15px;
+    padding: 0;
+    line-height: 22.4%;
+    letter-spacing: 0%;
+    font-size: 14px;
+    color: #2a2c36;
+    background-color: transparent;
+    border: none;
+  }
+
+  .navItem:hover {
+    color: #8baa36;
+    cursor: pointer;
+  }
+  .navLink {
+    height: 15px;
+  }
+
+  .searchIcon {
+    height: 24px;
+    width: 24px;
+  }
+  .searchIcon:hover {
+    fill: #8baa36;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .navContainer {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+  .navItem {
+    height: 15px;
+    padding: 0;
+    line-height: 22.4%;
+    letter-spacing: 0%;
+    font-size: 14px;
+    color: #2a2c36;
+    background-color: transparent;
+    border: none;
+  }
+
+  .navItem:hover {
+    color: #8baa36;
+    cursor: pointer;
+  }
+  .navLink {
+    height: 15px;
+  }
+
+  .userNav {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .searchIcon {
+    height: 24px;
+    width: 24px;
+  }
+  .searchIcon:hover {
+    fill: #8baa36;
+  }
+  .closeModal {
+    display: none;
+  }
+}

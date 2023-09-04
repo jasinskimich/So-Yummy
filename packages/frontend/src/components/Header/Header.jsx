@@ -4,13 +4,22 @@ import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Logo from "../../images/logo.svg";
 import styles from "./Header.module.css";
-import { ReactComponent as Search } from "../../images/search.svg";
 import avatarImage from "../../images/avatarDefault.jpg";
 import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
+import { ReactComponent as Menu } from "../../images/modalWindow.svg";
+import MobileMenu from "../MobileMenu/MobileMenu";
+import Navigation from "../Navigation/Navigation";
 
 export const Header = () => {
   const [name, setName] = useState("");
   const { owner } = useParams();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   useEffect(() => {
     const fetchName = async () => {
       try {
@@ -46,29 +55,7 @@ export const Header = () => {
           <img src={Logo} alt="wallet icon" className={styles.logoIcon}></img>
         </NavLink>
       </div>
-      <div className={styles.navContainer}>
-        <NavLink to={`/categories/${owner}`} className={styles.navLink}>
-          <button className={styles.navItem}>Categories</button>
-        </NavLink>
-        <NavLink to={`/add-recipes/${owner}`} className={styles.navLink}>
-          <button className={styles.navItem}>Add Recipes</button>
-        </NavLink>
-        <NavLink to={`/my-recipes/${owner}`} className={styles.navLink}>
-          <button className={styles.navItem}>My Recipes</button>
-        </NavLink>
-        <NavLink to={`/favorites/${owner}`} className={styles.navLink}>
-          <button className={styles.navItem}>Favorites</button>
-        </NavLink>
-        <NavLink to={`/shopping-list/${owner}`} className={styles.navLink}>
-          <button className={styles.navItem}>Shopping list</button>
-        </NavLink>
-        <NavLink to={`/search/${owner}`} className={styles.navLink}>
-          <button className={styles.navItem}>
-            {" "}
-            <Search className={styles.searchIcon} />
-          </button>
-        </NavLink>
-      </div>
+      <Navigation />
       <div className={styles.userNav}>
         <button className={styles.avatar}>
           <img src={avatarImage} alt="Avatar" className={styles.avatarImage} />
@@ -76,7 +63,19 @@ export const Header = () => {
         <button className={styles.username}>
           <span className={styles.usernameText}>{name}</span>
         </button>
-        <SwitchCheckbox />
+        <div className={styles.switchCheckbox}>
+          <SwitchCheckbox />
+        </div>
+        <div className={styles.modalWindow}>
+          {" "}
+          <button
+            className={styles.modalWindowButton}
+            onClick={handleModalOpen}
+          >
+            <Menu />
+          </button>
+          {isModalOpen && <MobileMenu handleModalOpen={handleModalOpen}/>}
+        </div>
       </div>
     </div>
   );

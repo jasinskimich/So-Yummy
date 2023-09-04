@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "./components/Header/Header";
-import { Footer } from "./components/Footer/Footer";
+// import { Footer } from "./components/Footer/Footer";
 
 import { Suspense } from "react";
 import React, { useState } from "react";
@@ -14,7 +14,7 @@ function Layout() {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
