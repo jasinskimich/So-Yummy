@@ -1,4 +1,5 @@
-.modalContainer {
+@media screen and (min-width: 320px) {
+  .modalContainer {
     position: fixed;
     top: 0;
     right: 0;
@@ -9,7 +10,213 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    transition: 1s;
+    transform: translateY(-100vh);
+    background-image: url(../../images/backgroundMenu.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
   }
-  
 
+  .modalContainer2 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ebf3d4;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    transform: translateY(0vh);
+    background-image: url(../../images/backgroundMenu.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+  }
 
+  .modalContent {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+  }
+  .modalHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 80%;
+    justify-content: center;
+    align-items: center;
+  }
+  .logoIcon {
+    width: 44px;
+    height: 44px;
+  }
+  .closeButton:hover svg path {
+    stroke: #8baa36;
+  }
+  .closeButton {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    height: 19px;
+    width: 19px;
+  }
+  .closeButton:hover {
+    cursor: pointer;
+  }
+
+  .modalNavContainer {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modalContainer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: 1s;
+    transform: translateY(-100vh);
+  }
+
+  .modalContainer2 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ebf3d4;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    transform: translateY(0vh);
+  }
+
+  .modalContent {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+  }
+  .modalHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 80%;
+    justify-content: center;
+    align-items: center;
+  }
+  .logoIcon {
+    width: 44px;
+    height: 44px;
+  }
+  .closeButton:hover svg path {
+    stroke: #8baa36;
+  }
+  .closeButton {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    height: 19px;
+    width: 19px;
+  }
+  .closeButton:hover {
+    cursor: pointer;
+  }
+
+  .modalNavContainer {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .modalContainer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
+    transition: 1s;
+    transform: translateY(-100vh);
+  }
+
+  .modalContainer2 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ebf3d4;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    transform: translateY(0vh);
+  }
+  .logoIcon {
+    width: 44px;
+    height: 44px;
+  }
+}
+.modalContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transition: 1s;
+  transform: translateY(-100vh);
+}
+
+.modalContainer2 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ebf3d4;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  transform: translateY(0vh);
+}
+.logoIcon {
+  width: 44px;
+  height: 44px;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./SwitchCheckbox.module.css";
 import { useState } from "react";
 
-const SwitchCheckbox = () => {
+const SwitchCheckbox = ({id}) => {
 
   const [checked, setChecked] = useState(false);
   const handleToggle = () => {
@@ -16,13 +16,13 @@ const SwitchCheckbox = () => {
           
           onChange={handleToggle}
           className={styles.switchBox__checkbox}
-          id={`react-switch-new`}
+          id={`react-switch-${id}`}
           type="checkbox"
         />
         <label
           
           className={styles.switchBox__label}
-          htmlFor={`react-switch-new`}
+          htmlFor={`react-switch-${id}`}
         >
           <span className={styles.switchBox__button}>
             

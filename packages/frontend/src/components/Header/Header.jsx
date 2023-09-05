@@ -57,14 +57,20 @@ export const Header = () => {
       </div>
       <Navigation />
       <div className={styles.userNav}>
-        <button className={styles.avatar}>
-          <img src={avatarImage} alt="Avatar" className={styles.avatarImage} />
-        </button>
-        <button className={styles.username}>
-          <span className={styles.usernameText}>{name}</span>
-        </button>
+        <div className={styles.user}>
+          <button className={styles.avatar}>
+            <img
+              src={avatarImage}
+              alt="Avatar"
+              className={styles.avatarImage}
+            />
+          </button>
+          <button className={styles.username}>
+            <span className={styles.usernameText}>{name}</span>
+          </button>
+        </div>
         <div className={styles.switchCheckbox}>
-          <SwitchCheckbox />
+          <SwitchCheckbox id="header"/>
         </div>
         <div className={styles.modalWindow}>
           {" "}
@@ -74,7 +80,10 @@ export const Header = () => {
           >
             <Menu />
           </button>
-          {isModalOpen && <MobileMenu handleModalOpen={handleModalOpen}/>}
+          <MobileMenu
+            handleModalOpen={handleModalOpen}
+            isModalOpen={isModalOpen}
+          />
         </div>
       </div>
     </div>

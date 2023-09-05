@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.css";
 import { useParams } from "react-router-dom";
 import React from "react";
-import { ReactComponent as Close } from "../../images/closeModal.svg";
 
 export const Navigation = ({ showNavBar }) => {
   const { owner } = useParams();
@@ -31,9 +30,7 @@ export const Navigation = ({ showNavBar }) => {
           <Search className={styles.searchIcon} />
         </button>
       </NavLink>
-      <button onClick={showNavBar}>
-        <Close className={styles.closeModal} />
-      </button>
+     
     </div>
   );
 };

@@ -1,19 +1,26 @@
 @media screen and (min-width: 320px) {
   .navContainer {
-    display: none;
-    height: 30px;
-    flex-direction: row;
+    height: 500px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
     gap: 30px;
+    justify-content: center;
+    align-items: center;
   }
   .navItem {
-    height: 15px;
+    height: 30px;
+    display: flex;
+    gap: 10px;
     padding: 0;
     line-height: 22.4%;
-    letter-spacing: 0%;
-    font-size: 14px;
+    font-size: 26px;
+    font-weight: 500;
     color: #2a2c36;
     background-color: transparent;
     border: none;
+    justify-content: center;
+    align-items: center;
   }
 
   .navItem:hover {
@@ -21,8 +28,10 @@
     cursor: pointer;
   }
   .navLink {
-    height: 15px;
+    height: 30px;
+    width: fit-content;
   }
+
   .searchIcon {
     height: 24px;
     width: 24px;
@@ -34,20 +43,27 @@
 
 @media screen and (min-width: 768px) {
   .navContainer {
-    height: 30px;
-    display: none;
-    flex-direction: row;
+    height: 500px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
     gap: 30px;
+    justify-content: center;
+    align-items: center;
   }
   .navItem {
-    height: 15px;
+    height: 30px;
+    display: flex;
+    gap: 10px;
     padding: 0;
     line-height: 22.4%;
-    letter-spacing: 0%;
-    font-size: 14px;
+    font-size: 26px;
+    font-weight: 500;
     color: #2a2c36;
     background-color: transparent;
     border: none;
+    justify-content: center;
+    align-items: center;
   }
 
   .navItem:hover {
@@ -55,7 +71,8 @@
     cursor: pointer;
   }
   .navLink {
-    height: 15px;
+    height: 30px;
+    width: fit-content;
   }
 
   .searchIcon {
@@ -70,8 +87,8 @@
 @media screen and (min-width: 1080px) {
   .navContainer {
     height: 30px;
-    display: flex;
-    flex-direction: row;
+    display: none;
+    flex-direction: column;
     gap: 30px;
   }
   .navItem {
@@ -104,7 +121,6 @@
   .searchIcon {
     height: 24px;
     width: 24px;
-    fill: #22252A
   }
   .searchIcon:hover {
     fill: #8baa36;

@@ -4,7 +4,7 @@
     height: 80px;
     display: flex;
     flex-direction: row;
-    gap: 100px;
+    gap: 30%;
     justify-content: center;
     align-items: center;
     border-bottom: 1px #23262a solid;
@@ -18,102 +18,40 @@
   .userNav {
     display: flex;
     flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+  .user {
+    display: flex;
+    flex-direction: row;
     gap: 15px;
     justify-content: center;
     align-items: center;
   }
 
+  .avatar {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .avatar:hover {
+    cursor: pointer;
+  }
+  .avatarImage {
+    width: 35px;
+    height: 35px;
+  }
+
+  .username {
+    height: 15px;
+    padding: 0;
+    line-height: 22.4%;
   
-  .avatar {
-    width: 35px;
-    height: 35px;
-    padding: 0;
-    border: none;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  .avatar:hover {
-    cursor: pointer;
-  }
-  .avatarImage {
-    width: 35px;
-    height: 35px;
-  }
-
-  .username {
-    height: 15px;
-    padding: 0;
-    line-height: 22.4%;
-    letter-spacing: 0%;
-    font-size: 14px;
-    color: #23262a;
-    background-color: transparent;
-    border: none;
-    justify-content: center;
-    align-items: center;
-  }
-  .username:hover {
-    cursor: pointer;
-    color: #8baa36;
-  }
-  .usernameText {
-    margin: 0;
-    height: 30px;
-  }
-
-  .switchCheckbox {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .main {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    flex-direction: row;
-    gap: 100px;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px #23262a solid;
-  }
-
-  .logoIcon {
-    width: 44px;
-    height: 44px;
-  }
-
-  .userNav {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-  }
-
- 
-  .avatar {
-    width: 35px;
-    height: 35px;
-    padding: 0;
-    border: none;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  .avatar:hover {
-    cursor: pointer;
-  }
-  .avatarImage {
-    width: 35px;
-    height: 35px;
-  }
-
-  .username {
-    height: 15px;
-    padding: 0;
-    line-height: 22.4%;
-    letter-spacing: 0%;
-    font-size: 14px;
+    font-size: 16px;
     color: #23262a;
     background-color: transparent;
     border: none;
@@ -136,10 +74,97 @@
   }
   .modalWindowButton:hover {
     cursor: pointer;
-   
   }
   .modalWindowButton:hover svg path {
     stroke: #8baa36;
+  }
+  .switchCheckbox {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    gap: 60%;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px #23262a solid;
+  }
+
+  .logoIcon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .userNav {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+  .user {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .avatar:hover {
+    cursor: pointer;
+  }
+  .avatarImage {
+    width: 35px;
+    height: 35px;
+  }
+
+  .username {
+    height: 15px;
+    padding: 0;
+    line-height: 22.4%;
+  
+    font-size: 16px;
+    color: #23262a;
+    background-color: transparent;
+    border: none;
+    justify-content: center;
+    align-items: center;
+  }
+  .username:hover {
+    cursor: pointer;
+    color: #8baa36;
+  }
+  .usernameText {
+    margin: 0;
+    height: 30px;
+  }
+
+  .modalWindowButton {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+  }
+  .modalWindowButton:hover {
+    cursor: pointer;
+  }
+  .modalWindowButton:hover svg path {
+    stroke: #8baa36;
+  }
+  .switchCheckbox {
+    display: none;
   }
 }
 
@@ -168,7 +193,6 @@
     align-items: center;
   }
 
- 
   .avatar {
     width: 35px;
     height: 35px;
