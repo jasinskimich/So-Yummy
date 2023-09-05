@@ -45,103 +45,116 @@ export const Footer = () => {
 
   return (
     <div>
-      <div className={styles.topContainer}>
-        <div className={styles.titleContainer}>
-          <div className={styles.title}>
-            <NavLink to={`/home/${owner}`}>
-              <img
-                src={LogoFooter}
-                alt="wallet icon"
-                className={styles.logoIcon}
-              ></img>
-            </NavLink>
-            <NavLink to={`/home/${owner}`}>
-              <span className={styles.logoText}>So Yummy</span>
-            </NavLink>
+      <div className={styles.mainContainer}>
+        <div className={styles.footerContainer}>
+          <div className={styles.topContainer}>
+            <div className={styles.titleContainer}>
+              <div className={styles.title}>
+                <NavLink to={`/home/${owner}`}>
+                  <img
+                    src={LogoFooter}
+                    alt="Yummy icon"
+                    className={styles.logoIcon}
+                  ></img>
+                </NavLink>
+                <NavLink to={`/home/${owner}`}>
+                  <span className={styles.logoText}>So Yummy</span>
+                </NavLink>
+              </div>
+              <div className={styles.description}>
+                <ul className={styles.descriptionList}>
+                  <li>Database of recipes that can be replenished</li>
+                  <li>Flexible search for desired and unwanted ingredients</li>
+                  <li>Ability to add your own recipes with photos</li>
+                  <li>Convenient and easy to use</li>
+                </ul>
+              </div>
+            </div>
+            <div className={styles.midContainer}>
+              <div className={styles.navContainer}>
+                <NavLink to={`/categories/${owner}`} className={styles.navLink}>
+                  <button className={styles.navItem}>Categories</button>
+                </NavLink>
+                <NavLink
+                  to={`/add-recipes/${owner}`}
+                  className={styles.navLink}
+                >
+                  <button className={styles.navItem}>Add Recipes</button>
+                </NavLink>
+                <NavLink to={`/my-recipes/${owner}`} className={styles.navLink}>
+                  <button className={styles.navItem}>My Recipes</button>
+                </NavLink>
+                <NavLink to={`/favorites/${owner}`} className={styles.navLink}>
+                  <button className={styles.navItem}>Favorites</button>
+                </NavLink>
+                <NavLink
+                  to={`/shopping-list/${owner}`}
+                  className={styles.navLink}
+                >
+                  <button className={styles.navItem}>Shopping list</button>
+                </NavLink>
+              </div>
+            </div>
           </div>
-          <div className={styles.description}>
-            <ul className={styles.descriptionList}>
-              <li>Database of recipes that can be replenished</li>
-              <li>Flexible search for desired and unwanted ingredients</li>
-              <li>Ability to add your own recipes with photos</li>
-              <li>Convenient and easy to use</li>
-            </ul>
+          <div className={styles.newsletterContainer}>
+            <span className={styles.newsletterTitle}>
+              Subscribe to our Newsletter
+            </span>
+            <span className={styles.newsletterText}>
+              Subscribe up to our newsletter. Be in touch with latest news and
+              special offers, etc.
+            </span>
+            <div className={styles.inputContainer}>
+              <FormControl
+                variant="outlined"
+                className={styles.inputWidthFirst}
+              >
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  onSubmit={handleSubmit(onSubmit)}
+                  // value={email}
+                  // onChange={(e) => handleInputChange(e)}
+                  placeholder="Enter your email address"
+                  autoComplete="userName"
+                  required
+                  className={styles.inputMarginFirst}
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <LocalPostOfficeIcon
+                        sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
+                        className={styles.iconMarginPost}
+                      />
+                    </InputAdornment>
+                  }
+                  inputProps={{
+                    style: { color: "white" },
+                  }}
+                />
+              </FormControl>
+              <button className={styles.submitButton} type="submit">
+                Subscribe
+              </button>
+            </div>
           </div>
         </div>
-        <div className={styles.midContainer}>
-          <div className={styles.navContainer}>
-            <NavLink to={`/categories/${owner}`} className={styles.navLink}>
-              <button className={styles.navItem}>Categories</button>
-            </NavLink>
-            <NavLink to={`/add-recipes/${owner}`} className={styles.navLink}>
-              <button className={styles.navItem}>Add Recipes</button>
-            </NavLink>
-            <NavLink to={`/my-recipes/${owner}`} className={styles.navLink}>
-              <button className={styles.navItem}>My Recipes</button>
-            </NavLink>
-            <NavLink to={`/favorites/${owner}`} className={styles.navLink}>
-              <button className={styles.navItem}>Favorites</button>
-            </NavLink>
-            <NavLink to={`/shopping-list/${owner}`} className={styles.navLink}>
-              <button className={styles.navItem}>Shopping list</button>
-            </NavLink>
+        <div className={styles.socialContainer}>
+          <div className={styles.socialIcon}>
+            {" "}
+            <Facebook />
           </div>
-          <div className={styles.socialContainer}>
-            <div className={styles.socialIcon}>
-              {" "}
-              <Facebook />
-            </div>
-            <div className={styles.socialIcon}>
-              {" "}
-              <YouTube />
-            </div>
-            <div className={styles.socialIcon}>
-              {" "}
-              <Twitter />
-            </div>
-            <div className={styles.socialIcon}>
-              {" "}
-              <Instagram />
-            </div>
+          <div className={styles.socialIcon}>
+            {" "}
+            <YouTube />
           </div>
-        </div>
-        <div className={styles.newsletterContainer}>
-          <span className={styles.newsletterTitle}>
-            Subscribe to our Newsletter
-          </span>
-          <span className={styles.newsletterText}>
-            Subscribe up to our newsletter. Be in touch with latest news and
-            special offers, etc.
-          </span>
-          <div className={styles.inputContainer}>
-            <FormControl variant="outlined" className={styles.inputWidthFirst}>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                onSubmit={handleSubmit(onSubmit)}
-                // value={email}
-                // onChange={(e) => handleInputChange(e)}
-                placeholder="Email"
-                autoComplete="userName"
-                required
-                className={styles.inputMarginFirst}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <LocalPostOfficeIcon
-                      sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
-                      className={styles.iconMarginPost}
-                    />
-                  </InputAdornment>
-                }
-                inputProps={{
-                  style: { color: "white" },
-                }}
-              />
-            </FormControl>
-            <button className={styles.submitButton} type="submit">
-              Subscribe
-            </button>
+          <div className={styles.socialIcon}>
+            {" "}
+            <Twitter />
+          </div>
+          <div className={styles.socialIcon}>
+            {" "}
+            <Instagram />
           </div>
         </div>
       </div>

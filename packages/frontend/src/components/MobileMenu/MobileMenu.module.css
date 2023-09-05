@@ -12,9 +12,10 @@
     align-items: center;
     transition: 1s;
     transform: translateY(-100vh);
-    background-image: url(../../images/backgroundMenu.png);
+    background-image: url(../../images/backgroundMenuMobile.png);
     background-position: bottom right;
     background-repeat: no-repeat;
+    background-size: contain;
   }
 
   .modalContainer2 {

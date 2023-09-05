@@ -7,7 +7,6 @@
     gap: 30%;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px #23262a solid;
   }
 
   .logoIcon {
@@ -92,7 +91,6 @@
     gap: 60%;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px #23262a solid;
   }
 
   .logoIcon {
@@ -177,7 +175,6 @@
     gap: 100px;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px #23262a solid;
   }
 
   .logoIcon {
@@ -215,6 +212,7 @@
     line-height: 22.4%;
     letter-spacing: 0%;
     font-size: 14px;
+    font-weight: 500;
     color: #23262a;
     background-color: transparent;
     border: none;

@@ -1,159 +1,579 @@
-.topContainer {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 414px;
-  justify-content: center;
-  align-items: center;
-  gap: 150px;
-  background-color: #22252a;
+@media screen and (min-width: 320px) and (max-width: 767px){
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #22252a;
+    width: 100%;
+    height: 485px;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .topContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30%;
+  }
+
+  .titleContainer {
+    width: 90%;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .logoIcon {
+    width: 38px;
+    height: 38px;
+  }
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 38px;
+    gap: 10px;
+  }
+  .description {
+    width: 400px;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .descriptionList {
+    display: none;
+    margin: 0;
+    color: #fafafa;
+  }
+
+  .logoText {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fafafa;
+  }
+  .logoTex:hover {
+    color: #8baa36;
+    cursor: pointer;
+  }
+  .midContainer {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    gap: 80px;
+    /* padding-top: 40px; */
+  }
+  .navContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: fit-content;
+  }
+  .navItem:hover {
+    color: #8baa36;
+    cursor: pointer;
+  }
+  .navItem {
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    color: #fafafa;
+    padding: 0;
+  }
+  .socialContainer {
+    padding-left: 25px;
+    width: 100px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  .socialIcon:hover svg path {
+    fill: #fafafa;
+  }
+  .socialIcon:hover {
+    cursor: pointer;
+  }
+
+  .newsletterContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .newsletterTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fafafa;
+    text-align: left;
+    display: none;
+  }
+  .newsletterText {
+    display: none;
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: -2%;
+    line-height: 18px;
+    color: #fafafa;
+  }
+  .inputContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .inputWidthFirst {
+    width: 250px;
+  }
+
+  .input {
+    height: 59px;
+    border-radius: 10px;
+  }
+  .inputMarginFirst::placeholder {
+    font-size: 2px;
+  }
+  .submitButton {
+    width: 200px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: #8baa36;
+    border: none;
+    font-size: 18px;
+    color: #fafafa;
+  }
+  .submitButton:hover {
+    background-color: transparent;
+    border: 2px solid #8baa36;
+    cursor: pointer;
+  }
+
+  .bottomContainer {
+    height: 80px;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .rightsText {
+    font-size: 14px;
+    font-weight: 400;
+    color: #595b5f;
+  }
+  .tremOfUse {
+    height: 15px;
+    width: 120px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #595b5f;
+    border: none;
+    background-color: transparent;
+  }
+
+  .tremOfUse:hover {
+    cursor: pointer;
+    color: #8baa36;
+  }
 }
 
-.titleContainer {
-  width: 360px;
-  display: flex;
-  gap: 30px;
-  flex-direction: column;
+@media screen and (min-width: 767px) and (max-width: 1079px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: #22252a;
+    width: 100%;
+    height: 414px;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .topContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30%;
+  }
+
+  .titleContainer {
+    width: 360px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    width: 400px;
+    height: 48px;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+  }
+  .description {
+    width: 400px;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .descriptionList {
+    margin: 0;
+    color: #fafafa;
+  }
+
+  .logoText {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fafafa;
+  }
+  .logoTex:hover {
+    color: #8baa36;
+    cursor: pointer;
+  }
+  .midContainer {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    gap: 80px;
+    /* padding-top: 40px; */
+  }
+  .navContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: fit-content;
+  }
+  .navItem:hover {
+    color: #8baa36;
+    cursor: pointer;
+  }
+  .navItem {
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    color: #fafafa;
+    padding: 0;
+  }
+  .socialContainer {
+    padding-left: 25px;
+    width: 100px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  .socialIcon:hover svg path {
+    fill: #fafafa;
+  }
+  .socialIcon:hover {
+    cursor: pointer;
+  }
+
+  .newsletterContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .newsletterTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fafafa;
+    text-align: left;
+    display: none;
+  }
+  .newsletterText {
+    display: none;
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: -2%;
+    line-height: 18px;
+    color: #fafafa;
+  }
+  .inputContainer {
+    width: 510px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: baseline;
+  }
+
+  .inputWidthFirst {
+    width: 300px;
+  }
+
+  .input {
+    height: 59px;
+    border-radius: 10px;
+  }
+  .submitButton {
+    width: 200px;
+    height: 59px;
+    border-radius: 10px;
+    background-color: #8baa36;
+    border: none;
+    font-size: 18px;
+    color: #fafafa;
+  }
+  .submitButton:hover {
+    background-color: transparent;
+    border: 2px solid #8baa36;
+    cursor: pointer;
+  }
+
+  .bottomContainer {
+    height: 80px;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .rightsText {
+    font-size: 14px;
+    font-weight: 400;
+    color: #595b5f;
+  }
+  .tremOfUse {
+    height: 15px;
+    width: 120px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #595b5f;
+    border: none;
+    background-color: transparent;
+  }
+
+  .tremOfUse:hover {
+    cursor: pointer;
+    color: #8baa36;
+  }
 }
 
-.title {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  align-items: flex-start;
-  width: 400px;
-  height: 48px;
-  align-items: center;
-  gap: 10px;
-  padding-left: 10px;
-}
-.description {
-  width: 400px;
-  text-align: left;
-  line-height: 1.5;
-}
-.descriptionList {
-  margin: 0;
-  color: #fafafa;
-}
+@media screen and (min-width: 1079px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    background-color: #22252a;
+    width: 100%;
+    height: 414px;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 140px;
+  }
 
-.logoText {
-  font-size: 28px;
-  font-weight: 700;
-  color: #fafafa;
-}
-.logoTex:hover {
-  color: #8baa36;
-  cursor: pointer;
-}
-.midContainer {
-  display: flex;
-  flex-direction: column;
-  width: 110px;
-  align-items: center;
-  gap: 80px;
-  padding-top: 70px;
-}
-.navContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 110px;
-}
-.navItem:hover {
-  color: #8baa36;
-  cursor: pointer;
-}
-.navItem {
-  width: 100px;
-  border: none;
-  background-color: transparent;
-  color: #fafafa;
-}
-.socialContainer {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-}
-.socialIcon:hover svg path {
-  cursor: pointer;
-  fill: #fafafa;
-}
+  .topContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 140px;
+  }
 
-.newsletterContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 338px;
-}
+  .titleContainer {
+    width: 360px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+  }
 
-.newsletterTitle {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fafafa;
-  text-align: left;
-}
-.newsletterText {
-  text-align: left;
-  font-size: 14px;
-  letter-spacing: -2%;
-  line-height: 18px;
-  color: #fafafa;
-}
-.inputContainer {
-  width: 338px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.input {
-  width: 100%;
-  height: 59px;
-  border-radius: 10px;
-}
-.submitButton {
-  width: 100%;
-  height: 59px;
-  border-radius: 10px;
-  background-color: #8baa36;
-  border: none;
-  font-size: 18px;
-  color: #fafafa;
-}
-.submitButton:hover {
-  background-color: transparent;
-  border: 2px solid #8baa36;
-  cursor: pointer;
-}
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    width: 400px;
+    height: 48px;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+  }
+  .description {
+    width: 400px;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .descriptionList {
+    margin: 0;
+    color: #fafafa;
+  }
 
-.bottomContainer {
-  height: 80px;
-  width: 100%;
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-.rightsText {
-  font-size: 14px;
-  font-weight: 400;
-  color: #595b5f;
-}
-.tremOfUse {
-  height: 15px;
-  width: 120px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #595b5f;
-  border: none;
-  background-color: transparent;
-}
+  .logoText {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fafafa;
+  }
+  .logoTex:hover {
+    color: #8baa36;
+    cursor: pointer;
+  }
+  .midContainer {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    gap: 80px;
+    /* padding-top: 40px; */
+  }
+  .navContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: fit-content;
+  }
+  .navItem:hover {
+    color: #8baa36;
+    cursor: pointer;
+  }
+  .navItem {
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    color: #fafafa;
+    padding: 0;
+  }
+  .socialContainer {
+    padding-left: 25px;
+    width: 100px;
+    height: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  .socialIcon:hover svg path {
+    fill: #fafafa;
+  }
+  .socialIcon:hover {
+    cursor: pointer;
+  }
 
-.tremOfUse:hover {
-  cursor: pointer;
-  color: #8baa36;
+  .newsletterContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 338px;
+  }
+
+  .newsletterTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fafafa;
+    text-align: left;
+  }
+  .newsletterText {
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: -2%;
+    line-height: 18px;
+    color: #fafafa;
+  }
+  .inputContainer {
+    width: 338px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .input {
+    width: 100%;
+    height: 59px;
+    border-radius: 10px;
+  }
+  .submitButton {
+    width: 100%;
+    height: 59px;
+    border-radius: 10px;
+    background-color: #8baa36;
+    border: none;
+    font-size: 18px;
+    color: #fafafa;
+  }
+  .submitButton:hover {
+    background-color: transparent;
+    border: 2px solid #8baa36;
+    cursor: pointer;
+  }
+
+  .bottomContainer {
+    height: 80px;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .rightsText {
+    font-size: 14px;
+    font-weight: 400;
+    color: #595b5f;
+  }
+  .tremOfUse {
+    height: 15px;
+    width: 120px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #595b5f;
+    border: none;
+    background-color: transparent;
+  }
+
+  .tremOfUse:hover {
+    cursor: pointer;
+    color: #8baa36;
+  }
 }
