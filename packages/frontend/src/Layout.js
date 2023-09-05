@@ -9,7 +9,7 @@ function Layout() {
   const [loggedName] = useState("");
 
   return (
-    <div>
+    <div >
       <Header name={loggedName} />
       <Suspense fallback={null}>
         <Outlet />

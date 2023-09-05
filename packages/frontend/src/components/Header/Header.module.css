@@ -64,6 +64,8 @@
   .usernameText {
     margin: 0;
     height: 30px;
+    font-size: 16px;
+    font-weight: 600;
   }
 
   .modalWindowButton {

@@ -177,17 +177,22 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 10px;
+    background-image: url(../../images/bottomBackgroundMobile.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    
   }
   .rightsText {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     color: #595b5f;
   }
   .tremOfUse {
     height: 15px;
     width: 120px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     color: #595b5f;
     border: none;
@@ -373,6 +378,10 @@
     justify-content: center;
     align-items: center;
     gap: 30px;
+    background-image: url(../../images/bottomBackgroundMobile.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 30%;
   }
   .rightsText {
     font-size: 14px;
@@ -556,6 +565,10 @@
     justify-content: center;
     align-items: center;
     gap: 30px;
+    background-image: url(../../images/bottomBackgroundMobile.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 20%;
   }
   .rightsText {
     font-size: 14px;
