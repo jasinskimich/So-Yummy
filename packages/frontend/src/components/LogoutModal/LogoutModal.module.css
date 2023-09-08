@@ -3,7 +3,7 @@
   stroke: 1px #fafafa;
 } */
 
-.childrenClose {
+.childrenCloseContainer {
   display: flex;
   width: 100%;
   justify-content: right;
@@ -15,13 +15,13 @@
 .modalContainer {
   padding-top: 15px;
   display: flex;
-  gap: 10px;
+  gap: 20px;
   flex-direction: column;
   align-items: center;
 }
 
 .modalText {
-  font-size: 18px;
+  font-size: 20px;
 }
 .buttons {
   display: flex;

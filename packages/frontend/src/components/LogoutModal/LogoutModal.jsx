@@ -19,7 +19,7 @@ const style = {
   boxShadow: 24,
   pt: 2,
   px: 2,
-  pb: 2,
+  pb: 3,
 };
 
 function LogoutModal() {
@@ -60,17 +60,15 @@ function LogoutModal() {
         aria-describedby="child-modal-description1"
       >
         <Box sx={{ ...style, width: 400 }}>
-          <div className={styles.childrenClose}>
+          <div className={styles.childrenCloseContainer}>
             <Button
               onClick={handleClose}
+              className={styles.childrenClose}
               sx={{
                 color: "#22252A",
-                //   borderRadius: "15%",
-
                 width: "15px",
                 padding: 0,
                 minWidth: "15px",
-
                 fontWeight: "600",
                 ":hover": {
                   bgcolor: "transparent",
@@ -87,14 +85,16 @@ function LogoutModal() {
             <div className={styles.buttons}>
               <Button
                 sx={{
-                  color: "#22252A",
+                  
                   width: "160px",
                   padding: 0,
                   minWidth: "15px",
                   height: "55px",
-                  fontWeight: "600",
+                  bgcolor: "#8BAA36",
+                  color: "#fafafa",
+                  fontWeight: "bold",
                   ":hover": {
-                    bgcolor: "transparent",
+                    bgcolor: "#22252A",
                   },
                 }}
               >
@@ -108,9 +108,11 @@ function LogoutModal() {
                   padding: 0,
                   minWidth: "15px",
                   height: "55px",
-                  fontWeight: "600",
+                  bgcolor: "#D9D9D9",
+                  fontWeight: "bold",
                   ":hover": {
-                    bgcolor: "transparent",
+                    bgcolor: "#FAFAFA",
+                    border: "2px solid #22252A"
                   },
                 }}
               >

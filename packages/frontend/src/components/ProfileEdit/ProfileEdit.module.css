@@ -8,3 +8,54 @@
   width: 16px;
   height: 16px;
 }
+.childrenCloseContainer {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+}
+
+.childrenClose:hover svg path {
+  stroke: #8baa36;
+}
+.editModalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.avatarButton {
+  border-radius: 50%;
+  border: none;
+  height: 107px;
+  width: 107px;
+}
+.avatarButton:hover {
+  cursor: pointer;
+}
+
+.inputWidthLast {
+  width: 90%;
+  padding-bottom: 10px;
+}
+.submitButton {
+  width: 90%;
+  height: 55px;
+  background-color: #8baa36;
+  color: #fafafa;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+}
+.submitButton:hover {
+  cursor: pointer;
+  background-color: #22252a;
+}
+.plus {
+  position: absolute;
+  right: 130px;
+  top: 150px;
+}
+.plus:hover {
+  cursor: pointer;
+}

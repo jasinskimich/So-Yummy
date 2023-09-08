@@ -9,6 +9,7 @@ import LockIcon from '@mui/icons-material/Lock';
 // import walletIcon from "../../images/Wallet.svg";
 import PasswordStrength from "./PasswordStrength";
 
+
 const RegistrationForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
