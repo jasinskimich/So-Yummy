@@ -1,0 +1,10 @@
+.editContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.editPen {
+  width: 16px;
+  height: 16px;
+}

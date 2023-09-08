@@ -1,0 +1,34 @@
+.avatarImage {
+  width: 35px;
+  height: 35px;
+}
+.usernameText {
+  margin: 0;
+  height: 23px;
+  text-transform: none;
+}
+.userNav {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.user {
+  background-color: transparent;
+}
+
+.userTest:hover {
+  background-color: none;
+  color: none;
+}
+.userModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
