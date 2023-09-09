@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const bCrypt = require("bcryptjs");
-const defaultAvatar =  "../../frontend/src/images/avatarDefault.jpg"
 
 const Schema = mongoose.Schema;
 
@@ -19,7 +18,8 @@ const userSchema = new Schema({
   },
   avatarURL: {
     type: String,
-    default: defaultAvatar
+    default:
+      "https://res.cloudinary.com/dca6x5lvh/image/upload/v1694271706/avatar/avatarDefault_kuruvb.jpg",
   },
   token: {
     type: String,

@@ -8,7 +8,7 @@ import styles from "./ProfileEdit.module.css";
 import { ReactComponent as Close } from "../../images/closeModal.svg";
 import { ReactComponent as User } from "../../images/userImage.svg";
 import { ReactComponent as Plus } from "../../images/plus.svg";
-import Notiflix from 'notiflix';
+import Notiflix from "notiflix";
 import { useParams } from "react-router-dom";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
@@ -48,17 +48,29 @@ function ProfileEdit({ editedName }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!!name) {
-      Notiflix.Notify.warning('Email, password or name is empty, please complete the missing content.')
+    if (!name) {
+      Notiflix.Notify.warning(
+        "Name is empty, please complete the missing content."
+      );
       return;
     }
+    
     let result = await fetch(`http://localhost:5000/api/users/name/${owner}`, {
-      method: "post",
-      body: JSON.stringify({ name}),
+      method: "PATCH",
+      body: JSON.stringify({ name }),
       headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result.json();
+    
+    
+    if (result) {
+      setName("");
+      Notiflix.Notify.success("Name changed succesfully!");
+    }
+    editedName(name);
+    setOpen(false);
   };
 
   return (

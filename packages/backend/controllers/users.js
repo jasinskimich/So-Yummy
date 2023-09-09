@@ -202,7 +202,7 @@ const logIn = async (req, res, next) => {
 
   const secret = process.env.SECRET;
 
-  const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+  const token = jwt.sign(payload, secret, { expiresIn: "30d" });
 
   user.token = token;
 

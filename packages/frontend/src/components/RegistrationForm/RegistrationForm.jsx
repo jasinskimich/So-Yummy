@@ -46,7 +46,7 @@ const RegistrationForm = () => {
     }
 
     try{
-      let response = await fetch(`https://localhost:5000/api/users/checkEmail/${email}`);
+      let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
       response = await response.json();
 
       if(response.exists) {
@@ -54,7 +54,7 @@ const RegistrationForm = () => {
         return;
       }
       
-      let result = await fetch('https://localhost:5000/api/users/signup', {
+      let result = await fetch('http://localhost:5000/api/users/signup', {
         method: "post",
         body: JSON.stringify({ name, email, password }),
         headers: {
