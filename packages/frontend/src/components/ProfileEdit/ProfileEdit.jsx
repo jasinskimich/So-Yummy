@@ -9,7 +9,7 @@ import { ReactComponent as Close } from "../../images/closeModal.svg";
 import { ReactComponent as User } from "../../images/userImage.svg";
 import { ReactComponent as Plus } from "../../images/plus.svg";
 import Notiflix from 'notiflix';
-
+import { useParams } from "react-router-dom";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const style = {
@@ -30,7 +30,7 @@ const style = {
 function ProfileEdit({ editedName }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
-
+  const { owner } = useParams();
   const handleOpen = () => {
     setOpen(true);
   };
@@ -52,7 +52,7 @@ function ProfileEdit({ editedName }) {
       Notiflix.Notify.warning('Email, password or name is empty, please complete the missing content.')
       return;
     }
-    let result = await fetch('https://localhost:5000/api/users/id', {
+    let result = await fetch(`http://localhost:5000/api/users/name/${owner}`, {
       method: "post",
       body: JSON.stringify({ name}),
       headers: {
