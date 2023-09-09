@@ -10,7 +10,7 @@
 .userNav {
   display: flex;
   flex-direction: row;
-
+  gap: 15px;
   justify-content: center;
   align-items: center;
   padding: 0;

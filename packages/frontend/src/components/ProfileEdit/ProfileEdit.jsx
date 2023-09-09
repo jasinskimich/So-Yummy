@@ -8,6 +8,7 @@ import styles from "./ProfileEdit.module.css";
 import { ReactComponent as Close } from "../../images/closeModal.svg";
 import { ReactComponent as User } from "../../images/userImage.svg";
 import { ReactComponent as Plus } from "../../images/plus.svg";
+import Notiflix from 'notiflix';
 
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
@@ -26,7 +27,7 @@ const style = {
   pb: 4,
 };
 
-function ProfileEdit() {
+function ProfileEdit({ editedName }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
 
@@ -42,6 +43,22 @@ function ProfileEdit() {
     if (id === "name") {
       setName(value);
     }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!!name) {
+      Notiflix.Notify.warning('Email, password or name is empty, please complete the missing content.')
+      return;
+    }
+    let result = await fetch('https://localhost:5000/api/users/id', {
+      method: "post",
+      body: JSON.stringify({ name}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   };
 
   return (
@@ -87,63 +104,67 @@ function ProfileEdit() {
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style, width: 300 }}>
-          <div className={styles.editModalContainer}>
-            <div className={styles.childrenCloseContainer}>
-              <Button
-                onClick={handleClose}
-                className={styles.childrenClose}
-                sx={{
-                  color: "#22252A",
-                  width: "15px",
-                  padding: 0,
-                  minWidth: "15px",
-                  fontWeight: "600",
-                  ":hover": {
-                    bgcolor: "transparent",
-                  },
-                }}
-              >
-                <Close />
-              </Button>
-            </div>
-            <div>
-              <button className={styles.avatarButton}>
-                <User />
+        <form onSubmit={handleSubmit}>
+          <Box sx={{ ...style, width: 300 }}>
+            <div className={styles.editModalContainer}>
+              <div className={styles.childrenCloseContainer}>
+                <Button
+                  onClick={handleClose}
+                  className={styles.childrenClose}
+                  sx={{
+                    color: "#22252A",
+                    width: "15px",
+                    padding: 0,
+                    minWidth: "15px",
+                    fontWeight: "600",
+                    ":hover": {
+                      bgcolor: "transparent",
+                    },
+                  }}
+                >
+                  <Close />
+                </Button>
+              </div>
+              <div>
+                <button className={styles.avatarButton}>
+                  <User />
+                </button>
+                <Plus className={styles.plus} />
+              </div>
+              <FormControl variant="standard" className={styles.inputWidthLast}>
+                <Input
+                  autoComplete="off"
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => handleInputChange(e)}
+                  placeholder="First Name"
+                  minLength={1}
+                  maxLength={12}
+                  required
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <AccountBoxIcon
+                        sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
+                        className={styles.iconMargin}
+                      />
+                    </InputAdornment>
+                  }
+                  // inputProps={{
+                  //   style: {
+                  //     ":active": {
+                  //       broderBottom: "2px solid black",
+                  //     },
+                  //   },
+                  // }}
+                />
+              </FormControl>
+              <button className={styles.submitButton} type="submit">
+                Save changes
               </button>
-              <Plus className={styles.plus} />
             </div>
-            <FormControl variant="standard" className={styles.inputWidthLast}>
-              <Input
-                autoComplete="off"
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => handleInputChange(e)}
-                placeholder="First Name"
-                minLength={1}
-                maxLength={12}
-                required
-                startAdornment={
-                  <InputAdornment position="start">
-                    <AccountBoxIcon
-                      sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
-                      className={styles.iconMargin}
-                    />
-                  </InputAdornment>
-                }
-                // inputProps={{
-                //   style: {
-                //     ":active": {
-                //       broderBottom: "2px solid black",
-                //     },
-                //   },
-                // }}
-              />
-            </FormControl>
-            <button className={styles.submitButton}>Save changes</button>
-          </div>
-        </Box>
+          </Box>
+        </form>
       </Modal>
     </React.Fragment>
   );

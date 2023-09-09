@@ -34,6 +34,10 @@ export default function SettingsModal() {
   const [name, setName] = useState("");
   const { owner } = useParams();
 
+  const editedName = (newName) => {
+    setName(newName)
+  }
+
   useEffect(() => {
     const fetchName = async () => {
       try {
@@ -106,7 +110,7 @@ export default function SettingsModal() {
       >
         <Box sx={{ ...style, width: 177 }}>
           <div className={styles.userModal}>
-            <ProfileEdit />
+            <ProfileEdit editedName={editedName}/>
             <LogoutModal />
           </div>
         </Box>

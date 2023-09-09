@@ -18,9 +18,7 @@ require("./config/config-passport");
 app.use("/api", usersRouter);
 // app.use("/api", financesRouter);
 
-app.use((req, res) => {
-	res.status(200).json({ message: "pusto i test" });
-});
+
 
 app.use((req, res) => {
 	res.status(404).json({ message: "nie dziauaaa" });
@@ -28,6 +26,9 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
 	res.status(500).json({ message: err.message });
+});
+app.use((req, res) => {
+	res.status(200).json({ message: "pusto i test" });
 });
 
 module.exports = app;

@@ -32,14 +32,10 @@ export const Header = () => {
       <Navigation />
       <div className={styles.userNav}>
         <div className={styles.user}>
-          {/* <button className={styles.avatar}>
-           
-          </button> */}
-          <SettingsModal>
-            {/* <button className={styles.username}>
-              <span className={styles.usernameText}>{name}</span>
-            </button> */}
-          </SettingsModal>
+         
+          <SettingsModal/>
+            
+          
         </div>
         <div className={styles.switchCheckbox}>
           <SwitchCheckbox id="header" />

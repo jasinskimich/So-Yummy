@@ -13,7 +13,7 @@ router.post("/users/logout", userControllers.auth, userControllers.logOut)
 router.post("/users/verify", userControllers.verify)
 
 router.patch("/users/avatars/:id", authMiddleware, avatarUploadMiddleware, userControllers.updateAvatar);
-
+router.patch("/users/name/:id", userControllers.editName);
 
 router.get("/users/current", userControllers.auth, userControllers.currentUser)
 router.get("/users/verify/:verificationToken", userControllers.verifyUser) 
