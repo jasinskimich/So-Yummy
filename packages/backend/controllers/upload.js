@@ -1,5 +1,7 @@
 const cloudinary = require("cloudinary");
 const fs = require("fs");
+const User = require("../models/users");
+
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
@@ -7,29 +9,59 @@ cloudinary.config({
 });
 
 const uploadController = {
-  uploadAvatar: async (req, res) => {
-    try {
-      const file = req.file;
-      cloudinary.v2.uploader.upload(
-        file.path,
-        {
-          folder: "avatar",
-          width: 150,
-          height: 150,
-          crop: "fill",
-        },
-        (err, result) => {
-          if (err) throw err;
-          fs.unlinkSync(file.path);
-          res
-            .status(200)
-            .json({ msg: "Uploaded successfully!", url: result.secure_url });
-        }
-      );
-    } catch (err) {
-      res.status(500).json({ msg: "w controlerze" });
-    }
-  },
-};
-
-module.exports = uploadController;
+    uploadAvatar: async (req, res) => {
+      try {
+        const file = req.file;
+        let newAvatarUrl;
+  
+        cloudinary.v2.uploader.upload(
+          file.path,
+          {
+            folder: "avatar",
+            width: 150,
+            height: 150,
+            crop: "fill",
+          },
+          async (err, result) => {
+            if (err) throw err;
+            fs.unlinkSync(file.path);
+            newAvatarUrl = result.secure_url;
+  
+            const id = req.params.id;
+  
+            try {
+              const document = await User.findOneAndUpdate(
+                { _id: id },
+                { avatarURL: newAvatarUrl },
+                { new: true }
+              );
+  
+              if (!document) {
+                return res.json({
+                  status: "error",
+                  code: 400,
+                  data: "Bad request",
+                  message: "User not found",
+                });
+              }
+  
+              return res.json({
+                status: "success",
+                code: 200,
+                data: document,
+                message: "Avatar updated successfully",
+              });
+            } catch (err) {
+              console.log(err);
+              return res.status(500).json({ msg: "An error occurred in the upload controller" });
+            }
+          }
+        );
+      } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "An error occurred in the upload controller" });
+      }
+    },
+  };
+  
+  module.exports = uploadController;

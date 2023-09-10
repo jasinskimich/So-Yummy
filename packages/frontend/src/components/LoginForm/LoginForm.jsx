@@ -43,10 +43,10 @@ const LoginForm = ({ setLoggedName }) => {
         }
       })
       let loginResponse = await result.json();
-      console.warn(loginResponse);
+      
 
       if (loginResponse?.data?.user?._id) {
-        console.log("User logged in:", loginResponse);
+       
         let id = loginResponse.data.user._id;
         let name = loginResponse.data.user.name;
 

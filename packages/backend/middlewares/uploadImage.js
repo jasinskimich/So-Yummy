@@ -13,7 +13,7 @@ const filerFilter = (req, file, cb) => {
   cb(null, true);
 };
 
-let upload = multer({
+const upload = multer({
   storage,
   fileFilter: filerFilter,
 });

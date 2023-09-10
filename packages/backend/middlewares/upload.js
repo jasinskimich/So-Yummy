@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
   if (typeof req.file === "undefined" || typeof req.body === "undefined")
     return res.status(400).json({ msg: "Issue with uploading this image" });
 
-  let image = req.file.path;
+  const image = req.file.path;
 
   if (
     !req.file.mimetype.includes("jpeg") &&

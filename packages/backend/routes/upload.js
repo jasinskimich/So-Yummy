@@ -6,7 +6,7 @@ const uploadController = require("../controllers/upload");
 const auth = require("../controllers/users")
 
 router.post(
-  "/upload",
+  "/upload/:id",
   uploadImage,
   upload,
   auth.auth,
