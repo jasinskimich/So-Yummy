@@ -189,7 +189,7 @@ const RegistrationForm = () => {
           <button className={css.loginButton}>Sign In</button>
         </Link>
 
-        <div>
+        <div className={css.verifyLinkContainer}>
           <Link to="/verify">
             <span className={css.verifyLink}>
               If you didn't get an verification email click this link.

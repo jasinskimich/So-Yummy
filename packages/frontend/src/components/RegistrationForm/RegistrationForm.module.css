@@ -76,6 +76,9 @@
 
     transition: 0.3s;
   }
+  .verifyLinkContainer {
+    text-align: center;
+  }
   .verifyLink {
     font-family: "Open Sans", sans-serif;
     color: #8baa36;

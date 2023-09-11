@@ -17,7 +17,7 @@ function StartPage() {
             designed to be your very own digital cookbook. You can easily save
             and retrieve your own recipes at any time.
           </p>
-          <div>
+          <div className={styles.buttonsContainer}>
             <Link to="/register">
               <button  className={styles.startButton}>
                 <RegistrationButton className={styles.registrationButton} />
