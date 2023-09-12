@@ -128,16 +128,18 @@ function ProfileEdit({ editedName }) {
     }
     editedName(name);
     setOpen(false);
-
-    // const formData = new FormData();
-    // formData.append("file", file);
-    // fetch(`http://localhost:5000/api/upload/${owner}`, {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    //   .then((response) => response.json())
-    //   .then((result) => console.log("succes", result))
-    //   .catch((error) => console.error("error:", error));
+    let data = await fetch(`http://localhost:5000/api/upload/${owner}`, {
+      method: "PATCH",
+      body: JSON.stringify({ avatar }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    data = await data.json();
+    if (data) {
+      setName("");
+      Notiflix.Notify.success("Avatar changed succesfully!");
+    }
   };
 
   useEffect(() => {
