@@ -58,7 +58,7 @@ export default function SettingsModal() {
         }
 
         response = await response.json();
-        console.log(response, "RESPONSE");
+        
         setName(response.name);
       } catch (error) {
         console.error(error);
@@ -87,7 +87,7 @@ export default function SettingsModal() {
 
         response = await response.json();
         setAvatar(response.avatar)
-        console.log(response.avatar, "RESPONSE1");
+        
       } catch (error) {
         console.error(error);
       }

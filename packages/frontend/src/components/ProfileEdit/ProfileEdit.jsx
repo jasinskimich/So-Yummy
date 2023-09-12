@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Box, FormControl, InputAdornment, Input } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
@@ -31,7 +31,59 @@ function ProfileEdit({ editedName }) {
   const [avatar, setAvatar] = useState(
     "https://res.cloudinary.com/dca6x5lvh/image/upload/v1694451965/avatarDefault_hdfz3r.jpg"
   );
+  const cloudinaryRef = useRef();
+  const widgetRef = useRef();
   const { owner } = useParams();
+
+  useEffect(() => {
+    cloudinaryRef.current = window.cloudinary;
+    widgetRef.current = cloudinaryRef.current.createUploadWidget(
+      {
+        cloudName: "dca6x5lvh",
+        uploadPreset: "yo4mqqgd",
+      },
+      function (error, result) {
+        console.log(result, "RESULT");
+        if (result.event === "success") {
+          console.log("result.info.secure_url", result.info.secure_url);
+          setAvatar(result.info.secure_url)
+        }
+      }
+    );
+  }, []);
+
+  console.log(avatar, "AVATARRRRRR")
+
+  // useEffect(() => {
+  //   const fetchNewAvatar = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `http://localhost:5000/api/upload/${owner}`,
+  //         {
+  //           method: "PATCH",
+  //           body: JSON.stringify({ avatar }),
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //         }
+  //       );
+
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch avatar");
+  //       }
+
+  //       const data = await response.json();
+  //       setAvatar(data.avatar);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   fetchNewAvatar();
+  // }, [owner, avatar]);
+
+  // const [file, setFile] = useState();
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -45,6 +97,11 @@ function ProfileEdit({ editedName }) {
       setName(value);
     }
   };
+
+  // function handleFile(event) {
+  //   setFile(event.target.files[0]);
+  //   console.log(event.target.files[0]);
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +128,16 @@ function ProfileEdit({ editedName }) {
     }
     editedName(name);
     setOpen(false);
+
+    // const formData = new FormData();
+    // formData.append("file", file);
+    // fetch(`http://localhost:5000/api/upload/${owner}`, {
+    //   method: "POST",
+    //   body: formData,
+    // })
+    //   .then((response) => response.json())
+    //   .then((result) => console.log("succes", result))
+    //   .catch((error) => console.error("error:", error));
   };
 
   useEffect(() => {
@@ -92,7 +159,6 @@ function ProfileEdit({ editedName }) {
 
         response = await response.json();
         setAvatar(response.avatar);
-        console.log(response.avatar, "RESPONSE1");
       } catch (error) {
         console.error(error);
       }
@@ -166,16 +232,17 @@ function ProfileEdit({ editedName }) {
                 </Button>
               </div>
               <div>
-                <label className={styles.customFile}>
-                  <input type="file" name="file"></input>
-                  
-                    <img
-                      src={avatar}
-                      alt="avatar"
-                      className={styles.avatarPic}
-                    />
-                  
-                </label>
+                {/* <label className={styles.customFile}>
+                  <input type="file" name="file" onChange={handleFile}></input>
+
+                  <img src={avatar} alt="avatar" className={styles.avatarPic} />
+                </label> */}
+                <button
+                  className={styles.avatarButton}
+                  onClick={() => widgetRef.current.open()}
+                >
+                  <img src={avatar} alt="avatar" className={styles.avatarPic} />
+                </button>
 
                 <Plus className={styles.plus} />
               </div>

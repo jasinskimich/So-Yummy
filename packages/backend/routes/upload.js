@@ -5,12 +5,14 @@ const uploadImage = require("../middlewares/uploadImage");
 const uploadController = require("../controllers/upload");
 const auth = require("../controllers/users")
 
-router.post(
+router.patch(
   "/upload/:id",
   uploadImage,
   upload,
   auth.auth,
-  uploadController.uploadAvatar
+  uploadController.uploadAvatar2
 );
+
+
 
 module.exports = router;

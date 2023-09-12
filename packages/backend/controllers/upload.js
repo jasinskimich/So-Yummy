@@ -62,6 +62,41 @@ const uploadController = {
         res.status(500).json({ msg: "An error occurred in the upload controller" });
       }
     },
+    uploadAvatar2: async (req, res, next) => {
+      try {
+        const id = req.params.id;
+        const newAvatar = req.body.avatar;
+    
+        const document = await User.findOneAndUpdate(
+          { _id: id },
+          { avatarURL: newAvatar },
+          { new: true }
+        );
+    
+        if (!document) {
+          return res.json({
+            status: "error",
+            code: 400,
+            data: "Bad request",
+            message: "User not found111111",
+          });
+        }
+    
+        return res.json({
+          status: "success",
+          code: 200,
+          data: document,
+          message: "Name updated successfully",
+        });
+      } catch (error) {
+        return res.json({
+          status: "error",
+          code: 500,
+          data: error.message,
+          message: "Internal server error",
+        });
+      }
+    }
   };
   
   module.exports = uploadController;
