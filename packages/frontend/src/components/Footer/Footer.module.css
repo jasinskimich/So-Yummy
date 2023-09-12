@@ -94,6 +94,13 @@
     color: #fafafa;
     padding: 0;
   }
+  .navItem1 {
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    color: #8baa36;
+    padding: 0;
+  }
   .socialContainer {
     padding-left: 25px;
     width: 100px;
@@ -296,6 +303,13 @@
     color: #fafafa;
     padding: 0;
   }
+  .navItem1 {
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    color: #8baa36;
+    padding: 0;
+  }
   .socialContainer {
     padding-left: 25px;
     width: 100px;
@@ -490,6 +504,13 @@
     border: none;
     background-color: transparent;
     color: #fafafa;
+    padding: 0;
+  }
+  .navItem1 {
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    color: #8baa36;
     padding: 0;
   }
   .socialContainer {

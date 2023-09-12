@@ -354,6 +354,24 @@ const getUserName = async (req, res, next) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+const getUserAvatar = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    const document = await User.findOne({ _id: id });
+
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+
+    const avatar = document.avatarURL;
+
+    res.json({ avatar });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
 
 const checkVerifyEmail = async (req, res, next) => {
   const { email } = req.params;
@@ -423,13 +441,13 @@ const editName = async (req, res, next) => {
   try {
     const id = req.params.id;
     const newName = req.body.name;
-    
+
     const document = await User.findOneAndUpdate(
       { _id: id },
       { name: `${newName}` },
       { new: true }
     );
-    
+
     if (!document) {
       return res.json({
         status: "error",
@@ -472,4 +490,5 @@ module.exports = {
   checkVerifyEmail,
   updateAvatar,
   editName,
+  getUserAvatar,
 };

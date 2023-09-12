@@ -16,6 +16,8 @@ router.get("/users/current", userControllers.auth, userControllers.currentUser)
 router.get("/users/verify/:verificationToken", userControllers.verifyUser) 
 router.get(`/users/checkEmail/:email`, userControllers.checkEmail)
 router.get("/users/name/:id", userControllers.getUserName);
+router.get("/users/avatar/:id", userControllers.getUserAvatar);
+
 router.get(`/users/checkVerify/:email`, userControllers.checkVerifyEmail)
 
 module.exports = router;

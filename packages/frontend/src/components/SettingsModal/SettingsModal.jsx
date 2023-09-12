@@ -5,7 +5,6 @@ import LogoutModal from "../LogoutModal/LogoutModal";
 import ProfileEdit from "../ProfileEdit/ProfileEdit";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import avatarImage from "../../images/avatarDefault.jpg";
 import styles from "./SettingsModal.module.css";
 
 const style = {
@@ -24,6 +23,8 @@ const style = {
 
 export default function SettingsModal() {
   const [open, setOpen] = React.useState(false);
+  const [avatar, setAvatar] = useState("https://res.cloudinary.com/dca6x5lvh/image/upload/v1694451965/avatarDefault_hdfz3r.jpg");
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -35,8 +36,9 @@ export default function SettingsModal() {
   const { owner } = useParams();
 
   const editedName = (newName) => {
-    setName(newName)
-  }
+    setName(newName);
+  };
+
 
   useEffect(() => {
     const fetchName = async () => {
@@ -56,7 +58,7 @@ export default function SettingsModal() {
         }
 
         response = await response.json();
-
+        console.log(response, "RESPONSE");
         setName(response.name);
       } catch (error) {
         console.error(error);
@@ -64,6 +66,34 @@ export default function SettingsModal() {
     };
 
     fetchName();
+  }, [owner]);
+
+  useEffect(() => {
+    const fetchAvatar = async () => {
+      try {
+        let response = await fetch(
+          `http://localhost:5000/api/users/avatar/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch username");
+        }
+
+        response = await response.json();
+        setAvatar(response.avatar)
+        console.log(response.avatar, "RESPONSE1");
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchAvatar();
   }, [owner]);
 
   return (
@@ -83,7 +113,7 @@ export default function SettingsModal() {
         }}
       >
         {" "}
-        <img src={avatarImage} alt="Avatar" className={styles.avatarImage} />
+        <img src={avatar} alt="Avatar" className={styles.avatarImage} />
       </Button>
 
       <Button
@@ -110,7 +140,7 @@ export default function SettingsModal() {
       >
         <Box sx={{ ...style, width: 177 }}>
           <div className={styles.userModal}>
-            <ProfileEdit editedName={editedName}/>
+            <ProfileEdit editedName={editedName} />
             <LogoutModal />
           </div>
         </Box>

@@ -29,6 +29,12 @@
   border: none;
   height: 107px;
   width: 107px;
+  overflow: hidden;
+  padding: 0;
+}
+.avatarPic {
+  width: 107px;
+  height: 107px;
 }
 .avatarButton:hover {
   cursor: pointer;
@@ -58,4 +64,19 @@
 }
 .plus:hover {
   cursor: pointer;
+}
+.customFile {
+  display: flex;
+  border-radius: 50%;
+  border: none;
+  height: 107px;
+  width: 107px;
+  overflow: hidden;
+  padding: 0;
+}
+.customFile:hover {
+  cursor: pointer;
+}
+input[type="file"] {
+  display: none;
 }

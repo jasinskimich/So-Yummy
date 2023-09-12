@@ -1,5 +1,5 @@
 import LogoFooter from "../../images/logoFooter.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { ReactComponent as Facebook } from "../../images/fb.svg";
@@ -12,7 +12,9 @@ import { useForm } from "react-hook-form";
 
 export const Footer = () => {
   const { owner } = useParams();
+  const location = useLocation();
   const { handleSubmit } = useForm();
+
 
   const onSubmit = async (data) => {
     const { email } = data;
@@ -73,25 +75,25 @@ export const Footer = () => {
             <div className={styles.midContainer}>
               <div className={styles.navContainer}>
                 <NavLink to={`/categories/${owner}`} className={styles.navLink}>
-                  <button className={styles.navItem}>Categories</button>
+                  <button className={location.pathname.includes("/categories") ? styles.navItem1 : styles.navItem}>Categories</button>
                 </NavLink>
                 <NavLink
                   to={`/add-recipes/${owner}`}
                   className={styles.navLink}
                 >
-                  <button className={styles.navItem}>Add Recipes</button>
+                  <button className={location.pathname.includes("/add-recipes") ? styles.navItem1 : styles.navItem}>Add Recipes</button>
                 </NavLink>
                 <NavLink to={`/my-recipes/${owner}`} className={styles.navLink}>
-                  <button className={styles.navItem}>My Recipes</button>
+                  <button className={location.pathname.includes("/my-recipes") ? styles.navItem1 : styles.navItem}>My Recipes</button>
                 </NavLink>
                 <NavLink to={`/favorites/${owner}`} className={styles.navLink}>
-                  <button className={styles.navItem}>Favorites</button>
+                  <button className={location.pathname.includes("/favorites") ? styles.navItem1 : styles.navItem}>Favorites</button>
                 </NavLink>
                 <NavLink
                   to={`/shopping-list/${owner}`}
                   className={styles.navLink}
                 >
-                  <button className={styles.navItem}>Shopping list</button>
+                  <button className={location.pathname.includes("/shopping-list") ? styles.navItem1 : styles.navItem}>Shopping list</button>
                 </NavLink>
               </div>
             </div>

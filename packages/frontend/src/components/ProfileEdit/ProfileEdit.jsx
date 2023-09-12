@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { Box, FormControl, InputAdornment, Input } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { ReactComponent as EditPen } from "../../images/EditIcon.svg";
 import styles from "./ProfileEdit.module.css";
 import { ReactComponent as Close } from "../../images/closeModal.svg";
-import { ReactComponent as User } from "../../images/userImage.svg";
 import { ReactComponent as Plus } from "../../images/plus.svg";
 import Notiflix from "notiflix";
 import { useParams } from "react-router-dom";
@@ -30,6 +28,9 @@ const style = {
 function ProfileEdit({ editedName }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState(
+    "https://res.cloudinary.com/dca6x5lvh/image/upload/v1694451965/avatarDefault_hdfz3r.jpg"
+  );
   const { owner } = useParams();
   const handleOpen = () => {
     setOpen(true);
@@ -54,7 +55,7 @@ function ProfileEdit({ editedName }) {
       );
       return;
     }
-    
+
     let result = await fetch(`http://localhost:5000/api/users/name/${owner}`, {
       method: "PATCH",
       body: JSON.stringify({ name }),
@@ -63,8 +64,7 @@ function ProfileEdit({ editedName }) {
       },
     });
     result = await result.json();
-    
-    
+
     if (result) {
       setName("");
       Notiflix.Notify.success("Name changed succesfully!");
@@ -72,6 +72,34 @@ function ProfileEdit({ editedName }) {
     editedName(name);
     setOpen(false);
   };
+
+  useEffect(() => {
+    const fetchAvatar = async () => {
+      try {
+        let response = await fetch(
+          `http://localhost:5000/api/users/avatar/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch username");
+        }
+
+        response = await response.json();
+        setAvatar(response.avatar);
+        console.log(response.avatar, "RESPONSE1");
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchAvatar();
+  }, [owner]);
 
   return (
     <React.Fragment>
@@ -138,9 +166,17 @@ function ProfileEdit({ editedName }) {
                 </Button>
               </div>
               <div>
-                <button className={styles.avatarButton}>
-                  <User />
-                </button>
+                <label className={styles.customFile}>
+                  <input type="file" name="file"></input>
+                  
+                    <img
+                      src={avatar}
+                      alt="avatar"
+                      className={styles.avatarPic}
+                    />
+                  
+                </label>
+
                 <Plus className={styles.plus} />
               </div>
               <FormControl variant="standard" className={styles.inputWidthLast}>

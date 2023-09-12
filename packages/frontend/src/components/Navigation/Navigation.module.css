@@ -85,6 +85,16 @@
     background-color: transparent;
     border: none;
   }
+  .navItem1 {
+    height: 20px;
+    padding: 0;
+    line-height: 22.4%;
+    letter-spacing: 0%;
+    font-size: 14px;
+    color: #8baa36;
+    background-color: transparent;
+    border: none;
+  }
 
   .navItem:hover {
     color: #8baa36;

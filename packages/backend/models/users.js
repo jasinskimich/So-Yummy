@@ -19,7 +19,7 @@ const userSchema = new Schema({
   avatarURL: {
     type: String,
     default:
-      "https://res.cloudinary.com/dca6x5lvh/image/upload/v1694271706/avatar/avatarDefault_kuruvb.jpg",
+      "https://res.cloudinary.com/dca6x5lvh/image/upload/v1694451965/avatarDefault_hdfz3r.jpg",
   },
   token: {
     type: String,

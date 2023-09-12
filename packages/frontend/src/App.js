@@ -10,6 +10,14 @@ import Login from "./pages/LoginPages/LoginPages";
 import Layout from "./Layout";
 import StartPage from "./pages/StartPage/StartPage";
 import Home from "./pages/Home/Home";
+import Categories from "./pages/Categories/Categories";
+import AddRecipes from "./pages/AddRecipes/AddRecipes";
+import MyRecipes from "./pages/MyRecipes/MyRecipes";
+import Favorites from "./pages/Favorites/Favorites";
+import ShoppingList from "./pages/ShoppingList/ShoppingList";
+import Search from "./pages/Search/Search";
+
+
 import { createContext } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -48,6 +56,13 @@ function App() {
           <Route path="*" element={<StartPage />} />
           <Route element={<AuthGuardedRoute element={Layout} />}>
             <Route path="/home/:owner" element={<Home />} />
+            <Route path="/categories/:owner" element={<Categories />} />
+            <Route path="/add-recipes/:owner" element={<AddRecipes />} />
+            <Route path="/my-recipes/:owner" element={<MyRecipes />} />
+            <Route path="/favorites/:owner" element={<Favorites />} />
+            <Route path="/shopping-list/:owner" element={<ShoppingList />} />
+            <Route path="/search/:owner" element={<Search />} />
+
           </Route>
         </Routes>
       </Box>
