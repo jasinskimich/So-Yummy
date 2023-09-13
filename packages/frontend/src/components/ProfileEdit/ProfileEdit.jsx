@@ -66,7 +66,9 @@ function ProfileEdit({ editedName, editedAvatar }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    Notiflix.Notify.init({
+      position: "left-bottom",
+    });
     if (!name) {
       Notiflix.Notify.warning(
         "Name is empty, please complete the missing content."
@@ -176,7 +178,7 @@ function ProfileEdit({ editedName, editedAvatar }) {
         aria-describedby="child-modal-description"
       >
         <form onSubmit={handleSubmit}>
-          <Box sx={{ ...style, width: 300 }}>
+          <Box sx={{ ...style, width: "80%", maxWidth: 300 }}>
             <div className={styles.editModalContainer}>
               <div className={styles.childrenCloseContainer}>
                 <Button
@@ -196,14 +198,13 @@ function ProfileEdit({ editedName, editedAvatar }) {
                   <Close />
                 </Button>
               </div>
-              <div>
+              <div className={styles.avatarContainer}>
                 <button
                   className={styles.avatarButton}
                   onClick={() => widgetRef.current.open()}
                 >
                   <img src={avatar} alt="avatar" className={styles.avatarPic} />
                 </button>
-
                 <Plus className={styles.plus} />
               </div>
               <FormControl variant="standard" className={styles.inputWidthLast}>

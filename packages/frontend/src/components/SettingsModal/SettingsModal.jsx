@@ -7,7 +7,24 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./SettingsModal.module.css";
 
-const style = {
+
+export default function SettingsModal() {
+  const [open, setOpen] = React.useState(false);
+  const [avatar, setAvatar] = useState("https://res.cloudinary.com/dca6x5lvh/image/upload/v1694451965/avatarDefault_hdfz3r.jpg");
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+let style = {
   position: "absolute",
   top: "15%",
   left: "75%",
@@ -20,11 +37,20 @@ const style = {
   px: 2,
   pb: 2,
 };
-
-export default function SettingsModal() {
-  const [open, setOpen] = React.useState(false);
-  const [avatar, setAvatar] = useState("https://res.cloudinary.com/dca6x5lvh/image/upload/v1694451965/avatarDefault_hdfz3r.jpg");
-
+let style2 = {
+  position: "absolute",
+  top: "15%",
+  left: "70%",
+  transform: "translate(-50%, -50%)",
+  width: 100,
+  bgcolor: "background.paper",
+  borderRadius: "15px",
+  boxShadow: 24,
+  pt: 2,
+  px: 2,
+  pb: 2,
+};
+  const stylesForBox = screenWidth >= 768 ? style : style2;
   const handleOpen = () => {
     setOpen(true);
   };
@@ -102,7 +128,7 @@ export default function SettingsModal() {
     <div className={styles.userNav}>
       <Button
         onClick={handleOpen}
-        className={styles.userNav}
+        className={styles.userNav1}
         sx={{
           padding: 0,
           minWidth: "34px",
@@ -140,7 +166,7 @@ export default function SettingsModal() {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 177 }}>
+        <Box sx={{ ...stylesForBox, width: 177 }}>
           <div className={styles.userModal}>
             <ProfileEdit editedName={editedName} editedAvatar={editedAvatar}/>
             <LogoutModal />

@@ -1,82 +1,285 @@
-.editContainer {
-  display: flex;
-  flex-direction: row;
-  gap: 40px;
+@media screen and (min-width: 320px) and (max-width: 374px) {
+  .editContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .editPen {
+    width: 16px;
+    height: 16px;
+  }
+  .childrenCloseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
+
+  .childrenClose:hover svg path {
+    stroke: #8baa36;
+  }
+  .editModalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+  }
+
+  .avatarContainer {
+    height: 107px;
+    width: 107px;
+  }
+  .avatarButton {
+    position: relative;
+    border-radius: 50%;
+    border: none;
+    height: 107px;
+    width: 107px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .avatarPic {
+    width: 107px;
+    height: 107px;
+    z-index: 1;
+    position: relative;
+  }
+  .avatarButton:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    -moz-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+  }
+
+  .inputWidthLast {
+    width: 90%;
+    padding-bottom: 10px;
+  }
+  .submitButton {
+    width: 90%;
+    height: 55px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+  }
+  .submitButton:hover {
+    cursor: pointer;
+    background-color: #22252a;
+  }
+  .plus {
+    position: absolute;
+    right: 80px;
+    top: 140px;
+    z-index: 2;
+  }
+
+  .plus:hover {
+    cursor: pointer;
+  }
+  .customFile {
+    display: flex;
+    border-radius: 50%;
+    border: none;
+    height: 107px;
+    width: 107px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .customFile:hover {
+    cursor: pointer;
+  }
+  input[type="file"] {
+    display: none;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .editContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .editPen {
+    width: 16px;
+    height: 16px;
+  }
+  .childrenCloseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
+
+  .childrenClose:hover svg path {
+    stroke: #8baa36;
+  }
+  .editModalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+  }
+
+  .avatarContainer {
+    height: 107px;
+    width: 107px;
+  }
+  .avatarButton {
+    position: relative;
+    border-radius: 50%;
+    border: none;
+    height: 107px;
+    width: 107px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .avatarPic {
+    width: 107px;
+    height: 107px;
+    z-index: 1;
+    position: relative;
+  }
+  .avatarButton:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    -moz-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+  }
+
+  .inputWidthLast {
+    width: 90%;
+    padding-bottom: 10px;
+  }
+  .submitButton {
+    width: 90%;
+    height: 55px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+  }
+  .submitButton:hover {
+    cursor: pointer;
+    background-color: #22252a;
+  }
+  .plus {
+    position: absolute;
+    right: 100px;
+    top: 140px;
+    z-index: 2;
+  }
+
+  .plus:hover {
+    cursor: pointer;
+  }
+  .customFile {
+    display: flex;
+    border-radius: 50%;
+    border: none;
+    height: 107px;
+    width: 107px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .customFile:hover {
+    cursor: pointer;
+  }
+  input[type="file"] {
+    display: none;
+  }
 }
 
-.editPen {
-  width: 16px;
-  height: 16px;
-}
-.childrenCloseContainer {
-  display: flex;
-  width: 100%;
-  justify-content: right;
-}
+@media screen and (min-width: 767px) {
+  .editContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
 
-.childrenClose:hover svg path {
-  stroke: #8baa36;
-}
-.editModalContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-}
-.avatarButton {
-  border-radius: 50%;
-  border: none;
-  height: 107px;
-  width: 107px;
-  overflow: hidden;
-  padding: 0;
-}
-.avatarPic {
-  width: 107px;
-  height: 107px;
-}
-.avatarButton:hover {
-  cursor: pointer;
-}
+  .editPen {
+    width: 16px;
+    height: 16px;
+  }
+  .childrenCloseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
 
-.inputWidthLast {
-  width: 90%;
-  padding-bottom: 10px;
-}
-.submitButton {
-  width: 90%;
-  height: 55px;
-  background-color: #8baa36;
-  color: #fafafa;
-  border: none;
-  border-radius: 15px;
-  font-size: 18px;
-}
-.submitButton:hover {
-  cursor: pointer;
-  background-color: #22252a;
-}
-.plus {
-  position: absolute;
-  right: 130px;
-  top: 150px;
-}
-.plus:hover {
-  cursor: pointer;
-}
-.customFile {
-  display: flex;
-  border-radius: 50%;
-  border: none;
-  height: 107px;
-  width: 107px;
-  overflow: hidden;
-  padding: 0;
-}
-.customFile:hover {
-  cursor: pointer;
-}
-input[type="file"] {
-  display: none;
+  .childrenClose:hover svg path {
+    stroke: #8baa36;
+  }
+  .editModalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .avatarButton {
+    border-radius: 50%;
+    border: none;
+    height: 107px;
+    width: 107px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .avatarPic {
+    width: 107px;
+    height: 107px;
+  }
+  .avatarButton:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    -moz-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    transition-duration: 400ms;
+  }
+
+  .inputWidthLast {
+    width: 90%;
+    padding-bottom: 10px;
+  }
+  .submitButton {
+    width: 90%;
+    height: 55px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+  }
+  .submitButton:hover {
+    cursor: pointer;
+    background-color: #22252a;
+  }
+  .plus {
+    position: absolute;
+    right: 130px;
+    top: 150px;
+  }
+  .plus:hover {
+    cursor: pointer;
+  }
+  .customFile {
+    display: flex;
+    border-radius: 50%;
+    border: none;
+    height: 107px;
+    width: 107px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .customFile:hover {
+    cursor: pointer;
+  }
+  input[type="file"] {
+    display: none;
+  }
 }

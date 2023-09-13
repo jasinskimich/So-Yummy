@@ -505,6 +505,7 @@
     background-color: transparent;
     color: #fafafa;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
   }
   .navItem1 {
     width: fit-content;
@@ -512,6 +513,7 @@
     background-color: transparent;
     color: #8baa36;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
   }
   .socialContainer {
     padding-left: 25px;

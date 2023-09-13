@@ -1,16 +1,16 @@
-import { Box } from "@mui/material";
+// import { Box } from "@mui/material";
 // import { useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
 // import styles from "./Home.module.css";
+import Hero from "../../components/Hero/Hero";
 
 function Home() {
-
-//   const { owner } = useParams();
+  //   const { owner } = useParams();
 
   return (
-    <Box>
-     
-    </Box>
+    <div>
+      <Hero />
+    </div>
   );
 }
 
