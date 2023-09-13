@@ -38,7 +38,9 @@ export default function SettingsModal() {
   const editedName = (newName) => {
     setName(newName);
   };
-
+  const editedAvatar = (newAvatar) => {
+    setAvatar(newAvatar);
+  };
 
   useEffect(() => {
     const fetchName = async () => {
@@ -140,7 +142,7 @@ export default function SettingsModal() {
       >
         <Box sx={{ ...style, width: 177 }}>
           <div className={styles.userModal}>
-            <ProfileEdit editedName={editedName} />
+            <ProfileEdit editedName={editedName} editedAvatar={editedAvatar}/>
             <LogoutModal />
           </div>
         </Box>
