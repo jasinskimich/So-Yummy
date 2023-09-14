@@ -10,3 +10,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@media screen and (min-width: 768px){
+  html{
+  background-image: url("../../frontend/src/images/herolefttop.png")
+   ;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: left top;
+}}

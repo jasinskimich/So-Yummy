@@ -48,9 +48,9 @@
   }
   .avatarButton:hover {
     cursor: pointer;
-    -webkit-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
-    -moz-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
-    box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    -webkit-box-shadow: 0px 0px 24px 6px rgba(139, 170, 54, 1);
+    -moz-box-shadow: 0px 0px 24px 6px rgba(139, 170, 54, 1);
+    box-shadow: 0px 0px 24px 6px rgba(139, 170, 54, 1);
   }
 
   .inputWidthLast {
@@ -146,9 +146,9 @@
   }
   .avatarButton:hover {
     cursor: pointer;
-    -webkit-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
-    -moz-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
-    box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    -webkit-box-shadow: 0px 0px 24px 6px rgba(139, 170, 54, 1);
+    -moz-box-shadow: 0px 0px 24px 6px rgba(139, 170, 54, 1);
+    box-shadow: 0px 0px 24px 6px rgba(139, 170, 54, 1);
   }
 
   .inputWidthLast {
@@ -236,9 +236,9 @@
   }
   .avatarButton:hover {
     cursor: pointer;
-    -webkit-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
-    -moz-box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
-    box-shadow: 0px 0px 24px 0px rgba(139, 170, 54, 1);
+    -webkit-box-shadow: 0px 0px 24px 6px rgba(139, 170, 54, 1);
+    -moz-box-shadow: 0px 0px 24px 6px rgba(139, 170, 54, 1);
+    box-shadow: 0px 0px 24px 6px rgba(139, 170, 54, 1);
     transition-duration: 400ms;
   }
 

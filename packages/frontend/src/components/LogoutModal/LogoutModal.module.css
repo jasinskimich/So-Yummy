@@ -1,7 +1,7 @@
-/* .logoutbutton:hover svg path {
+.logoutbutton:hover svg path:nth-child(1) {
   fill: #22252a;
-  stroke: 1px #fafafa;
-} */
+  stroke: #22252a;
+}
 
 .childrenCloseContainer {
   display: flex;

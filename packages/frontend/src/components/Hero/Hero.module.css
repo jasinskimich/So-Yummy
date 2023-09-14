@@ -1,11 +1,12 @@
 .mainContainer {
-  background-image: url("../../images/heroBackground.png");
+  /* background-image: url("../../images/herolefttop.png");
   background-repeat: no-repeat;
-  background-position: right;
-  height: 440px;
+  background-position: left top; */
+  height: 700px;
   width: 100%;
   background-color: transparent;
   display: flex;
+  /* gap: 40px; */
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -14,15 +15,51 @@
 .headContainer {
   display: flex;
   flex-direction: column;
-  width: 370px;
+  /* justify-content: center; */
+  align-items: end;
+  margin-top: 400px;
+  margin-right: 50px;
+  width: 100%;
+  height: 100%;
 }
 .infoContainer {
-  background-image: url("../../images/HeroBowl.png");
+  background-image: url("../../images/heroBackgroundDesktop.png");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: auto;
+  width: 100%;
+  height: 100%;
+}
+.infoContent {
+  background-image: url("../../images/HeroBowl.png");
+  background-repeat: no-repeat;
+  background-position: top;
   background-size: contain;
-  width: 380px;
-  height: 380px;
+  margin-top: 50px;
+  margin-left: 20px;
+  width: 550px;
+  height: 540px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+.infoTextBox {
+  width: 300px;
+  height: 115px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  position: relative;
+  z-index: 3;
+ 
+}
+.wrapper {
+  width: 435px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .title {
   font-size: 72px;
@@ -39,9 +76,59 @@
   font-family: "Poppins", sans-serif;
 }
 .headButton {
-  background-image: url("../../images/searchBackground.png");
+  background-image: url("../../images/searchBackground.svg");
   background-repeat: no-repeat;
-  background-size:contain;
-  width: 369px;
+  background-size: contain;
+  width: 435px;
   height: 60px;
+}
+.inputInside {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 60px;
+  padding-left: 30px;
+  width: 405px;
+}
+.inputForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.input {
+  width: 260px;
+  height: 30px;
+  border: none;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+.input:focus {
+  outline: none;
+}
+.inputButton {
+  height: 60px;
+  width: 138px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+.inputButton:hover {
+  cursor: pointer;
+}
+.inputButton svg path {
+  stroke-width: 1px;
+}
+.inputButton:hover svg path:nth-child(1) {
+  fill: #8baa36;
+}
+.inputButtonImage {
+  height: 60px;
+  width: 138px;
+}
+.arrow {
+  height: 80px;
+  transform: rotate(-20deg);
+  position: relative;
+  z-index: 1;
 }
