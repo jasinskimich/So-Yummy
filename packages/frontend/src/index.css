@@ -1,20 +1,40 @@
 body {
   margin: 0;
-  font-family:  'Poppins', sans-serif;;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-@media screen and (min-width: 768px){
-  html{
-  background-image: url("../../frontend/src/images/herolefttop.png")
-   ;
-  background-size: auto;
-  background-repeat: no-repeat;
-  background-position: left top;
-}}
+
+@media screen and (min-width: 320px) {
+  html {
+    background-image: url("../../frontend/src/images/herolefttop.png"),
+      url("../../frontend/src/images/greenBackgroundTablet.png");
+    background-size: auto, auto;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left top, right top;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    background-image: url("../../frontend/src/images/herolefttopTablet.png"),
+      url("../../frontend/src/images/greenBackgroundTablet.png");
+    background-size: auto, auto;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left top, right top;
+  }
+}
+@media screen and (min-width: 1080px) {
+  html {
+    background-image: url("../../frontend/src/images/herolefttop.png"),
+      url("../../frontend/src/images/greenBackground.png");
+    background-size: auto, auto;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left top, right top;
+  }
+}

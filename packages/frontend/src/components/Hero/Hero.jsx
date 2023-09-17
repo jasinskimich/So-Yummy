@@ -2,8 +2,16 @@ import React from "react";
 import styles from "./Hero.module.css";
 import { ReactComponent as SearchButton } from "../../images/searchButton.svg";
 import { ReactComponent as Arrow } from "../../images/arrowHero.svg";
+import { ReactComponent as SmallArrow } from "../../images/smallArrowBtn.svg";
+import { NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 const Hero = () => {
+
+
+  const { owner } = useParams();
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.headContainer}>
@@ -37,8 +45,23 @@ const Hero = () => {
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.infoContent}>
-          <div className={styles.infoTextBox}></div>
-          <Arrow className={styles.arrow}/>
+          <div className={styles.infoTextBox}>
+            <div className={styles.infoTextBoxContainer}>
+              <div className={styles.infoTextContent}>
+                <span className={styles.greenText}>Delicious and healthy </span>
+                <span className={styles.blackText}>way to enjoy a variety of fresh ingredients in one satisfying meal</span>
+              </div>
+              <div className={styles.infoTextButtonContainer}>
+              <NavLink to={`/categories/${owner}`} className={styles.navLink}>
+                <button className={styles.infoTextButton}>
+                  See Recipes
+                  <SmallArrow />
+                </button>
+                </NavLink>
+              </div>
+            </div>
+          </div>
+          <Arrow className={styles.arrow} />
         </div>
       </div>
     </div>
