@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  gap: 30px;
 }
 
 /* Head */
@@ -26,5 +27,19 @@
 .categoryItemPic {
   width: 100%;
   max-width: 320px;
+}
+.categoryItem {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
+.categoryItemPic {
+  z-index: 2;
+}
+.categoryItemBox {
+  z-index: 3;
 }
 /* Button */
