@@ -1,0 +1,8 @@
+.main {
+  padding-bottom: 100px;
+  background-image: url("../../images/homeBottomLeft.png");
+  background-repeat: no-repeat;
+
+  background-position: 0% 130% ;
+  background-size: auto;
+}

@@ -1,45 +1,6 @@
 .mainContainer {
   margin-top: 50px;
-}
-.categoryContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 30px;
+  gap: 50px;
 }
-
-/* Head */
-.categoryHead {
-  width: 80%;
-  height: 40px;
-}
-.categoryHeadText {
-  font-size: 24px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-}
-/* Content */
-.categoryContent {
-  width: 80%;
-}
-.categoryItemPic {
-  width: 100%;
-  max-width: 320px;
-}
-.categoryItem {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1;
-}
-.categoryItemPic {
-  z-index: 2;
-}
-.categoryItemBox {
-  z-index: 3;
-}
-/* Button */
