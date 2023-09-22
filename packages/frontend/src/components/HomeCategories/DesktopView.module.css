@@ -49,6 +49,8 @@
 .categoryItemPic {
   position: relative;
   z-index: 1;
+  width: 300px;
+  height: 320px;
 }
 .categoryItemBox {
   justify-content: center;
