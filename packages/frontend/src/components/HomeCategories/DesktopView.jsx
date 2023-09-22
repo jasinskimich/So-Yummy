@@ -143,7 +143,7 @@ const DesktopView = () => {
         <div className={styles.categoryContent}>
           <div className={styles.categoryItem}>
             <img
-              src={first.length > 0 && first[0].display.images[0]}
+              src={first[0].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -155,7 +155,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={first.length > 0 && first[1].display.images[0]}
+              src={first[1].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -167,7 +167,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={first.length > 0 && first[2].display.images[0]}
+              src={first[2].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -179,7 +179,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={first.length > 0 && first[3].display.images[0]}
+              src={ first[3].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -203,7 +203,7 @@ const DesktopView = () => {
         <div className={styles.categoryContent}>
           <div className={styles.categoryItem}>
             <img
-              src={second.length > 0 && second[0].display.images[0]}
+              src={second[0].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -215,7 +215,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={second.length > 0 && second[1].display.images[0]}
+              src={second[1].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -227,7 +227,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={second.length > 0 && second[2].display.images[0]}
+              src={second[2].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -239,7 +239,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={second.length > 0 && second[3].display.images[0]}
+              src={second[3].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -263,7 +263,7 @@ const DesktopView = () => {
         <div className={styles.categoryContent}>
           <div className={styles.categoryItem}>
             <img
-              src={third.length > 0 && third[0].display.images[0]}
+              src={third[0].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -275,19 +275,19 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={third.length > 0 && third[1].display.images[0]}
+              src={third[1].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
             <div className={styles.categoryItemBox}>
               <span className={styles.categoryItemText}>
-              {third.length > 0 && third[1].display.displayName}
+              {third[1].display.displayName}
               </span>
             </div>
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={third.length > 0 && third[2].display.images[0]}
+              src={third[2].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -299,7 +299,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={third.length > 0 && third[3].display.images[0]}
+              src={third[3].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -323,7 +323,7 @@ const DesktopView = () => {
         <div className={styles.categoryContent}>
           <div className={styles.categoryItem}>
             <img
-              src={fourth.length > 0 && fourth[0].display.images[0]}
+              src={fourth[0].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -335,7 +335,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={fourth.length > 0 && fourth[1].display.images[0]}
+              src={ fourth[1].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -347,7 +347,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={fourth.length > 0 && fourth[2].display.images[0]}
+              src={fourth[2].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
@@ -359,7 +359,7 @@ const DesktopView = () => {
           </div>
           <div className={styles.categoryItem}>
             <img
-              src={fourth.length > 0 && fourth[3].display.images[0]}
+              src={fourth[3].display.images[0]}
               alt="nalesniki"
               className={styles.categoryItemPic}
             />
