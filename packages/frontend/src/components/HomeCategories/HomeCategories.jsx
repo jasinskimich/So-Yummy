@@ -3,8 +3,13 @@ import styles from "./HomeCategories.module.css";
 import MobileView from "./MobileView";
 import TabletView from "./TabletView";
 import DesktopView from "./DesktopView";
+import { ReactComponent as OtherBtn } from "../../images/OtherBtn.svg";
+import { useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 
 const HomeCategories = () => {
+  const { owner } = useParams();
   const [isDesktop, setDesktop] = useState(window.innerWidth > 1367);
   const [isTablet, setTablet] = useState(
     window.innerWidth <= 1080 && window.innerWidth >= 768
@@ -27,6 +32,12 @@ const HomeCategories = () => {
       {isDesktop && <DesktopView />}
       {isTablet && <TabletView />}
       {isMobile && <MobileView />}
+      
+      <NavLink to={`/categories/${owner}`} >
+      <button className={styles.otherBtn}>
+        <OtherBtn />{" "}
+      </button>
+      </NavLink>
     </div>
   );
 };

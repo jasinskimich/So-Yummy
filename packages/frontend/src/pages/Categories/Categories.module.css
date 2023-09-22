@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 100px;
+  padding-top: 100px;
+  width: 100%;
+}
+.container {
+  width: 80%;
+}
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+}
+.tab {
+  color: #8baa36;
+  font-family: "Poppins", sans-serif;
+}
+.tab:active {
+  color: #8baa36;
+}

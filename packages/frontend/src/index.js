@@ -4,11 +4,19 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 // import { dark } from "@mui/material/styles/createPalette";
 // import { Provider } from "react-redux";
 // import { store } from "./redux/store";
-
+const theme = createTheme({
+  typography: {
+    allVariants: {
+      fontFamily: `"Poppins", sans-serif;`,
+      textTransform: 'none',
+      fontSize: 16,
+    },
+  },
+});
  
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -16,8 +24,9 @@ root.render(
 	// <Provider >
   <React.StrictMode>
     <BrowserRouter basename="/">
-  
+    <ThemeProvider theme={theme}>
           <App /> 
+          </ThemeProvider>
     </BrowserRouter>
 	</React.StrictMode>
 // </Provider>

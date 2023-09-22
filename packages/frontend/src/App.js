@@ -57,6 +57,7 @@ function App() {
           <Route element={<AuthGuardedRoute element={Layout} />}>
             <Route path="/home/:owner" element={<Home />} />
             <Route path="/categories/:owner" element={<Categories />} />
+            <Route path="/categories/:owner/:category" element={<Categories />} />
             <Route path="/add-recipes/:owner" element={<AddRecipes />} />
             <Route path="/my-recipes/:owner" element={<MyRecipes />} />
             <Route path="/favorites/:owner" element={<Favorites />} />

@@ -7,10 +7,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./SettingsModal.module.css";
 
-
 export default function SettingsModal() {
   const [open, setOpen] = React.useState(false);
-  const [avatar, setAvatar] = useState("https://res.cloudinary.com/dca6x5lvh/image/upload/v1694451965/avatarDefault_hdfz3r.jpg");
+  const [avatar, setAvatar] = useState(
+    "https://res.cloudinary.com/dca6x5lvh/image/upload/v1694451965/avatarDefault_hdfz3r.jpg"
+  );
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -18,38 +19,38 @@ export default function SettingsModal() {
       setScreenWidth(window.innerWidth);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
-let style = {
-  position: "absolute",
-  top: "15%",
-  left: "75%",
-  transform: "translate(-50%, -50%)",
-  width: 100,
-  bgcolor: "background.paper",
-  borderRadius: "15px",
-  boxShadow: 24,
-  pt: 2,
-  px: 2,
-  pb: 2,
-};
-let style2 = {
-  position: "absolute",
-  top: "15%",
-  left: "70%",
-  transform: "translate(-50%, -50%)",
-  width: 100,
-  bgcolor: "background.paper",
-  borderRadius: "15px",
-  boxShadow: 24,
-  pt: 2,
-  px: 2,
-  pb: 2,
-};
+  let style = {
+    position: "absolute",
+    top: "15%",
+    left: "75%",
+    transform: "translate(-50%, -50%)",
+    width: 100,
+    bgcolor: "background.paper",
+    borderRadius: "15px",
+    boxShadow: 24,
+    pt: 2,
+    px: 2,
+    pb: 2,
+  };
+  let style2 = {
+    position: "absolute",
+    top: "15%",
+    left: "70%",
+    transform: "translate(-50%, -50%)",
+    width: 100,
+    bgcolor: "background.paper",
+    borderRadius: "15px",
+    boxShadow: 24,
+    pt: 2,
+    px: 2,
+    pb: 2,
+  };
   const stylesForBox = screenWidth >= 768 ? style : style2;
   const handleOpen = () => {
     setOpen(true);
@@ -86,7 +87,7 @@ let style2 = {
         }
 
         response = await response.json();
-        
+
         setName(response.name);
       } catch (error) {
         console.error(error);
@@ -114,8 +115,7 @@ let style2 = {
         }
 
         response = await response.json();
-        setAvatar(response.avatar)
-        
+        setAvatar(response.avatar);
       } catch (error) {
         console.error(error);
       }
@@ -127,13 +127,13 @@ let style2 = {
   return (
     <div className={styles.userNav}>
       <Button
+        disableRipple
         onClick={handleOpen}
         className={styles.userNav1}
         sx={{
           padding: 0,
           minWidth: "34px",
           borderRadius: "50%",
-
           overflow: "hidden",
           ":hover": {
             bgcolor: "transparent",
@@ -145,6 +145,7 @@ let style2 = {
       </Button>
 
       <Button
+        disableRipple
         onClick={handleOpen}
         className={styles.userNav}
         sx={{
@@ -168,7 +169,7 @@ let style2 = {
       >
         <Box sx={{ ...stylesForBox, width: 177 }}>
           <div className={styles.userModal}>
-            <ProfileEdit editedName={editedName} editedAvatar={editedAvatar}/>
+            <ProfileEdit editedName={editedName} editedAvatar={editedAvatar} />
             <LogoutModal />
           </div>
         </Box>

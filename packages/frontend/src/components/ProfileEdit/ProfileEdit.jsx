@@ -39,8 +39,8 @@ function ProfileEdit({ editedName, editedAvatar }) {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
-        cloudName: "dca6x5lvh",
-        uploadPreset: "yo4mqqgd",
+        cloudName: process.env.REACT_APP_CLOUDNAME,
+        uploadPreset: process.env.REACT_APP_UPLOAPRESET,
       },
       function (error, result) {
         if (result.event === "success") {

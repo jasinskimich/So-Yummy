@@ -2,5 +2,21 @@
   margin-top: 50px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 50px;
+}
+.otherBtn {
+  width: 240px;
+  height: 60px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+.otherBtn:hover svg path:nth-child(1) {
+  fill: #8aa936;
+  cursor: pointer;
+}
+.otherBtn:hover svg path:nth-child(2) {
+  fill: #fafafa;
+  cursor: pointer;
 }
