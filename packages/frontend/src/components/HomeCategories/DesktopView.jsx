@@ -1,15 +1,17 @@
 import styles from "./DesktopView.module.css";
-import cat1 from "../../images/cat1.png";
-import cat2 from "../../images/cat2.png";
-import cat3 from "../../images/cat3.png";
-import cat4 from "../../images/cat4.png";
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 const DesktopView = () => {
+  const { owner } = useParams();
+
   const [categories, setCategories] = useState([]);
-  const [first, setFirst] = useState([]);
-  const [second, setSecond] = useState([]);
-  const [third, setThird] = useState([]);
-  const [fourth, setFourth] = useState([]);
+  const [first, setFirst] = useState(null);
+  console.log(first, "FIRST");
+  const [second, setSecond] = useState(null);
+  const [third, setThird] = useState(null);
+  const [fourth, setFourth] = useState(null);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -39,7 +41,8 @@ const DesktopView = () => {
 
   useEffect(() => {
     const fetchDetails = async () => {
-      const url = 'https://yummly2.p.rapidapi.com/feeds/list?limit=24&start=0&tag=list.recipe.search_based%3Afq%3Aattribute_s_mv%3A(cuisine%5C%5Ecuisine%5C-american)';
+      const url =
+        "https://yummly2.p.rapidapi.com/feeds/list?limit=24&start=0&tag=list.recipe.search_based%3Afq%3Aattribute_s_mv%3A(cuisine%5C%5Ecuisine%5C-american)";
       const options = {
         method: "GET",
         headers: {
@@ -51,8 +54,8 @@ const DesktopView = () => {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
-        const categoryItems =  result.feed;
-        setFirst(categoryItems)
+        const categoryItems = result.feed;
+        setFirst(categoryItems);
       } catch (error) {
         console.error(error);
       }
@@ -63,7 +66,8 @@ const DesktopView = () => {
 
   useEffect(() => {
     const fetchDetails = async () => {
-      const url = 'https://yummly2.p.rapidapi.com/feeds/list?limit=24&start=0&tag=list.recipe.search_based%3Afq%3Aattribute_s_mv%3A(cuisine%5C%5Ecuisine%5C-barbecue%5C-bbq)';
+      const url =
+        "https://yummly2.p.rapidapi.com/feeds/list?limit=24&start=0&tag=list.recipe.search_based%3Afq%3Aattribute_s_mv%3A(cuisine%5C%5Ecuisine%5C-barbecue%5C-bbq)";
       const options = {
         method: "GET",
         headers: {
@@ -75,8 +79,8 @@ const DesktopView = () => {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
-        const categoryItems =  result.feed;
-        setSecond(categoryItems)
+        const categoryItems = result.feed;
+        setSecond(categoryItems);
       } catch (error) {
         console.error(error);
       }
@@ -87,7 +91,8 @@ const DesktopView = () => {
 
   useEffect(() => {
     const fetchDetails = async () => {
-      const url = 'https://yummly2.p.rapidapi.com/feeds/list?limit=24&start=0&tag=list.recipe.search_based%3Afq%3Aattribute_s_mv%3A(cuisine%5C%5Ecuisine%5C-asian)';
+      const url =
+        "https://yummly2.p.rapidapi.com/feeds/list?limit=24&start=0&tag=list.recipe.search_based%3Afq%3Aattribute_s_mv%3A(cuisine%5C%5Ecuisine%5C-asian)";
       const options = {
         method: "GET",
         headers: {
@@ -99,8 +104,8 @@ const DesktopView = () => {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
-        const categoryItems =  result.feed;
-        setThird(categoryItems)
+        const categoryItems = result.feed;
+        setThird(categoryItems);
       } catch (error) {
         console.error(error);
       }
@@ -110,7 +115,8 @@ const DesktopView = () => {
   }, []);
   useEffect(() => {
     const fetchDetails = async () => {
-      const url = 'https://yummly2.p.rapidapi.com/feeds/list?limit=24&start=0&tag=list.recipe.search_based%3Afq%3Aattribute_s_mv%3A(cuisine%5C%5Ecuisine%5C-italian)';
+      const url =
+        "https://yummly2.p.rapidapi.com/feeds/list?limit=24&start=0&tag=list.recipe.search_based%3Afq%3Aattribute_s_mv%3A(cuisine%5C%5Ecuisine%5C-italian)";
       const options = {
         method: "GET",
         headers: {
@@ -122,8 +128,8 @@ const DesktopView = () => {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
-        const categoryItems =  result.feed;
-        setFourth(categoryItems)
+        const categoryItems = result.feed;
+        setFourth(categoryItems);
       } catch (error) {
         console.error(error);
       }
@@ -132,250 +138,291 @@ const DesktopView = () => {
     fetchDetails();
   }, []);
 
-  return (
-    <>
-      <div className={styles.categoryContainer}>
-        <div className={styles.categoryHead}>
-          <span className={styles.categoryHeadText}>
-            {categories.length > 0 && categories[0].display.displayName}
-          </span>
-        </div>
-        <div className={styles.categoryContent}>
-          <div className={styles.categoryItem}>
-            <img
-              src={first[0].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {first.length > 0 && first[0].display.displayName}
-              </span>
+  if (categories && first && second && third && fourth) {
+    return (
+      <>
+        <div className={styles.categoryContainer}>
+          <div className={styles.categoryHead}>
+            <span className={styles.categoryHeadText}>
+              {categories.length > 0 && categories[0].display.displayName}
+            </span>
+          </div>
+          <div className={styles.categoryContent}>
+            <div className={styles.categoryItem}>
+              {first.length > 0 && first[0].display.images[0] && (
+                <img
+                  src={first[0].display.images[0]}
+                  alt={first[0].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {first.length > 0 && first[0].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {first.length > 0 && first[1].display.images[0] && (
+                <img
+                  src={first[1].display.images[0]}
+                  alt={first[1].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {first.length > 0 && first[1].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {first.length > 0 && first[2].display.images[0] && (
+                <img
+                  src={first[2].display.images[0]}
+                  alt={first[2].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {first.length > 0 && first[2].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {first.length > 0 && first[3].display.images[0] && (
+                <img
+                  src={first[3].display.images[0]}
+                  alt={first[3].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {first.length > 0 && first[3].display.displayName}
+                </span>
+              </div>
             </div>
           </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={first[1].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {first.length > 0 && first[1].display.displayName}
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={first[2].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {first.length > 0 && first[2].display.displayName}
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={ first[3].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {first.length > 0 && first[3].display.displayName}
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.categoryButtonBox}>
-          <button className={styles.categoryButton}>See all</button>
-        </div>
-      </div>
-      <div className={styles.categoryContainer}>
-        <div className={styles.categoryHead}>
-          <span className={styles.categoryHeadText}>
-            {categories.length > 0 && categories[1].display.displayName}
-          </span>
-        </div>
-        <div className={styles.categoryContent}>
-          <div className={styles.categoryItem}>
-            <img
-              src={second[0].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {second.length > 0 && second[0].display.displayName}
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={second[1].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {second.length > 0 && second[1].display.displayName}
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={second[2].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {second.length > 0 && second[2].display.displayName}
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={second[3].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {second.length > 0 && second[3].display.displayName}
-              </span>
-            </div>
+          <div className={styles.categoryButtonBox}>
+            {/* <NavLink to={`/categories/${owner}/${categories.length > 0 && categories[0][1]}`} > */}
+            <button className={styles.categoryButton}>See all</button>
+            {/* </NavLink> */}
           </div>
         </div>
-        <div className={styles.categoryButtonBox}>
-          <button className={styles.categoryButton}>See all</button>
-        </div>
-      </div>
-      <div className={styles.categoryContainer}>
-        <div className={styles.categoryHead}>
-          <span className={styles.categoryHeadText}>
-            {categories.length > 0 && categories[2].display.displayName}
-          </span>
-        </div>
-        <div className={styles.categoryContent}>
-          <div className={styles.categoryItem}>
-            <img
-              src={third[0].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {third.length > 0 && third[0].display.displayName}
-              </span>
+        <div className={styles.categoryContainer}>
+          <div className={styles.categoryHead}>
+            <span className={styles.categoryHeadText}>
+              {categories.length > 0 && categories[1].display.displayName}
+            </span>
+          </div>
+          <div className={styles.categoryContent}>
+            <div className={styles.categoryItem}>
+              {second.length > 0 && second[0].display.images[0] && (
+                <img
+                  src={second[0].display.images[0]}
+                  alt={second[0].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {second.length > 0 && second[0].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {second.length > 0 && second[1].display.images[0] && (
+                <img
+                  src={second[1].display.images[0]}
+                  alt={second[1].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {second.length > 0 && second[1].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {second.length > 0 && second[2].display.images[0] && (
+                <img
+                  src={second[2].display.images[0]}
+                  alt={second[2].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {second.length > 0 && second[2].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {second.length > 0 && second[3].display.images[0] && (
+                <img
+                  src={second[3].display.images[0]}
+                  alt={second[3].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {second.length > 0 && second[3].display.displayName}
+                </span>
+              </div>
             </div>
           </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={third[1].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {third[1].display.displayName}
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={third[2].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {third.length > 0 && third[2].display.displayName}
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={third[3].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {third.length > 0 && third[3].display.displayName}
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.categoryButtonBox}>
-          <button className={styles.categoryButton}>See all</button>
-        </div>
-      </div>
-      <div className={styles.categoryContainer}>
-        <div className={styles.categoryHead}>
-          <span className={styles.categoryHeadText}>
-            {categories.length > 0 && categories[3].display.displayName}
-          </span>
-        </div>
-        <div className={styles.categoryContent}>
-          <div className={styles.categoryItem}>
-            <img
-              src={fourth[0].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {fourth.length > 0 && fourth[0].display.displayName}
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={ fourth[1].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {fourth.length > 0 && fourth[0].display.displayName}
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={fourth[2].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {fourth.length > 0 && fourth[0].display.displayName}r
-              </span>
-            </div>
-          </div>
-          <div className={styles.categoryItem}>
-            <img
-              src={fourth[3].display.images[0]}
-              alt="nalesniki"
-              className={styles.categoryItemPic}
-            />
-            <div className={styles.categoryItemBox}>
-              <span className={styles.categoryItemText}>
-              {fourth.length > 0 && fourth[0].display.displayName}
-              </span>
-            </div>
+          <div className={styles.categoryButtonBox}>
+            <button className={styles.categoryButton}>See all</button>
           </div>
         </div>
-        <div className={styles.categoryButtonBox}>
-          <button className={styles.categoryButton}>See all</button>
+        <div className={styles.categoryContainer}>
+          <div className={styles.categoryHead}>
+            <span className={styles.categoryHeadText}>
+              {categories.length > 0 && categories[2].display.displayName}
+            </span>
+          </div>
+          <div className={styles.categoryContent}>
+            <div className={styles.categoryItem}>
+              {third.length > 0 && third[0].display.images[0] && (
+                <img
+                  src={third[0].display.images[0]}
+                  alt={third[0].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {third.length > 0 && third[0].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {third.length > 0 && third[1].display.images[0] && (
+                <img
+                  src={third[1].display.images[0]}
+                  alt={third[1].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {third[1].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {third.length > 0 && third[2].display.images[0] && (
+                <img
+                  src={third[2].display.images[0]}
+                  alt={third[2].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {third.length > 0 && third[2].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {third.length > 0 && third[3].display.images[0] && (
+                <img
+                  src={third[3].display.images[0]}
+                  alt={third[3].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {third.length > 0 && third[3].display.displayName}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className={styles.categoryButtonBox}>
+            <button className={styles.categoryButton}>See all</button>
+          </div>
         </div>
-      </div>
-    </>
-  );
+        <div className={styles.categoryContainer}>
+          <div className={styles.categoryHead}>
+            <span className={styles.categoryHeadText}>
+              {categories.length > 0 && categories[3].display.displayName}
+            </span>
+          </div>
+          <div className={styles.categoryContent}>
+            <div className={styles.categoryItem}>
+              {fourth.length > 0 && fourth[0].display.images[0] && (
+                <img
+                  src={fourth[0].display.images[0]}
+                  alt={fourth[0].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {fourth.length > 0 && fourth[0].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {fourth.length > 0 && fourth[1].display.images[0] && (
+                <img
+                  src={fourth[1].display.images[0]}
+                  alt={fourth[1].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {fourth.length > 0 && fourth[0].display.displayName}
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {fourth.length > 0 && fourth[2].display.images[0] && (
+                <img
+                  src={fourth[2].display.images[0]}
+                  alt={fourth[2].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {fourth.length > 0 && fourth[0].display.displayName}r
+                </span>
+              </div>
+            </div>
+            <div className={styles.categoryItem}>
+              {fourth.length > 0 && fourth[3].display.images[0] && (
+                <img
+                  src={fourth[3].display.images[0]}
+                  alt={fourth[3].display.displayName}
+                  className={styles.categoryItemPic}
+                />
+              )}
+              <div className={styles.categoryItemBox}>
+                <span className={styles.categoryItemText}>
+                  {fourth.length > 0 && fourth[0].display.displayName}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className={styles.categoryButtonBox}>
+            <button className={styles.categoryButton}>See all</button>
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    <div>
+      <span>LOADING...</span>
+    </div>;
+  }
 };
 
 export default DesktopView;
