@@ -74,7 +74,7 @@ export const Footer = () => {
             </div>
             <div className={styles.midContainer}>
               <div className={styles.navContainer}>
-                <NavLink to={`/categories/${owner}`} className={styles.navLink}>
+                <NavLink to={`/categories/${owner}/american`} className={styles.navLink}>
                   <button className={location.pathname.includes("/categories") ? styles.navItem1 : styles.navItem}>Categories</button>
                 </NavLink>
                 <NavLink

@@ -21,6 +21,9 @@
     color: #8baa36;
     cursor: pointer;
   }
+  .navItem1:hover {
+    cursor: pointer;
+  }
   .navLink {
     height: 15px;
   }
@@ -55,6 +58,9 @@
     color: #8baa36;
     cursor: pointer;
   }
+  .navItem1:hover {
+    cursor: pointer;
+  }
   .navLink {
     height: 15px;
   }
@@ -80,14 +86,14 @@
     padding: 0;
     line-height: 22.4%;
     letter-spacing: 0%;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
     color: #2a2c36;
     background-color: transparent;
     border: none;
   }
   .navItem1 {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     height: 20px;
     padding: 0;
     line-height: 22.4%;
@@ -100,6 +106,9 @@
 
   .navItem:hover {
     color: #8baa36;
+    cursor: pointer;
+  }
+  .navItem1:hover {
     cursor: pointer;
   }
   .navLink {
@@ -117,7 +126,7 @@
   .searchIcon {
     height: 24px;
     width: 24px;
-    fill: #22252A
+    fill: #22252a;
   }
   .searchIcon:hover {
     fill: #8baa36;

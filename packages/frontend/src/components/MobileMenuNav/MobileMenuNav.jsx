@@ -10,7 +10,7 @@ export const MobileMenuNav = ({ handleCloseModal }) => {
 
   return (
     <div className={styles.navContainer}>
-      <NavLink to={`/categories/${owner}`} className={styles.navLink}>
+      <NavLink to={`/categories/${owner}/american`} className={styles.navLink}>
         <button className={location.pathname.includes("/categories") ? styles.navItem1 : styles.navItem} onClick={handleCloseModal}>
           <span>Categories</span>
         </button>

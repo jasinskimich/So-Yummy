@@ -33,7 +33,7 @@ const HomeCategories = () => {
       {isTablet && <TabletView />}
       {isMobile && <MobileView />}
       
-      <NavLink to={`/categories/${owner}`} >
+      <NavLink to={`/categories/${owner}/american`} >
       <button className={styles.otherBtn}>
         <OtherBtn />{" "}
       </button>

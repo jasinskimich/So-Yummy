@@ -4,6 +4,10 @@
   flex-direction: column;
   align-items: center;
   gap: 50px;
+  background-image: url(../../images/categoriesBottom.png);
+  background-size: auto;
+  background-repeat: no-repeat, no-repeat;
+  background-position: 140% 50%;
 }
 .otherBtn {
   width: 240px;
@@ -11,6 +15,7 @@
   padding: 0;
   border: none;
   background-color: transparent;
+  margin-bottom: 100px;
 }
 .otherBtn:hover svg path:nth-child(1) {
   fill: #8aa936;

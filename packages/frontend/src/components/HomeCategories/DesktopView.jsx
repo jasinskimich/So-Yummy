@@ -2,17 +2,18 @@ import styles from "./DesktopView.module.css";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 const DesktopView = () => {
   const { owner } = useParams();
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(null);
   const [first, setFirst] = useState(null);
-  console.log(first, "FIRST");
   const [second, setSecond] = useState(null);
   const [third, setThird] = useState(null);
   const [fourth, setFourth] = useState(null);
 
+  console.log(categories, first, second, third, fourth);
   useEffect(() => {
     const fetchCategories = async () => {
       const url = "https://yummly2.p.rapidapi.com/categories/list";
@@ -207,9 +208,11 @@ const DesktopView = () => {
             </div>
           </div>
           <div className={styles.categoryButtonBox}>
-            {/* <NavLink to={`/categories/${owner}/${categories.length > 0 && categories[0][1]}`} > */}
-            <button className={styles.categoryButton}>See all</button>
-            {/* </NavLink> */}
+            <NavLink
+              to={`/categories/${owner}/${categories[0]["tracking-id"]}`}
+            >
+              <button className={styles.categoryButton}>See all</button>
+            </NavLink>
           </div>
         </div>
         <div className={styles.categoryContainer}>
@@ -277,7 +280,11 @@ const DesktopView = () => {
             </div>
           </div>
           <div className={styles.categoryButtonBox}>
-            <button className={styles.categoryButton}>See all</button>
+            <NavLink
+              to={`/categories/${owner}/${categories[1]["tracking-id"]}`}
+            >
+              <button className={styles.categoryButton}>See all</button>
+            </NavLink>
           </div>
         </div>
         <div className={styles.categoryContainer}>
@@ -345,7 +352,11 @@ const DesktopView = () => {
             </div>
           </div>
           <div className={styles.categoryButtonBox}>
-            <button className={styles.categoryButton}>See all</button>
+            <NavLink
+              to={`/categories/${owner}/${categories[2]["tracking-id"]}`}
+            >
+              <button className={styles.categoryButton}>See all</button>
+            </NavLink>
           </div>
         </div>
         <div className={styles.categoryContainer}>
@@ -413,15 +424,21 @@ const DesktopView = () => {
             </div>
           </div>
           <div className={styles.categoryButtonBox}>
-            <button className={styles.categoryButton}>See all</button>
+            <NavLink
+              to={`/categories/${owner}/${categories[3]["tracking-id"]}`}
+            >
+              <button className={styles.categoryButton}>See all</button>
+            </NavLink>
           </div>
         </div>
       </>
     );
   } else {
-    <div>
-      <span>LOADING...</span>
-    </div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 };
 
