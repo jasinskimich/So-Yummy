@@ -18,21 +18,6 @@ const ingridiensSchema = new Schema({
   unit: {
     type: String,
   },
-  unitShort: {
-    type: String,
-  },
-  unitLong: {
-    type: String,
-  },
-  category: {
-    type: String,
-  },
-  comment: {
-    type: String,
-  },
-  originalString: {
-    type: String,
-  },
 });
 
 const recipesSchema = new Schema({
@@ -40,6 +25,12 @@ const recipesSchema = new Schema({
     type: String,
   },
   date: {
+    type: String,
+  },
+  title: {
+    type: String,
+  },
+  about: {
     type: String,
   },
   category: {

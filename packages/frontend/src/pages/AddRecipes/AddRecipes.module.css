@@ -1,5 +1,188 @@
-.pictureBox {
-  width: 200px;
-  height: 200px;
-  background-color: #8BAA36;
+@media screen and (min-width: 320px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .main {
+    width: 90%;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15%;
+    align-items: center;
+  }
+  .side {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+  }
+  .pageTitleBox {
+    margin-top: 80px;
+    
+    
+  }
+  .pageTitle {
+    
+    font-family: "Poppins", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: left;
+  }
+  .socialContainer {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .socialIconsContainer {
+    width: 140px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+  }
+  .socialIcon:hover svg path {
+    fill: #22252a;
+  }
+  .socialIcon:hover {
+    cursor: pointer;
+  }
+  .socialText {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 650px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .main {
+    width: 90%;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15%;
+    align-items: center;
+  }
+  .side {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+  }
+  .pageTitleBox {
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+  .pageTitle {
+    padding-left: 50px;
+    font-family: "Poppins", sans-serif;
+    font-size: 44px;
+    font-weight: 600;
+  }
+  .socialContainer {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .socialIconsContainer {
+    width: 140px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+  }
+  .socialIcon:hover svg path {
+    fill: #22252a;
+  }
+  .socialIcon:hover {
+    cursor: pointer;
+  }
+  .socialText {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 1320px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .main {
+    width: 80%;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .contentContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+    align-items: flex-start;
+  }
+  .side {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+  }
+  .pageTitleBox {
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+  .pageTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 44px;
+    font-weight: 600;
+    padding-left: 0;
+  }
+  .socialContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .socialIconsContainer {
+    width: 140px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+  }
+  .socialIcon:hover svg path {
+    fill: #22252a;
+  }
+  .socialIcon:hover {
+    cursor: pointer;
+  }
+  .socialText {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+  }
 }

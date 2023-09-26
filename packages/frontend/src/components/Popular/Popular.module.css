@@ -1,0 +1,156 @@
+@media screen and (min-width: 320px) {
+  .pouplarContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+  }
+
+  .pouplarTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .pouplarItemsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+  .pouplarItem {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100px;
+    width: 100%;
+    border-bottom: 1px solid #7e7e7ea1;
+  }
+  .pouplarItemPic {
+    width: 95px;
+    height: 85px;
+    background-color: rgb(84, 85, 85);
+  }
+  .pouplarItemText {
+    display: flex;
+    flex-direction: column;
+    width: 68%;
+  }
+  .pouplarItemTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #22252a;
+  }
+  .pouplarItemDescr {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #707070;
+  }
+}
+@media screen and (min-width: 650px) {
+  .pouplarContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+  }
+
+  .pouplarTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .pouplarItemsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+  .pouplarItem {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100px;
+    width: 45%;
+    border-bottom: 1px solid #7e7e7ea1;
+  }
+  .pouplarItemPic {
+    width: 95px;
+    height: 85px;
+    background-color: rgb(84, 85, 85);
+  }
+  .pouplarItemText {
+    display: flex;
+    flex-direction: column;
+    width: 68%;
+  }
+  .pouplarItemTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #22252a;
+  }
+  .pouplarItemDescr {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #707070;
+  }
+}
+@media screen and (min-width: 1320px) {
+  .pouplarContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .pouplarTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .pouplarItemsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  .pouplarItem {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100px;
+    width: 100%;
+    border-bottom: 1px solid #7e7e7ea1;
+  }
+  .pouplarItemPic {
+    width: 95px;
+    height: 85px;
+    background-color: rgb(84, 85, 85);
+  }
+  .pouplarItemText {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+  }
+  .pouplarItemTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #22252a;
+  }
+  .pouplarItemDescr {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #707070;
+  }
+}
