@@ -9,13 +9,10 @@ const ingridiensSchema = new Schema({
   name: {
     type: String,
   },
-  image: {
-    type: String,
-  },
   amount: {
     type: String,
   },
-  unit: {
+  measurement: {
     type: String,
   },
 });
@@ -26,6 +23,11 @@ const recipesSchema = new Schema({
   },
   date: {
     type: String,
+  },
+  picture: {
+    type: String,
+    default:
+      "https://res.cloudinary.com/dca6x5lvh/image/upload/v1695716637/defaultRecipe_tsfunv.png",
   },
   title: {
     type: String,
@@ -55,7 +57,7 @@ const userRecipes = new Schema({
     type: Number,
     default: 0,
   },
-  receipes: {
+  recipes: {
     type: [recipesSchema],
   },
 });

@@ -2,9 +2,8 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const uploadRoutes = require("./routes/upload");
-
 const usersRouter = require("./routes/users");
-// const financesRouter = require("./routes/finances");
+const recipesRouter = require("./routes/recipes");
 
 const app = express();
 
@@ -19,8 +18,7 @@ require("./config/config-passport");
 
 app.use("/api", usersRouter);
 app.use("/api", uploadRoutes);
-
-// app.use("/api", financesRouter);
+app.use("/api", recipesRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "nie dziauaaa" });

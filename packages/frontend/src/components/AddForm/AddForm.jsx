@@ -1,23 +1,27 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useParams } from "react";
 // import Dropdown from "react-bootstrap/Dropdown";
 import styles from "./AddForm.module.css";
 import { ReactComponent as Minus } from "../../images/Minus.svg";
 import { ReactComponent as Plus } from "../../images/IngPlus.svg";
 import { ReactComponent as Close } from "../../images/close.svg";
 import { ReactComponent as Add } from "../../images/addBtn.svg";
+import Notiflix from "notiflix";
+
 
 function AddForm() {
+  const { owner } = useParams();
+
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
   const [picture, setPicture] = useState(
     "https://res.cloudinary.com/dca6x5lvh/image/upload/v1695716637/defaultRecipe_tsfunv.png"
   );
-  const [text1, setText1] = useState("");
-  const [text2, setText2] = useState("");
-  const [dropdown1, setDropdown1] = useState("");
-  const [dropdown2, setDropdown2] = useState("");
+  const [title, setTitle] = useState("");
+  const [about, setAbout] = useState("");
+  const [category, setCategory] = useState("");
+  const [cookingTime, setCookingTime] = useState("");
   const [ingredients, setIngredients] = useState([
-    { ingredient: "", measurement: "", unit: "" },
+    { name: "", amount: "", measurement: "" },
   ]);
   const [preparation, setPreparation] = useState("");
   const [ingredientCount, setIngredientCount] = useState(1);
@@ -115,8 +119,60 @@ function AddForm() {
     { label: "5 hr", value: 300 },
   ];
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    Notiflix.Notify.init({
+      position: "left-bottom",
+    });
+    if (!title) {
+      Notiflix.Notify.warning(
+        "Name is empty, please complete the missing content."
+      );
+      return;
+    }
+    if (!about) {
+      Notiflix.Notify.warning(
+        "About is empty, please complete the missing content."
+      );
+      return;
+    }
+    if (!category) {
+      Notiflix.Notify.warning(
+        "Category is empty, please complete the missing content."
+      );
+      return;
+    }
+    if (!cookingTime) {
+      Notiflix.Notify.warning(
+        "Cooking time is empty, please complete the missing content."
+      );
+      return;
+    }
+    if (!preparation) {
+      Notiflix.Notify.warning(
+        "Preparation steps are empty, please complete the missing content."
+      );
+      return;
+    }
+    if (!ingredients) {
+      Notiflix.Notify.warning(
+        "No ingredients, please complete the missing content."
+      );
+      return;
+    }
+
+    let result = await fetch(`http://localhost:5000/api/recipes/${owner}`, {
+      method: "POST",
+      body: JSON.stringify({ picture, title, about, category, cookingTime, preparation, ingredients}),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result.json();
+
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className={styles.form}>
         <div className={styles.firstContainter}>
           <div className={styles.pictureBox}>
@@ -137,23 +193,23 @@ function AddForm() {
                 className={styles.inputText}
                 placeholder="Enter item title"
                 type="text"
-                value={text1}
-                onChange={(e) => setText1(e.target.value)}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               />
 
               <input
                 className={styles.inputText}
                 placeholder="About recipe"
                 type="text"
-                value={text2}
-                onChange={(e) => setText2(e.target.value)}
+                value={about}
+                onChange={(e) => setAbout(e.target.value)}
               />
             </div>
             <div className={styles.secondInsideContainter}>
               <select
                 className={styles.minimal}
-                value={dropdown1}
-                onChange={(e) => setDropdown1(e.target.value)}
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="" disabled>
                   Category
@@ -164,8 +220,8 @@ function AddForm() {
               </select>
               <select
                 className={styles.minimal}
-                value={dropdown2}
-                onChange={(e) => setDropdown2(e.target.value)}
+                value={cookingTime}
+                onChange={(e) => setCookingTime(e.target.value)}
               >
                 <option value="" disabled>
                   Cooking time
@@ -207,10 +263,10 @@ function AddForm() {
                   className={styles.ingredientText}
                   placeholder="Ingredient name"
                   type="text"
-                  value={ingredient.ingredient}
+                  value={ingredient.name}
                   onChange={(e) => {
                     const updatedIngredients = [...ingredients];
-                    updatedIngredients[index].ingredient = e.target.value;
+                    updatedIngredients[index].name = e.target.value;
                     setIngredients(updatedIngredients);
                   }}
                 />
@@ -219,26 +275,32 @@ function AddForm() {
                     className={styles.measurementText}
                     type="text"
                     placeholder="Quantity"
+                    value={ingredient.amount}
+                    onChange={(e) => {
+                      const updatedIngredients = [...ingredients];
+                      updatedIngredients[index].amount = e.target.value;
+                      setIngredients(updatedIngredients);
+                    }}
+                  />
+                  <select
+                    className={styles.minimal2}
                     value={ingredient.measurement}
                     onChange={(e) => {
                       const updatedIngredients = [...ingredients];
                       updatedIngredients[index].measurement = e.target.value;
                       setIngredients(updatedIngredients);
                     }}
-                  />
-                  <select
-                    className={styles.minimal2}
-                    value={ingredient.unit}
-                    onChange={(e) => {
-                      const updatedIngredients = [...ingredients];
-                      updatedIngredients[index].unit = e.target.value;
-                      setIngredients(updatedIngredients);
-                    }}
                   >
                     <option value="kg">kg</option>
+                    <option value="lb">pound</option>
+                    <option value="oz">oz</option>
                     <option value="g">g</option>
                     <option value="tbs">tbs</option>
                     <option value="tsp">tsp</option>
+                    <option value="ml">ml</option>
+                    <option value="cup">cup</option>
+                    <option value="l">l</option>
+                    <option value="gal">gallon</option>
                   </select>
                 </div>
                 {index > 0 && (
