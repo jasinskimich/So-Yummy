@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 require("dotenv").config();
-const recipesControllers = require("../controllers/recipes")
+const recipesControllers = require("../controllers/recipes");
 
 router.post("/recipes/:id", recipesControllers.AddRecipe);
+router.get("/recipes/:id", recipesControllers.getRecipes);
+router.delete("/recipes/:owner/:id", recipesControllers.removeRecipe);
 
 module.exports = router;

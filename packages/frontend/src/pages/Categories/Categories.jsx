@@ -12,12 +12,10 @@ function Categories() {
   const { category } = useParams();
   const [categories, setCategories] = useState([]);
   const [page, setPage] = useState(1);
-  console.log(categories, "categories");
 
   const [value, setValue] = useState(0);
   const location = useLocation();
   const [details, setDetails] = useState(null);
-  console.log(value, "value");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

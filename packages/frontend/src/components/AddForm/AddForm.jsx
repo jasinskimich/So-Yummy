@@ -27,7 +27,6 @@ function AddForm() {
   const [preparation, setPreparation] = useState("");
   const [ingredientCount, setIngredientCount] = useState(1);
 
-  console.log(picture, title, about, category, cookingTime, preparation, ingredients);
   useEffect(() => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(

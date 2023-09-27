@@ -21,15 +21,16 @@ const recipesSchema = new Schema({
   id: {
     type: String,
   },
-  date: {
-    type: String,
+  favourite: {
+    type: Boolean,
+    default: false,
   },
   picture: {
     type: String,
     default:
       "https://res.cloudinary.com/dca6x5lvh/image/upload/v1695716637/defaultRecipe_tsfunv.png",
   },
-  title: {
+  name: {
     type: String,
   },
   about: {
