@@ -13,7 +13,6 @@ const DesktopView = () => {
   const [third, setThird] = useState(null);
   const [fourth, setFourth] = useState(null);
 
-  console.log(categories, first, second, third, fourth);
   useEffect(() => {
     const fetchCategories = async () => {
       const url = "https://yummly2.p.rapidapi.com/categories/list";

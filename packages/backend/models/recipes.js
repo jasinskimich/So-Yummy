@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const ingridiensSchema = new Schema({
+const ingredientsSchema = new Schema({
   id: {
     type: String,
   },
@@ -38,14 +38,13 @@ const recipesSchema = new Schema({
   category: {
     type: String,
   },
-  coockingTime: {
-    type: Number,
-    default: 0,
+  cookingTime: {
+    type: String,
   },
   preparation: {
     type: String,
   },
-  ingridiens: { type: [ingridiensSchema] },
+  ingredients: { type: [ingredientsSchema] },
 });
 
 const userRecipes = new Schema({

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useParams } from "react";
+import React, { useState, useRef, useEffect } from "react";
 // import Dropdown from "react-bootstrap/Dropdown";
 import styles from "./AddForm.module.css";
 import { ReactComponent as Minus } from "../../images/Minus.svg";
@@ -6,11 +6,12 @@ import { ReactComponent as Plus } from "../../images/IngPlus.svg";
 import { ReactComponent as Close } from "../../images/close.svg";
 import { ReactComponent as Add } from "../../images/addBtn.svg";
 import Notiflix from "notiflix";
-
+import { useParams, useNavigate   } from "react-router-dom";
 
 function AddForm() {
   const { owner } = useParams();
 
+  let navigate = useNavigate ();
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
   const [picture, setPicture] = useState(
@@ -26,6 +27,7 @@ function AddForm() {
   const [preparation, setPreparation] = useState("");
   const [ingredientCount, setIngredientCount] = useState(1);
 
+  console.log(picture, title, about, category, cookingTime, preparation, ingredients);
   useEffect(() => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
@@ -44,7 +46,7 @@ function AddForm() {
   const addIngredient = () => {
     setIngredients([
       ...ingredients,
-      { ingredient: "", measurement: "", unit: "" },
+      { name: "", amount: "", measurement: ""  },
     ]);
     setIngredientCount(ingredientCount + 1);
   };
@@ -163,13 +165,26 @@ function AddForm() {
 
     let result = await fetch(`http://localhost:5000/api/recipes/${owner}`, {
       method: "POST",
-      body: JSON.stringify({ picture, title, about, category, cookingTime, preparation, ingredients}),
+      body: JSON.stringify({
+        picture,
+        title,
+        about,
+        category,
+        cookingTime,
+        preparation,
+        ingredients,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    result = await result.json();
-
+    if (result) {
+      Notiflix.Notify.success(
+        "Recipe added successfully!"
+      );
+      navigate(`/my-recipes/${owner}`);
+    }
+    
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -291,6 +306,9 @@ function AddForm() {
                       setIngredients(updatedIngredients);
                     }}
                   >
+                    <option value="" disabled>
+                      g/tbs/ml
+                    </option>
                     <option value="kg">kg</option>
                     <option value="lb">pound</option>
                     <option value="oz">oz</option>
