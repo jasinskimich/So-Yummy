@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./MyRecipes.module.css";
-import { ReactComponent as Delete } from "../../images/delete.svg";
 import { ReactComponent as See } from "../../images/seeRecipe.svg";
 import Loader from "../../components/Loader/Loader";
-import ShowDeleteModal from "../../components/RecipeDeleteModal/ShowDeleteModal";
+import DeleteModal from "../../components/RecipeDeleteModal/DeleteModal";
 import Notiflix from "notiflix";
 
 import Pagination from "@mui/material/Pagination";
@@ -13,9 +12,8 @@ import Stack from "@mui/material/Stack";
 function MyRecipes() {
   const { owner } = useParams();
   const [recipes, setRecipes] = useState([]);
-  console.log(recipes, "recipes");
   const [page, setPage] = useState(1);
-  const [updatedRecipes, setDeletedRecipes] = useState([]);
+  const [deletedRecipes, setDeletedRecipes] = useState([]);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -44,35 +42,38 @@ function MyRecipes() {
     fetchRecipes();
   }, [owner]);
 
-  const updateDeleteRecipes = (deletedTransaction, newBalance) => {
-    setDeletedRecipes((prevDeletedTransactions) =>
-      prevDeletedTransactions.concat(deletedTransaction._id)
+  const updateDeleteRecipes = (deletedRecipe) => {
+    setDeletedRecipes((prevDeletedRecipe) =>
+    prevDeletedRecipe.concat(deletedRecipe._id)
     );
-    updateBalance(newBalance);
     Notiflix.Notify.success("Transaction deleted");
   };
+  
+  const filteredRecipes = recipes.filter((item) => !deletedRecipes.includes(item._id));
 
   return (
     <div className={styles.main}>
       <div className={styles.container}>
         <span className={styles.title}>My recipes</span>
       </div>
-      {recipes && recipes.length > 0 ? (
-        recipes.slice((page - 1) * 4, page * 4).map((item, index) => (
+      {filteredRecipes && filteredRecipes.length > 0 ? (
+        filteredRecipes.slice((page - 1) * 4, page * 4).map((item, index) => (
           <div key={index} className={styles.itemContainer}>
             <div className={styles.itemImageBox}>
               <img
                 src={item.picture}
-                alt={item.name}
+                alt={item.title}
                 className={styles.itemImageBox}
               />
             </div>
             <div className={styles.contentContainer}>
               <div className={styles.top}>
-                <span className={styles.itemTitle}>{item.name}</span>
-          
-                <ShowDeleteModal id={item._id}
-                        updateDeleteTransactions={updateDeleteTransactions}/>
+                <span className={styles.itemTitle}>{item.title}</span>
+
+                <DeleteModal
+                  id={item._id}
+                  updateDeleteRecipes={updateDeleteRecipes}
+                />
               </div>
               <div className={styles.mid}>
                 <span className={styles.description}>{item.about}</span>
@@ -87,7 +88,7 @@ function MyRecipes() {
                     : `${item.cookingTime} min`}
                 </div>
                 <button className={styles.recipeButton}>
-                  <See />
+                  <See className={styles.recipeButtonImg}/>
                 </button>
               </div>
             </div>

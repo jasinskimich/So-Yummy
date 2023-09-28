@@ -1,30 +1,135 @@
-.logoutbutton:hover svg path:nth-child(1) {
-  fill: #22252a;
-  stroke: #22252a;
-}
+@media screen and (min-width: 0px) and (max-width: 440px) {
+  .logoutbutton:hover svg path:nth-child(1) {
+    fill: #22252a;
+    stroke: #22252a;
+  }
 
-.childrenCloseContainer {
-  display: flex;
-  width: 100%;
-  justify-content: right;
-}
+  .childrenCloseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
 
-.childrenClose:hover svg path {
-  stroke: #8baa36;
-}
-.modalContainer {
-  padding-top: 15px;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  align-items: center;
-}
+  .childrenClose:hover svg path {
+    stroke: #8baa36;
+  }
+  .modalContainer {
+    padding-top: 15px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.modalText {
-  font-size: 20px;
+  .modalText {
+    font-size: 20px;
+    text-align: center;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  .firstButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 120px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #8baa36;
+    color: #fafafa;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  .firstButton:hover {
+    background-color: #22252a;
+  }
+  .secondButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 120px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #d9d9d9;
+    color: #22252a;
+    font-weight: 500;
+    border-radius: 8px;
+
+  }
+  .secondButton:hover {
+    background-color: #fafafa;
+    border: 2px solid #22252a;
+  }
 }
-.buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
+@media screen and (min-width: 440px) {
+  .logoutbutton:hover svg path:nth-child(1) {
+    fill: #22252a;
+    stroke: #22252a;
+  }
+
+  .childrenCloseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
+
+  .childrenClose:hover svg path {
+    stroke: #8baa36;
+  }
+  .modalContainer {
+    padding-top: 15px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modalText {
+    font-size: 20px;
+    text-align: center;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  .firstButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 160px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #8baa36;
+    color: #fafafa;
+    font-weight: 500;
+    border-radius: 8px;
+
+  }
+  .firstButton:hover {
+    background-color: #22252a;
+  }
+  .secondButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 160px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #d9d9d9;
+    color: #22252a;
+    font-weight: 500;
+    border-radius: 8px;
+
+  }
+  .secondButton:hover {
+    background-color: #fafafa;
+    border: 2px solid #22252a;
+  }
 }

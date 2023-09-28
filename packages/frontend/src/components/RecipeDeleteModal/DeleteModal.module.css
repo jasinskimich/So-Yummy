@@ -1,4 +1,209 @@
-.delete {
+@media screen and (min-width: 0px) and (max-width: 440px) {
+  .delete {
+    height: 20px;
+    width: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #8baa36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .deleteIcon {
+    height: 10px;
+    width: 12px;
+  }
+  .delete:hover {
+    cursor: pointer;
+    background-color: #22252a;
+  }
+
+  .deleteButton {
+    width: 80px;
+    height: 35px;
+    border-radius: 35px;
+    border: none;
+    background-color: #24cca7;
+    color: white;
+  }
+
+  .deleteButton:hover {
+    -webkit-box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+    -moz-box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+    box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+    cursor: pointer;
+  }
+  .logoutbutton:hover svg path:nth-child(1) {
+    fill: #22252a;
+    stroke: #22252a;
+  }
+
+  .childrenCloseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
+
+  .childrenClose:hover svg path {
+    stroke: #8baa36;
+  }
+  .modalContainer {
+    padding-top: 15px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modalText {
+    font-size: 20px;
+    text-align: center;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  .firstButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 120px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #8baa36;
+    color: #fafafa;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  .firstButton:hover {
+    background-color: #22252a;
+  }
+  .secondButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 120px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #d9d9d9;
+    color: #22252a;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  .secondButton:hover {
+    background-color: #fafafa;
+    border: 2px solid #22252a;
+  }
+}
+
+@media screen and (min-width: 440px) and (max-width: 767px) {
+  .delete {
+    height: 20px;
+    width: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #8baa36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .deleteIcon {
+    height: 10px;
+    width: 12px;
+  }
+  .delete:hover {
+    cursor: pointer;
+    background-color: #22252a;
+  }
+
+  .deleteButton {
+    width: 80px;
+    height: 35px;
+    border-radius: 35px;
+    border: none;
+    background-color: #24cca7;
+    color: white;
+  }
+
+  .deleteButton:hover {
+    -webkit-box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+    -moz-box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+    box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+    cursor: pointer;
+  }
+  .logoutbutton:hover svg path:nth-child(1) {
+    fill: #22252a;
+    stroke: #22252a;
+  }
+
+  .childrenCloseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
+
+  .childrenClose:hover svg path {
+    stroke: #8baa36;
+  }
+  .modalContainer {
+    padding-top: 15px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modalText {
+    font-size: 20px;
+    text-align: center;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  .firstButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 160px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #8baa36;
+    color: #fafafa;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  .firstButton:hover {
+    background-color: #22252a;
+  }
+  .secondButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 160px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #d9d9d9;
+    color: #22252a;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  .secondButton:hover {
+    background-color: #fafafa;
+    border: 2px solid #22252a;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .delete {
     height: 40px;
     width: 40px;
     border: none;
@@ -13,3 +218,85 @@
     cursor: pointer;
     background-color: #22252a;
   }
+
+  .deleteButton {
+    width: 80px;
+    height: 35px;
+    border-radius: 35px;
+    border: none;
+    background-color: #24cca7;
+    color: white;
+  }
+
+  .deleteButton:hover {
+    -webkit-box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+    -moz-box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+    box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+    cursor: pointer;
+  }
+  .logoutbutton:hover svg path:nth-child(1) {
+    fill: #22252a;
+    stroke: #22252a;
+  }
+
+  .childrenCloseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
+
+  .childrenClose:hover svg path {
+    stroke: #8baa36;
+  }
+  .modalContainer {
+    padding-top: 15px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modalText {
+    font-size: 20px;
+    text-align: center;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  .firstButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 160px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border-radius: 8px;
+
+    font-weight: 500;
+  }
+  .firstButton:hover {
+    background-color: #22252a;
+  }
+  .secondButton {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 160px;
+    padding: 0;
+    min-width: 15px;
+    height: 55px;
+    background-color: #d9d9d9;
+    color: #22252a;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  .secondButton:hover {
+    background-color: #fafafa;
+    border: 2px solid #22252a;
+  }
+}

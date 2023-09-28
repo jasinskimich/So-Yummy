@@ -13,10 +13,11 @@ import Home from "./pages/Home/Home";
 import Categories from "./pages/Categories/Categories";
 import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
+import Recipe from "./pages/Recipe/Recipe";
+
 import Favorites from "./pages/Favorites/Favorites";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";
 import Search from "./pages/Search/Search";
-
 
 import { createContext } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -33,9 +34,9 @@ function AuthGuardedRoute({ element: Element, ...rest }) {
   }
 }
 const theme = createTheme({
-	palette: {
-		type: "dark"
-	},
+  palette: {
+    type: "dark",
+  },
 });
 
 export const ThemeContext = createContext(null);
@@ -54,16 +55,19 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<StartPage />} />
+          <Route path="/home/:owner" element={<Home />} />
+          <Route path="/my-recipes/:owner/:id" element={<Recipe />} />
           <Route element={<AuthGuardedRoute element={Layout} />}>
-            <Route path="/home/:owner" element={<Home />} />
             <Route path="/categories/:owner" element={<Categories />} />
-            <Route path="/categories/:owner/:category" element={<Categories />} />
+            <Route
+              path="/categories/:owner/:category"
+              element={<Categories />}
+            />
             <Route path="/add-recipes/:owner" element={<AddRecipes />} />
             <Route path="/my-recipes/:owner" element={<MyRecipes />} />
             <Route path="/favorites/:owner" element={<Favorites />} />
             <Route path="/shopping-list/:owner" element={<ShoppingList />} />
             <Route path="/search/:owner" element={<Search />} />
-
           </Route>
         </Routes>
       </Box>

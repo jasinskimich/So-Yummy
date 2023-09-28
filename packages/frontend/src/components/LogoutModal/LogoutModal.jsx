@@ -12,7 +12,9 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  maxWidth: "400px",
+
+  width: "80%",
   bgcolor: "background.paper",
   //   border: "2px solid #000",
   borderRadius: "15px",
@@ -59,7 +61,7 @@ function LogoutModal() {
         aria-labelledby="child-modal-title1"
         aria-describedby="child-modal-description1"
       >
-        <Box sx={{ ...style, width: 400 }}>
+        <Box sx={{ ...style }}>
           <div className={styles.childrenCloseContainer}>
             <Button
               onClick={handleClose}
@@ -83,41 +85,19 @@ function LogoutModal() {
               Are you sure you want to log out?
             </span>
             <div className={styles.buttons}>
-              <Button
-                sx={{
-                  
-                  width: "160px",
-                  padding: 0,
-                  minWidth: "15px",
-                  height: "55px",
-                  bgcolor: "#8BAA36",
-                  color: "#fafafa",
-                  fontWeight: "bold",
-                  ":hover": {
-                    bgcolor: "#22252A",
-                  },
-                }}
+              <button
+                className={styles.firstButton}
+                
               >
                 Log out
-              </Button>
-              <Button
+              </button>
+              <button
+                className={styles.secondButton}
                 onClick={handleClose}
-                sx={{
-                  color: "#22252A",
-                  width: "160px",
-                  padding: 0,
-                  minWidth: "15px",
-                  height: "55px",
-                  bgcolor: "#D9D9D9",
-                  fontWeight: "bold",
-                  ":hover": {
-                    bgcolor: "#FAFAFA",
-                    border: "2px solid #22252A"
-                  },
-                }}
+               
               >
                 Cancel
-              </Button>
+              </button>
             </div>
           </div>
         </Box>

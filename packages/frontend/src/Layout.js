@@ -9,11 +9,13 @@ function Layout() {
   const [loggedName] = useState("");
 
   return (
-    <div >
-      <Header name={loggedName} />
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+    <div>
+      <div style={{ position: "relative" }}>
+        <Header name={loggedName} style={{ position: "absolute", zIndex: 2 }} />
+        <Suspense fallback={null} style={{ position: "relative", zIndex: 1 }}>
+          <Outlet />
+        </Suspense>
+      </div>
       <Footer />
     </div>
   );

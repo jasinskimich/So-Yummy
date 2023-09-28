@@ -1,16 +1,16 @@
 .main {
-  background-image: url("../../images/homeBottomLeft.png");
-  background-repeat: no-repeat;
+  background-image: url("../../images/homeBottomLeft.png"), url("../../images/greenBackground.png");
+  background-repeat: no-repeat, no-repeat;
 
-  background-position: 0% 130% ;
-  background-size: auto;
+  background-position: 0% 130%, right top;
+  background-size: auto, auto;
 
   
 }
-body {
+/* body {
   background-image: 
       url("../../images/greenBackground.png");
     background-size:  auto;
     background-repeat:  no-repeat;
     background-position:  right top;
-}
+} */

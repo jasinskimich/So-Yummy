@@ -30,7 +30,7 @@ const recipesSchema = new Schema({
     default:
       "https://res.cloudinary.com/dca6x5lvh/image/upload/v1695716637/defaultRecipe_tsfunv.png",
   },
-  name: {
+  title: {
     type: String,
   },
   about: {
