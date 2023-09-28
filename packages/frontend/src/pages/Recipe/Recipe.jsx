@@ -13,8 +13,10 @@ function Recipe() {
   const { owner } = useParams();
   const { recipeId } = useParams();
   const [ingredients, setIngredients] = useState([]);
+  const [recipe, setRecipe] = useState([]);
+
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-  console.log(selectedIngredients, "selectedIngredients");
+  console.log(recipe, "recipe");
 
   useEffect(() => {
     const fetchIngredients = async () => {
@@ -34,6 +36,7 @@ function Recipe() {
         }
 
         response = await response.json();
+        setRecipe(response.recipe);
         setIngredients(
           response.ingredients.map((ingredient) => ({
             ...ingredient,
@@ -65,14 +68,11 @@ function Recipe() {
         <Header />
         <div className={styles.container}>
           <div className={styles.title}>
-            <span className={styles.titleText}>Salmon Avocado Salad</span>
+            <span className={styles.titleText}>{recipe.title}</span>
           </div>
           <div className={styles.about}>
             <span>
-              Is a healthy salad recipe that’s big on nutrients and flavor. A
-              moist, pan seared salmon is layered on top of spinach, avocado,
-              tomatoes, and red onions. Then drizzled with a homemade lemon
-              vinaigrette.
+            {recipe.about}
             </span>
           </div>
           <div className={styles.buttonBox}>
@@ -83,7 +83,7 @@ function Recipe() {
           </div>
           <div className={styles.cookingBox}>
             <Clock />
-            <span className={styles.cookingTime}>20 min</span>
+            <span className={styles.cookingTime}>{recipe.cookingTime}</span>
           </div>
         </div>
       </div>

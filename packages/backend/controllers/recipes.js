@@ -59,7 +59,7 @@ const getIngredients = async (req, res, next) => {
     if (!recipe) {
       return res.status(404).json({ message: "Recipe not found" });
     }
-    res.send({ status: "ok", ingredients: recipe.ingredients });
+    res.send({ status: "ok", ingredients: recipe.ingredients, recipe });
   } catch (error) {
     next(error);
   }
