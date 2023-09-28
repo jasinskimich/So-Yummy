@@ -47,6 +47,24 @@ const getRecipes = async (req, res, next) => {
   }
 };
 
+const getIngredients = async (req, res, next) => {
+  try {
+    const ownerId = req.params.id;
+    const recipeid = req.params.recipeId;
+    const document = await Recipes.findOne({ owner: ownerId });
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+    const recipe = document.recipes.find((r) => r._id.toString() === recipeid);
+    if (!recipe) {
+      return res.status(404).json({ message: "Recipe not found" });
+    }
+    res.send({ status: "ok", ingredients: recipe.ingredients });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const removeRecipe = async (req, res, next) => {
   try {
     const id = req.params.owner;
@@ -66,7 +84,6 @@ const removeRecipe = async (req, res, next) => {
       { owner: req.params.owner },
       {
         $pull: { recipes: { _id: req.params.id } },
-       
       }
     );
 
@@ -78,11 +95,10 @@ const removeRecipe = async (req, res, next) => {
     res.json({
       message: "Recipe deleted",
       deletedRecipe: recipe,
-      
     });
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = { AddRecipe, getRecipes, removeRecipe };
+module.exports = { AddRecipe, getRecipes, removeRecipe, getIngredients };

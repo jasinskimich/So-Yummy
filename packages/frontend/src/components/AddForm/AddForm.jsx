@@ -307,7 +307,8 @@ function AddForm() {
                   >
                     <option value="" disabled>
                       g/tbs/ml
-                    </option>
+                    </option>pieces
+                    <option value="pieces">pieces</option>
                     <option value="kg">kg</option>
                     <option value="lb">pound</option>
                     <option value="oz">oz</option>
