@@ -15,13 +15,17 @@ const ingredientsSchema = new Schema({
   measurement: {
     type: String,
   },
+  checked: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const recipesSchema = new Schema({
   id: {
     type: String,
   },
-  favourite: {
+  favorite: {
     type: Boolean,
     default: false,
   },
@@ -45,7 +49,9 @@ const recipesSchema = new Schema({
   preparation: {
     type: String,
   },
-  ingredients: { type: [ingredientsSchema] },
+  ingredients: { 
+    type: [ingredientsSchema] 
+  },
 });
 
 const userRecipes = new Schema({
@@ -53,9 +59,8 @@ const userRecipes = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
-  sum: {
-    type: Number,
-    default: 0,
+  shoppingList: {
+    type: [ingredientsSchema],
   },
   recipes: {
     type: [recipesSchema],

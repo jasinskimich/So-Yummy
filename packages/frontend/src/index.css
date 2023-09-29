@@ -11,7 +11,7 @@ code {
 
 @media screen and (min-width: 320px) {
   html {
-    background-image: url("../../frontend/src/images/herolefttop.png");
+    /* background-image: url("../../frontend/src/images/herolefttop.png"); */
     background-size: auto;
     background-repeat: no-repeat;
     background-position: left top;
@@ -21,7 +21,7 @@ code {
 
 @media screen and (min-width: 768px) {
   html {
-    background-image: url("../../frontend/src/images/herolefttopTablet.png");
+    /* background-image: url("../../frontend/src/images/herolefttopTablet.png"); */
     background-size: auto;
     background-repeat: no-repeat;
     background-position: left top;

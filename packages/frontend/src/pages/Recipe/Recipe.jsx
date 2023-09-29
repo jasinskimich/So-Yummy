@@ -2,6 +2,8 @@ import styles from "./Recipe.module.css";
 import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import { ReactComponent as AddFav } from "../../images/favButton.svg";
+import { ReactComponent as RemoveFav } from "../../images/removeBtn.svg";
+
 import { ReactComponent as Clock } from "../../images/clock.svg";
 import defaultIngridient from "../../images/defaultIngridient.png";
 import { ReactComponent as Checked } from "../../images/checked.svg";
@@ -14,9 +16,38 @@ function Recipe() {
   const { recipeId } = useParams();
   const [ingredients, setIngredients] = useState([]);
   const [recipe, setRecipe] = useState([]);
-
+  const [favorite, setFavorite] = useState(false);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-  console.log(recipe, "recipe");
+  const [ingId, setIngId] = useState("")
+  console.log(ingId, "ingId");
+
+//   console.log(ingredients, "ingredients");
+//   console.log(selectedIngredients, "selectedIngredients");
+
+
+  const toggleFavorite = async () => {
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ favorite: !favorite }),
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/recipes/${owner}/${recipeId}`,
+        requestOptions
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update favorite state");
+      }
+
+      const data = await response.json();
+      setFavorite(!data.recipe.favorite);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     const fetchIngredients = async () => {
@@ -36,13 +67,11 @@ function Recipe() {
         }
 
         response = await response.json();
+        console.log(response, "Response");
         setRecipe(response.recipe);
-        setIngredients(
-          response.ingredients.map((ingredient) => ({
-            ...ingredient,
-            checked: false,
-          }))
-        );
+        setSelectedIngredients(response.shoppingList);
+        setFavorite(response.recipe.favorite);
+        setIngredients(response.ingredients);
       } catch (error) {
         console.error(error);
       }
@@ -51,7 +80,27 @@ function Recipe() {
     fetchIngredients();
   }, [owner, recipeId]);
 
-  const handleCheckboxChange = (index) => {
+  const updateSelectedIngredients = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ checked: true }),
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/recipes/${owner}/${recipeId}/${ingId}`,
+        requestOptions
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update selected ingredients");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleCheckboxChange = (index, id) => {
     const updatedIngredients = ingredients.map((ingredient, i) =>
       i === index ? { ...ingredient, checked: !ingredient.checked } : ingredient
     );
@@ -60,8 +109,10 @@ function Recipe() {
       .filter((ingredient) => ingredient.checked)
       .map((ingredient) => ingredient);
     setSelectedIngredients(updatedSelectedIngredients);
+    setIngId(id)
+    // Call the function to update the server
+    updateSelectedIngredients();
   };
-
   return (
     <div className={styles.main}>
       <div className={styles.contentContainer}>
@@ -71,19 +122,24 @@ function Recipe() {
             <span className={styles.titleText}>{recipe.title}</span>
           </div>
           <div className={styles.about}>
-            <span>
-            {recipe.about}
-            </span>
+            <span>{recipe.about}</span>
           </div>
           <div className={styles.buttonBox}>
-            <button className={styles.button}>
+            <button className={styles.button} onClick={toggleFavorite}>
               {" "}
-              <AddFav />
+              {!favorite ? <AddFav /> : <RemoveFav />}
             </button>
           </div>
           <div className={styles.cookingBox}>
             <Clock />
-            <span className={styles.cookingTime}>{recipe.cookingTime}</span>
+            <span className={styles.cookingTime}>
+              {" "}
+              {recipe.cookingTime >= 60
+                ? `${Math.floor(recipe.cookingTime / 60)} hr ${
+                    recipe.cookingTime % 60
+                  } min`
+                : `${recipe.cookingTime} min`}
+            </span>
           </div>
         </div>
       </div>
@@ -101,7 +157,11 @@ function Recipe() {
           <div key={index} className={styles.detailsContainer}>
             <div className={styles.detailsFirst}>
               <div className={styles.imageBox}>
-                <img src={defaultIngridient} alt="ingridientPicture" />
+                <img
+                  className={styles.ingredientImage}
+                  src={defaultIngridient}
+                  alt="ingridientPicture"
+                />
               </div>
               <div className={styles.name}>
                 <span>{ingredient.name}</span>
@@ -117,7 +177,7 @@ function Recipe() {
                 <input
                   type="checkbox"
                   checked={ingredient.checked}
-                  onChange={() => handleCheckboxChange(index)}
+                  onChange={(e) => handleCheckboxChange(index, ingredient._id)}
                   className={styles.check}
                 />
                 {ingredient.checked ? <Checked /> : <UnChecked />}
@@ -126,7 +186,19 @@ function Recipe() {
           </div>
         ))}
 
-        <div></div>
+        <div className={styles.prepContainter}>
+          <div className={styles.prepTextBox}>
+            <span className={styles.prepTextTitle}>Recipe Preparation</span>
+            <span className={styles.prepText}>{recipe.preparation}</span>
+          </div>
+          <div className={styles.prepImageBox}>
+            <img
+              src={recipe.picture}
+              alt={recipe.title}
+              className={styles.prepImage}
+            />
+          </div>
+        </div>
       </div>
 
       <Footer />

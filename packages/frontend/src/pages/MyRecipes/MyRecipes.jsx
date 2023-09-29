@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import styles from "./MyRecipes.module.css";
 import { ReactComponent as See } from "../../images/seeRecipe.svg";
 import Loader from "../../components/Loader/Loader";
@@ -44,12 +44,14 @@ function MyRecipes() {
 
   const updateDeleteRecipes = (deletedRecipe) => {
     setDeletedRecipes((prevDeletedRecipe) =>
-    prevDeletedRecipe.concat(deletedRecipe._id)
+      prevDeletedRecipe.concat(deletedRecipe._id)
     );
     Notiflix.Notify.success("Transaction deleted");
   };
-  
-  const filteredRecipes = recipes.filter((item) => !deletedRecipes.includes(item._id));
+
+  const filteredRecipes = recipes.filter(
+    (item) => !deletedRecipes.includes(item._id)
+  );
 
   return (
     <div className={styles.main}>
@@ -87,9 +89,11 @@ function MyRecipes() {
                       } min`
                     : `${item.cookingTime} min`}
                 </div>
-                <button className={styles.recipeButton}>
-                  <See className={styles.recipeButtonImg}/>
-                </button>
+                <NavLink to={`/my-recipes/${owner}/${item._id}`} className={styles.navLink}>
+                  <button className={styles.recipeButton}>
+                    <See className={styles.recipeButtonImg} />
+                  </button>
+                </NavLink>
               </div>
             </div>
           </div>
