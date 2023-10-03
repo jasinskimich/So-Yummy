@@ -1,0 +1,193 @@
+.container {
+    margin-left: 2px;
+    width: 75%;
+  }
+  .title {
+    font-size: 34px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+  }
+  @media screen and (min-width: 0px) and (max-width: 767px) {
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 100px;
+      padding-top: 50px;
+      width: 100%;
+    }
+    .itemContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 10px;
+      padding: 10px;
+      width: 85%;
+      background-color: #fafafa;
+      border-radius: 8px;
+    }
+    .itemImageBox {
+      width: 120px;
+      height: 120px;
+      background-color: gray;
+      border-radius: 8px;
+    }
+    .itemImageBox {
+      width: 120px;
+      height: 120px;
+    }
+    .contentContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 70%;
+    }
+    .top {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .itemTitle {
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  
+    .mid {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      height: 40px;
+    }
+    .description {
+      font-family: "Poppins", sans-serif;
+      font-size: 8px;
+      font-weight: 400;
+    }
+    .review {
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+    }
+    .bottom {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .cookingTimeBox {
+      font-family: "Poppins", sans-serif;
+      font-size: 10px;
+    }
+    .recipeButton {
+      width: 85px;
+      height: 35px;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+    }
+    .recipeButton:hover {
+      cursor: pointer;
+    }
+    .recipeButton svg path:nth-child(1) {
+      fill: #22252a;
+    }
+    .recipeButton:hover svg path:nth-child(1) {
+      fill: #8BAA36;
+    }
+    .recipeButtonImg {
+      width: 85px;
+      height: 35px;
+    }
+  }
+  @media screen and (min-width: 767px) {
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 100px;
+      padding-top: 100px;
+      width: 100%;
+    }
+    .itemContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 40px;
+      padding: 20px;
+      width: 85%;
+      background-color: #fafafa;
+      border-radius: 8px;
+    }
+    .itemImageBox {
+      width: 300px;
+      height: 300px;
+      background-color: gray;
+      border-radius: 8px;
+    }
+    .itemImageBox {
+      width: 300px;
+      height: 300px;
+    }
+    .contentContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 70%;
+    }
+    .top {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .itemTitle {
+      font-family: "Poppins", sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+    }
+  
+    .mid {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      height: 120px;
+    }
+    .description {
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .review {
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+    }
+    .bottom {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: first baseline;
+    }
+    .cookingTimeBox {
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
+    }
+    .recipeButton {
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      fill: #22252A
+    }
+    .recipeButton svg path:nth-child(1) {
+      fill: #22252A;
+    }
+    .recipeButton:hover {
+      cursor: pointer;
+    }
+    .recipeButton:hover svg path:nth-child(1) {
+      fill: #8BAA36;
+    }
+  }
+  

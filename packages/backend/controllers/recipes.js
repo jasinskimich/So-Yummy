@@ -67,7 +67,6 @@ const AddShoppingItem = async (req, res, next) => {
   }
 };
 
-
 const getRecipes = async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -93,13 +92,16 @@ const getIngredients = async (req, res, next) => {
     if (!recipe) {
       return res.status(404).json({ message: "Recipe not found" });
     }
-    res.send({ status: "ok", ingredients: recipe.ingredients, recipe, shoppingList: document.shoppingList });
+    res.send({
+      status: "ok",
+      ingredients: recipe.ingredients,
+      recipe,
+      shoppingList: document.shoppingList,
+    });
   } catch (error) {
     next(error);
   }
 };
-
-
 
 const removeRecipe = async (req, res, next) => {
   try {
@@ -142,7 +144,7 @@ const toggleFavorite = async (req, res, next) => {
     const id = req.params.id;
     const recipeid = req.params.recipeId;
     const favorite = req.body.favorite;
-    console.log(id)
+    console.log(id);
     const document = await Recipes.findOne({ owner: id });
     if (!document) {
       return res.status(404).json({ message: "Owner not found" });
@@ -156,9 +158,7 @@ const toggleFavorite = async (req, res, next) => {
       { "recipes.$.favorite": favorite }
     );
 
-    res.json({ recipe});
-
-    
+    res.json({ recipe });
   } catch (error) {
     return res.json({
       status: "error",
@@ -175,7 +175,6 @@ const toggleChecked = async (req, res, next) => {
     const ingid = req.params.ingId;
 
     const checked = req.body.checked;
-    console.log(id)
     const document = await Recipes.findOne({ owner: id });
     if (!document) {
       return res.status(404).json({ message: "Owner not found" });
@@ -184,20 +183,24 @@ const toggleChecked = async (req, res, next) => {
     if (!recipe) {
       return res.status(404).json({ message: "Recipe not found" });
     }
-    const ingredient = recipe.ingredients.find((r) => r._id.toString() === ingid);
+    const ingredient = recipe.ingredients.find(
+      (r) => r._id.toString() === ingid
+    );
     if (!ingredient) {
-      return res.status(404).json({ message: "Recipe not found" });
+      return res.status(404).json({ message: "Ingredient not found" });
+    }
+    console.log(ingredient);
+    if (!recipe.ingredients.length) {
+      return res.status(404).json({ message: "Ingredients array is empty" });
     }
 
+    // Update the checked property of the ingredient object
+    ingredient.checked = checked;
 
-    await Recipes.updateOne(
-      { 'recipes.ingredients._id': ingid },
-      { $set: { 'recipes.$.ingredients.$.checked': checked } }
-    );
+    // Save the updated document back to the database
+    await document.save();
 
-    res.json({ ingredient});
-
-    
+    res.json({ ingredient });
   } catch (error) {
     return res.json({
       status: "error",
@@ -208,4 +211,12 @@ const toggleChecked = async (req, res, next) => {
   }
 };
 
-module.exports = { AddRecipe, getRecipes, removeRecipe, getIngredients, toggleFavorite, AddShoppingItem, toggleChecked };
+module.exports = {
+  AddRecipe,
+  getRecipes,
+  removeRecipe,
+  getIngredients,
+  toggleFavorite,
+  AddShoppingItem,
+  toggleChecked,
+};

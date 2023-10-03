@@ -33,6 +33,7 @@ function MyRecipes() {
         }
 
         response = await response.json();
+        console.log(response.recipes)
         setRecipes(response.recipes);
       } catch (error) {
         console.error(error);

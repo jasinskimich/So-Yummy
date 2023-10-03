@@ -3,13 +3,34 @@ import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import { ReactComponent as AddFav } from "../../images/favButton.svg";
 import { ReactComponent as RemoveFav } from "../../images/removeBtn.svg";
-
 import { ReactComponent as Clock } from "../../images/clock.svg";
 import defaultIngridient from "../../images/defaultIngridient.png";
 import { ReactComponent as Checked } from "../../images/checked.svg";
 import { ReactComponent as UnChecked } from "../../images/unchecked.svg";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
+
+const updateSelectedIngredients = async (checked, owner, recipeId, ingId) => {
+  const requestOptions = {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ checked: checked }),
+  };
+
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/recipes/${owner}/${recipeId}/${ingId}`,
+      requestOptions
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to update selected ingredients");
+    }
+
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 function Recipe() {
   const { owner } = useParams();
@@ -17,13 +38,7 @@ function Recipe() {
   const [ingredients, setIngredients] = useState([]);
   const [recipe, setRecipe] = useState([]);
   const [favorite, setFavorite] = useState(false);
-  const [selectedIngredients, setSelectedIngredients] = useState([]);
-  const [ingId, setIngId] = useState("")
-  console.log(ingId, "ingId");
-
-//   console.log(ingredients, "ingredients");
-//   console.log(selectedIngredients, "selectedIngredients");
-
+  const [ingId, setIngId] = useState("");
 
   const toggleFavorite = async () => {
     const requestOptions = {
@@ -43,6 +58,7 @@ function Recipe() {
       }
 
       const data = await response.json();
+      console.log(data, "DATA")
       setFavorite(!data.recipe.favorite);
     } catch (error) {
       console.error(error);
@@ -67,9 +83,7 @@ function Recipe() {
         }
 
         response = await response.json();
-        console.log(response, "Response");
         setRecipe(response.recipe);
-        setSelectedIngredients(response.shoppingList);
         setFavorite(response.recipe.favorite);
         setIngredients(response.ingredients);
       } catch (error) {
@@ -80,39 +94,24 @@ function Recipe() {
     fetchIngredients();
   }, [owner, recipeId]);
 
-  const updateSelectedIngredients = async () => {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ checked: true }),
-    };
+  const checkedRef = useRef(false);
 
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/recipes/${owner}/${recipeId}/${ingId}`,
-        requestOptions
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to update selected ingredients");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handleCheckboxChange = (index, id) => {
-    const updatedIngredients = ingredients.map((ingredient, i) =>
-      i === index ? { ...ingredient, checked: !ingredient.checked } : ingredient
+  const handleIngredientChange = async (id, checked) => {
+    setIngId(id);
+    checkedRef.current = checked;
+    setIngredients((prevIngredients) =>
+      prevIngredients.map((ingredient) =>
+        ingredient._id === id ? { ...ingredient, checked } : ingredient
+      )
     );
-    setIngredients(updatedIngredients);
-    const updatedSelectedIngredients = updatedIngredients
-      .filter((ingredient) => ingredient.checked)
-      .map((ingredient) => ingredient);
-    setSelectedIngredients(updatedSelectedIngredients);
-    setIngId(id)
-    // Call the function to update the server
-    updateSelectedIngredients();
   };
+
+  useEffect(() => {
+    if (ingId) {
+      updateSelectedIngredients(checkedRef.current, owner, recipeId, ingId);
+    }
+  }, [ingId, owner, recipeId]);
+
   return (
     <div className={styles.main}>
       <div className={styles.contentContainer}>
@@ -177,7 +176,9 @@ function Recipe() {
                 <input
                   type="checkbox"
                   checked={ingredient.checked}
-                  onChange={(e) => handleCheckboxChange(index, ingredient._id)}
+                  onChange={() =>
+                    handleIngredientChange(ingredient._id, !ingredient.checked)
+                  }
                   className={styles.check}
                 />
                 {ingredient.checked ? <Checked /> : <UnChecked />}
