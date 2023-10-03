@@ -148,6 +148,7 @@
     padding-right: 25px;
   }
   .amount {
+    line-height: 1;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -392,6 +393,7 @@
     padding-right: 25px;
   }
   .amount {
+    line-height: 1;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -425,6 +427,7 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 30px;
+    align-items: flex-start;
     /* padding-left: 25px;
         padding-right: 25px; */
   }
