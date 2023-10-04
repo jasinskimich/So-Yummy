@@ -14,6 +14,7 @@ import Categories from "./pages/Categories/Categories";
 import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import Recipe from "./pages/Recipe/Recipe";
+import ApiRecipe from "./pages/ApiRecipe/ApiRecipe";
 
 import Favorites from "./pages/Favorites/Favorites";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";
@@ -57,6 +58,8 @@ function App() {
           <Route path="*" element={<StartPage />} />
           <Route path="/home/:owner" element={<Home />} />
           <Route path="/my-recipes/:owner/:recipeId" element={<Recipe />} />
+          <Route path="/recipes/:owner/:recipeId" element={<ApiRecipe />} />
+
           <Route element={<AuthGuardedRoute element={Layout} />}>
             <Route path="/categories/:owner" element={<Categories />} />
             <Route

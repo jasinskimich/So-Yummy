@@ -3,9 +3,11 @@ import Logo from "../../images/logo.svg";
 import styles from "./StartPage.module.css";
 import { ReactComponent as RegistrationButton } from "../../images/Registration2.svg";
 import { ReactComponent as SignIn } from "../../images/SignIn.svg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function StartPage() {
+  const { recipeId } = useParams();
+  console.log(recipeId, "ID");
   return (
     <Box>
       <div className={styles.startContainter}>
@@ -19,14 +21,14 @@ function StartPage() {
           </p>
           <div className={styles.buttonsContainer}>
             <Link to="/register">
-              <button  className={styles.startButton}>
+              <button className={styles.startButton}>
                 <RegistrationButton className={styles.registrationButton} />
               </button>
             </Link>
             <Link to="/login">
-            <button  className={styles.startButton}>
-              <SignIn className={styles.signInButton} />
-            </button>
+              <button className={styles.startButton}>
+                <SignIn className={styles.signInButton} />
+              </button>
             </Link>
           </div>
         </div>
