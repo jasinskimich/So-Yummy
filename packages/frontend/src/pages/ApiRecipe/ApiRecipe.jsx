@@ -31,12 +31,11 @@ function ApiRecipe() {
           limit: "24",
           start: "0",
           tag: tag,
-        // },
-        // headers: {
-        //   "X-RapidAPI-Key":
-        //     "b5506666d9msh49053d7448287e1p1b24fbjsn04cdf484a3aa",
-        //   "X-RapidAPI-Host": "yummly2.p.rapidapi.com",
-        // },
+        },
+        headers: {
+            "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+            "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
+          },
       };
 
       try {
