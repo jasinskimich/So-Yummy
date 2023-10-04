@@ -165,7 +165,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${first[1]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(first[1]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {first.length > 0 && first[1].display.images[0] && (
                   <img
@@ -181,7 +181,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${first[2]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(first[2]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {first.length > 0 && first[2].display.images[0] && (
                   <img
@@ -197,7 +197,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${first[3]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(first[3]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {first.length > 0 && first[3].display.images[0] && (
                   <img
@@ -229,7 +229,7 @@ const DesktopView = () => {
             </span>
           </div>
           <div className={styles.categoryContent}>
-            <NavLink to={`/recipes/${owner}/${second[0]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(second[0]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {second.length > 0 && second[0].display.images[0] && (
                   <img
@@ -245,7 +245,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${second[1]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(second[1]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {second.length > 0 && second[1].display.images[0] && (
                   <img
@@ -261,7 +261,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${second[2]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(second[2]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {second.length > 0 && second[2].display.images[0] && (
                   <img
@@ -277,7 +277,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${second[3]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(second[3]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {second.length > 0 && second[3].display.images[0] && (
                   <img
@@ -309,7 +309,7 @@ const DesktopView = () => {
             </span>
           </div>
           <div className={styles.categoryContent}>
-            <NavLink to={`/recipes/${owner}/${third[0]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(third[0]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {third.length > 0 && third[0].display.images[0] && (
                   <img
@@ -325,7 +325,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${third[1]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(third[1]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {third.length > 0 && third[1].display.images[0] && (
                   <img
@@ -341,7 +341,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${third[2]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(third[2]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {third.length > 0 && third[2].display.images[0] && (
                   <img
@@ -357,7 +357,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${third[3]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(third[3]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {third.length > 0 && third[3].display.images[0] && (
                   <img
@@ -389,7 +389,7 @@ const DesktopView = () => {
             </span>
           </div>
           <div className={styles.categoryContent}>
-            <NavLink to={`/recipes/${owner}/${fourth[0]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(fourth[0]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {fourth.length > 0 && fourth[0].display.images[0] && (
                   <img
@@ -405,7 +405,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${fourth[1]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(fourth[1]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {fourth.length > 0 && fourth[1].display.images[0] && (
                   <img
@@ -421,7 +421,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${fourth[2]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(fourth[2]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {fourth.length > 0 && fourth[2].display.images[0] && (
                   <img
@@ -437,7 +437,7 @@ const DesktopView = () => {
                 </div>
               </div>
             </NavLink>
-            <NavLink to={`/recipes/${owner}/${fourth[3]["tracking-id"]}`}>
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(fourth[3]["tracking-id"])}`}>
               <div className={styles.categoryItem}>
                 {fourth.length > 0 && fourth[3].display.images[0] && (
                   <img

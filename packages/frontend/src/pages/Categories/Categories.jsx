@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Link, useParams } from "react-router-dom";
+import { useLocation, Link, useParams, NavLink } from "react-router-dom";
 import styles from "./Categories.module.css";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -16,7 +16,7 @@ function Categories() {
   const [value, setValue] = useState(0);
   const location = useLocation();
   const [details, setDetails] = useState(null);
-
+  console.log(details, "DETAILS");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -129,6 +129,7 @@ function Categories() {
       <div className={styles.details}>
         {details && details.length > 0 ? (
           details.slice((page - 1) * 8, page * 8).map((item, index) => (
+            <NavLink to={`/recipes/${owner}/${encodeURIComponent(item["tracking-id"])}`}>
             <div key={index} className={styles.categoryItem}>
               <div key={index} className={styles.categoryItem}>
                 <img
@@ -143,6 +144,7 @@ function Categories() {
                 </div>
               </div>
             </div>
+            </NavLink>
           ))
         ) : (
           <Loader />
