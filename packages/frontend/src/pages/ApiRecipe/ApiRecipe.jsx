@@ -23,7 +23,13 @@ function ApiRecipe() {
   const trackingId = decodeURIComponent(recipeId);
   const parts = trackingId.split(",");
   const tag = parts.pop();
+  const [isRendered, setIsRendered] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsRendered(true);
+    }, 8000);
+  }, []);
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
@@ -217,11 +223,13 @@ function ApiRecipe() {
             )}
           </div>
           <div className={styles.buttonBox}>
+          {isRendered && (
             <button className={styles.button} onClick={toggleFavorite}>
               {" "}
               {recipe && recipe.favorite ? <RemoveFav /> : <AddFav />}
             </button>
-          </div>
+          )}
+        </div>
           <div className={styles.cookingBox}>
             <Clock />
             <span className={styles.cookingTime}>
