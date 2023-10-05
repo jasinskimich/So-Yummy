@@ -15,11 +15,12 @@ function Favorites() {
   const [page, setPage] = useState(1);
   const [deletedRecipes, setDeletedRecipes] = useState([]);
 
+  
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/recipes/${owner}`,
+          `http://localhost:5000/api/fav-recipes/${owner}`,
           {
             method: "GET",
             headers: {
@@ -33,11 +34,8 @@ function Favorites() {
         }
 
         response = await response.json();
-        console.log(response.recipes);
-        const filteredRecipes = response.recipes.filter(
-          (recipe) => recipe.favorite === true
-        );
-        setRecipes(filteredRecipes);
+        console.log(response.recipes, "response");
+        setRecipes(response.recipes);
       } catch (error) {
         console.error(error);
       }
@@ -86,15 +84,10 @@ function Favorites() {
               </div>
               <div className={styles.bottom}>
                 <div className={styles.cookingTimeBox}>
-                  {" "}
-                  {item.cookingTime >= 60
-                    ? `${Math.floor(item.cookingTime / 60)} hr ${
-                        item.cookingTime % 60
-                      } min`
-                    : `${item.cookingTime} min`}
+                {item.cookingTime}
                 </div>
                 <NavLink
-                  to={`/my-recipes/${owner}/${item._id}`}
+                  to={`/recipes/${owner}/${encodeURIComponent(item.id)}`}
                   className={styles.navLink}
                 >
                   <button className={styles.recipeButton}>

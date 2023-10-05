@@ -54,6 +54,32 @@ const recipesSchema = new Schema({
   },
 });
 
+const favoriteSchema = new Schema({
+  id: {
+    type: String,
+  },
+  picture: {
+    type: String,
+    default:
+      "https://res.cloudinary.com/dca6x5lvh/image/upload/v1695716637/defaultRecipe_tsfunv.png",
+  },
+  title: {
+    type: String,
+  },
+  about: {
+    type: String,
+  },
+  cookingTime: {
+    type: String,
+  },
+  preparation: {
+    type: [String],
+  },
+  ingredients: { 
+    type: [Object] 
+  },
+});
+
 const userRecipes = new Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -61,6 +87,9 @@ const userRecipes = new Schema({
   },
   shoppingList: {
     type: [ingredientsSchema],
+  },
+  favorites: {
+    type: [favoriteSchema],
   },
   recipes: {
     type: [recipesSchema],

@@ -116,7 +116,7 @@ function Categories() {
             <Tab
               component={Link}
               to={`/categories/${owner}/${item["tracking-id"]}`}
-              key={item["tracking-id"]}
+              key={item.display.displayName}
               disableRipple
               label={item.display.displayName}
               style={
@@ -127,28 +127,26 @@ function Categories() {
         </Tabs>
       </div>
       <div className={styles.details}>
-        {details && details.length > 0 ? (
-          details.slice((page - 1) * 8, page * 8).map((item, index) => (
-            <NavLink to={`/recipes/${owner}/${encodeURIComponent(item["tracking-id"])}`}>
-            <div key={index} className={styles.categoryItem}>
-              <div key={index} className={styles.categoryItem}>
-                <img
-                  src={item.display.images[0]}
-                  alt={item.display.displayName}
-                  className={styles.categoryItemPic}
-                />
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {item.display.displayName}
-                  </span>
-                </div>
-              </div>
-            </div>
-            </NavLink>
-          ))
-        ) : (
-          <Loader />
-        )}
+      {details && details.length > 0 ? (
+  details.slice((page - 1) * 8, page * 8).map((item, index) => (
+    <NavLink key={index} to={`/recipes/${owner}/${encodeURIComponent(item["tracking-id"])}`}>
+      <div className={styles.categoryItem}>
+        <img
+          src={item.display.images[0]}
+          alt={item.display.displayName}
+          className={styles.categoryItemPic}
+        />
+        <div className={styles.categoryItemBox}>
+          <span className={styles.categoryItemText}>
+            {item.display.displayName}
+          </span>
+        </div>
+      </div>
+    </NavLink>
+  ))
+) : (
+  <Loader />
+)}
       </div>
       <Stack spacing={2}>
         <Pagination

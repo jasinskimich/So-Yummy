@@ -79,6 +79,30 @@ const getRecipes = async (req, res, next) => {
     next(error);
   }
 };
+const getFavorites = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const document = await Recipes.findOne({ owner: id });
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+    res.send({ status: "ok", recipes: document.favorites });
+  } catch (error) {
+    next(error);
+  }
+};
+const getShoppingList = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const document = await Recipes.findOne({ owner: id });
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+    res.send({ status: "ok", shoppingList: document.shoppingList });
+  } catch (error) {
+    next(error);
+  }
+};
 
 const getIngredients = async (req, res, next) => {
   try {
@@ -122,6 +146,42 @@ const removeRecipe = async (req, res, next) => {
       { owner: req.params.owner },
       {
         $pull: { recipes: { _id: req.params.id } },
+      }
+    );
+
+    const updatedRecipes = await Recipes.findOne({ owner: req.params.owner });
+    if (!updatedRecipes) {
+      return res.status(404).json({ message: "Owner not found2" });
+    }
+
+    res.json({
+      message: "Recipe deleted",
+      deletedRecipe: recipe,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const removeFav = async (req, res, next) => {
+  try {
+    const id = req.params.owner;
+    const document = await Recipes.findOne({ owner: id });
+    if (!document) {
+      return res.status(404).json({ message: "Owner not found1" });
+    }
+
+    const recipe = document.favorites.find(
+      (t) => t._id.toString() === req.params.id
+    );
+    if (!recipe) {
+      return res.status(404).json({ message: "recipe not found" });
+    }
+
+    await Recipes.findOneAndUpdate(
+      { owner: req.params.owner },
+      {
+        $pull: { favorites: { _id: req.params.id } },
       }
     );
 
@@ -211,6 +271,60 @@ const toggleChecked = async (req, res, next) => {
   }
 };
 
+const updateFavorite = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const document = await Recipes.findOne({ owner: id });
+
+    const newRecipe = req.body; // Assuming the new recipe is in the body of the request
+
+    const index = document.favorites.findIndex(
+      (recipe) => recipe.id === newRecipe.id
+    );
+
+    if (index !== -1) {
+      // The recipe is already in the favorites array, so remove it
+      document.favorites.splice(index, 1);
+    } else {
+      // The recipe is not in the favorites array, so add it
+      document.favorites.push(newRecipe);
+    }
+
+    await document.save();
+
+    res.status(200).json({ message: "Favorite updated successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateShoppingList = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const document = await Recipes.findOne({ owner: id });
+
+    const newIngredient = req.body; // Assuming the new recipe is in the body of the request
+
+    const index = document.shoppingList.findIndex(
+      (ingredient) => ingredient.id === newIngredient.id
+    );
+
+    if (index !== -1) {
+      // The recipe is already in the favorites array, so remove it
+      document.shoppingList.splice(index, 1);
+    } else {
+      // The recipe is not in the favorites array, so add it
+      document.shoppingList.push(newIngredient);
+    }
+
+    await document.save();
+
+    res.status(200).json({ message: "Shopping List updated succesfully!" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   AddRecipe,
   getRecipes,
@@ -219,4 +333,9 @@ module.exports = {
   toggleFavorite,
   AddShoppingItem,
   toggleChecked,
+  updateFavorite,
+  getFavorites,
+  removeFav,
+  updateShoppingList,
+  getShoppingList
 };

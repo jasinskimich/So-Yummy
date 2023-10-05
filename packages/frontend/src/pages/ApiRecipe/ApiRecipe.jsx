@@ -17,10 +17,68 @@ function ApiRecipe() {
   const [ingredients, setIngredients] = useState([]);
   const [recipe, setRecipe] = useState([]);
   console.log(recipe, "recipe");
-  const [favorite, setFavorite] = useState(false);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [shoppingList, setShoppingList] = useState([]);
+  console.log(favoriteRecipes, "favoriteRecipes");
   const trackingId = decodeURIComponent(recipeId);
   const parts = trackingId.split(",");
   const tag = parts.pop();
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        let response = await fetch(
+          `http://localhost:5000/api/fav-recipes/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch recipes");
+        }
+
+        response = await response.json();
+        // console.log(response.recipes, "response");
+        setFavoriteRecipes(response.recipes);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchRecipes();
+  }, [owner]);
+
+  useEffect(() => {
+    const fetchShoppingList = async () => {
+      try {
+        let response = await fetch(
+          `http://localhost:5000/api/shopping-list/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch recipes");
+        }
+
+        response = await response.json();
+
+        setShoppingList(response.shoppingList);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchShoppingList();
+  }, [owner]);
 
   useEffect(() => {
     const fetchIngredients = async () => {
@@ -33,9 +91,9 @@ function ApiRecipe() {
           tag: tag,
         },
         headers: {
-            "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-            "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-          },
+          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+          "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
+        },
       };
 
       try {
@@ -46,7 +104,11 @@ function ApiRecipe() {
           const foundRecipe = recipes.find(
             (recipe) => recipe["tracking-id"] === trackingId
           );
-          setRecipe({ ...foundRecipe, favorite: false });
+
+          const isFavorite = favoriteRecipes.some(
+            (recipe) => recipe.id === foundRecipe["tracking-id"]
+          );
+          setRecipe({ ...foundRecipe, favorite: isFavorite });
           const recipeIngredients = foundRecipe.content.ingredientLines;
           const updatedIngredients = recipeIngredients.map((ingredient) => ({
             ...ingredient,
@@ -60,46 +122,75 @@ function ApiRecipe() {
       }
     };
     fetchIngredients();
-  }, [tag, trackingId]);
+  }, [tag, trackingId, favoriteRecipes]);
 
-  //   const toggleFavorite = async () => {
-  //     const requestOptions = {
-  //       method: "PUT",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ favorite: !favorite }),
-  //     };
-
-  //     try {
-  //       const response = await fetch(
-  //         `http://localhost:5000/api/recipes/${owner}/${recipeId}`,
-  //         requestOptions
-  //       );
-
-  //       if (!response.ok) {
-  //         throw new Error("Failed to update favorite state");
-  //       }
-
-  //       const data = await response.json();
-  //       setFavorite(!data.recipe.favorite);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  const toggleFavorite = () => {
+  const toggleFavorite = async () => {
     setRecipe((prevRecipe) => ({
       ...prevRecipe,
       favorite: !prevRecipe.favorite,
     }));
+
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      url: `http://localhost:5000/api/recipes/${owner}`,
+      data: {
+        id: recipe["tracking-id"] ?? "N/A",
+        picture: recipe.display?.images[0] ?? "N/A",
+        title: recipe.display?.displayName ?? "N/A",
+        about: recipe.content?.description?.text ?? "N/A",
+        cookingTime: recipe.content?.details?.totalTime ?? "N/A",
+        preparation: recipe.content?.preparationSteps ?? "N/A",
+        ingredients: recipe.content?.ingredientLines ?? "N/A",
+      },
+    };
+
+    try {
+      await axios(requestOptions);
+      console.log("Favorite updated successfully");
+    } catch (error) {
+      console.error("Error updating favorite", error);
+    }
   };
-  const handleIngredientChange = (index) => {
+
+  const handleIngredientChange = async (index, ingredient) => {
     setIngredients((prevIngredients) =>
-      prevIngredients.map((ingredient, i) =>
-        i === index
-          ? { ...ingredient, checked: !ingredient.checked }
-          : ingredient
-      )
-    );
+    prevIngredients.map((ingredient, i) =>
+      i === index
+        ? { ...ingredient, checked: !ingredient.checked }
+        : ingredient
+    )
+  );
+
+  setShoppingList((prevShoppingList) => {
+    // If the ingredient is already in the shopping list, remove it
+    if (prevShoppingList.some((item) => item.id === ingredient.id)) {
+      return prevShoppingList.filter((item) => item.id !== ingredient.id);
+    }
+    // If the ingredient is not in the shopping list, add it
+    else {
+      return [...prevShoppingList, ingredient];
+    }
+  });
+
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      url: `http://localhost:5000/api/shopping-list/${owner}`,
+      data: {
+        id: ingredient.id ?? "N/A",
+        name: ingredient.ingredient ?? "N/A",
+        measurement: ingredient.amount.metric.unit.abbreviation ?? "N/A",
+        amount: ingredient.amount.metric.quantity ?? "N/A",
+      },
+    };
+
+    try {
+      await axios(requestOptions);
+      console.log("Shopping List updated succesfully!");
+    } catch (error) {
+      console.error("Error updating Shopping List", error);
+    }
   };
 
   return (
@@ -119,10 +210,10 @@ function ApiRecipe() {
             </span>
           </div>
           <div className={styles.about}>
-            {recipe && recipe.content && recipe.content.description.text ? (
+            {recipe && recipe.content && recipe.content.description ? (
               <span>{recipe.content.description.text}</span>
             ) : (
-              <Loader />
+              "Description N/A"
             )}
           </div>
           <div className={styles.buttonBox}>
@@ -165,19 +256,34 @@ function ApiRecipe() {
               </div>
               <div className={styles.detailsSecond}>
                 <div className={styles.amount}>
-                  <span>
-                    {ingredient.amount.metric.quantity}{" "}
-                    {ingredient.amount.metric.unit.abbreviation}
-                  </span>
+                  {ingredient &&
+                  ingredient.amount &&
+                  ingredient.amount.metric &&
+                  ingredient.amount.metric.quantity &&
+                  ingredient.amount.metric.unit &&
+                  ingredient.amount.metric.unit.abbreviation ? (
+                    <span>
+                      {ingredient.amount.metric.quantity}{" "}
+                      {ingredient.amount.metric.unit.abbreviation}
+                    </span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
                 </div>
                 <div className={styles.checkBox}>
                   <input
                     type="checkbox"
-                    checked={ingredient.checked}
-                    onChange={() => handleIngredientChange(index)}
+                    checked={shoppingList.some(
+                      (item) => item.id === ingredient.id
+                    )}
+                    onChange={() => handleIngredientChange(index, ingredient)}
                     className={styles.check}
                   />
-                  {ingredient.checked ? <Checked /> : <UnChecked />}
+                  {shoppingList.some((item) => item.id === ingredient.id) ? (
+                    <Checked />
+                  ) : (
+                    <UnChecked />
+                  )}
                 </div>
               </div>
             </div>

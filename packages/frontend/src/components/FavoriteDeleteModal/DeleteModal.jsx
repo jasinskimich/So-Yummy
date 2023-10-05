@@ -26,7 +26,6 @@ const style = {
 
 function DeleteModal({ id, updateDeleteRecipes }) {
   const { owner } = useParams();
-  const [favorite, setFavorite] = useState(true);
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -40,21 +39,19 @@ function DeleteModal({ id, updateDeleteRecipes }) {
 
     try {
       let response = await fetch(
-        `http://localhost:5000/api/recipes/${owner}/${id}`,
+        `http://localhost:5000/api/fav-recipes/${owner}/${id}`,
         {
-          method: "PUT",
+          method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ favorite: !favorite }),
         }
       );
 
       if (response.ok) {
         response = await response.json();
-        console.log(response, "RESPONSE")
-        updateDeleteRecipes(response.recipe);
-        setFavorite(false)
+        updateDeleteRecipes(response.deletedRecipe);
+
         handleClose();
       } else {
         throw new Error("Failed to delete recipe");
