@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./ShoppingList.module.css";
 import Loader from "../../components/Loader/Loader";
 import { ReactComponent as Delete } from "../../images/close.svg";
@@ -12,6 +12,8 @@ function ShoppingList() {
   const { owner } = useParams();
   const [page, setPage] = useState(1);
   const [shoppingList, setShoppingList] = useState([]);
+  const itemsPerPage = 10;
+  const [totalPages, setTotalPages] = useState(1);
   useEffect(() => {
     const fetchShoppingList = async () => {
       try {
@@ -30,15 +32,23 @@ function ShoppingList() {
         }
 
         response = await response.json();
+        const totalPages = Math.ceil(
+          response.shoppingList.length / itemsPerPage
+        );
+        const itemsForCurrentPage = response.shoppingList.slice(
+          (page - 1) * itemsPerPage,
+          page * itemsPerPage
+        );
 
-        setShoppingList(response.shoppingList);
+        setShoppingList(itemsForCurrentPage);
+        setTotalPages(totalPages);
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchShoppingList();
-  }, [owner]);
+  }, [owner, page]);
 
   const handleDelete = async (index, ingredient) => {
     const requestOptions = {
@@ -100,7 +110,7 @@ function ShoppingList() {
                   )}
                 </div>
                 <div className={styles.checkBox}>
-                  <button onClick={() => handleDelete(index, ingredient)}>
+                  <button className={styles.deleteButton} onClick={() => handleDelete(index, ingredient)}>
                     <Delete />
                   </button>
                 </div>
@@ -114,7 +124,7 @@ function ShoppingList() {
 
       <Stack spacing={2}>
         <Pagination
-          count={Math.ceil((shoppingList?.length || 0) / 4)}
+          count={totalPages}
           page={page}
           onChange={(event, value) => setPage(value)}
         />

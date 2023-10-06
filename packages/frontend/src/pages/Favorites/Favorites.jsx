@@ -55,6 +55,13 @@ function Favorites() {
     (item) => !deletedRecipes.includes(item._id)
   );
 
+  function truncateString(str, num) {
+    if (str.length <= num) {
+      return str
+    }
+    return str.slice(0, num) + '...'
+  }
+
   return (
     <div className={styles.main}>
       <div className={styles.container}>
@@ -80,7 +87,7 @@ function Favorites() {
                 />
               </div>
               <div className={styles.mid}>
-                <span className={styles.description}>{item.about}</span>
+                <span className={styles.description}> {truncateString(item.about, 200)} </span>
               </div>
               <div className={styles.bottom}>
                 <div className={styles.cookingTimeBox}>
