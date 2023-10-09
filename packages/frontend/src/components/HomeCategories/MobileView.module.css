@@ -40,6 +40,12 @@
     justify-content: flex-end;
     align-items: center;
     flex-direction: column;
+    transition: transform 0.5s ease;
+  }
+  .categoryItem:hover .categoryItemBox {
+    transform: scale(1.1);
+    background-color: #fafafa;
+    color: #8aa936;
   }
   .categoryItemPic {
     position: relative;
@@ -62,6 +68,10 @@
     font-family: "Poppins", sans-serif;
     border-radius: 6px;
 
+  }
+  .categoryItemText {
+    text-align: center;
+    line-height: 1;
   }
   /* Button */
   .categoryButtonBox {

@@ -1,13 +1,39 @@
-.mainContainer {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
-  background-image: url(../../images/categoriesBottom.png);
-  background-size: auto;
-  background-repeat: no-repeat, no-repeat;
-  background-position: 140% 50%;
+@media screen and (min-width: 320px) {
+  .mainContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    background-image: none
+
+  }
+}
+@media screen and (min-width: 768px) {
+  .mainContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    background-image: url(../../images/categoriesBottom.png);
+    background-size: auto;
+    background-repeat: no-repeat, no-repeat;
+    background-position: right 110%;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .mainContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    background-image: url(../../images/categoriesBottom.png);
+    background-size: auto;
+    background-repeat: no-repeat, no-repeat;
+    background-position: right 110%;
+  }
 }
 .otherBtn {
   width: 240px;

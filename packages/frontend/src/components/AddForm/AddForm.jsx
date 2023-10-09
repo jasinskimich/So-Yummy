@@ -6,12 +6,12 @@ import { ReactComponent as Plus } from "../../images/IngPlus.svg";
 import { ReactComponent as Close } from "../../images/close.svg";
 import { ReactComponent as Add } from "../../images/addBtn.svg";
 import Notiflix from "notiflix";
-import { useParams, useNavigate   } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function AddForm() {
   const { owner } = useParams();
 
-  let navigate = useNavigate ();
+  let navigate = useNavigate();
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
   const [picture, setPicture] = useState(
@@ -26,7 +26,8 @@ function AddForm() {
   ]);
   const [preparation, setPreparation] = useState("");
   const [ingredientCount, setIngredientCount] = useState(1);
-
+  const [categories, setCategories] = useState([]);
+  console.log(categories, "Categories");
   useEffect(() => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
@@ -43,10 +44,7 @@ function AddForm() {
   }, []);
 
   const addIngredient = () => {
-    setIngredients([
-      ...ingredients,
-      { name: "", amount: "", measurement: ""  },
-    ]);
+    setIngredients([...ingredients, { name: "", amount: "", measurement: "" }]);
     setIngredientCount(ingredientCount + 1);
   };
   const removeIngredient = (index) => {
@@ -178,13 +176,36 @@ function AddForm() {
       },
     });
     if (result) {
-      Notiflix.Notify.success(
-        "Recipe added successfully!"
-      );
+      Notiflix.Notify.success("Recipe added successfully!");
       navigate(`/my-recipes/${owner}`);
     }
-    
   };
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const url = "https://yummly2.p.rapidapi.com/categories/list";
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+          "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
+        },
+      };
+
+      try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        const browseCategories = Object.values(result)[0];
+        const cusines = browseCategories[8];
+        const categories = cusines.display.categoryTopics;
+        setCategories(categories);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.form}>
@@ -228,9 +249,10 @@ function AddForm() {
                 <option value="" disabled>
                   Category
                 </option>
-                <option value="American">American</option>
-                <option value="Barbecue">Barbecue</option>
-                <option value="Asian">Asian</option>
+                
+                {categories.map((item, index) => (
+                  <option value={item.display.displayName} key={index}>{item.display.displayName}</option>
+                ))}
               </select>
               <select
                 className={styles.minimal}
@@ -307,7 +329,8 @@ function AddForm() {
                   >
                     <option value="" disabled>
                       g/tbs/ml
-                    </option>pieces
+                    </option>
+                    pieces
                     <option value="pieces">pieces</option>
                     <option value="kg">kg</option>
                     <option value="lb">pound</option>
@@ -319,6 +342,7 @@ function AddForm() {
                     <option value="cup">cup</option>
                     <option value="l">l</option>
                     <option value="gal">gallon</option>
+                    <option value="item">item</option>
                   </select>
                 </div>
                 {index > 0 && (

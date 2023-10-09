@@ -19,7 +19,7 @@
     height: 100%;
   }
   .wrapper {
-    width: 320px;
+    width: 300px;
     display: flex;
     /* justify-content: center; */
     align-items: center;
@@ -58,7 +58,7 @@
     justify-content: left;
     align-items: center;
     height: 50px;
-    padding-left: 25px;
+    padding-left: 15px;
     /* width: 200px; */
   }
   .inputForm {
@@ -472,7 +472,7 @@
     height: 100%;
   }
   .infoContent {
-    background-image: url("../../images/HeroBowl.png");
+    background-image: url("../../images/HeroBowl2x.png");
     background-repeat: no-repeat;
     background-position: top;
     background-size: contain;
