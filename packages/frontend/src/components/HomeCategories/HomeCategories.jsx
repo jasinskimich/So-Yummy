@@ -49,6 +49,7 @@ const HomeCategories = () => {
         const result = await response.json();
         const browseCategories = Object.values(result)[0];
         const cusines = browseCategories[8];
+        console.log(cusines, "cusines")
         const categories = cusines.display.categoryTopics;
         setCategories(categories);
       } catch (error) {

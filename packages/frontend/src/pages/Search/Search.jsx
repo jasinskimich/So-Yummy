@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate  } from "react-router-dom";
 
 import styles from "./Search.module.css";
 import { ReactComponent as SearchButton } from "../../images/searchButton.svg";
@@ -21,7 +21,9 @@ function Search() {
   const [page, setPage] = useState(1);
   const { owner } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-
+  const { q } = useParams();
+  console.log(q, "Q");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const autoComplete = async () => {
@@ -54,7 +56,12 @@ function Search() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
+    const url = new URL(window.location.href);
+    const pathSegments = url.pathname.split('/');
+    pathSegments[pathSegments.length - 1] = query;
+    url.pathname = pathSegments.join('/');
+    url.search = ''; // clear the search parameters
+    url.hash = ''; // clear the hash
     const options = {
       method: "GET",
       url: "https://yummly2.p.rapidapi.com/feeds/search",
@@ -68,7 +75,7 @@ function Search() {
         "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
       },
     };
-
+  
     try {
       const response = await axios.request(options);
       console.log(response.data);
@@ -82,6 +89,7 @@ function Search() {
     setTimeout(() => {
       setIsLoading(false);
     }, 2500);
+    navigate(url.pathname);
   };
 
   const handleChange = (value) => {
@@ -137,7 +145,9 @@ function Search() {
         {prevQuery === "" ? (
           <span></span>
         ) : (
-          <span><b>Searched query:</b> {prevQuery}</span>
+          <span>
+            <b>Searched query:</b> {prevQuery}
+          </span>
         )}{" "}
       </div>
 

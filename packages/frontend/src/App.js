@@ -70,7 +70,7 @@ function App() {
             <Route path="/my-recipes/:owner" element={<MyRecipes />} />
             <Route path="/favorites/:owner" element={<Favorites />} />
             <Route path="/shopping-list/:owner" element={<ShoppingList />} />
-            <Route path="/search/:owner" element={<Search />} />
+            <Route path="/search/:owner/:q" element={<Search />} />
           </Route>
         </Routes>
       </Box>
