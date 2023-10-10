@@ -12,13 +12,18 @@ function Categories() {
   const { category } = useParams();
   const [categories, setCategories] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [value, setValue] = useState(0);
   const location = useLocation();
   const [details, setDetails] = useState(null);
   console.log(details, "DETAILS");
   const handleChange = (event, newValue) => {
+    setIsLoading(true);
     setValue(newValue);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
   };
   const style = {
     color: "#22252A",
@@ -86,9 +91,11 @@ function Categories() {
         const result = await response.json();
         const categoryItems = result.feed;
         setDetails(categoryItems);
+
       } catch (error) {
         console.error(error);
       }
+      
     };
 
     fetchDetails();
@@ -99,6 +106,7 @@ function Categories() {
       <div className={styles.container}>
         <span className={styles.title}>Categories</span>
       </div>
+      
       <div className={styles.searchNav}>
         <Tabs
           value={value}
@@ -126,27 +134,34 @@ function Categories() {
           ))}
         </Tabs>
       </div>
+      {isLoading && <Loader />}
       <div className={styles.details}>
-      {details && details.length > 0 ? (
-  details.slice((page - 1) * 8, page * 8).map((item, index) => (
-    <NavLink key={index} to={`/recipes/${owner}/${encodeURIComponent(item["tracking-id"])}`}>
-      <div className={styles.categoryItem}>
-        <img
-          src={item.display.images[0]}
-          alt={item.display.displayName}
-          className={styles.categoryItemPic}
-        />
-        <div className={styles.categoryItemBox}>
-          <span className={styles.categoryItemText}>
-            {item.display.displayName}
-          </span>
-        </div>
-      </div>
-    </NavLink>
-  ))
-) : (
-  <Loader />
-)}
+      
+        {details && details.length > 0 ? (
+          details.slice((page - 1) * 8, page * 8).map((item, index) => (
+            <NavLink
+              key={index}
+              to={`/recipes/${owner}/${encodeURIComponent(
+                item["tracking-id"]
+              )}`}
+            >
+              <div className={styles.categoryItem}>
+                <img
+                  src={item.display.images[0]}
+                  alt={item.display.displayName}
+                  className={styles.categoryItemPic}
+                />
+                <div className={styles.categoryItemBox}>
+                  <span className={styles.categoryItemText}>
+                    {item.display.displayName}
+                  </span>
+                </div>
+              </div>
+            </NavLink>
+          ))
+        ) : (
+          <Loader />
+        )}
       </div>
       <Stack spacing={2}>
         <Pagination

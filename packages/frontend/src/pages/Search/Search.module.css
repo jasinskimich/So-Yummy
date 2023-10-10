@@ -1,0 +1,240 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 50px;
+  padding-top: 100px;
+  width: 100%;
+}
+.container {
+  margin-left: 2px;
+  width: 75%;
+}
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+}
+.headButton {
+  background-image: url("../../images/searchBackground.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 435px;
+  height: 60px;
+}
+.inputInside {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: fit-content;
+  padding-left: 30px;
+  width: 405px;
+}
+.inputField {
+  font-display: flex;
+  flex-direction: column;
+}
+.inputForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.input {
+  width: 264px;
+  height: 30px;
+  border: none;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+.input:focus {
+  outline: none;
+}
+.inputButton {
+  height: 60px;
+  width: 138px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+.inputButton:hover {
+  cursor: pointer;
+}
+.inputButton svg path:nth-child(1) {
+  stroke-width: 1px;
+  fill: #8baa36;
+}
+.inputButton:hover svg path:nth-child(1) {
+  fill: #22252a;
+}
+.inputButtonImage {
+  height: 60px;
+  width: 138px;
+}
+.searchResults {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: transparent;
+  width: 100%;
+  justify-content: center;
+  gap: 30px;
+  border-radius: 8px;
+  z-index: 2;
+}
+.searchResultsSugestions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: #fafafa;
+  width: 280px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  border-radius: 8px;
+  position: relative;
+
+  z-index: 1000;
+}
+.searchResultsItem:hover {
+  cursor: pointer;
+  color: #8baa36;
+}
+.searchResultsItem {
+  border-bottom: #77787b76 1px solid;
+}
+.categoryItemPic {
+  width: 100%;
+  max-width: 320px;
+}
+.categoryItem {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  transition: transform 0.5s ease;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.categoryItem:hover {
+  cursor: pointer;
+}
+.categoryItem:hover .categoryItemBox {
+  transform: scale(1.1);
+  background-color: #fafafa;
+  color: #8aa936;
+}
+.categoryItemPic {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  height: 320px;
+}
+.categoryItemBox {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  width: 80%;
+  height: 30px;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.897);
+  color: #22252a;
+  padding: 5px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  border-radius: 6px;
+}
+.categoryItemText {
+  text-align: center;
+  line-height: 1;
+}
+.classicContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.classicView {
+  width: 300px;
+  height: 200px;
+  background-image: url("../../images/searchImage.png");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: contain;
+}
+
+@media screen and (max-width: 480px) {
+    .headButton {
+        background-image: url("../../images/searchBackgroundMobile.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 300px;
+        height: 50px;
+      }
+      .inputInside {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+       
+        padding-left: 15px;
+        width: 200px;
+      }
+      .inputForm {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .input {
+        width: 165px;
+        height: 20px;
+        border: none;
+        font-size: 14px;
+        font-family: "Poppins", sans-serif;
+      }
+      .input:focus {
+        outline: none;
+      }
+      .inputButton {
+        height: 50px;
+        width: 113px;
+        border: none;
+        background-color: transparent;
+        padding: 0;
+      }
+      .inputButton svg path:nth-child(1) {
+        stroke-width: 1px;
+        fill: #8baa36;
+      }
+      .inputButton:hover svg path:nth-child(1) {
+        fill: #22252a;
+      }
+      .inputButton svg path {
+        stroke-width: 1px;
+      }
+      
+      .inputButtonImage {
+        height: 50px;
+        width: 113px;
+      }
+      .searchResultsSugestions {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background-color: #fafafa;
+        width: 180px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+        padding-right: 15px;
+        border-radius: 8px;
+        position: relative;
+      
+        z-index: 1000;
+      }
+}

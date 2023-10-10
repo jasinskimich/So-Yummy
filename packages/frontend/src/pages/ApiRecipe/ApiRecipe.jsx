@@ -16,13 +16,16 @@ function ApiRecipe() {
   const { recipeId } = useParams();
   const [ingredients, setIngredients] = useState([]);
   const [recipe, setRecipe] = useState([]);
-  console.log(recipe, "recipe");
+  // console.log(recipe, "recipe");
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [shoppingList, setShoppingList] = useState([]);
-  console.log(favoriteRecipes, "favoriteRecipes");
+  // console.log(favoriteRecipes, "favoriteRecipes");
   const trackingId = decodeURIComponent(recipeId);
   const parts = trackingId.split(",");
   const tag = parts.pop();
+  console.log(tag, "tag");
+  let query = tag.replace(/^recipe\//, "");
+  query = query.replace(/-/g, " ");
   const [isRendered, setIsRendered] = useState(false);
 
   useEffect(() => {
@@ -88,7 +91,10 @@ function ApiRecipe() {
 
   useEffect(() => {
     const fetchIngredients = async () => {
-      const options = {
+      let options;
+
+    if (tag.startsWith('list.recipe')) {
+      options = {
         method: "GET",
         url: "https://yummly2.p.rapidapi.com/feeds/list",
         params: {
@@ -101,6 +107,21 @@ function ApiRecipe() {
           "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
         },
       };
+    } else if (tag.startsWith('recipe/')) {
+      options = {
+        method: 'GET',
+        url: 'https://yummly2.p.rapidapi.com/feeds/search',
+        params: {
+          start: '0',
+          maxResult: '18',
+          q: query
+        },
+        headers: {
+          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+          "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
+        }
+      };
+    }
 
       try {
         const response = await axios.request(options);
@@ -128,7 +149,7 @@ function ApiRecipe() {
       }
     };
     fetchIngredients();
-  }, [tag, trackingId, favoriteRecipes]);
+  }, [tag, trackingId, favoriteRecipes, query]);
 
   const toggleFavorite = async () => {
     setRecipe((prevRecipe) => ({
@@ -161,23 +182,23 @@ function ApiRecipe() {
 
   const handleIngredientChange = async (index, ingredient) => {
     setIngredients((prevIngredients) =>
-    prevIngredients.map((ingredient, i) =>
-      i === index
-        ? { ...ingredient, checked: !ingredient.checked }
-        : ingredient
-    )
-  );
+      prevIngredients.map((ingredient, i) =>
+        i === index
+          ? { ...ingredient, checked: !ingredient.checked }
+          : ingredient
+      )
+    );
 
-  setShoppingList((prevShoppingList) => {
-    // If the ingredient is already in the shopping list, remove it
-    if (prevShoppingList.some((item) => item.id === ingredient.id)) {
-      return prevShoppingList.filter((item) => item.id !== ingredient.id);
-    }
-    // If the ingredient is not in the shopping list, add it
-    else {
-      return [...prevShoppingList, ingredient];
-    }
-  });
+    setShoppingList((prevShoppingList) => {
+      // If the ingredient is already in the shopping list, remove it
+      if (prevShoppingList.some((item) => item.id === ingredient.id)) {
+        return prevShoppingList.filter((item) => item.id !== ingredient.id);
+      }
+      // If the ingredient is not in the shopping list, add it
+      else {
+        return [...prevShoppingList, ingredient];
+      }
+    });
 
     const requestOptions = {
       method: "PUT",
@@ -223,13 +244,13 @@ function ApiRecipe() {
             )}
           </div>
           <div className={styles.buttonBox}>
-          {isRendered && (
-            <button className={styles.button} onClick={toggleFavorite}>
-              {" "}
-              {recipe && recipe.favorite ? <RemoveFav /> : <AddFav />}
-            </button>
-          )}
-        </div>
+            {isRendered && (
+              <button className={styles.button} onClick={toggleFavorite}>
+                {" "}
+                {recipe && recipe.favorite ? <RemoveFav /> : <AddFav />}
+              </button>
+            )}
+          </div>
           <div className={styles.cookingBox}>
             <Clock />
             <span className={styles.cookingTime}>
@@ -312,7 +333,7 @@ function ApiRecipe() {
                 ))}
               </>
             ) : (
-              <Loader />
+              "N/A"
             )}
           </div>
           <div className={styles.prepImageBox}>
