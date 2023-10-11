@@ -14,7 +14,6 @@ function Search() {
   //   const { owner } = useParams();
   const [query, setQuery] = useState(undefined || "");
   const [autoComplete, setAutoComplete] = useState([]);
-  console.log(autoComplete, "autoComplete");
   const [recipes, setRecipes] = useState([]);
   const [prevQuery, setPrevQuery] = useState(undefined || "");
   const [isInputActive, setIsInputActive] = useState(false);
@@ -22,7 +21,6 @@ function Search() {
   const { owner } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const { q } = useParams();
-  console.log(q, "Q");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -78,7 +76,6 @@ function Search() {
   
     try {
       const response = await axios.request(options);
-      console.log(response.data);
       const fetchedRecipes = response.data.feed;
       setRecipes(fetchedRecipes);
       setPrevQuery(query);
@@ -96,10 +93,46 @@ function Search() {
     setQuery(value);
   };
 
-  // const navigate  = useNavigate();
-  // useEffect(() => {
-  //   navigate(`/${query}`);
-  // }, [query, navigate ]);
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      setIsLoading(true);
+      const options = {
+        method: "GET",
+        url: "https://yummly2.p.rapidapi.com/feeds/search",
+        params: {
+          start: "0",
+          maxResult: "24",
+          q: q,
+        },
+        headers: {
+          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+          "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
+        },
+      };
+  
+      try {
+        const response = await axios.request(options);
+  
+        const fetchedRecipes = response.data.feed;
+        console.log(fetchedRecipes," recipes");
+        setRecipes(fetchedRecipes);
+        setPrevQuery(q);
+        setQuery("");
+      } catch (error) {
+        console.error(error);
+      }
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2500);
+      
+    };
+  
+    if (q !== "q") {
+      fetchRecipes();
+    }
+  }, [q, query]);
+
+
   return (
     <div className={styles.main}>
       <div className={styles.container}>

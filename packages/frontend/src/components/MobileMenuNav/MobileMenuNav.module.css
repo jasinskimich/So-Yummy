@@ -38,7 +38,9 @@
     justify-content: center;
     align-items: center;
   }
-
+  .navItem1 svg path {
+    fill: #8baa36;
+  }
   .navItem:hover {
     color: #8baa36;
     cursor: pointer;

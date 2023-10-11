@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+// import { useNavigation } from '@react-navigation/native';
+
 import styles from "./Hero.module.css";
 import { ReactComponent as SearchButton } from "../../images/searchButton.svg";
 import { ReactComponent as Arrow } from "../../images/arrowHero.svg";
 import { ReactComponent as SmallArrow } from "../../images/smallArrowBtn.svg";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+// import { debounce } from 'lodash';
+
 const axios = require("axios");
 
-const Hero = () => {
+function Hero() {
   const [query, setQuery] = useState(undefined || "");
+  console.log(query, "query");
   const { owner } = useParams();
   const [autoComplete, setAutoComplete] = useState([]);
+  console.log(autoComplete, "autocomplete");
   const [isInputActive, setIsInputActive] = useState(false);
+  // const navigation = useNavigation();
 
-  const handleChange = (value) => {
-    setQuery(value);
-  };
   useEffect(() => {
-    const autoComplete = async () => {
+    if (query === '') {
+      return;
+    }
+    const autoCompletes = async () => {
       const options = {
         method: "GET",
         url: "https://yummly2.p.rapidapi.com/feeds/auto-complete",
@@ -42,9 +48,20 @@ const Hero = () => {
         console.error(error);
       }
     };
-    autoComplete();
-  }, [query]);
+    autoCompletes();
+  }, [query, ]);
 
+  const handleChange = (value) => {
+    if (value !== '') {
+      setQuery(value);
+    }
+  };
+  const handleSubmit = (e) => {
+    
+    if (query) {
+      window.history.replaceState(null, "New Page Title", `/search/${owner}/${query}`);
+    }
+  };
 
   return (
     <div className={styles.mainContainer}>
@@ -64,7 +81,7 @@ const Hero = () => {
 
           <div className={styles.headButton}>
             <div className={styles.inputInside}>
-              <form className={styles.inputFormBox}>
+              <form className={styles.inputFormBox} onSubmit={handleSubmit}>
                 <div className={styles.inputForm}>
                   <input
                     value={query}
@@ -74,7 +91,7 @@ const Hero = () => {
                     className={styles.input}
                     placeholder="Search your category"
                   ></input>
-                  <button className={styles.inputButton}>
+                  <button className={styles.inputButton} type="submit">
                     <SearchButton className={styles.inputButtonImage} />
                   </button>
                 </div>
@@ -122,6 +139,6 @@ const Hero = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Hero;

@@ -37,7 +37,7 @@ export const MobileMenuNav = ({ handleCloseModal }) => {
         </button>
       </NavLink>
       <NavLink
-        to={`/search/${owner}`}
+        to={`/search/${owner}/q`}
         className={styles.navLink}
         onClick={handleCloseModal}
       >

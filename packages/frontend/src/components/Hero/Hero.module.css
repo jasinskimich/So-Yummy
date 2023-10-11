@@ -57,7 +57,6 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    height: 50px;
     padding-left: 15px;
     /* width: 200px; */
   }
@@ -96,6 +95,13 @@
   .inputButtonImage {
     height: 50px;
     width: 113px;
+  }
+  .searchResultsItem:hover {
+    cursor: pointer;
+    color: #8baa36;
+  }
+  .searchResultsItem {
+    border-bottom: #77787b76 1px solid;
   }
 
   /*bottom  */
@@ -244,7 +250,6 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    height: 60px;
     padding-left: 30px;
     width: 302px;
   }
@@ -283,6 +288,13 @@
   .inputButtonImage {
     height: 60px;
     width: 138px;
+  }
+  .searchResultsItem:hover {
+    cursor: pointer;
+    color: #8baa36;
+  }
+  .searchResultsItem {
+    border-bottom: #77787b76 1px solid;
   }
 
   /*right side */
@@ -424,7 +436,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    height: 60px;
+   
     padding-left: 30px;
     width: 405px;
   }
@@ -437,8 +449,7 @@
   .inputFormBox {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  
   }
   .input {
     width: 264px;
@@ -551,5 +562,26 @@
   }
   .infoTextButton:hover svg path {
     stroke: #8baa36;
+  }
+  .searchResultsSugestions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #fafafa;
+    width: 280px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    border-radius: 8px;
+    position: relative;
+  
+    z-index: 1000;
+  }
+  .searchResultsItem:hover {
+    cursor: pointer;
+    color: #8baa36;
+  }
+  .searchResultsItem {
+    border-bottom: #77787b76 1px solid;
   }
 }

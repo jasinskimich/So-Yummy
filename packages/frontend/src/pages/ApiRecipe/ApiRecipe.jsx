@@ -24,8 +24,9 @@ function ApiRecipe() {
   const parts = trackingId.split(",");
   const tag = parts.pop();
   console.log(tag, "tag");
-  let query = tag.replace(/^recipe\//, "");
-  query = query.replace(/-/g, " ");
+  let query = tag.replace(/^recipe\//, "").replace(/[^a-zA-Z0-9 ]/g, " ").replace(/\s+/g, " ");
+
+  console.log(query, "query")
   const [isRendered, setIsRendered] = useState(false);
 
   useEffect(() => {

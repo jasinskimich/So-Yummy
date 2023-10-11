@@ -100,8 +100,12 @@
     letter-spacing: 0%;
     font-size: 14px;
     color: #8baa36;
+    
     background-color: transparent;
     border: none;
+  }
+  .navItem1 svg path {
+    fill: #8baa36;
   }
 
   .navItem:hover {

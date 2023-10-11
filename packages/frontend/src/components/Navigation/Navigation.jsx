@@ -24,7 +24,7 @@ export const Navigation = ({ showNavBar }) => {
       <NavLink to={`/shopping-list/${owner}`} className={styles.navLink}>
         <button className={location.pathname.includes("/shopping-list") ? styles.navItem1 : styles.navItem}>Shopping list</button>
       </NavLink>
-      <NavLink to={`/search/${owner}/query`} className={styles.navLink}>
+      <NavLink to={`/search/${owner}/q`} className={styles.navLink}>
         <button className={location.pathname.includes("/search") ? styles.navItem1 : styles.navItem}>
           {" "}
           <Search className={styles.searchIcon} />

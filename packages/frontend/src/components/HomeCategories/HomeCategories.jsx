@@ -134,6 +134,7 @@ const HomeCategories = () => {
 
     fetchDetails();
   }, []);
+
   useEffect(() => {
     const fetchDetails = async () => {
       const url =
