@@ -4,6 +4,8 @@ const cors = require("cors");
 const uploadRoutes = require("./routes/upload");
 const usersRouter = require("./routes/users");
 const recipesRouter = require("./routes/recipes");
+const apiRecipesRouter = require("./routes/apiRecipes");
+
 
 const app = express();
 
@@ -19,6 +21,7 @@ require("./config/config-passport");
 app.use("/api", usersRouter);
 app.use("/api", uploadRoutes);
 app.use("/api", recipesRouter);
+app.use("/api", apiRecipesRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "nie dziauaaa" });

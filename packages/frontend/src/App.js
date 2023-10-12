@@ -10,7 +10,7 @@ import Login from "./pages/LoginPages/LoginPages";
 import Layout from "./Layout";
 import StartPage from "./pages/StartPage/StartPage";
 import Home from "./pages/Home/Home";
-import Categories from "./pages/Categories/Categories";
+import Categories from "./pages/Categories2/Categories";
 import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import Recipe from "./pages/Recipe/Recipe";
