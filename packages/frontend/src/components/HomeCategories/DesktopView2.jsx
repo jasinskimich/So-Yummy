@@ -1,10 +1,10 @@
-import styles from "./MobileView.module.css";
+import styles from "./DesktopView2.module.css";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import React, { useState, useEffect } from "react";
 
-const MobileView = () => {
+const DesktopView2 = () => {
   const { owner } = useParams();
   const categories = ["Breakfast", "Miscellaneous", "Chicken", "Dessert"];
   const [recipes, setRecipes] = useState(null);
@@ -40,7 +40,7 @@ const MobileView = () => {
                 <span className={styles.categoryHeadText}>{category}</span>
               </div>
               <div className={styles.categoryContent}>
-              {filteredRecipes.slice(0, 1).map((recipe, index) => (
+              {filteredRecipes.slice(0, 4).map((recipe, index) => (
                 <div key={index}>
                   <NavLink to={`/categories/${owner}/${category._id}`}>
                     <div className={styles.categoryItem}>
@@ -79,5 +79,5 @@ const MobileView = () => {
   }
 };
 
-export default MobileView;
+export default DesktopView2;
 

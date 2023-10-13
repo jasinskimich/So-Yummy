@@ -14,7 +14,7 @@ import Categories from "./pages/Categories2/Categories";
 import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import Recipe from "./pages/Recipe/Recipe";
-import ApiRecipe from "./pages/ApiRecipe/ApiRecipe";
+import ApiRecipe from "./pages/ApiRecipe/ApiRecipe2";
 
 import Favorites from "./pages/Favorites/Favorites";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";

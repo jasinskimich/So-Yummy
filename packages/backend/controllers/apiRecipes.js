@@ -38,8 +38,22 @@ const getRecipesByCategory = async (req, res, next) => {
   }
 };
 
+const getPopularRecipes = async (req, res, next) => {
+  try {
+    const documents = await ApiRecipes.find({ description: /popular/i });
+    if (!documents || documents.length === 0) {
+      return res.status(404).json({ message: "No documents found" });
+    }
+    res.send({ status: "ok", recipes: documents });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 module.exports = {
     getAllRecipes,
     getAllCategories,
-    getRecipesByCategory
+    getRecipesByCategory,
+    getPopularRecipes
   };

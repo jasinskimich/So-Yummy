@@ -345,7 +345,7 @@
     text-align: right;
   }
   .ingredientText {
-    width: 150px;
+    width: 200px;
     background-color: transparent;
     outline: 0;
     border: none;
@@ -353,6 +353,8 @@
     font-family: "Poppins", sans-serif;
     padding-left: 15px;
     text-align: left;
+    outline: none;
+    
   }
   .add {
     background-color: transparent;

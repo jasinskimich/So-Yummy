@@ -4,7 +4,6 @@ import { Footer } from "../../components/Footer/Footer";
 import { ReactComponent as AddFav } from "../../images/favButton.svg";
 import { ReactComponent as RemoveFav } from "../../images/removeBtn.svg";
 import { ReactComponent as Clock } from "../../images/clock.svg";
-import defaultIngridient from "../../images/defaultIngridient.png";
 import { ReactComponent as Checked } from "../../images/checked.svg";
 import { ReactComponent as UnChecked } from "../../images/unchecked.svg";
 import React, { useState, useEffect, useRef } from "react";
@@ -158,7 +157,7 @@ function Recipe() {
               <div className={styles.imageBox}>
                 <img
                   className={styles.ingredientImage}
-                  src={defaultIngridient}
+                  src={ingredient.thb}
                   alt="ingridientPicture"
                 />
               </div>

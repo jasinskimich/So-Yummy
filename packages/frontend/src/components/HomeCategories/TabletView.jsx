@@ -1,211 +1,73 @@
-import React from "react";
 import styles from "./TabletView.module.css";
+import { NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
-import { NavLink, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
-const TabletView = ({ first, second, third, fourth, categories }) => {
+const TabletView = () => {
   const { owner } = useParams();
+  const categories = ["Breakfast", "Miscellaneous", "Chicken", "Dessert"];
+  const [recipes, setRecipes] = useState(null);
 
-  if (categories && first && second && third && fourth) {
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/all-recipes`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setRecipes(data.recipes);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchDetails();
+  }, []);
+
+  if (categories && recipes) {
     return (
       <>
-        <div className={styles.categoryContainer}>
-          <div className={styles.categoryHead}>
-            <span className={styles.categoryHeadText}>
-              {categories.length > 0 && categories[0].display.displayName}
-            </span>
-          </div>
-          <div className={styles.categoryContent}>
-            <NavLink to={`/recipes/${owner}/${encodeURIComponent(first[0]["tracking-id"])}`}>
-              <div className={styles.categoryItem}>
-                {first.length > 0 && first[0].display.images[0] && (
-                  <img
-                    src={first[0].display.images[0]}
-                    alt={first[0].display.displayName}
-                    className={styles.categoryItemPic}
-                  />
-                )}
+        {categories.map((category) => {
+          const filteredRecipes = recipes.filter(
+            (recipe) => recipe.category === category
+          );
 
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {first.length > 0 && first[0].display.displayName}
-                  </span>
-                </div>
+          return (
+            <div className={styles.categoryContainer} key={category}>
+              <div className={styles.categoryHead}>
+                <span className={styles.categoryHeadText}>{category}</span>
               </div>
-            </NavLink>
-            <NavLink to={`/recipes/${owner}/${encodeURIComponent(first[1]["tracking-id"])}`}>
-              <div className={styles.categoryItem}>
-                {first.length > 0 && first[1].display.images[0] && (
-                  <img
-                    src={first[1].display.images[0]}
-                    alt={first[1].display.displayName}
-                    className={styles.categoryItemPic}
-                  />
-                )}
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {first.length > 0 && first[1].display.displayName}
-                  </span>
-                </div>
+              <div className={styles.categoryContent}>
+              {filteredRecipes.slice(0, 2).map((recipe, index) => (
+                <div key={index}>
+                  <NavLink to={`/categories/${owner}/${category._id}`}>
+                    <div className={styles.categoryItem}>
+                      <img
+                        src={recipe.preview}
+                        alt={recipe.title}
+                        className={styles.categoryItemPic}
+                      />
+
+                      <div className={styles.categoryItemBox}>
+                        <span className={styles.categoryItemText}>
+                          {recipe.title}
+                        </span>
+                      </div>
+                    </div>
+                  </NavLink>
+                  </div>
+              ))}
               </div>
-            </NavLink>
-            
-          </div>
-          <div className={styles.categoryButtonBox}>
-            <NavLink
-              to={`/categories/${owner}/${categories[0]["tracking-id"]}`}
-            >
-              <button className={styles.categoryButton}>See all</button>
-            </NavLink>
-          </div>
-        </div>
-        <div className={styles.categoryContainer}>
-          <div className={styles.categoryHead}>
-            <span className={styles.categoryHeadText}>
-              {categories.length > 0 && categories[1].display.displayName}
-            </span>
-          </div>
-          <div className={styles.categoryContent}>
-            <NavLink to={`/recipes/${owner}/${encodeURIComponent(second[0]["tracking-id"])}`}>
-              <div className={styles.categoryItem}>
-                {second.length > 0 && second[0].display.images[0] && (
-                  <img
-                    src={second[0].display.images[0]}
-                    alt={second[0].display.displayName}
-                    className={styles.categoryItemPic}
-                  />
-                )}
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {second.length > 0 && second[0].display.displayName}
-                  </span>
-                </div>
+              <div className={styles.categoryButtonBox}>
+                <NavLink to={`/categories/${owner}/${category._id}`}>
+                  <button className={styles.categoryButton}>See all</button>
+                </NavLink>
               </div>
-            </NavLink>
-            <NavLink to={`/recipes/${owner}/${encodeURIComponent(second[1]["tracking-id"])}`}>
-              <div className={styles.categoryItem}>
-                {second.length > 0 && second[1].display.images[0] && (
-                  <img
-                    src={second[1].display.images[0]}
-                    alt={second[1].display.displayName}
-                    className={styles.categoryItemPic}
-                  />
-                )}
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {second.length > 0 && second[1].display.displayName}
-                  </span>
-                </div>
-              </div>
-            </NavLink>
-            
-          </div>
-          <div className={styles.categoryButtonBox}>
-            <NavLink
-              to={`/categories/${owner}/${categories[1]["tracking-id"]}`}
-            >
-              <button className={styles.categoryButton}>See all</button>
-            </NavLink>
-          </div>
-        </div>
-        <div className={styles.categoryContainer}>
-          <div className={styles.categoryHead}>
-            <span className={styles.categoryHeadText}>
-              {categories.length > 0 && categories[2].display.displayName}
-            </span>
-          </div>
-          <div className={styles.categoryContent}>
-            <NavLink to={`/recipes/${owner}/${encodeURIComponent(third[0]["tracking-id"])}`}>
-              <div className={styles.categoryItem}>
-                {third.length > 0 && third[0].display.images[0] && (
-                  <img
-                    src={third[0].display.images[0]}
-                    alt={third[0].display.displayName}
-                    className={styles.categoryItemPic}
-                  />
-                )}
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {third.length > 0 && third[0].display.displayName}
-                  </span>
-                </div>
-              </div>
-            </NavLink>
-            <NavLink to={`/recipes/${owner}/${encodeURIComponent(third[1]["tracking-id"])}`}>
-              <div className={styles.categoryItem}>
-                {third.length > 0 && third[1].display.images[0] && (
-                  <img
-                    src={third[1].display.images[0]}
-                    alt={third[1].display.displayName}
-                    className={styles.categoryItemPic}
-                  />
-                )}
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {third[1].display.displayName}
-                  </span>
-                </div>
-              </div>
-            </NavLink>
-            
-          </div>
-          <div className={styles.categoryButtonBox}>
-            <NavLink
-              to={`/categories/${owner}/${categories[2]["tracking-id"]}`}
-            >
-              <button className={styles.categoryButton}>See all</button>
-            </NavLink>
-          </div>
-        </div>
-        <div className={styles.categoryContainer}>
-          <div className={styles.categoryHead}>
-            <span className={styles.categoryHeadText}>
-              {categories.length > 0 && categories[3].display.displayName}
-            </span>
-          </div>
-          <div className={styles.categoryContent}>
-            <NavLink to={`/recipes/${owner}/${encodeURIComponent(fourth[0]["tracking-id"])}`}>
-              <div className={styles.categoryItem}>
-                {fourth.length > 0 && fourth[0].display.images[0] && (
-                  <img
-                    src={fourth[0].display.images[0]}
-                    alt={fourth[0].display.displayName}
-                    className={styles.categoryItemPic}
-                  />
-                )}
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {fourth.length > 0 && fourth[0].display.displayName}
-                  </span>
-                </div>
-              </div>
-            </NavLink>
-            <NavLink to={`/recipes/${owner}/${encodeURIComponent(fourth[1]["tracking-id"])}`}>
-              <div className={styles.categoryItem}>
-                {fourth.length > 0 && fourth[1].display.images[0] && (
-                  <img
-                    src={fourth[1].display.images[0]}
-                    alt={fourth[1].display.displayName}
-                    className={styles.categoryItemPic}
-                  />
-                )}
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {fourth.length > 0 && fourth[0].display.displayName}
-                  </span>
-                </div>
-              </div>
-            </NavLink>
-            
-          </div>
-          <div className={styles.categoryButtonBox}>
-            <NavLink
-              to={`/categories/${owner}/${categories[3]["tracking-id"]}`}
-            >
-              <button className={styles.categoryButton}>See all</button>
-            </NavLink>
-          </div>
-        </div>
+            </div>
+          );
+        })}
       </>
     );
   } else {
@@ -218,3 +80,4 @@ const TabletView = ({ first, second, third, fourth, categories }) => {
 };
 
 export default TabletView;
+

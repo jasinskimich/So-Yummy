@@ -5,6 +5,7 @@ const uploadRoutes = require("./routes/upload");
 const usersRouter = require("./routes/users");
 const recipesRouter = require("./routes/recipes");
 const apiRecipesRouter = require("./routes/apiRecipes");
+const apiIngredientsRouter = require("./routes/apiIngredients");
 
 
 const app = express();
@@ -22,6 +23,8 @@ app.use("/api", usersRouter);
 app.use("/api", uploadRoutes);
 app.use("/api", recipesRouter);
 app.use("/api", apiRecipesRouter);
+app.use("/api", apiIngredientsRouter);
+
 
 app.use((req, res) => {
   res.status(404).json({ message: "nie dziauaaa" });

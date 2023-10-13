@@ -19,6 +19,9 @@ const ingredientsSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  thb: {
+    type: String,
+  },
 });
 
 const recipesSchema = new Schema({

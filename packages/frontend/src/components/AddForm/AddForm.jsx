@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-// import Dropdown from "react-bootstrap/Dropdown";
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "./AddForm.module.css";
 import { ReactComponent as Minus } from "../../images/Minus.svg";
 import { ReactComponent as Plus } from "../../images/IngPlus.svg";
 import { ReactComponent as Close } from "../../images/close.svg";
 import { ReactComponent as Add } from "../../images/addBtn.svg";
 import Notiflix from "notiflix";
-import { useParams, useNavigate } from "react-router-dom";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 
 function AddForm() {
   const { owner } = useParams();
@@ -24,10 +25,11 @@ function AddForm() {
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", measurement: "" },
   ]);
+  console.log(ingredients, "ingredients")
+  const [apiIngredients, setApiIngredients] = useState([]);
   const [preparation, setPreparation] = useState("");
   const [ingredientCount, setIngredientCount] = useState(1);
   const [categories, setCategories] = useState([]);
-  console.log(categories, "Categories");
   useEffect(() => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
@@ -180,32 +182,42 @@ function AddForm() {
       navigate(`/my-recipes/${owner}`);
     }
   };
-
   useEffect(() => {
     const fetchCategories = async () => {
-      const url = "https://yummly2.p.rapidapi.com/categories/list";
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-          "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        },
-      };
-
       try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        const browseCategories = Object.values(result)[0];
-        const cusines = browseCategories[8];
-        const categories = cusines.display.categoryTopics;
-        setCategories(categories);
+        const response = await fetch(
+          "http://localhost:5000/api/all-categories"
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setCategories(data.categories);
       } catch (error) {
         console.error(error);
       }
     };
-
     fetchCategories();
   }, []);
+
+  useEffect(() => {
+    const fetchIngredients = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/all-ingredients"
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setApiIngredients(data.ingredients);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchIngredients();
+  }, []);
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.form}>
@@ -249,9 +261,11 @@ function AddForm() {
                 <option value="" disabled>
                   Category
                 </option>
-                
+
                 {categories.map((item, index) => (
-                  <option value={item.display.displayName} key={index}>{item.display.displayName}</option>
+                  <option value={item} key={index}>
+                    {item}
+                  </option>
                 ))}
               </select>
               <select
@@ -295,17 +309,31 @@ function AddForm() {
           <div>
             {ingredients.map((ingredient, index) => (
               <div key={index} className={styles.ingridientsItem}>
-                <input
+                <Autocomplete
                   className={styles.ingredientText}
-                  placeholder="Ingredient name"
-                  type="text"
-                  value={ingredient.name}
-                  onChange={(e) => {
+                  options={apiIngredients}
+                  getOptionLabel={(option) => option.ttl}
+                  onInputChange={(event, newInputValue) => {
                     const updatedIngredients = [...ingredients];
-                    updatedIngredients[index].name = e.target.value;
+                    updatedIngredients[index].name = newInputValue;
                     setIngredients(updatedIngredients);
                   }}
+                  onChange={(event, newValue) => {
+                    const updatedIngredients = [...ingredients];
+                    updatedIngredients[index].name = newValue.ttl;
+                    updatedIngredients[index].thb = newValue.thb; // store the thb string
+                    setIngredients(updatedIngredients);
+                  }}
+                  renderInput={(params) => (
+                    <TextField
+                      variant="standard"
+                      {...params}
+                      placeholder="Ingredient name"
+                      className={styles.ingredientText}
+                    />
+                  )}
                 />
+
                 <div className={styles.measurement}>
                   <input
                     className={styles.measurementText}

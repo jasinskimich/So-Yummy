@@ -3,8 +3,6 @@ import styles from "./Popular.module.css";
 import Loader from "../../components/Loader/Loader";
 import { useParams, NavLink } from "react-router-dom";
 
-const axios = require("axios");
-
 function Popular() {
   const [recipes, setRecipes] = useState([]);
   console.log(recipes, "recipes");
@@ -12,24 +10,13 @@ function Popular() {
 
   useEffect(() => {
     const fetchPopular = async () => {
-      const options = {
-        method: "GET",
-        url: "https://yummly2.p.rapidapi.com/feeds/list",
-        params: {
-          limit: "2",
-          start: "0",
-          tag: "list.recipe.popular",
-        },
-        headers: {
-          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-          "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        },
-      };
-
       try {
-        const response = await axios.request(options);
-        const recipes = response.data.feed;
-        setRecipes(recipes);
+        const response = await fetch('http://localhost:5000/api/all-popular');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setRecipes(data.recipes.slice(0, 4));
       } catch (error) {
         console.error(error);
       }
@@ -57,24 +44,22 @@ function Popular() {
             <NavLink
             className={styles.pouplarItemLink}
               key={index}
-              to={`/recipes/${owner}/${encodeURIComponent(
-                recipe["tracking-id"]
-              )}`}
+              to={`/recipes/${owner}/${recipe._id}`}
             >
               <div key={index} className={styles.pouplarItem}>
                 <div className={styles.pouplarItemPic}>
                   <img
-                    src={recipe.display.images[0]}
-                    alt={recipe.display.displayName}
+                    src={recipe.preview}
+                    alt={recipe.title}
                     className={styles.pouplarItemPic}
                   />
                 </div>
                 <div className={styles.pouplarItemText}>
                   <span className={styles.pouplarItemTitle}>
-                    {recipe.display.displayName}
+                    {recipe.title}
                   </span>
                   <span className={styles.pouplarItemDescr}>
-                    {truncateString(recipe.content.description.text, 90)}
+                    {truncateString(recipe.description, 90)}
                   </span>
                 </div>
               </div>
