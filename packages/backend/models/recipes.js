@@ -24,6 +24,33 @@ const ingredientsSchema = new Schema({
   },
 });
 
+const shoppingListIngredientsSchema = new Schema(
+  {
+    id: {
+      type: String,
+    },
+    name: {
+      type: String,
+    },
+    amount: {
+      type: String,
+    },
+    measurement: {
+      type: String,
+    },
+    checked: {
+      type: Boolean,
+      default: false,
+    },
+    thb: {
+      type: String,
+    },
+  },
+  {
+    _id: false,
+  }
+);
+
 const recipesSchema = new Schema({
   id: {
     type: String,
@@ -52,8 +79,8 @@ const recipesSchema = new Schema({
   preparation: {
     type: String,
   },
-  ingredients: { 
-    type: [ingredientsSchema] 
+  ingredients: {
+    type: [ingredientsSchema],
   },
 });
 
@@ -78,8 +105,8 @@ const favoriteSchema = new Schema({
   preparation: {
     type: [String],
   },
-  ingredients: { 
-    type: [Object] 
+  ingredients: {
+    type: [Object],
   },
 });
 
@@ -89,7 +116,7 @@ const userRecipes = new Schema({
     ref: "user",
   },
   shoppingList: {
-    type: [ingredientsSchema],
+    type: [shoppingListIngredientsSchema],
   },
   favorites: {
     type: [favoriteSchema],

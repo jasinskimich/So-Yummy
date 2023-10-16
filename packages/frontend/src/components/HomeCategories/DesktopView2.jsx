@@ -8,7 +8,7 @@ const DesktopView2 = () => {
   const { owner } = useParams();
   const categories = ["Breakfast", "Miscellaneous", "Chicken", "Dessert"];
   const [recipes, setRecipes] = useState(null);
-
+  console.log(recipes)
   useEffect(() => {
     const fetchDetails = async () => {
       try {
@@ -27,22 +27,27 @@ const DesktopView2 = () => {
   }, []);
 
   if (categories && recipes) {
+    
     return (
       <>
         {categories.map((category) => {
           const filteredRecipes = recipes.filter(
             (recipe) => recipe.category === category
+            
           );
-
+          
           return (
             <div className={styles.categoryContainer} key={category}>
               <div className={styles.categoryHead}>
-                <span className={styles.categoryHeadText}>{category}</span>
+                <span className={styles.categoryHeadText}>
+                 
+                  <NavLink className={styles.categoryHeadText} to={`/categories/${owner}/${category}`}> {category}</NavLink>
+                  </span>
               </div>
               <div className={styles.categoryContent}>
               {filteredRecipes.slice(0, 4).map((recipe, index) => (
                 <div key={index}>
-                  <NavLink to={`/categories/${owner}/${category._id}`}>
+                  <NavLink to={`/recipes/${owner}/${recipe._id}`}>
                     <div className={styles.categoryItem}>
                       <img
                         src={recipe.preview}
@@ -61,7 +66,7 @@ const DesktopView2 = () => {
               ))}
               </div>
               <div className={styles.categoryButtonBox}>
-                <NavLink to={`/categories/${owner}/${category._id}`}>
+                <NavLink to={`/categories/${owner}/${category}`}>
                   <button className={styles.categoryButton}>See all</button>
                 </NavLink>
               </div>

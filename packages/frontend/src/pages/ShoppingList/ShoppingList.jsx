@@ -94,16 +94,22 @@ function ShoppingList() {
           shoppingList.map((ingredient, index) => (
             <div key={index} className={styles.detailsContainer}>
               <div className={styles.detailsFirst}>
-                <div className={styles.imageBox}>{index + 1}</div>
+                <div className={styles.imageBox}>
+                <img
+                      className={styles.ingredientImage}
+                      src={ingredient ? ingredient.thb : ""}
+                      alt="ingredientPicture"
+                    />
+                </div>
                 <div className={styles.name}>
                   <span>{ingredient.name}</span>
                 </div>
               </div>
               <div className={styles.detailsSecond}>
                 <div className={styles.amount}>
-                  {ingredient && ingredient.amount && ingredient.measurement ? (
+                  {ingredient &&  ingredient.measurement ? (
                     <span>
-                      {ingredient.amount} {ingredient.measurement}
+                      {ingredient.measurement}
                     </span>
                   ) : (
                     <span>N/A</span>

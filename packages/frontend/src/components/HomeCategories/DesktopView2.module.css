@@ -16,6 +16,10 @@
     font-size: 24px;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
+    color: #22252A;
+  }
+  .categoryHeadText:hover {
+    color: #8aa936;
   }
   /* Content */
   .categoryContent {

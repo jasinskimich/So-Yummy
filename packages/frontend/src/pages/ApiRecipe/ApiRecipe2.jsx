@@ -15,13 +15,16 @@ function ApiRecipe() {
   const { owner } = useParams();
   const { recipeId } = useParams();
   const [ingredients, setIngredients] = useState([]);
+//   console.log(ingredients, "ingredients");
+
   const [recipe, setRecipe] = useState([]);
+    // console.log(recipe, "recipe");
+
   const [apiIngredients, setApiIngredients] = useState([]);
 
-  console.log(ingredients, "ingredients");
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [shoppingList, setShoppingList] = useState([]);
-  // console.log(favoriteRecipes, "favoriteRecipes");
+//   console.log(shoppingList, "shoppingList");
 
   const [isRendered, setIsRendered] = useState(false);
 
@@ -106,7 +109,7 @@ function ApiRecipe() {
   }, [owner]);
 
   useEffect(() => {
-    const fetchIngredients = async () => {
+    const fetchRecipes = async () => {
       try {
         const response = await fetch(`http://localhost:5000/api/all-recipes`);
         if (!response.ok) {
@@ -114,26 +117,28 @@ function ApiRecipe() {
         }
         const data = await response.json();
         const recipes = data.recipes;
+       
 
         if (recipes) {
           const foundRecipe = recipes.find((recipe) => recipe._id === recipeId);
           const isFavorite = favoriteRecipes.some(
             (recipe) => recipe.id === foundRecipe._id
           );
+
           setRecipe({ ...foundRecipe, favorite: isFavorite });
           const recipeIngredients = foundRecipe.ingredients;
           const updatedIngredients = recipeIngredients.map((ingredient) => ({
             ...ingredient,
             checked: false,
           }));
-
+// console.log(updatedIngredients, "updatedIngredients")
           setIngredients(updatedIngredients);
         }
       } catch (error) {
         console.error(error);
       }
     };
-    fetchIngredients();
+    fetchRecipes();
   }, [recipeId, favoriteRecipes]);
 
   const toggleFavorite = async () => {
@@ -165,7 +170,11 @@ function ApiRecipe() {
     }
   };
 
-  const handleIngredientChange = async (index, ingredient) => {
+  const handleIngredientChange = async (
+    index,
+    ingredient,
+    matchingIngredient
+  ) => {
     setIngredients((prevIngredients) =>
       prevIngredients.map((ingredient, i) =>
         i === index
@@ -191,12 +200,11 @@ function ApiRecipe() {
       url: `http://localhost:5000/api/shopping-list/${owner}`,
       data: {
         id: ingredient.id ?? "N/A",
-        name: ingredient.ingredient ?? "N/A",
-        measurement: ingredient.amount.metric.unit.abbreviation ?? "N/A",
-        amount: ingredient.amount.metric.quantity ?? "N/A",
+        name: matchingIngredient.ttl ?? "N/A",
+        measurement: ingredient.measure ?? "N/A",
+        thb: matchingIngredient.thb ?? "N/A",
       },
     };
-
     try {
       await axios(requestOptions);
       console.log("Shopping List updated succesfully!");
@@ -205,114 +213,141 @@ function ApiRecipe() {
     }
   };
 
-  const ids = ingredients.map(ingredient => ingredient.id);
-  console.log(ids, "ids");
+  const ids = ingredients.map((ingredient) => ingredient.id);
+//   console.log(ids, "ids");
 
   let matchingIngredients = [];
   if (ids && apiIngredients) {
-    matchingIngredients = ids.map(id => apiIngredients.find(apiIngredient => apiIngredient._id === id));
+    matchingIngredients = ids.map((id) =>
+      apiIngredients.find((apiIngredient) => apiIngredient._id === id)
+    );
   }
 
-  console.log(matchingIngredients, "matchingIngredients");
+//   console.log(matchingIngredients, "matchingIngredients");
+function convertTime(time) {
+    const hours = Math.floor(time / 60);
+    const minutes = time % 60;
+  
+    let result = '';
+  
+    if (hours > 0) {
+      result += `${hours} hr `;
+    }
+  
+    if (minutes > 0) {
+      result += `${minutes} min`;
+    }
+  
+    return result.trim();
+  }
 
   return (
     <div className={styles.main}>
-    <div className={styles.contentContainer}>
-      <Header />
-      <div className={styles.container}>
-        <div className={styles.title}>
-          <span className={styles.titleText}>
-            {recipe && recipe.title ? (
-              <span className={styles.titleText}>{recipe.title}</span>
+      <div className={styles.contentContainer}>
+        <Header />
+        <div className={styles.container}>
+          <div className={styles.title}>
+            <span className={styles.titleText}>
+              {recipe && recipe.title ? (
+                <span className={styles.titleText}>{recipe.title}</span>
+              ) : (
+                <Loader />
+              )}
+            </span>
+          </div>
+          <div className={styles.about}>
+            {recipe && recipe.description ? (
+              <span>{recipe.description}</span>
             ) : (
-              <Loader />
+              "Description N/A"
             )}
-          </span>
-        </div>
-        <div className={styles.about}>
-          {recipe && recipe.description ? (
-            <span>{recipe.description}</span>
-          ) : (
-            "Description N/A"
-          )}
-        </div>
-        <div className={styles.buttonBox}>
-          {isRendered && (
-            <button className={styles.button} onClick={toggleFavorite}>
-              {" "}
-              {recipe && recipe.favorite ? <RemoveFav /> : <AddFav />}
-            </button>
-          )}
-        </div>
-        <div className={styles.cookingBox}>
-          <Clock />
-          <span className={styles.cookingTime}>
-            {recipe && recipe.time ? <span>{recipe.time}</span> : <Loader />}
-          </span>
+          </div>
+          <div className={styles.buttonBox}>
+            {isRendered && (
+              <button className={styles.button} onClick={toggleFavorite}>
+                {" "}
+                {recipe && recipe.favorite ? <RemoveFav /> : <AddFav />}
+              </button>
+            )}
+          </div>
+          <div className={styles.cookingBox}>
+            <Clock />
+            <span className={styles.cookingTime}>
+              {recipe && recipe.time ? <span>{convertTime(recipe.time)}</span> : <Loader />}
+
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-    <div className={styles.infoContainer}>
-      <div className={styles.infoHead}>
-        <div className={styles.front}>
-          <span>Ingredients</span>
+      <div className={styles.infoContainer}>
+        <div className={styles.infoHead}>
+          <div className={styles.front}>
+            <span>Ingredients</span>
+          </div>
+          <div className={styles.back}>
+            <span>Amount</span>
+            <span>Add to list</span>
+          </div>
         </div>
-        <div className={styles.back}>
-          <span>Amount</span>
-          <span>Add to list</span>
-        </div>
-      </div>
 
-      {ingredients && ingredients.length > 0 ? (
-        ingredients.map((ingredient, index) => {
-          const matchingIngredient = matchingIngredients.find(
-            (matchingIngredient) => matchingIngredient._id === ingredient.id
-          );
+        {ingredients && ingredients.length > 0 ? (
+          ingredients.map((ingredient, index) => {
+            const matchingIngredient = matchingIngredients.find(
+              (matchingIngredient) => matchingIngredient._id === ingredient.id
+            );
 
-          return (
-            <div key={index} className={styles.detailsContainer}>
-              <div className={styles.detailsFirst}>
-                <div className={styles.imageBox}>
-                  <img
-                    className={styles.ingredientImage}
-                    src={matchingIngredient ? matchingIngredient.thb : ""}
-                    alt="ingredientPicture"
-                  />
+            return (
+              <div key={index} className={styles.detailsContainer}>
+                <div className={styles.detailsFirst}>
+                  <div className={styles.imageBox}>
+                    <img
+                      className={styles.ingredientImage}
+                      src={matchingIngredient ? matchingIngredient.thb : ""}
+                      alt="ingredientPicture"
+                    />
+                  </div>
+                  <div className={styles.name}>
+                    <span>{matchingIngredient.ttl}</span>
+                  </div>
                 </div>
-                <div className={styles.name}>
-                  <span>{matchingIngredient.ttl}</span>
-                </div>
-              </div>
-              <div className={styles.detailsSecond}>
-                <div className={styles.amount}>
-                  {ingredient ? (
-                    <span>{ingredient.measure}</span>
-                  ) : (
-                    <span>N/A</span>
-                  )}
-                </div>
-                <div className={styles.checkBox}>
-                  <input
-                    type="checkbox"
-                    checked={shoppingList.some(
-                      (item) => item.id === ingredient.id
+                <div className={styles.detailsSecond}>
+                  <div className={styles.amount}>
+                    {ingredient ? (
+                      <span>{ingredient.measure}</span>
+                    ) : (
+                      <span>N/A</span>
                     )}
-                    onChange={() => handleIngredientChange(index, ingredient)}
-                    className={styles.check}
-                  />
-                  {shoppingList.some((item) => item.id === ingredient.id) ? (
-                    <Checked />
-                  ) : (
-                    <UnChecked />
-                  )}
+                  </div>
+                  <div className={styles.checkBox}>
+                    <input
+                      type="checkbox"
+                      checked={shoppingList.some(
+                        (item) => item.id === ingredient.id
+                      )}
+                      onChange={() =>
+                        handleIngredientChange(
+                          index,
+                          ingredient,
+                          matchingIngredient
+                        )
+                      }
+                      className={styles.check}
+                    />
+                    {shoppingList.some(
+                      (item) => item.id === ingredient.id
+                    ) ? (
+                      <Checked />
+                    ) : (
+                      <UnChecked />
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })
-      ) : (
-        <Loader />
-      )}
+            );
+          })
+        ) : (
+          <Loader />
+        )}
 
         <div className={styles.prepContainter}>
           <div className={styles.prepTextBox}>

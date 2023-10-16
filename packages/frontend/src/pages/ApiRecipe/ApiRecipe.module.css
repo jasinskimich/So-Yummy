@@ -379,6 +379,10 @@
       justify-content: center;
       align-items: center;
     }
+    .ingredientImage {
+      height: 100px;
+      width: 100px;
+    }
     .name {
       font-size: 20px;
       font-weight: 500;
