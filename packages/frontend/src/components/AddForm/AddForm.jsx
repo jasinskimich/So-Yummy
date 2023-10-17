@@ -224,6 +224,8 @@ function AddForm() {
         <div className={styles.firstContainter}>
           <div className={styles.pictureBox}>
             <button
+              type="button"
+
               className={styles.pictureBox}
               onClick={() => widgetRef.current.open()}
             >

@@ -6,6 +6,7 @@ const usersRouter = require("./routes/users");
 const recipesRouter = require("./routes/recipes");
 const apiRecipesRouter = require("./routes/apiRecipes");
 const apiIngredientsRouter = require("./routes/apiIngredients");
+const bodyParser = require('body-parser');
 
 
 const app = express();
@@ -16,7 +17,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 app.use("/uploads/", express.static("uploads"));
-
+app.use(bodyParser.json());
 require("./config/config-passport");
 
 app.use("/api", usersRouter);

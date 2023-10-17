@@ -23,7 +23,7 @@ function Categories() {
     setValue(newValue);
     setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 1000);
   };
   const style = {
     color: "#22252A",

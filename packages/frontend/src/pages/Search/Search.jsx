@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
-import { NavLink, useParams, useNavigate  } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 
 import styles from "./Search.module.css";
 import { ReactComponent as SearchButton } from "../../images/searchButton.svg";
@@ -8,12 +8,11 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Loader from "../../components/Loader/Loader";
 
-const axios = require("axios");
 
 function Search() {
   //   const { owner } = useParams();
   const [query, setQuery] = useState(undefined || "");
-  const [autoComplete, setAutoComplete] = useState([]);
+  console.log(query, "query");
   const [recipes, setRecipes] = useState([]);
   const [prevQuery, setPrevQuery] = useState(undefined || "");
   const [isInputActive, setIsInputActive] = useState(false);
@@ -22,70 +21,40 @@ function Search() {
   const [isLoading, setIsLoading] = useState(false);
   const { q } = useParams();
   const navigate = useNavigate();
+  const [suggestions, setSuggestions] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  console.log(filteredRecipes, "filteredRecipes");
 
   useEffect(() => {
-    const autoComplete = async () => {
-      const options = {
-        method: "GET",
-        url: "https://yummly2.p.rapidapi.com/feeds/auto-complete",
-        params: { q: query },
-        headers: {
-          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-          "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        },
-      };
-
-      try {
-        const response = await axios.request(options);
-
-        const title = response.data.searches;
-        if (title) {
-          setAutoComplete(title);
-        } else {
-          setAutoComplete([]);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    autoComplete();
-  }, [query]);
+    if (q !== "q") {
+      setQuery(q);
+      setPrevQuery(q);
+      const filtered = recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredRecipes(filtered);
+    }
+  }, [q, query, recipes]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const url = new URL(window.location.href);
-    const pathSegments = url.pathname.split('/');
+    const pathSegments = url.pathname.split("/");
     pathSegments[pathSegments.length - 1] = query;
-    url.pathname = pathSegments.join('/');
-    url.search = ''; // clear the search parameters
-    url.hash = ''; // clear the hash
-    const options = {
-      method: "GET",
-      url: "https://yummly2.p.rapidapi.com/feeds/search",
-      params: {
-        start: "0",
-        maxResult: "24",
-        q: query,
-      },
-      headers: {
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-      },
-    };
-  
-    try {
-      const response = await axios.request(options);
-      const fetchedRecipes = response.data.feed;
-      setRecipes(fetchedRecipes);
-      setPrevQuery(query);
-      setQuery("");
-    } catch (error) {
-      console.error(error);
-    }
+    url.pathname = pathSegments.join("/");
+    url.search = ""; // clear the search parameters
+    url.hash = ""; // clear the hash
+
+    const filtered = recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredRecipes(filtered);
+
+    setPrevQuery(query);
     setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 1500);
     navigate(url.pathname);
   };
 
@@ -93,45 +62,52 @@ function Search() {
     setQuery(value);
   };
 
+
   useEffect(() => {
     const fetchRecipes = async () => {
-      setIsLoading(true);
-      const options = {
-        method: "GET",
-        url: "https://yummly2.p.rapidapi.com/feeds/search",
-        params: {
-          start: "0",
-          maxResult: "24",
-          q: q,
-        },
-        headers: {
-          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-          "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        },
-      };
-  
       try {
-        const response = await axios.request(options);
-  
-        const fetchedRecipes = response.data.feed;
-        console.log(fetchedRecipes," recipes");
-        setRecipes(fetchedRecipes);
-        setPrevQuery(q);
-        setQuery("");
+        const response = await fetch(`http://localhost:5000/api/all-recipes`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        const recipes = data.recipes;
+        setRecipes(recipes);
       } catch (error) {
         console.error(error);
       }
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 2500);
-      
     };
-  
-    if (q !== "q") {
-      fetchRecipes();
-    }
-  }, [q, query]);
+    fetchRecipes();
+  }, []);
 
+  useEffect(() => {
+    if (!query) {
+      setSuggestions([]);
+      return;
+    }
+
+    let words = [];
+    recipes.forEach((recipe) => {
+      let titleWords = recipe.title.toLowerCase().split(" ");
+      let categoryWords = recipe.category.toLowerCase().split(" ");
+      let areaWords = recipe.area.toLowerCase().split(" ");
+
+      let allWords = [...titleWords, ...categoryWords, ...areaWords];
+      allWords.forEach((word) => {
+        if (
+          word.includes(query.toLowerCase()) &&
+          !word.startsWith("(") &&
+          !word.endsWith(")") &&
+          !word.endsWith(" )")
+        ) {
+          let cleanedWord = word.trim().replace(/[.,]$/, "");
+          words.push(cleanedWord);
+        }
+      });
+    });
+    let uniqueWords = [...new Set(words)];
+    setSuggestions(uniqueWords);
+  }, [query, recipes]);
 
   return (
     <div className={styles.main}>
@@ -158,7 +134,7 @@ function Search() {
             </div>
             {isInputActive && (
               <div className={styles.searchResultsSugestions}>
-                {autoComplete.map((suggestion) => (
+                {suggestions.slice(0, 15).map((suggestion) => (
                   <div
                     key={suggestion}
                     onMouseDown={() => setQuery(suggestion)}
@@ -185,23 +161,21 @@ function Search() {
       </div>
 
       <div className={styles.searchResults}>
-        {recipes && recipes.length > 0 ? (
-          recipes.slice((page - 1) * 8, page * 8).map((item, index) => (
+      {filteredRecipes && filteredRecipes.length > 0 ? (
+          filteredRecipes.slice((page - 1) * 8, page * 8).map((item, index) => (
             <NavLink
               key={index}
-              to={`/recipes/${owner}/${encodeURIComponent(
-                item["tracking-id"]
-              )}`}
+              to={`/recipes/${owner}/${item._id}`}
             >
               <div className={styles.categoryItem}>
                 <img
-                  src={item.display.images[0]}
-                  alt={item.display.displayName}
+                  src={item.preview}
+                  alt={item.title}
                   className={styles.categoryItemPic}
                 />
                 <div className={styles.categoryItemBox}>
                   <span className={styles.categoryItemText}>
-                    {item.display.displayName}
+                    {item.title}
                   </span>
                 </div>
               </div>
@@ -219,7 +193,7 @@ function Search() {
 
       <Stack spacing={2}>
         <Pagination
-          count={Math.ceil((recipes?.length || 0) / 8)}
+          count={Math.ceil((filteredRecipes?.length || 0) / 8)}
           page={page}
           onChange={(event, value) => setPage(value)}
         />

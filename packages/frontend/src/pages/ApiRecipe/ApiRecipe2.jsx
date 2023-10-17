@@ -12,26 +12,20 @@ import { useParams } from "react-router-dom";
 const axios = require("axios");
 
 function ApiRecipe() {
+
   const { owner } = useParams();
   const { recipeId } = useParams();
   const [ingredients, setIngredients] = useState([]);
-//   console.log(ingredients, "ingredients");
-
   const [recipe, setRecipe] = useState([]);
-    // console.log(recipe, "recipe");
-
   const [apiIngredients, setApiIngredients] = useState([]);
-
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [shoppingList, setShoppingList] = useState([]);
-//   console.log(shoppingList, "shoppingList");
-
   const [isRendered, setIsRendered] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setIsRendered(true);
-    }, 8000);
+    }, 2000);
   }, []);
 
   useEffect(() => {

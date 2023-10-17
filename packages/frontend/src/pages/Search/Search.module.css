@@ -139,7 +139,8 @@
   display: flex;
   position: absolute;
   width: 80%;
-  height: 30px;
+  min-height: 30px;
+  height: fit-content;
   z-index: 2;
   background-color: rgba(255, 255, 255, 0.897);
   color: #22252a;

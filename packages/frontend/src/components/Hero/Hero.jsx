@@ -7,49 +7,60 @@ import { ReactComponent as Arrow } from "../../images/arrowHero.svg";
 import { ReactComponent as SmallArrow } from "../../images/smallArrowBtn.svg";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
-// import { debounce } from 'lodash';
-
-const axios = require("axios");
 
 function Hero() {
   const [query, setQuery] = useState(undefined || "");
   console.log(query, "query");
+  const [recipes, setRecipes] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
   const { owner } = useParams();
-  const [autoComplete, setAutoComplete] = useState([]);
-  console.log(autoComplete, "autocomplete");
   const [isInputActive, setIsInputActive] = useState(false);
-  // const navigation = useNavigation();
 
   useEffect(() => {
-    if (query === '') {
-      return;
-    }
-    const autoCompletes = async () => {
-      const options = {
-        method: "GET",
-        url: "https://yummly2.p.rapidapi.com/feeds/auto-complete",
-        params: { q: query },
-        headers: {
-          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-          "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        },
-      };
-
+    const fetchRecipes = async () => {
       try {
-        const response = await axios.request(options);
-
-        const title = response.data.searches;
-        if (title) {
-          setAutoComplete(title);
-        } else {
-          setAutoComplete([]);
+        const response = await fetch(`http://localhost:5000/api/all-recipes`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
+        const data = await response.json();
+        const recipes = data.recipes;
+        setRecipes(recipes);
       } catch (error) {
         console.error(error);
       }
     };
-    autoCompletes();
-  }, [query, ]);
+    fetchRecipes();
+  }, []);
+
+  useEffect(() => {
+    if (!query) {
+      setSuggestions([]);
+      return;
+    }
+
+    let words = [];
+    recipes.forEach((recipe) => {
+      let titleWords = recipe.title.toLowerCase().split(" ");
+      let categoryWords = recipe.category.toLowerCase().split(" ");
+      let areaWords = recipe.area.toLowerCase().split(" ");
+
+      let allWords = [...titleWords, ...categoryWords, ...areaWords];
+      allWords.forEach((word) => {
+        if (
+          word.includes(query.toLowerCase()) &&
+          !word.startsWith("(") &&
+          !word.endsWith(")") &&
+          !word.endsWith(" )")
+        ) {
+          let cleanedWord = word.trim().replace(/[.,]$/, "");
+          words.push(cleanedWord);
+        }
+      });
+    });
+    let uniqueWords = [...new Set(words)];
+    setSuggestions(uniqueWords);
+  }, [query, recipes]);
 
   const handleChange = (value) => {
     if (value !== '') {
@@ -97,15 +108,15 @@ function Hero() {
                 </div>
                 {isInputActive && (
                   <div className={styles.searchResultsSugestions}>
-                    {autoComplete.map((suggestion) => (
-                      <div
-                        key={suggestion}
-                        onMouseDown={() => setQuery(suggestion)}
-                        className={styles.searchResultsItem}
-                      >
-                        {suggestion}
-                      </div>
-                    ))}
+                    {suggestions.slice(0, 15).map((suggestion) => (
+                  <div
+                    key={suggestion}
+                    onMouseDown={() => setQuery(suggestion)}
+                    className={styles.searchResultsItem}
+                  >
+                    {suggestion}
+                  </div>
+                ))}
                   </div>
                 )}
               </form>
