@@ -94,3 +94,6 @@
   background-color: #22252a;
   cursor: pointer;
 }
+.loaderView {
+  height: 200px;
+}

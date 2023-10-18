@@ -8,7 +8,7 @@ const DesktopView2 = () => {
   const { owner } = useParams();
   const categories = ["Breakfast", "Miscellaneous", "Chicken", "Dessert"];
   const [recipes, setRecipes] = useState(null);
-  console.log(recipes)
+  
   useEffect(() => {
     const fetchDetails = async () => {
       try {
@@ -77,7 +77,7 @@ const DesktopView2 = () => {
     );
   } else {
     return (
-      <div>
+      <div className={styles.loaderView}>
         <Loader />
       </div>
     );

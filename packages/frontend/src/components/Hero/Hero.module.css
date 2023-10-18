@@ -106,10 +106,10 @@
 
   /*bottom  */
   .infoContainer {
-    background-image: url("../../images/heroBackground.png");
+    /* background-image: url("../../images/heroBackground.png");
     background-repeat: no-repeat;
     background-position: bottom right;
-    background-size: contain;
+    background-size: contain; */
     width: 100%;
     height: 100%;
     display: flex;
@@ -382,7 +382,13 @@
   }
 }
 @media screen and (min-width: 1080px) {
+  .Header {
+    display: flex;
+    flex-direction: column;
+
+  }
   .mainContainer {
+    margin-top: 50px;
     height: 650px;
     width: 100%;
     background-color: transparent;
@@ -390,7 +396,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0;
     background-image: url("../../images/heroBackgroundDesktop.png");
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -401,8 +406,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-right: 0;
-    width: 100%;
+    margin-left: 100px;
+    width: 38%;
     height: fit-content;
   }
   .wrapper {
@@ -436,7 +441,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
-   
+
     padding-left: 30px;
     width: 405px;
   }
@@ -449,7 +454,6 @@
   .inputFormBox {
     display: flex;
     flex-direction: column;
-  
   }
   .input {
     width: 264px;
@@ -482,10 +486,11 @@
     width: 138px;
   }
 
-  /*Left side */
+  /*Right side */
   .infoContainer {
-    width: 100%;
+    width: 50%;
     height: 100%;
+    justify-content: left;
   }
   .infoContent {
     background-image: url("../../images/HeroBowl2x.png");
@@ -493,7 +498,8 @@
     background-position: top;
     background-size: contain;
     margin-top: 0;
-    margin-left: 0;
+    margin-left: 20px;
+
     width: 550px;
     height: 540px;
     display: flex;
@@ -574,7 +580,7 @@
     padding-right: 15px;
     border-radius: 8px;
     position: relative;
-  
+
     z-index: 1000;
   }
   .searchResultsItem:hover {

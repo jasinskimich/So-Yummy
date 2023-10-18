@@ -61,7 +61,22 @@ function Favorites() {
     }
     return str.slice(0, num) + '...'
   }
-
+  function convertTime(time) {
+    const hours = Math.floor(time / 60);
+    const minutes = time % 60;
+  
+    let result = '';
+  
+    if (hours > 0) {
+      result += `${hours} hr `;
+    }
+  
+    if (minutes > 0) {
+      result += `${minutes} min`;
+    }
+  
+    return result.trim();
+  }
   return (
     <div className={styles.main}>
       <div className={styles.container}>
@@ -91,7 +106,7 @@ function Favorites() {
               </div>
               <div className={styles.bottom}>
                 <div className={styles.cookingTimeBox}>
-                {item.cookingTime}
+                {convertTime(item.cookingTime)}
                 </div>
                 <NavLink
                   to={`/recipes/${owner}/${encodeURIComponent(item.id)}`}

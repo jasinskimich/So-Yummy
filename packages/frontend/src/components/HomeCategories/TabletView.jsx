@@ -72,7 +72,7 @@ const TabletView = () => {
     );
   } else {
     return (
-      <div>
+      <div className={styles.loaderView}>
         <Loader />
       </div>
     );

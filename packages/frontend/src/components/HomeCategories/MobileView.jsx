@@ -72,7 +72,7 @@ const MobileView = () => {
     );
   } else {
     return (
-      <div>
+      <div className={styles.loaderView}>
         <Loader />
       </div>
     );
