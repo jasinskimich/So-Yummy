@@ -9,6 +9,8 @@ import Notiflix from "notiflix";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
+
+
 function AddForm() {
   const { owner } = useParams();
 
@@ -25,7 +27,7 @@ function AddForm() {
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", measurement: "" },
   ]);
-  console.log(ingredients, "ingredients")
+  console.log(ingredients, "ingredients");
   const [apiIngredients, setApiIngredients] = useState([]);
   const [preparation, setPreparation] = useState("");
   const [ingredientCount, setIngredientCount] = useState(1);
@@ -225,7 +227,6 @@ function AddForm() {
           <div className={styles.pictureBox}>
             <button
               type="button"
-
               className={styles.pictureBox}
               onClick={() => widgetRef.current.open()}
             >
@@ -316,15 +317,19 @@ function AddForm() {
                   options={apiIngredients}
                   getOptionLabel={(option) => option.ttl}
                   onInputChange={(event, newInputValue) => {
-                    const updatedIngredients = [...ingredients];
-                    updatedIngredients[index].name = newInputValue;
-                    setIngredients(updatedIngredients);
+                    if (newInputValue && newInputValue.trim()) {
+                      const updatedIngredients = [...ingredients];
+                      updatedIngredients[index].name = newInputValue;
+                      setIngredients(updatedIngredients);
+                    }
                   }}
                   onChange={(event, newValue) => {
-                    const updatedIngredients = [...ingredients];
-                    updatedIngredients[index].name = newValue.ttl;
-                    updatedIngredients[index].thb = newValue.thb; // store the thb string
-                    setIngredients(updatedIngredients);
+                    if (newValue) {
+                      const updatedIngredients = [...ingredients];
+                      updatedIngredients[index].name = newValue.ttl;
+                      updatedIngredients[index].thb = newValue.thb; // store the thb string
+                      setIngredients(updatedIngredients);
+                    }
                   }}
                   renderInput={(params) => (
                     <TextField
@@ -332,6 +337,7 @@ function AddForm() {
                       {...params}
                       placeholder="Ingredient name"
                       className={styles.ingredientText}
+                      
                     />
                   )}
                 />
@@ -351,16 +357,17 @@ function AddForm() {
                   <select
                     className={styles.minimal2}
                     value={ingredient.measurement}
+                    placeholder="g/tbs/ml"
                     onChange={(e) => {
                       const updatedIngredients = [...ingredients];
                       updatedIngredients[index].measurement = e.target.value;
                       setIngredients(updatedIngredients);
                     }}
                   >
-                    <option value="" disabled>
+                    <option value="" disabled className={styles.disabled}>
                       g/tbs/ml
                     </option>
-                    pieces
+
                     <option value="pieces">pieces</option>
                     <option value="kg">kg</option>
                     <option value="lb">pound</option>

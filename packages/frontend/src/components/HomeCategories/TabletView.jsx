@@ -4,11 +4,29 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import React, { useState, useEffect } from "react";
 
+
+const useWindowWidth = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowWidth;
+};
+
 const TabletView = () => {
   const { owner } = useParams();
   const categories = ["Breakfast", "Miscellaneous", "Chicken", "Dessert"];
   const [recipes, setRecipes] = useState(null);
 
+  const windowWidth = useWindowWidth();
+
+  
   useEffect(() => {
     const fetchDetails = async () => {
       try {
@@ -40,7 +58,7 @@ const TabletView = () => {
                 <span className={styles.categoryHeadText}>{category}</span>
               </div>
               <div className={styles.categoryContent}>
-              {filteredRecipes.slice(0, 2).map((recipe, index) => (
+              {filteredRecipes.slice(0, windowWidth > 1141 ? 3 : 2).map((recipe, index) => (
                 <div key={index}>
                   <NavLink to={`/categories/${owner}/${category._id}`}>
                     <div className={styles.categoryItem}>
