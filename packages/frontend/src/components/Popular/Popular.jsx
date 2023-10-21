@@ -5,8 +5,21 @@ import { useParams, NavLink } from "react-router-dom";
 
 function Popular() {
   const [recipes, setRecipes] = useState([]);
-  console.log(recipes, "recipes");
+  const [width, setWidth] = useState(window.innerWidth);
+
   const { owner } = useParams();
+useEffect(() => {
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
+
 
   useEffect(() => {
     const fetchPopular = async () => {
@@ -59,7 +72,7 @@ function Popular() {
                     {recipe.title}
                   </span>
                   <span className={styles.pouplarItemDescr}>
-                    {truncateString(recipe.description, 90)}
+                  {truncateString(recipe.description, width > 801 ? 90 : 50)}
                   </span>
                 </div>
               </div>

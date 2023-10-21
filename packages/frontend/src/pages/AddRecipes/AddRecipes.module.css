@@ -16,7 +16,7 @@
   .contentContainer {
     display: flex;
     flex-direction: column;
-    gap: 15%;
+    gap: 5%;
     align-items: center;
   }
   .side {
@@ -27,11 +27,8 @@
   }
   .pageTitleBox {
     margin-top: 80px;
-    
-    
   }
   .pageTitle {
-    
     font-family: "Poppins", sans-serif;
     font-size: 40px;
     font-weight: 600;
@@ -80,7 +77,7 @@
   .contentContainer {
     display: flex;
     flex-direction: column;
-    gap: 15%;
+    gap: 5%;
     align-items: center;
   }
   .side {
@@ -135,21 +132,21 @@
   .main {
     width: 80%;
     display: flex;
-    gap: 50px;
+    gap: 0px;
     justify-content: center;
     flex-direction: column;
   }
   .contentContainer {
     display: flex;
     flex-direction: row;
-    gap: 15%;
+    gap: 5%;
     align-items: flex-start;
   }
   .side {
     width: fit-content;
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 40px;
   }
   .pageTitleBox {
     margin-top: 80px;
@@ -164,7 +161,7 @@
   .socialContainer {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
   }
   .socialIconsContainer {
     width: 140px;

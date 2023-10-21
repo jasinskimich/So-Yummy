@@ -400,10 +400,7 @@ function AddForm() {
             Recipe Preparation
           </span>
           <textarea
-            placeholder="Please insert seteps of the recipe. 
-        1. 
-        2.
-        3."
+            placeholder="Please insert seteps of the recipe."
             className={styles.textArea}
             value={preparation}
             onChange={(e) => setPreparation(e.target.value)}
