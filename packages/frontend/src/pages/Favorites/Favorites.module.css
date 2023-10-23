@@ -17,10 +17,7 @@
     padding-bottom: 100px;
     padding-top: 50px;
     width: 100%;
-    background-image: url("../../images/basilBottomShop.png");
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-position: 0% -100%;
+
   }
   .itemContainer {
     display: flex;
@@ -116,10 +113,7 @@
     padding-bottom: 100px;
     padding-top: 100px;
     width: 100%;
-    background-image: url("../../images/basilBottomShop.png");
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-position: 0% 190%;
+
   }
   .itemContainer {
     display: flex;

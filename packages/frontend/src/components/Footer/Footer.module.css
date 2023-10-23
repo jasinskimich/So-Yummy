@@ -147,10 +147,31 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     align-items: center;
   }
-
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: center;
+  }
+  .newsletterInput {
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: #595b5f 1px solid;
+    color: #fafafa;
+    font-family: "Poppins", sans-serif;
+    padding-left: 40px;
+    background-image: url("../../images/envelope.png");
+    background-repeat: no-repeat;
+    background-position: 10px;
+    background-size: auto;
+  }
+  .newsletterInput:focus {
+    outline: #8baa36 1px solid;
+  }
   .inputWidthFirst {
     width: 250px;
   }
@@ -165,7 +186,7 @@
   .submitButton {
     width: 200px;
     height: 38px;
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: #8baa36;
     border: none;
     font-size: 18px;
@@ -336,7 +357,30 @@
     justify-content: center;
     align-items: center;
   }
-
+  .newsletterInput {
+    width: 250px;
+    height: 57px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: #595b5f 1px solid;
+    color: #fafafa;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    padding-left: 40px;
+    background-image: url("../../images/envelope.png");
+    background-repeat: no-repeat;
+    background-position: 10px;
+    background-size: auto;
+  }
+  .newsletterInput:focus {
+    outline: #8baa36 1px solid;
+  }
+  .form {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+    align-items: center;
+  }
   .newsletterTitle {
     font-size: 18px;
     font-weight: 700;
@@ -371,7 +415,7 @@
   .submitButton {
     width: 200px;
     height: 59px;
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: #8baa36;
     border: none;
     font-size: 18px;
@@ -508,7 +552,7 @@
     background-color: transparent;
     color: #fafafa;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
   .navItem1 {
     width: fit-content;
@@ -516,7 +560,7 @@
     background-color: transparent;
     color: #8baa36;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
   .socialContainer {
     padding-left: 25px;
@@ -568,10 +612,35 @@
     height: 59px;
     border-radius: 10px;
   }
+
+  .newsletterInput {
+    width: 300px;
+    height: 57px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: #595b5f 1px solid;
+    color: #fafafa;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    padding-left: 40px;
+    background-image: url("../../images/envelope.png");
+    background-repeat: no-repeat;
+    background-position: 10px;
+    background-size: auto;
+  }
+  .newsletterInput:focus {
+    outline: #8baa36 1px solid;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: center;
+  }
   .submitButton {
     width: 100%;
-    height: 59px;
-    border-radius: 10px;
+    height: 60px;
+    border-radius: 8px;
     background-color: #8baa36;
     border: none;
     font-size: 18px;

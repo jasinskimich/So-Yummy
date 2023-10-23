@@ -42,7 +42,7 @@ const MobileView = () => {
               <div className={styles.categoryContent}>
               {filteredRecipes.slice(0, 1).map((recipe, index) => (
                 <div key={index}>
-                  <NavLink to={`/categories/${owner}/${category._id}`}>
+                  <NavLink to={`/recipes/${owner}/${recipe._id}`}>
                     <div className={styles.categoryItem}>
                       <img
                         src={recipe.preview}

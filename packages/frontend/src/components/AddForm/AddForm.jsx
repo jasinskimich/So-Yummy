@@ -27,7 +27,6 @@ function AddForm() {
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", measurement: "" },
   ]);
-  console.log(ingredients, "ingredients");
   const [apiIngredients, setApiIngredients] = useState([]);
   const [preparation, setPreparation] = useState("");
   const [ingredientCount, setIngredientCount] = useState(1);

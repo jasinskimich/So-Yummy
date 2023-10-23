@@ -12,6 +12,7 @@
     gap: 50px;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
   }
   .contentContainer {
     display: flex;
@@ -73,7 +74,9 @@
     gap: 50px;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
   }
+
   .contentContainer {
     display: flex;
     flex-direction: column;
@@ -91,7 +94,7 @@
     margin-bottom: 40px;
   }
   .pageTitle {
-    padding-left: 50px;
+    padding-left: 0px;
     font-family: "Poppins", sans-serif;
     font-size: 44px;
     font-weight: 600;
@@ -131,10 +134,13 @@
   }
   .main {
     width: 80%;
-    display: flex;
+    display: grid;
     gap: 0px;
     justify-content: center;
     flex-direction: column;
+  }
+  .main > div:not(:first-child) {
+    align-items: center;
   }
   .contentContainer {
     display: flex;

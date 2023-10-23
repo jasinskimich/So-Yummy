@@ -27,12 +27,12 @@ code {
     background-position: left top;
   }
 }
-@media screen and (min-width: 1080px) {
+/* @media screen and (min-width: 1080px) {
   html {
-    /* background-image: url("../../frontend/src/images/herolefttop.png"),
+    background-image: url("../../frontend/src/images/herolefttop.png"),
       url("../../frontend/src/images/recipeDesktopBackground.png");
     background-size: auto, auto;
     background-repeat: no-repeat, no-repeat;
-    background-position: left top, 0% 0%; */
+    background-position: left top, 0% 0%;
   }
-}
+} */

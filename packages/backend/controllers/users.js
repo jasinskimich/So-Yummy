@@ -473,6 +473,34 @@ const editName = async (req, res, next) => {
   }
 };
 
+
+const updateNewsletter = async (req, res, next) => {
+  try {
+    const email = req.body.email;
+    const filter = { email };
+
+    const document = await User.findOne(filter);
+
+    if (document) {
+      if (document.newsletter === true) {
+        return res.status(400).json({ message: "User is already signed up for the newsletter" });
+      } else {
+        const update = { newsletter: true };
+        const options = {
+          new: true, // return the updated document
+          upsert: false // do not create a new document if no match is found
+        };
+        await User.findOneAndUpdate(filter, update, options);
+        res.status(200).json({ message: "Newsletter subscription updated successfully" });
+      }
+    } else {
+      return res.status(404).json({ message: "User not found" });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   auth,
   sendVerificationEmail,
@@ -491,4 +519,5 @@ module.exports = {
   updateAvatar,
   editName,
   getUserAvatar,
+  updateNewsletter
 };

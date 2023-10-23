@@ -72,7 +72,7 @@ useEffect(() => {
                     {recipe.title}
                   </span>
                   <span className={styles.pouplarItemDescr}>
-                  {truncateString(recipe.description, width > 801 ? 90 : 50)}
+                  {truncateString(recipe.description, width > 801 ? 90 : (width < 650 ? 90 : 50))}
                   </span>
                 </div>
               </div>

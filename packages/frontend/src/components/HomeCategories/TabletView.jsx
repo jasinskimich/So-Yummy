@@ -60,7 +60,7 @@ const TabletView = () => {
               <div className={styles.categoryContent}>
               {filteredRecipes.slice(0, windowWidth > 1141 ? 3 : 2).map((recipe, index) => (
                 <div key={index}>
-                  <NavLink to={`/categories/${owner}/${category._id}`}>
+                  <NavLink to={`/recipes/${owner}/${recipe._id}`}>
                     <div className={styles.categoryItem}>
                       <img
                         src={recipe.preview}

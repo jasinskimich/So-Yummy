@@ -10,6 +10,8 @@ router.post("/users/login", userControllers.logIn)
 router.post("/users/logout", userControllers.auth, userControllers.logOut)
 router.post("/users/verify", userControllers.verify)
 
+router.put("/users/newsletter", userControllers.updateNewsletter);
+
 router.patch("/users/name/:id", userControllers.editName);
 
 router.get("/users/current", userControllers.auth, userControllers.currentUser)

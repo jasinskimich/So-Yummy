@@ -9,10 +9,11 @@ import { ReactComponent as Checked } from "../../images/checked.svg";
 import { ReactComponent as UnChecked } from "../../images/unchecked.svg";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Notiflix from "notiflix";
+
 const axios = require("axios");
 
 function ApiRecipe() {
-
   const { owner } = useParams();
   const { recipeId } = useParams();
   const [ingredients, setIngredients] = useState([]);
@@ -64,7 +65,6 @@ function ApiRecipe() {
         }
 
         response = await response.json();
-        // console.log(response.recipes, "response");
         setFavoriteRecipes(response.recipes);
       } catch (error) {
         console.error(error);
@@ -111,7 +111,6 @@ function ApiRecipe() {
         }
         const data = await response.json();
         const recipes = data.recipes;
-       
 
         if (recipes) {
           const foundRecipe = recipes.find((recipe) => recipe._id === recipeId);
@@ -125,7 +124,6 @@ function ApiRecipe() {
             ...ingredient,
             checked: false,
           }));
-// console.log(updatedIngredients, "updatedIngredients")
           setIngredients(updatedIngredients);
         }
       } catch (error) {
@@ -140,7 +138,9 @@ function ApiRecipe() {
       ...prevRecipe,
       favorite: !prevRecipe.favorite,
     }));
-
+    Notiflix.Notify.init({
+      position: "left-bottom",
+    });
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -158,7 +158,10 @@ function ApiRecipe() {
 
     try {
       await axios(requestOptions);
-      console.log("Favorite updated successfully");
+      
+      Notiflix.Notify.success("Favorite updated successfully");
+
+      
     } catch (error) {
       console.error("Error updating favorite", error);
     }
@@ -176,7 +179,9 @@ function ApiRecipe() {
           : ingredient
       )
     );
-
+    Notiflix.Notify.init({
+      position: "left-bottom",
+    });
     setShoppingList((prevShoppingList) => {
       // If the ingredient is already in the shopping list, remove it
       if (prevShoppingList.some((item) => item.id === ingredient.id)) {
@@ -201,14 +206,13 @@ function ApiRecipe() {
     };
     try {
       await axios(requestOptions);
-      console.log("Shopping List updated succesfully!");
+      Notiflix.Notify.success("Shopping List updated succesfully!");
     } catch (error) {
       console.error("Error updating Shopping List", error);
     }
   };
 
   const ids = ingredients.map((ingredient) => ingredient.id);
-//   console.log(ids, "ids");
 
   let matchingIngredients = [];
   if (ids && apiIngredients) {
@@ -217,22 +221,30 @@ function ApiRecipe() {
     );
   }
 
-//   console.log(matchingIngredients, "matchingIngredients");
-function convertTime(time) {
+  function convertTime(time) {
     const hours = Math.floor(time / 60);
     const minutes = time % 60;
-  
-    let result = '';
-  
+
+    let result = "";
+
     if (hours > 0) {
       result += `${hours} hr `;
     }
-  
+
     if (minutes > 0) {
       result += `${minutes} min`;
     }
-  
+
     return result.trim();
+  }
+
+  function splitInstructions(instructions) {
+    let splitInstructions = instructions.split(".");
+    let cleanInstructions = splitInstructions.map((sentence) =>
+      sentence.trim()
+    );
+    let displayInstructions = cleanInstructions.join("\n");
+    return displayInstructions;
   }
 
   return (
@@ -241,13 +253,11 @@ function convertTime(time) {
         <Header />
         <div className={styles.container}>
           <div className={styles.title}>
-            <span className={styles.titleText}>
-              {recipe && recipe.title ? (
-                <span className={styles.titleText}>{recipe.title}</span>
-              ) : (
-                <Loader />
-              )}
-            </span>
+            {recipe && recipe.title ? (
+              <span className={styles.titleText}>{recipe.title}</span>
+            ) : (
+              <Loader />
+            )}
           </div>
           <div className={styles.about}>
             {recipe && recipe.description ? (
@@ -267,8 +277,11 @@ function convertTime(time) {
           <div className={styles.cookingBox}>
             <Clock />
             <span className={styles.cookingTime}>
-              {recipe && recipe.time ? <span>{convertTime(recipe.time)}</span> : <Loader />}
-
+              {recipe && recipe.time ? (
+                <span>{convertTime(recipe.time)}</span>
+              ) : (
+                <Loader />
+              )}
             </span>
           </div>
         </div>
@@ -327,9 +340,7 @@ function convertTime(time) {
                       }
                       className={styles.check}
                     />
-                    {shoppingList.some(
-                      (item) => item.id === ingredient.id
-                    ) ? (
+                    {shoppingList.some((item) => item.id === ingredient.id) ? (
                       <Checked />
                     ) : (
                       <UnChecked />
@@ -346,7 +357,11 @@ function convertTime(time) {
         <div className={styles.prepContainter}>
           <div className={styles.prepTextBox}>
             <span className={styles.prepTextTitle}>Recipe Preparation</span>
-            {recipe && recipe.instructions ? <>{recipe.instructions}</> : "N/A"}
+            {recipe && recipe.instructions ? (
+              <pre className={styles.instruction}>{splitInstructions(recipe.instructions)}</pre>
+            ) : (
+              "N/A"
+            )}
           </div>
           <div className={styles.prepImageBox}>
             {recipe && recipe.preview ? (

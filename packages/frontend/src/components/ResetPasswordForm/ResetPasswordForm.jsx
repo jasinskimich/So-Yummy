@@ -40,7 +40,6 @@ const ResetPasswordForm = () => {
                 }
             })
             result = await result.json();
-            console.log(result, "result")
             console.warn(result);
             if (result && email) {
                 setEmail("");

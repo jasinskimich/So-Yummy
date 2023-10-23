@@ -76,7 +76,7 @@ function Hero() {
   };
 
   return (
-    <div lassName={styles.Header}>
+    <div className={styles.Header}>
       <Header />
       <div className={styles.mainContainer}>
         <div className={styles.headContainer}>
@@ -142,7 +142,7 @@ function Hero() {
                 </div>
                 <div className={styles.infoTextButtonContainer}>
                   <NavLink
-                    to={`/categories/${owner}`}
+                    to={`/categories/${owner}/Beef`}
                     className={styles.navLink}
                   >
                     <button className={styles.infoTextButton}>

@@ -1,462 +1,536 @@
 @media screen and (min-width: 0px) {
-    .main {
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
-    }
-    .contentContainer {
-      width: 100%;
-      height: 492px;
-      background-color: transparent;
-      background-image: url("../../images/recipeMobileBackground.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .container {
-      width: 70%;
-      height: 350px;
-      display: flex;
-      flex-direction: column;
-  
-      align-items: center;
-      justify-content: top;
-    }
-    .title {
-      font-size: 44px;
-      font-weight: 600;
-      color: #8baa36;
-      background-color: transparent;
-    }
-  
-    .about {
-      font-size: 16px;
-      color: #23262a;
-      font-weight: 300;
-  
-      background-color: transparent;
-      text-shadow: 0px 1px 1px rgba(35, 38, 42, 1);
-      text-align: center;
-    }
-    .buttonBox {
-      width: 270px;
-      height: 59px;
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
-    .button {
-      width: 270px;
-      height: 59px;
-      border: none;
-      background-color: transparent;
-    }
-    .button:hover {
-      cursor: pointer;
-    }
-    .button:hover svg path:nth-child(1) {
-      fill: #8baa36;
-    }
-    .button:hover svg path:nth-child(2) {
-      fill: #fafafa;
-    }
-    .cookingBox {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      align-items: center;
-    }
-    .infoContainer {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      width: 80%;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto;
-    }
-    .infoHead {
-      width: 100%;
-      height: 50px;
-      color: #fafafa;
-      background-color: #8baa36;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .front {
-      font-size: 14px;
-    }
-    .back {
-      font-size: 14px;
-      display: flex;
-      gap: 10px;
-    }
-  
-    .detailsContainer {
-      width: 100%;
-      height: 180px;
-      background-color: #ebf3d4;
-      padding-left: 5px;
-      padding-right: 5px;
-      border-radius: 8px;
-      display: flex;
-      gap: 20px;
-      justify-content: space-between;
-      border-bottom: 1px solid #8baa36;
-      -webkit-box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
-      -moz-box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
-      box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
-    }
-    .detailsFirst {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      padding-left: 5px;
-    }
-    .imageBox {
-      height: 60px;
-      width: 60px;
-      background-color: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .ingredientImage {
-      height: 60px;
-      width: 60px;
-    }
-    .name {
-      font-size: 16px;
-      font-weight: 500;
-      color: #313439;
-    }
-    .detailsSecond {
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-      justify-content: center;
-      align-items: center;
-      padding-right: 25px;
-    }
-    .amount {
-      line-height: 1;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 30px;
-      font-size: 14px;
-      background-color: #8baa36;
-      color: #fafafa;
-      border-radius: 8px;
-    }
-    .checkBox {
-      width: 35px;
-      height: 35px;
-      position: relative;
-    }
-    .check:hover {
-      cursor: pointer;
-    }
-    .check {
-      width: 35px;
-      height: 35px;
-      margin: 0;
-      position: absolute;
-      opacity: 0;
-    }
-  
-    .prepContainter {
-      width: 105%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      /* padding-left: 25px;
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .contentContainer {
+    width: 100%;
+    height: 492px;
+    background-color: transparent;
+    background-image: url("../../images/recipeMobileBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .container {
+    width: 70%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+  .title {
+    font-size: 38px;
+    font-weight: 600;
+    color: #8baa36;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .about {
+    font-size: 16px;
+    color: #23262a;
+    font-weight: 300;
+
+    background-color: transparent;
+    text-shadow: 0px 1px 1px rgba(35, 38, 42, 1);
+    text-align: center;
+  }
+  .buttonBox {
+    width: 270px;
+    height: 59px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .button {
+    width: 270px;
+    height: 59px;
+    border: none;
+    background-color: transparent;
+  }
+  .button:hover {
+    cursor: pointer;
+  }
+  .button:hover svg path:nth-child(1) {
+    fill: #8baa36;
+  }
+  .button:hover svg path:nth-child(2) {
+    fill: #fafafa;
+  }
+  .cookingBox {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    background-color: #e0d7d763;
+    padding: 3px;
+    border-radius: 8px;
+  }
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .infoHead {
+    width: 100%;
+    height: 50px;
+    color: #fafafa;
+    background-color: #8baa36;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .front {
+    font-size: 14px;
+  }
+  .back {
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .detailsContainer {
+    width: 100%;
+    height: 180px;
+    background-color: #ebf3d4;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 8px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    border-bottom: 1px solid #8baa36;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
+    box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
+  }
+  .detailsFirst {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-left: 5px;
+  }
+  .imageBox {
+    height: 60px;
+    width: 60px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ingredientImage {
+    height: 60px;
+    width: 60px;
+  }
+  .name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #313439;
+  }
+  .detailsSecond {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 5px;
+  }
+  .amount {
+    line-height: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 7px;
+    font-size: 16px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border-radius: 8px;
+  }
+  .checkBox {
+    width: 35px;
+    height: 35px;
+    position: relative;
+  }
+  .check:hover {
+    cursor: pointer;
+  }
+  .check {
+    width: 35px;
+    height: 35px;
+    margin: 0;
+    position: absolute;
+    opacity: 0;
+  }
+
+  .prepContainter {
+    width: 105%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    /* padding-left: 25px;
       padding-right: 25px; */
-    }
-    .prepTextBox {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      line-height: 2;
-      gap: 30px;
-    }
-    .prepTextTitle {
-      font-size: 24px;
-      font-weight: 500;
-    }
-    .prepText {
-      font-size: 18px;
-    }
-    .prepImageBox {
-      width: 300px;
-      height: 300px;
-      border-radius: 8px;
-    }
-    .prepImage {
-      width: 300px;
-      height: 300px;
-    }
   }
-  @media screen and (min-width: 450px) {
-      .detailsFirst {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          padding-left: 25px;
-        }
-        .infoHead {
-          width: 100%;
-          height: 50px;
-          color: #fafafa;
-          background-color: #8baa36;
-          border-radius: 8px;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          padding-left: 25px;
-          padding-right: 25px;
-        }
+  .prepTextBox {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    line-height: 2;
+    gap: 30px;
+    padding: 15px;
   }
-  
-  @media screen and (min-width: 768px) {
-    .contentContainer {
-      width: 100%;
-      height: 492px;
-      background-color: transparent;
-      background-image: url("../../images/recipeTabletBackground.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 50px;
-    }
+  .prepTextTitle {
+    font-size: 24px;
+    font-weight: 500;
   }
-  @media screen and (min-width: 1080px) {
-    .main {
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
-    }
-    .contentContainer {
-      width: 100%;
-      height: 492px;
-      background-color: transparent;
-      background-image: url("../../images/recipeDesktopBackground.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 50px;
-    }
-    .container {
-      width: 70%;
-      height: 350px;
-      display: flex;
-      flex-direction: column;
-  
-      align-items: center;
-      justify-content: center;
-    }
-    .title {
-      font-size: 44px;
-      font-weight: 600;
-      color: #8baa36;
-      background-color: transparent;
-    }
-  
-    .about {
-      font-size: 16px;
-      color: #23262a;
-      font-weight: 300;
-  
-      background-color: transparent;
-      text-shadow: 0px 1px 1px rgba(35, 38, 42, 1);
-      text-align: center;
-    }
-    .buttonBox {
-      width: 270px;
-      height: 59px;
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
-    .button {
-      width: 270px;
-      height: 59px;
-      border: none;
-      background-color: transparent;
-    }
-    .button:hover {
-      cursor: pointer;
-    }
-    .button:hover svg path:nth-child(1) {
-      fill: #8baa36;
-    }
-    .button:hover svg path:nth-child(2) {
-      fill: #fafafa;
-    }
-    .cookingBox {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      align-items: center;
-    }
-    .infoContainer {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      width: 80%;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto;
-    }
-    .infoHead {
-      width: 100%;
-      height: 50px;
-      color: #fafafa;
-      background-color: #8baa36;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      padding-left: 25px;
-      padding-right: 25px;
-    }
-    .front {
-      font-size: 18px;
-    }
-    .back {
-      font-size: 18px;
-      display: flex;
-      gap: 120px;
-    }
-  
-    .detailsContainer {
-      width: 100%;
-      height: 180px;
-      background-color: #ebf3d4;
-      padding-left: 25px;
-      padding-right: 25px;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #8baa36;
-      -webkit-box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
-      -moz-box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
-      box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
-    }
-    .detailsFirst {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 45px;
-      padding-left: 25px;
-    }
-    .imageBox {
-      height: 140px;
-      width: 140px;
-      background-color: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .ingredientImage {
-      height: 100px;
-      width: 100px;
-    }
-    .name {
-      font-size: 20px;
-      font-weight: 500;
-      color: #313439;
-    }
-    .detailsSecond {
-      display: flex;
-      flex-direction: row;
-      gap: 145px;
-      justify-content: center;
-      align-items: center;
-      padding-right: 25px;
-    }
-    .amount {
-      line-height: 1;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 70px;
-      height: 35px;
-      font-size: 16px;
-      background-color: #8baa36;
-      color: #fafafa;
-      border-radius: 8px;
-    }
-    .checkBox {
-      width: 35px;
-      height: 35px;
-      position: relative;
-    }
-    .check:hover {
-      cursor: pointer;
-    }
-    .check {
-      width: 35px;
-      height: 35px;
-      margin: 0;
-      position: absolute;
-      opacity: 0;
-    }
-  
-    .prepContainter {
-      width: 105%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 30px;
-      align-items: flex-start;
-      /* padding-left: 25px;
+  .instruction {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    text-wrap: wrap;
+  }
+  .prepText {
+    font-size: 18px;
+  }
+  .prepImageBox {
+    width: 300px;
+    height: 300px;
+    border-radius: 8px;
+  }
+  .prepImage {
+    width: 300px;
+    height: 300px;
+  }
+}
+@media screen and (min-width: 450px) {
+  .detailsFirst {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-left: 25px;
+  }
+  .infoHead {
+    width: 100%;
+    height: 50px;
+    color: #fafafa;
+    background-color: #8baa36;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* padding-left: 25px;
+    padding-right: 25px; */
+  }
+  .title {
+    font-size: 44px;
+    font-weight: 600;
+    color: #8baa36;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+  }
+  .amount {
+    line-height: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    font-size: 12px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border-radius: 8px;
+  }
+  .detailsSecond {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .contentContainer {
+    width: 100%;
+    height: 492px;
+    background-color: transparent;
+    background-image: url("../../images/recipeTabletBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  .imageBox {
+    height: 140px;
+    width: 140px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ingredientImage {
+    height: 100px;
+    width: 100px;
+  }
+  .amount {
+    line-height: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border-radius: 8px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .contentContainer {
+    width: 100%;
+    height: 492px;
+    background-color: transparent;
+    background-image: url("../../images/recipeDesktopBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  .container {
+    width: 70%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+  }
+  .title {
+    font-size: 44px;
+    font-weight: 600;
+    color: #8baa36;
+    background-color: transparent;
+  }
+
+  .about {
+    font-size: 16px;
+    color: #23262a;
+    font-weight: 300;
+
+    background-color: transparent;
+    text-shadow: 0px 1px 1px rgba(35, 38, 42, 1);
+    text-align: center;
+  }
+  .buttonBox {
+    width: 270px;
+    height: 59px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .button {
+    width: 270px;
+    height: 59px;
+    border: none;
+    background-color: transparent;
+  }
+  .button:hover {
+    cursor: pointer;
+  }
+  .button:hover svg path:nth-child(1) {
+    fill: #8baa36;
+  }
+  .button:hover svg path:nth-child(2) {
+    fill: #fafafa;
+  }
+  .cookingBox {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .infoHead {
+    width: 100%;
+    height: 50px;
+    color: #fafafa;
+    background-color: #8baa36;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .front {
+    font-size: 18px;
+  }
+  .back {
+    font-size: 18px;
+    display: flex;
+    gap: 120px;
+  }
+
+  .detailsContainer {
+    width: 100%;
+    height: 180px;
+    background-color: #ebf3d4;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #8baa36;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
+    box-shadow: 0px 0px 6px 0px rgba(139, 170, 54, 1);
+  }
+  .detailsFirst {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    padding-left: 25px;
+  }
+  .imageBox {
+    height: 140px;
+    width: 140px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ingredientImage {
+    height: 100px;
+    width: 100px;
+  }
+  .name {
+    font-size: 20px;
+    font-weight: 500;
+    color: #313439;
+  }
+  .detailsSecond {
+    display: flex;
+    flex-direction: row;
+    gap: 145px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 25px;
+  }
+  .amount {
+    line-height: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border-radius: 8px;
+  }
+  .checkBox {
+    width: 35px;
+    height: 35px;
+    position: relative;
+  }
+  .check:hover {
+    cursor: pointer;
+  }
+  .check {
+    width: 35px;
+    height: 35px;
+    margin: 0;
+    position: absolute;
+    opacity: 0;
+  }
+
+  .prepContainter {
+    width: 105%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-start;
+    /* padding-left: 25px;
           padding-right: 25px; */
-    }
-    .prepTextBox {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      line-height: 2;
-      gap: 30px;
-    }
-    .prepTextTitle {
-      font-size: 24px;
-      font-weight: 500;
-    }
-    .prepText {
-      font-size: 18px;
-    }
-    .prepImageBox {
-      width: 350px;
-      height: 300px;
-      border-radius: 8px;
-    }
-    .prepImage {
-      width: 350px;
-      height: 300px;
-    }
   }
-  
+  .prepTextBox {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 2;
+    gap: 30px;
+  }
+  .prepTextTitle {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .prepText {
+    font-size: 18px;
+  }
+  .prepImageBox {
+    width: 350px;
+    height: 300px;
+    border-radius: 8px;
+  }
+  .prepImage {
+    width: 350px;
+    height: 300px;
+  }
+}

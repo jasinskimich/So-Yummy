@@ -10,31 +10,29 @@ import Loader from "../../components/Loader/Loader";
 
 
 function Search() {
-  //   const { owner } = useParams();
+  const navigate = useNavigate();
+  const { owner } = useParams();
+  const { q } = useParams();
   const [query, setQuery] = useState(undefined || "");
-  console.log(query, "query");
   const [recipes, setRecipes] = useState([]);
   const [prevQuery, setPrevQuery] = useState(undefined || "");
   const [isInputActive, setIsInputActive] = useState(false);
   const [page, setPage] = useState(1);
-  const { owner } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-  const { q } = useParams();
-  const navigate = useNavigate();
   const [suggestions, setSuggestions] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
-  console.log(filteredRecipes, "filteredRecipes");
 
   useEffect(() => {
     if (q !== "q") {
-      setQuery(q);
+      
       setPrevQuery(q);
       const filtered = recipes.filter((recipe) =>
-      recipe.title.toLowerCase().includes(query.toLowerCase())
+      recipe.title.toLowerCase().includes(prevQuery.toLowerCase())
     );
     setFilteredRecipes(filtered);
     }
-  }, [q, query, recipes]);
+   
+  }, [q, query, recipes, prevQuery]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,19 +41,21 @@ function Search() {
     const pathSegments = url.pathname.split("/");
     pathSegments[pathSegments.length - 1] = query;
     url.pathname = pathSegments.join("/");
-    url.search = ""; // clear the search parameters
-    url.hash = ""; // clear the hash
+    url.search = ""; 
+    url.hash = ""; 
 
     const filtered = recipes.filter((recipe) =>
       recipe.title.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredRecipes(filtered);
-
+    
     setPrevQuery(query);
+    setQuery("")
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
     navigate(url.pathname);
+    
   };
 
   const handleChange = (value) => {
