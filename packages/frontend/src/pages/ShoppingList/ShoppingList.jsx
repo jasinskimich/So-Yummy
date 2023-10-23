@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "./ShoppingList.module.css";
 import Loader from "../../components/Loader/Loader";
 import { ReactComponent as Delete } from "../../images/close.svg";
+import Notiflix from "notiflix";
 
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
@@ -51,6 +52,9 @@ function ShoppingList() {
   }, [owner, page]);
 
   const handleDelete = async (index, ingredient) => {
+    Notiflix.Notify.init({
+      position: "left-bottom",
+    });
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -65,7 +69,7 @@ function ShoppingList() {
 
     try {
       await axios(requestOptions);
-      console.log("Shopping List updated succesfully!");
+      Notiflix.Notify.success("Shopping List updated succesfully!");
       setShoppingList((prevList) =>
         prevList.filter((item) => item.id !== ingredient.id)
       );

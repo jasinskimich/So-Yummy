@@ -57,7 +57,6 @@ function Recipe() {
       }
 
       const data = await response.json();
-      console.log(data, "DATA")
       setFavorite(!data.recipe.favorite);
     } catch (error) {
       console.error(error);

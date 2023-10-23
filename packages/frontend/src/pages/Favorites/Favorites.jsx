@@ -34,7 +34,6 @@ function Favorites() {
         }
 
         response = await response.json();
-        console.log(response.recipes, "response");
         setRecipes(response.recipes);
       } catch (error) {
         console.error(error);

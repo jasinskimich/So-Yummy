@@ -17,7 +17,6 @@ function Categories() {
   const [value, setValue] = useState(0);
   const location = useLocation();
   const [details, setDetails] = useState(null);
-  console.log(details, "details");
   const handleChange = (event, newValue) => {
     setIsLoading(true);
     setValue(newValue);

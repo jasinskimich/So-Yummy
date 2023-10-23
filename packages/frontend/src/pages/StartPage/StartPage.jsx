@@ -3,11 +3,9 @@ import Logo from "../../images/logo.svg";
 import styles from "./StartPage.module.css";
 import { ReactComponent as RegistrationButton } from "../../images/Registration2.svg";
 import { ReactComponent as SignIn } from "../../images/SignIn.svg";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function StartPage() {
-  const { recipeId } = useParams();
-  console.log(recipeId, "ID");
   return (
     <Box>
       <div className={styles.startContainter}>
