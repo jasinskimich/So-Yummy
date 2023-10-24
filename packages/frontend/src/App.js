@@ -15,6 +15,7 @@ import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import Recipe from "./pages/Recipe/Recipe";
 import ApiRecipe from "./pages/ApiRecipe/ApiRecipe2";
+import NoFound from "./pages/NoFound/NoFound";
 
 import Favorites from "./pages/Favorites/Favorites";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";
@@ -56,9 +57,17 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<StartPage />} />
+          {/* <Route path="/:owner/*" element={<Home />} /> */}
           <Route path="/home/:owner" element={<Home />} />
           <Route path="/my-recipes/:owner/:recipeId" element={<Recipe />} />
           <Route path="/recipes/:owner/:recipeId" element={<ApiRecipe />} />
+          <Route path="/home/:owner/*" element={<Home />} />
+          <Route path="/add-recipes/:owner/*" element={<Home />} />
+          <Route path="/my-recipes/:owner/*" element={<Home />} />
+          <Route path="/favorites/:owner/*" element={<Home />} />
+          <Route path="/shopping-list/:owner/*" element={<Home />} />
+          <Route path="/search/:owner/:q/*" element={<Home />} />
+
 
           <Route element={<AuthGuardedRoute element={Layout} />}>
             <Route path="/categories/:owner" element={<Categories />} />
@@ -71,6 +80,8 @@ function App() {
             <Route path="/favorites/:owner" element={<Favorites />} />
             <Route path="/shopping-list/:owner" element={<ShoppingList />} />
             <Route path="/search/:owner/:q" element={<Search />} />
+            <Route path="/nofound/:owner" element={<NoFound />} />
+
           </Route>
         </Routes>
       </Box>

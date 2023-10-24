@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useEffect, useCallback } from 'react';
 import styles from "./MobileMenu.module.css";
 import MobileMenuNav from "../MobileMenuNav/MobileMenuNav";
 import { ReactComponent as Close } from "../../images/closeModal.svg";
 import { NavLink } from "react-router-dom";
 import Logo from "../../images/logo.svg";
 import { useParams } from "react-router-dom";
-import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
 
 const MobileMenu = ({ handleModalOpen, isModalOpen }) => {
   const { owner } = useParams();
 
-  const handleCloseModal = () => {
-    handleModalOpen(false);
-  };
 
+ 
+  const handleCloseModal = useCallback(() => {
+    if (isModalOpen) {
+      handleModalOpen(false);
+    }
+  }, [handleModalOpen, isModalOpen]);
+
+  const handleKeyDown = useCallback((event) => {
+    if (event.key === 'Escape') {
+      handleCloseModal();
+    }
+  }, [handleCloseModal]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
+  
   if (!isModalOpen) {
     return (
       <div className={styles.modalContainer}>
@@ -39,9 +56,9 @@ const MobileMenu = ({ handleModalOpen, isModalOpen }) => {
             {" "}
             <MobileMenuNav />
           </div>
-          <div className={styles.switchCheckbox}>
+          {/* <div className={styles.switchCheckbox}>
             <SwitchCheckbox id="modal-menu" />
-          </div>
+          </div> */}
         </div>
       </div>
     );
@@ -69,9 +86,9 @@ const MobileMenu = ({ handleModalOpen, isModalOpen }) => {
             {" "}
             <MobileMenuNav handleCloseModal={handleCloseModal} />
           </div>
-          <div className={styles.switchCheckbox}>
+          {/* <div className={styles.switchCheckbox}>
             <SwitchCheckbox id="modal-menu" />
-          </div>
+          </div> */}
         </div>
       </div>
     );

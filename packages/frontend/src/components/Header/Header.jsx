@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-// import { ModalLogout } from '../ModalLogout/ModalLogout';
 import Logo from "../../images/logo.svg";
 import styles from "./Header.module.css";
-import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
 import { ReactComponent as Menu } from "../../images/modalWindow.svg";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import Navigation from "../Navigation/Navigation";
@@ -37,9 +35,9 @@ export const Header = () => {
             
           
         </div>
-        <div className={styles.switchCheckbox}>
+        {/* <div className={styles.switchCheckbox}>
           <SwitchCheckbox id="header" />
-        </div>
+        </div> */}
         <div className={styles.modalWindow}>
           {" "}
           <button
