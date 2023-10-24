@@ -22,15 +22,20 @@
     height: 350px;
     display: flex;
     flex-direction: column;
-
     align-items: center;
-    justify-content: top;
+    justify-content: center;
+    gap: 7px;
   }
   .title {
-    font-size: 44px;
+    font-size: 38px;
     font-weight: 600;
     color: #8baa36;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
   }
 
   .about {
@@ -68,12 +73,15 @@
     flex-direction: row;
     gap: 10px;
     align-items: center;
+    background-color: #e0d7d763;
+    padding: 3px;
+    border-radius: 8px;
   }
   .infoContainer {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    width: 80%;
+    width: 90%;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
@@ -142,10 +150,10 @@
   .detailsSecond {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 5px;
     justify-content: center;
     align-items: center;
-    padding-right: 25px;
+    padding-right: 5px;
   }
   .amount {
     line-height: 1;
@@ -153,9 +161,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 30px;
-    font-size: 14px;
+    width: fit-content;
+    height: fit-content;
+    padding: 7px;
+    font-size: 16px;
     background-color: #8baa36;
     color: #fafafa;
     border-radius: 8px;
@@ -184,18 +193,24 @@
     align-items: center;
     gap: 30px;
     /* padding-left: 25px;
-    padding-right: 25px; */
+      padding-right: 25px; */
   }
   .prepTextBox {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: justify;
     line-height: 2;
     gap: 30px;
+    padding: 15px;
   }
   .prepTextTitle {
     font-size: 24px;
     font-weight: 500;
+  }
+  .instruction {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    text-wrap: wrap;
   }
   .prepText {
     font-size: 18px;
@@ -211,26 +226,59 @@
   }
 }
 @media screen and (min-width: 450px) {
-    .detailsFirst {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        padding-left: 25px;
-      }
-      .infoHead {
-        width: 100%;
-        height: 50px;
-        color: #fafafa;
-        background-color: #8baa36;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding-left: 25px;
-        padding-right: 25px;
-      }
+  .detailsFirst {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-left: 25px;
+  }
+  .infoHead {
+    width: 100%;
+    height: 50px;
+    color: #fafafa;
+    background-color: #8baa36;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* padding-left: 25px;
+    padding-right: 25px; */
+  }
+  .title {
+    font-size: 44px;
+    font-weight: 600;
+    color: #8baa36;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+  }
+  .amount {
+    line-height: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    font-size: 12px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border-radius: 8px;
+  }
+  .detailsSecond {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 15px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -246,6 +294,32 @@
     flex-direction: column;
     align-items: center;
     gap: 50px;
+  }
+  .imageBox {
+    height: 140px;
+    width: 140px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ingredientImage {
+    height: 100px;
+    width: 100px;
+  }
+  .amount {
+    line-height: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #8baa36;
+    color: #fafafa;
+    border-radius: 8px;
   }
 }
 @media screen and (min-width: 1080px) {
@@ -379,6 +453,10 @@
     justify-content: center;
     align-items: center;
   }
+  .ingredientImage {
+    height: 100px;
+    width: 100px;
+  }
   .name {
     font-size: 20px;
     font-weight: 500;
@@ -398,8 +476,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70px;
-    height: 35px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
     font-size: 16px;
     background-color: #8baa36;
     color: #fafafa;
@@ -429,7 +508,7 @@
     gap: 30px;
     align-items: flex-start;
     /* padding-left: 25px;
-        padding-right: 25px; */
+          padding-right: 25px; */
   }
   .prepTextBox {
     display: flex;

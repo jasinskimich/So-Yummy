@@ -1,6 +1,8 @@
 import styles from "./Recipe.module.css";
 import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
+import { NoFound } from "../../components/NoFound/NoFound2";
+
 import { ReactComponent as AddFav } from "../../images/favButton.svg";
 import { ReactComponent as RemoveFav } from "../../images/removeBtn.svg";
 import { ReactComponent as Clock } from "../../images/clock.svg";
@@ -38,6 +40,7 @@ function Recipe() {
   const [recipe, setRecipe] = useState([]);
   const [favorite, setFavorite] = useState(false);
   const [ingId, setIngId] = useState("");
+  const [notFound, setNotFound] = useState(false);
 
   const toggleFavorite = async () => {
     const requestOptions = {
@@ -59,7 +62,9 @@ function Recipe() {
       const data = await response.json();
       setFavorite(!data.recipe.favorite);
     } catch (error) {
+      setNotFound(true);
       console.error(error);
+      
     }
   };
 
@@ -110,9 +115,22 @@ function Recipe() {
     }
   }, [ingId, owner, recipeId]);
 
+  function splitInstructions(instructions) {
+    let splitInstructions = instructions.split(".");
+    let cleanInstructions = splitInstructions.map((sentence) =>
+      sentence.trim()
+    );
+    let displayInstructions = cleanInstructions.join("\n");
+    return displayInstructions;
+  }
+
   return (
     <div className={styles.main}>
-      <div className={styles.contentContainer}>
+       {notFound ? (
+        <NoFound owner={owner} />
+      ) : (
+        <>
+          <div className={styles.contentContainer}>
         <Header />
         <div className={styles.container}>
           <div className={styles.title}>
@@ -188,7 +206,11 @@ function Recipe() {
         <div className={styles.prepContainter}>
           <div className={styles.prepTextBox}>
             <span className={styles.prepTextTitle}>Recipe Preparation</span>
-            <span className={styles.prepText}>{recipe.preparation}</span>
+            {recipe && recipe.preparation ? (
+              <pre className={styles.instruction}>{splitInstructions(recipe.preparation)}</pre>
+            ) : (
+              "N/A"
+            )}
           </div>
           <div className={styles.prepImageBox}>
             <img
@@ -201,8 +223,12 @@ function Recipe() {
       </div>
 
       <Footer />
+        </>
+      )}
     </div>
   );
 }
+      
+  
 
 export default Recipe;

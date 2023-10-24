@@ -61,12 +61,12 @@ function App() {
           <Route path="/home/:owner" element={<Home />} />
           <Route path="/my-recipes/:owner/:recipeId" element={<Recipe />} />
           <Route path="/recipes/:owner/:recipeId" element={<ApiRecipe />} />
-          <Route path="/home/:owner/*" element={<Home />} />
-          <Route path="/add-recipes/:owner/*" element={<Home />} />
-          <Route path="/my-recipes/:owner/*" element={<Home />} />
-          <Route path="/favorites/:owner/*" element={<Home />} />
-          <Route path="/shopping-list/:owner/*" element={<Home />} />
-          <Route path="/search/:owner/:q/*" element={<Home />} />
+          <Route path="/home/:owner/*" element={<NoFound />} />
+          <Route path="/add-recipes/:owner/*" element={<NoFound />} />
+          <Route path="/my-recipes/:owner/*" element={<NoFound />} />
+          <Route path="/favorites/:owner/*" element={<NoFound />} />
+          <Route path="/shopping-list/:owner/*" element={<NoFound />} />
+          <Route path="/search/:owner/:q/*" element={<NoFound />} />
 
 
           <Route element={<AuthGuardedRoute element={Layout} />}>
