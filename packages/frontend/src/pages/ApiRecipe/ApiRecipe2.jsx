@@ -248,7 +248,7 @@ function ApiRecipe() {
     let cleanInstructions = splitInstructions.map((sentence) =>
       sentence.trim()
     );
-    let displayInstructions = cleanInstructions.join("\n");
+    let displayInstructions = cleanInstructions.join("<br />");
     return displayInstructions;
   }
 
