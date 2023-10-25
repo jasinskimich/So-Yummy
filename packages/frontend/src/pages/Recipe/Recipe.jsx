@@ -116,7 +116,7 @@ function Recipe() {
     let cleanInstructions = splitInstructions.map((sentence) =>
       sentence.trim()
     );
-    let displayInstructions = cleanInstructions.join("\n");
+    let displayInstructions = cleanInstructions.join(". <br />");
     return displayInstructions;
   }
 
@@ -205,10 +205,13 @@ function Recipe() {
             <div className={styles.prepContainter}>
               <div className={styles.prepTextBox}>
                 <span className={styles.prepTextTitle}>Recipe Preparation</span>
-                {recipe && recipe.preparation ? (
-                  <pre className={styles.instruction}>
-                    {splitInstructions(recipe.preparation)}
-                  </pre>
+                {recipe && recipe.instructions ? (
+                  <span
+                    className={styles.instruction}
+                    dangerouslySetInnerHTML={{
+                      __html: splitInstructions(recipe.instructions),
+                    }}
+                  />
                 ) : (
                   "N/A"
                 )}
