@@ -22,6 +22,7 @@
   }
   .startHeadline {
     color: white;
+    text-align: center;
   }
   .buttonsContainer {
     display: flex;
