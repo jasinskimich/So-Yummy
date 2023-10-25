@@ -205,11 +205,12 @@ function Recipe() {
             <div className={styles.prepContainter}>
               <div className={styles.prepTextBox}>
                 <span className={styles.prepTextTitle}>Recipe Preparation</span>
-                {recipe && recipe.instructions ? (
+              
+                 {recipe && recipe.preparation ? (
                   <span
                     className={styles.instruction}
                     dangerouslySetInnerHTML={{
-                      __html: splitInstructions(recipe.instructions),
+                      __html: splitInstructions(recipe.preparation),
                     }}
                   />
                 ) : (
