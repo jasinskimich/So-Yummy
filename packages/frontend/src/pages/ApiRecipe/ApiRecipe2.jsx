@@ -370,9 +370,9 @@ function ApiRecipe() {
               <div className={styles.prepTextBox}>
                 <span className={styles.prepTextTitle}>Recipe Preparation</span>
                 {recipe && recipe.instructions ? (
-                  <pre className={styles.instruction}>
+                  <span className={styles.instruction}>
                     {splitInstructions(recipe.instructions)}
-                  </pre>
+                  </span>
                 ) : (
                   "N/A"
                 )}
