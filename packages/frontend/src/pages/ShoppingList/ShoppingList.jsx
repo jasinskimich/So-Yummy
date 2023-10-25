@@ -4,7 +4,6 @@ import styles from "./ShoppingList.module.css";
 import Loader from "../../components/Loader/Loader";
 import { ReactComponent as Delete } from "../../images/close.svg";
 import Notiflix from "notiflix";
-
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import axios from "axios";
