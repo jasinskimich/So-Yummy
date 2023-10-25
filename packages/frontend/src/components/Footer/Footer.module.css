@@ -30,7 +30,7 @@
   .titleContainer {
     width: 90%;
     display: flex;
-    gap: 30px;
+    gap: 0px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -103,7 +103,7 @@
     padding: 0;
   }
   .socialContainer {
-    padding-left: 25px;
+    padding-left: 0px;
     width: 100px;
     height: 20px;
     display: flex;
