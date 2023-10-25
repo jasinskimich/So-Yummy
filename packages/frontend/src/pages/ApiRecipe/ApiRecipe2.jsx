@@ -12,8 +12,9 @@ import { ReactComponent as UnChecked } from "../../images/unchecked.svg";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Notiflix from "notiflix";
+import axios from "axios";
 
-const axios = require("axios");
+
 
 function ApiRecipe() {
   const { owner } = useParams();
