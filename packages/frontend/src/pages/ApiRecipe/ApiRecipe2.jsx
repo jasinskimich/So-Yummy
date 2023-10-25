@@ -14,8 +14,6 @@ import { useParams } from "react-router-dom";
 import Notiflix from "notiflix";
 import axios from "axios";
 
-
-
 function ApiRecipe() {
   const { owner } = useParams();
   const { recipeId } = useParams();
@@ -37,7 +35,7 @@ function ApiRecipe() {
     const fetchIngredients = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/all-ingredients"
+          "https://so-yummy-1f2e.onrender.com/api/all-ingredients"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -55,7 +53,7 @@ function ApiRecipe() {
     const fetchRecipes = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/fav-recipes/${owner}`,
+          `https://so-yummy-1f2e.onrender.com/api/fav-recipes/${owner}`,
           {
             method: "GET",
             headers: {
@@ -82,7 +80,7 @@ function ApiRecipe() {
     const fetchShoppingList = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/shopping-list/${owner}`,
+          `https://so-yummy-1f2e.onrender.com/api/shopping-list/${owner}`,
           {
             method: "GET",
             headers: {
@@ -109,7 +107,9 @@ function ApiRecipe() {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/all-recipes`);
+        const response = await fetch(
+          `https://so-yummy-1f2e.onrender.com/api/all-recipes`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -133,7 +133,6 @@ function ApiRecipe() {
           }));
           setIngredients(updatedIngredients);
         }
-        
       } catch (error) {
         console.error(error);
       }
@@ -152,7 +151,7 @@ function ApiRecipe() {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      url: `http://localhost:5000/api/recipes/${owner}`,
+      url: `https://so-yummy-1f2e.onrender.com/api/recipes/${owner}`,
       data: {
         id: recipe._id,
         picture: recipe.preview ?? "N/A",
@@ -202,7 +201,7 @@ function ApiRecipe() {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      url: `http://localhost:5000/api/shopping-list/${owner}`,
+      url: `https://so-yummy-1f2e.onrender.com/api/shopping-list/${owner}`,
       data: {
         id: ingredient.id ?? "N/A",
         name: matchingIngredient.ttl ?? "N/A",

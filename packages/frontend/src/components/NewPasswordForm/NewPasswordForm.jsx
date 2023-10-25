@@ -26,7 +26,9 @@ const NewPasswordForm = () => {
     e.preventDefault();
 
     if (!password || !confirmPassword) {
-      Notiflix.Notify.warning("Email, password or name is empty, please complete the missing content.");
+      Notiflix.Notify.warning(
+        "Email, password or name is empty, please complete the missing content."
+      );
       return;
     }
 
@@ -36,13 +38,16 @@ const NewPasswordForm = () => {
     }
 
     try {
-      let result = await fetch(`http://localhost:5000/api/users/reset-password/${resetToken}`, {
-        method: "post",
-        body: JSON.stringify({ password }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let result = await fetch(
+        `https://so-yummy-1f2e.onrender.com/api/users/reset-password/${resetToken}`,
+        {
+          method: "post",
+          body: JSON.stringify({ password }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       result = await result.json();
       console.warn(result);
       if (result && result.status === "success") {
@@ -53,7 +58,9 @@ const NewPasswordForm = () => {
           window.location.replace("/login");
         }, 1000);
       } else {
-        Notiflix.Notify.failure("An error occurred while resetting your password.");
+        Notiflix.Notify.failure(
+          "An error occurred while resetting your password."
+        );
       }
     } catch (error) {
       console.error(error);
@@ -64,7 +71,6 @@ const NewPasswordForm = () => {
     <form onSubmit={handleSubmit} className={css.newPasswordForm}>
       <Box sx={{ "& > :not(style)": { m: 2 } }} className={css.newPasswordBox}>
         <div className={css.newPasswordHeader}>
-          
           <h1>Enter new password</h1>
         </div>
 
@@ -81,12 +87,14 @@ const NewPasswordForm = () => {
             className={css.inputMargin}
             startAdornment={
               <InputAdornment position="start">
-                <LockIcon sx={{ color: "lightgrey", mr: 1, my: 0.5 }} className={css.iconMargin} />
-                
+                <LockIcon
+                  sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
+                  className={css.iconMargin}
+                />
               </InputAdornment>
             }
             inputProps={{
-              style: { color: 'white' }
+              style: { color: "white" },
             }}
           />
         </FormControl>
@@ -103,17 +111,23 @@ const NewPasswordForm = () => {
             required
             startAdornment={
               <InputAdornment position="start">
-                
-                <LockIcon sx={{ color: "lightgrey", mr: 1, my: 0.5 }} className={css.iconMargin} />
+                <LockIcon
+                  sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
+                  className={css.iconMargin}
+                />
                 <PasswordStrength password={password} />
               </InputAdornment>
             }
             inputProps={{
-              style: { color: 'white' }
+              style: { color: "white" },
             }}
           />
         </FormControl>
-        <button variant="contained" type="submit" className={css.newPasswordButton}>
+        <button
+          variant="contained"
+          type="submit"
+          className={css.newPasswordButton}
+        >
           Reset Password
         </button>
 

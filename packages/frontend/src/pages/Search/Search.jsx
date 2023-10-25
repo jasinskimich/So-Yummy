@@ -8,7 +8,6 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Loader from "../../components/Loader/Loader";
 
-
 function Search() {
   const navigate = useNavigate();
   const { owner } = useParams();
@@ -24,14 +23,12 @@ function Search() {
 
   useEffect(() => {
     if (q !== "q") {
-      
       setPrevQuery(q);
       const filtered = recipes.filter((recipe) =>
-      recipe.title.toLowerCase().includes(prevQuery.toLowerCase())
-    );
-    setFilteredRecipes(filtered);
+        recipe.title.toLowerCase().includes(prevQuery.toLowerCase())
+      );
+      setFilteredRecipes(filtered);
     }
-   
   }, [q, query, recipes, prevQuery]);
 
   const handleSubmit = async (e) => {
@@ -41,32 +38,32 @@ function Search() {
     const pathSegments = url.pathname.split("/");
     pathSegments[pathSegments.length - 1] = query;
     url.pathname = pathSegments.join("/");
-    url.search = ""; 
-    url.hash = ""; 
+    url.search = "";
+    url.hash = "";
 
     const filtered = recipes.filter((recipe) =>
       recipe.title.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredRecipes(filtered);
-    
+
     setPrevQuery(query);
-    setQuery("")
+    setQuery("");
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
     navigate(url.pathname);
-    
   };
 
   const handleChange = (value) => {
     setQuery(value);
   };
 
-
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/all-recipes`);
+        const response = await fetch(
+          `https://so-yummy-1f2e.onrender.com/api/all-recipes`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -161,12 +158,9 @@ function Search() {
       </div>
 
       <div className={styles.searchResults}>
-      {filteredRecipes && filteredRecipes.length > 0 ? (
+        {filteredRecipes && filteredRecipes.length > 0 ? (
           filteredRecipes.slice((page - 1) * 8, page * 8).map((item, index) => (
-            <NavLink
-              key={index}
-              to={`/recipes/${owner}/${item._id}`}
-            >
+            <NavLink key={index} to={`/recipes/${owner}/${item._id}`}>
               <div className={styles.categoryItem}>
                 <img
                   src={item.preview}
@@ -174,9 +168,7 @@ function Search() {
                   className={styles.categoryItemPic}
                 />
                 <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {item.title}
-                  </span>
+                  <span className={styles.categoryItemText}>{item.title}</span>
                 </div>
               </div>
             </NavLink>

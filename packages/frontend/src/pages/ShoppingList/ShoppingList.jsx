@@ -18,7 +18,7 @@ function ShoppingList() {
     const fetchShoppingList = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/shopping-list/${owner}`,
+          `https://so-yummy-1f2e.onrender.com/api/shopping-list/${owner}`,
           {
             method: "GET",
             headers: {
@@ -57,7 +57,7 @@ function ShoppingList() {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      url: `http://localhost:5000/api/shopping-list/${owner}`,
+      url: `https://so-yummy-1f2e.onrender.com/api/shopping-list/${owner}`,
       data: {
         id: ingredient.id ?? "N/A",
         name: ingredient.name ?? "N/A",
@@ -98,11 +98,11 @@ function ShoppingList() {
             <div key={index} className={styles.detailsContainer}>
               <div className={styles.detailsFirst}>
                 <div className={styles.imageBox}>
-                <img
-                      className={styles.ingredientImage}
-                      src={ingredient ? ingredient.thb : ""}
-                      alt="ingredientPicture"
-                    />
+                  <img
+                    className={styles.ingredientImage}
+                    src={ingredient ? ingredient.thb : ""}
+                    alt="ingredientPicture"
+                  />
                 </div>
                 <div className={styles.name}>
                   <span>{ingredient.name}</span>
@@ -110,16 +110,17 @@ function ShoppingList() {
               </div>
               <div className={styles.detailsSecond}>
                 <div className={styles.amount}>
-                  {ingredient &&  ingredient.measurement ? (
-                    <span>
-                      {ingredient.measurement}
-                    </span>
+                  {ingredient && ingredient.measurement ? (
+                    <span>{ingredient.measurement}</span>
                   ) : (
                     <span>N/A</span>
                   )}
                 </div>
                 <div className={styles.checkBox}>
-                  <button className={styles.deleteButton} onClick={() => handleDelete(index, ingredient)}>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => handleDelete(index, ingredient)}
+                  >
                     <Delete />
                   </button>
                 </div>

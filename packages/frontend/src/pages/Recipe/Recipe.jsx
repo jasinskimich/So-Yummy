@@ -19,7 +19,7 @@ const updateSelectedIngredients = async (checked, owner, recipeId, ingId) => {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/recipes/${owner}/${recipeId}/${ingId}`,
+      `https://so-yummy-1f2e.onrender.com/api/recipes/${owner}/${recipeId}/${ingId}`,
       requestOptions
     );
 
@@ -49,7 +49,7 @@ function Recipe() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/recipes/${owner}/${recipeId}`,
+        `https://so-yummy-1f2e.onrender.com/api/recipes/${owner}/${recipeId}`,
         requestOptions
       );
 
@@ -60,7 +60,6 @@ function Recipe() {
       const data = await response.json();
       setFavorite(!data.recipe.favorite);
     } catch (error) {
-      
       console.error(error);
     }
   };
@@ -69,7 +68,7 @@ function Recipe() {
     const fetchIngredients = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/recipes/${owner}/${recipeId}`,
+          `https://so-yummy-1f2e.onrender.com/api/recipes/${owner}/${recipeId}`,
           {
             method: "GET",
             headers: {
@@ -87,7 +86,6 @@ function Recipe() {
         setFavorite(response.recipe.favorite);
         setIngredients(response.ingredients);
       } catch (error) {
-        
         setNotFound(true);
       }
     };

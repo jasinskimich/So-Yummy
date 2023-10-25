@@ -8,25 +8,26 @@ function Popular() {
   const [width, setWidth] = useState(window.innerWidth);
 
   const { owner } = useParams();
-useEffect(() => {
-  const handleResize = () => {
-    setWidth(window.innerWidth);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
 
-  window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-  return () => {
-    window.removeEventListener('resize', handleResize);
-  };
-}, []);
-
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchPopular = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/all-popular');
+        const response = await fetch(
+          "https://so-yummy-1f2e.onrender.com/api/all-popular"
+        );
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         setRecipes(data.recipes.slice(0, 4));
@@ -55,7 +56,7 @@ useEffect(() => {
         ) : (
           recipes.map((recipe, index) => (
             <NavLink
-            className={styles.pouplarItemLink}
+              className={styles.pouplarItemLink}
               key={index}
               to={`/recipes/${owner}/${recipe._id}`}
             >
@@ -72,7 +73,10 @@ useEffect(() => {
                     {recipe.title}
                   </span>
                   <span className={styles.pouplarItemDescr}>
-                  {truncateString(recipe.description, width > 801 ? 90 : (width < 650 ? 90 : 50))}
+                    {truncateString(
+                      recipe.description,
+                      width > 801 ? 90 : width < 650 ? 90 : 50
+                    )}
                   </span>
                 </div>
               </div>

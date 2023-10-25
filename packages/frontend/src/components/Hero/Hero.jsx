@@ -17,7 +17,9 @@ function Hero() {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/all-recipes`);
+        const response = await fetch(
+          `https://so-yummy-1f2e.onrender.com/api/all-recipes`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

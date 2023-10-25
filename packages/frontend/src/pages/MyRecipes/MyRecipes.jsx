@@ -18,7 +18,7 @@ function MyRecipes() {
     const fetchRecipes = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/recipes/${owner}`,
+          `https://so-yummy-1f2e.onrender.com/api/recipes/${owner}`,
           {
             method: "GET",
             headers: {
@@ -88,7 +88,10 @@ function MyRecipes() {
                       } min`
                     : `${item.cookingTime} min`}
                 </div>
-                <NavLink to={`/my-recipes/${owner}/${item._id}`} className={styles.navLink}>
+                <NavLink
+                  to={`/my-recipes/${owner}/${item._id}`}
+                  className={styles.navLink}
+                >
                   <button className={styles.recipeButton}>
                     <See className={styles.recipeButtonImg} />
                   </button>

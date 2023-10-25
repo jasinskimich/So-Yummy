@@ -19,32 +19,35 @@ export const Footer = () => {
     Notiflix.Notify.init({
       position: "left-bottom",
     });
-   
+
     try {
-      const response = await fetch("http://localhost:5000/api/users/newsletter", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-   
+      const response = await fetch(
+        "https://so-yummy-1f2e.onrender.com/api/users/newsletter",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
       if (response.ok) {
         const data = await response.json();
         Notiflix.Notify.success(data.message);
       } else {
-        throw new Error('User is already signed up for the newsletter!');
+        throw new Error("User is already signed up for the newsletter!");
       }
     } catch (error) {
       let errorData;
-      if ((error instanceof Response) && !error.ok) {
+      if (error instanceof Response && !error.ok) {
         errorData = await error.json();
       } else {
         errorData = error.message;
       }
       Notiflix.Notify.failure(errorData);
     }
-   };
+  };
 
   const handleChange = (value) => {
     setEmail(value);

@@ -15,12 +15,11 @@ function Favorites() {
   const [page, setPage] = useState(1);
   const [deletedRecipes, setDeletedRecipes] = useState([]);
 
-  
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/fav-recipes/${owner}`,
+          `https://so-yummy-1f2e.onrender.com/api/fav-recipes/${owner}`,
           {
             method: "GET",
             headers: {
@@ -56,24 +55,24 @@ function Favorites() {
 
   function truncateString(str, num) {
     if (str.length <= num) {
-      return str
+      return str;
     }
-    return str.slice(0, num) + '...'
+    return str.slice(0, num) + "...";
   }
   function convertTime(time) {
     const hours = Math.floor(time / 60);
     const minutes = time % 60;
-  
-    let result = '';
-  
+
+    let result = "";
+
     if (hours > 0) {
       result += `${hours} hr `;
     }
-  
+
     if (minutes > 0) {
       result += `${minutes} min`;
     }
-  
+
     return result.trim();
   }
   return (
@@ -82,43 +81,49 @@ function Favorites() {
         <span className={styles.title}>Favorites</span>
       </div>
       {filteredRecipes && filteredRecipes.length > 0 ? (
-        filteredRecipes.reverse().slice((page - 1) * 4, page * 4).map((item, index) => (
-          <div key={index} className={styles.itemContainer}>
-            <div className={styles.itemImageBox}>
-              <img
-                src={item.picture}
-                alt={item.title}
-                className={styles.itemImageBox}
-              />
-            </div>
-            <div className={styles.contentContainer}>
-              <div className={styles.top}>
-                <span className={styles.itemTitle}>{item.title}</span>
-
-                <DeleteModal
-                  id={item._id}
-                  updateDeleteRecipes={updateDeleteRecipes}
+        filteredRecipes
+          .reverse()
+          .slice((page - 1) * 4, page * 4)
+          .map((item, index) => (
+            <div key={index} className={styles.itemContainer}>
+              <div className={styles.itemImageBox}>
+                <img
+                  src={item.picture}
+                  alt={item.title}
+                  className={styles.itemImageBox}
                 />
               </div>
-              <div className={styles.mid}>
-                <span className={styles.description}> {truncateString(item.about, 200)} </span>
-              </div>
-              <div className={styles.bottom}>
-                <div className={styles.cookingTimeBox}>
-                {convertTime(item.cookingTime)}
+              <div className={styles.contentContainer}>
+                <div className={styles.top}>
+                  <span className={styles.itemTitle}>{item.title}</span>
+
+                  <DeleteModal
+                    id={item._id}
+                    updateDeleteRecipes={updateDeleteRecipes}
+                  />
                 </div>
-                <NavLink
-                  to={`/recipes/${owner}/${encodeURIComponent(item.id)}`}
-                  className={styles.navLink}
-                >
-                  <button className={styles.recipeButton}>
-                    <See className={styles.recipeButtonImg} />
-                  </button>
-                </NavLink>
+                <div className={styles.mid}>
+                  <span className={styles.description}>
+                    {" "}
+                    {truncateString(item.about, 200)}{" "}
+                  </span>
+                </div>
+                <div className={styles.bottom}>
+                  <div className={styles.cookingTimeBox}>
+                    {convertTime(item.cookingTime)}
+                  </div>
+                  <NavLink
+                    to={`/recipes/${owner}/${encodeURIComponent(item.id)}`}
+                    className={styles.navLink}
+                  >
+                    <button className={styles.recipeButton}>
+                      <See className={styles.recipeButtonImg} />
+                    </button>
+                  </NavLink>
+                </div>
               </div>
             </div>
-          </div>
-        ))
+          ))
       ) : (
         <Loader />
       )}

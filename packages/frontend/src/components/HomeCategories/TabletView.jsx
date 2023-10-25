@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import React, { useState, useEffect } from "react";
 
-
 const useWindowWidth = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -26,11 +25,12 @@ const TabletView = () => {
 
   const windowWidth = useWindowWidth();
 
-  
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/all-recipes`);
+        const response = await fetch(
+          `https://so-yummy-1f2e.onrender.com/api/all-recipes`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -58,25 +58,27 @@ const TabletView = () => {
                 <span className={styles.categoryHeadText}>{category}</span>
               </div>
               <div className={styles.categoryContent}>
-              {filteredRecipes.slice(0, windowWidth > 1141 ? 3 : 2).map((recipe, index) => (
-                <div key={index}>
-                  <NavLink to={`/recipes/${owner}/${recipe._id}`}>
-                    <div className={styles.categoryItem}>
-                      <img
-                        src={recipe.preview}
-                        alt={recipe.title}
-                        className={styles.categoryItemPic}
-                      />
+                {filteredRecipes
+                  .slice(0, windowWidth > 1141 ? 3 : 2)
+                  .map((recipe, index) => (
+                    <div key={index}>
+                      <NavLink to={`/recipes/${owner}/${recipe._id}`}>
+                        <div className={styles.categoryItem}>
+                          <img
+                            src={recipe.preview}
+                            alt={recipe.title}
+                            className={styles.categoryItemPic}
+                          />
 
-                      <div className={styles.categoryItemBox}>
-                        <span className={styles.categoryItemText}>
-                          {recipe.title}
-                        </span>
-                      </div>
+                          <div className={styles.categoryItemBox}>
+                            <span className={styles.categoryItemText}>
+                              {recipe.title}
+                            </span>
+                          </div>
+                        </div>
+                      </NavLink>
                     </div>
-                  </NavLink>
-                  </div>
-              ))}
+                  ))}
               </div>
               <div className={styles.categoryButtonBox}>
                 <NavLink to={`/categories/${owner}/${category._id}`}>
@@ -98,4 +100,3 @@ const TabletView = () => {
 };
 
 export default TabletView;
-

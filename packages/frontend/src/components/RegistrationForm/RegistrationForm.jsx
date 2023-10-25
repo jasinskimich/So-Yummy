@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Notiflix from 'notiflix';
-import css from "./RegistrationForm.module.css"
+import Notiflix from "notiflix";
+import css from "./RegistrationForm.module.css";
 import { Box, FormControl, InputAdornment, Input } from "@mui/material";
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
-import LockIcon from '@mui/icons-material/Lock';
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
+import LockIcon from "@mui/icons-material/Lock";
 // import walletIcon from "../../images/Wallet.svg";
 import PasswordStrength from "./PasswordStrength";
-
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
@@ -36,31 +35,40 @@ const RegistrationForm = () => {
     e.preventDefault();
 
     if (!email || !name || !password || !confirmPassword) {
-      Notiflix.Notify.warning('Email, password or name is empty, please complete the missing content.')
+      Notiflix.Notify.warning(
+        "Email, password or name is empty, please complete the missing content."
+      );
       return;
     }
 
     if (password !== confirmPassword) {
-      Notiflix.Notify.warning('Passwords do not match, please try again.');
+      Notiflix.Notify.warning("Passwords do not match, please try again.");
       return;
     }
 
-    try{
-      let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
+    try {
+      let response = await fetch(
+        `https://so-yummy-1f2e.onrender.com/api/users/checkEmail/${email}`
+      );
       response = await response.json();
 
-      if(response.exists) {
-        Notiflix.Notify.warning('Email already exists in the database. Please use a different email.');
+      if (response.exists) {
+        Notiflix.Notify.warning(
+          "Email already exists in the database. Please use a different email."
+        );
         return;
       }
-      
-      let result = await fetch('http://localhost:5000/api/users/signup', {
-        method: "post",
-        body: JSON.stringify({ name, email, password }),
-        headers: {
-          'Content-Type': 'application/json'
+
+      let result = await fetch(
+        "https://so-yummy-1f2e.onrender.com/api/users/signup",
+        {
+          method: "post",
+          body: JSON.stringify({ name, email, password }),
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      })
+      );
       result = await result.json();
       console.warn(result);
       if (result) {
@@ -69,10 +77,12 @@ const RegistrationForm = () => {
         setPassword("");
         setConfirmPassword("");
 
-        Notiflix.Notify.info('An email verifying your registration has been sent to the email address provided in the form.')
+        Notiflix.Notify.info(
+          "An email verifying your registration has been sent to the email address provided in the form."
+        );
       }
-    } catch (error){
-      console.error(error)
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -99,7 +109,7 @@ const RegistrationForm = () => {
               </InputAdornment>
             }
             inputProps={{
-              style: { color: 'white' }
+              style: { color: "white" },
             }}
           />
         </FormControl>
@@ -123,7 +133,7 @@ const RegistrationForm = () => {
               </InputAdornment>
             }
             inputProps={{
-              style: { color: 'white' }
+              style: { color: "white" },
             }}
           />
         </FormControl>
@@ -148,7 +158,7 @@ const RegistrationForm = () => {
               </InputAdornment>
             }
             inputProps={{
-              style: { color: 'white' }
+              style: { color: "white" },
             }}
           />
         </FormControl>
@@ -172,7 +182,7 @@ const RegistrationForm = () => {
               </InputAdornment>
             }
             inputProps={{
-              style: { color: 'white' }
+              style: { color: "white" },
             }}
           />
         </FormControl>

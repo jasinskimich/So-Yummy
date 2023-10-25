@@ -12,7 +12,9 @@ const MobileView = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/all-recipes`);
+        const response = await fetch(
+          `https://so-yummy-1f2e.onrender.com/api/all-recipes`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -40,25 +42,25 @@ const MobileView = () => {
                 <span className={styles.categoryHeadText}>{category}</span>
               </div>
               <div className={styles.categoryContent}>
-              {filteredRecipes.slice(0, 1).map((recipe, index) => (
-                <div key={index}>
-                  <NavLink to={`/recipes/${owner}/${recipe._id}`}>
-                    <div className={styles.categoryItem}>
-                      <img
-                        src={recipe.preview}
-                        alt={recipe.title}
-                        className={styles.categoryItemPic}
-                      />
+                {filteredRecipes.slice(0, 1).map((recipe, index) => (
+                  <div key={index}>
+                    <NavLink to={`/recipes/${owner}/${recipe._id}`}>
+                      <div className={styles.categoryItem}>
+                        <img
+                          src={recipe.preview}
+                          alt={recipe.title}
+                          className={styles.categoryItemPic}
+                        />
 
-                      <div className={styles.categoryItemBox}>
-                        <span className={styles.categoryItemText}>
-                          {recipe.title}
-                        </span>
+                        <div className={styles.categoryItemBox}>
+                          <span className={styles.categoryItemText}>
+                            {recipe.title}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </NavLink>
+                    </NavLink>
                   </div>
-              ))}
+                ))}
               </div>
               <div className={styles.categoryButtonBox}>
                 <NavLink to={`/categories/${owner}/${category._id}`}>
@@ -80,4 +82,3 @@ const MobileView = () => {
 };
 
 export default MobileView;
-

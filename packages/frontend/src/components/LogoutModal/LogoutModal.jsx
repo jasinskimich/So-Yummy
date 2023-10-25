@@ -43,7 +43,7 @@ function LogoutModal() {
     }
 
     axios
-      .post(`http://localhost:5000/api/users/logout`, null, {
+      .post(`https://so-yummy-1f2e.onrender.com/api/users/logout`, null, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },

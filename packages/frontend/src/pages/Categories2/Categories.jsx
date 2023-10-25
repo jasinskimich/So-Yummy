@@ -43,7 +43,7 @@ function Categories() {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/all-categories"
+          "https://so-yummy-1f2e.onrender.com/api/all-categories"
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -55,7 +55,6 @@ function Categories() {
           setValue(index);
         }
       } catch (error) {
-        
         console.error(error);
       }
     };
@@ -67,7 +66,7 @@ function Categories() {
     const fetchDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/api-recipes/${category}`
+          `https://so-yummy-1f2e.onrender.com/api/api-recipes/${category}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

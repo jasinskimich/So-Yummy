@@ -8,11 +8,13 @@ const DesktopView2 = () => {
   const { owner } = useParams();
   const categories = ["Breakfast", "Miscellaneous", "Chicken", "Dessert"];
   const [recipes, setRecipes] = useState(null);
-  
+
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/all-recipes`);
+        const response = await fetch(
+          `https://so-yummy-1f2e.onrender.com/api/all-recipes`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -27,43 +29,46 @@ const DesktopView2 = () => {
   }, []);
 
   if (categories && recipes) {
-    
     return (
       <>
         {categories.map((category) => {
           const filteredRecipes = recipes.filter(
             (recipe) => recipe.category === category
-            
           );
-          
+
           return (
             <div className={styles.categoryContainer} key={category}>
               <div className={styles.categoryHead}>
                 <span className={styles.categoryHeadText}>
-                 
-                  <NavLink className={styles.categoryHeadText} to={`/categories/${owner}/${category}`}> {category}</NavLink>
-                  </span>
+                  <NavLink
+                    className={styles.categoryHeadText}
+                    to={`/categories/${owner}/${category}`}
+                  >
+                    {" "}
+                    {category}
+                  </NavLink>
+                </span>
               </div>
               <div className={styles.categoryContent}>
-              {filteredRecipes.slice(0, 4).map((recipe, index) => (
-                <div key={index}>
-                  <NavLink to={`/recipes/${owner}/${recipe._id}`}>
-                    <div className={styles.categoryItem}>
-                      <img
-                        src={recipe.preview}
-                        alt={recipe.title}
-                        className={styles.categoryItemPic}
-                      />
+                {filteredRecipes.slice(0, 4).map((recipe, index) => (
+                  <div key={index}>
+                    <NavLink to={`/recipes/${owner}/${recipe._id}`}>
+                      <div className={styles.categoryItem}>
+                        <img
+                          src={recipe.preview}
+                          alt={recipe.title}
+                          className={styles.categoryItemPic}
+                        />
 
-                      <div className={styles.categoryItemBox}>
-                        <span className={styles.categoryItemText}>
-                          {recipe.title}
-                        </span>
+                        <div className={styles.categoryItemBox}>
+                          <span className={styles.categoryItemText}>
+                            {recipe.title}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </NavLink>
+                    </NavLink>
                   </div>
-              ))}
+                ))}
               </div>
               <div className={styles.categoryButtonBox}>
                 <NavLink to={`/categories/${owner}/${category}`}>
@@ -85,4 +90,3 @@ const DesktopView2 = () => {
 };
 
 export default DesktopView2;
-

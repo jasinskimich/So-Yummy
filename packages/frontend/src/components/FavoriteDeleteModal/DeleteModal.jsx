@@ -39,7 +39,7 @@ function DeleteModal({ id, updateDeleteRecipes }) {
 
     try {
       let response = await fetch(
-        `http://localhost:5000/api/fav-recipes/${owner}/${id}`,
+        `https://so-yummy-1f2e.onrender.com/api/fav-recipes/${owner}/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -74,7 +74,7 @@ function DeleteModal({ id, updateDeleteRecipes }) {
         aria-labelledby="child-modal-title1"
         aria-describedby="child-modal-description1"
       >
-        <Box sx={{ ...style}}>
+        <Box sx={{ ...style }}>
           <div className={styles.childrenCloseContainer}>
             <Button
               onClick={handleClose}
@@ -98,16 +98,10 @@ function DeleteModal({ id, updateDeleteRecipes }) {
               Are you sure you want to delete this recipe?
             </span>
             <div className={styles.buttons}>
-              <button
-                onClick={handleDelete}
-                className={styles.firstButton}
-              >
+              <button onClick={handleDelete} className={styles.firstButton}>
                 Delete
               </button>
-              <button
-                onClick={handleClose}
-                className={styles.secondButton}
-              >
+              <button onClick={handleClose} className={styles.secondButton}>
                 Cancel
               </button>
             </div>

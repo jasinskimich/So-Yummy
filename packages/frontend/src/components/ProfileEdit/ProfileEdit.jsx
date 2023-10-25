@@ -60,8 +60,7 @@ function ProfileEdit({ editedName, editedAvatar }) {
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     if (id === "name") {
-      setPrevName(value)
-      
+      setPrevName(value);
     }
   };
 
@@ -69,7 +68,7 @@ function ProfileEdit({ editedName, editedAvatar }) {
     const fetchName = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/users/name/${owner}`,
+          `https://so-yummy-1f2e.onrender.com/api/users/name/${owner}`,
           {
             method: "GET",
             headers: {
@@ -105,26 +104,31 @@ function ProfileEdit({ editedName, editedAvatar }) {
       );
       return;
     }
-    let result = await fetch(`http://localhost:5000/api/users/name/${owner}`, {
-      method: "PATCH",
-      body: JSON.stringify({ name: prevName }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let result = await fetch(
+      `https://so-yummy-1f2e.onrender.com/api/users/name/${owner}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({ name: prevName }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     result = await result.json();
 
-   
     editedName(prevName);
     setOpen(false);
 
-    let data = await fetch(`http://localhost:5000/api/upload/${owner}`, {
-      method: "PATCH",
-      body: JSON.stringify({ avatar }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let data = await fetch(
+      `https://so-yummy-1f2e.onrender.com/api/upload/${owner}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({ avatar }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     editedAvatar(avatar);
     data = await data.json();
     if (data && result) {
@@ -136,7 +140,7 @@ function ProfileEdit({ editedName, editedAvatar }) {
     const fetchAvatar = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/users/avatar/${owner}`,
+          `https://so-yummy-1f2e.onrender.com/api/users/avatar/${owner}`,
           {
             method: "GET",
             headers: {

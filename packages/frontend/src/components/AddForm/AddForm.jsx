@@ -9,8 +9,6 @@ import Notiflix from "notiflix";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
-
-
 function AddForm() {
   const { owner } = useParams();
 
@@ -163,21 +161,24 @@ function AddForm() {
       return;
     }
 
-    let result = await fetch(`http://localhost:5000/api/recipes/${owner}`, {
-      method: "POST",
-      body: JSON.stringify({
-        picture,
-        title,
-        about,
-        category,
-        cookingTime,
-        preparation,
-        ingredients,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let result = await fetch(
+      `https://so-yummy-1f2e.onrender.com/api/recipes/${owner}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          picture,
+          title,
+          about,
+          category,
+          cookingTime,
+          preparation,
+          ingredients,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     if (result) {
       Notiflix.Notify.success("Recipe added successfully!");
       navigate(`/my-recipes/${owner}`);
@@ -187,7 +188,7 @@ function AddForm() {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/all-categories"
+          "https://so-yummy-1f2e.onrender.com/api/all-categories"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -205,7 +206,7 @@ function AddForm() {
     const fetchIngredients = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/all-ingredients"
+          "https://so-yummy-1f2e.onrender.com/api/all-ingredients"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -336,7 +337,6 @@ function AddForm() {
                       {...params}
                       placeholder="Ingredient name"
                       className={styles.ingredientText}
-                      
                     />
                   )}
                 />

@@ -73,7 +73,7 @@ export default function SettingsModal() {
     const fetchName = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/users/name/${owner}`,
+          `https://so-yummy-1f2e.onrender.com/api/users/name/${owner}`,
           {
             method: "GET",
             headers: {
@@ -101,7 +101,7 @@ export default function SettingsModal() {
     const fetchAvatar = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/users/avatar/${owner}`,
+          `https://so-yummy-1f2e.onrender.com/api/users/avatar/${owner}`,
           {
             method: "GET",
             headers: {
