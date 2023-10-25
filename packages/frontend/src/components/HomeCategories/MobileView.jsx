@@ -63,7 +63,7 @@ const MobileView = () => {
                 ))}
               </div>
               <div className={styles.categoryButtonBox}>
-                <NavLink to={`/categories/${owner}/${category._id}`}>
+                <NavLink to={`/categories/${owner}/${category}`}>
                   <button className={styles.categoryButton}>See all</button>
                 </NavLink>
               </div>
