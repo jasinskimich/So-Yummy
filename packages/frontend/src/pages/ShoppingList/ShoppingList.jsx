@@ -7,7 +7,7 @@ import Notiflix from "notiflix";
 
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-const axios = require("axios");
+import axios from "axios";
 
 function ShoppingList() {
   const { owner } = useParams();
