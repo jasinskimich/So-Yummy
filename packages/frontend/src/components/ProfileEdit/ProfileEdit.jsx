@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Box, FormControl, InputAdornment, Input } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import { ReactComponent as EditPen } from "../../images/EditIcon.svg";
+import { ReactComponent as EditIcon } from "../../images/EditIcon.svg";
 import styles from "./ProfileEdit.module.css";
 import { ReactComponent as Close } from "../../images/closeModal.svg";
 import { ReactComponent as Plus } from "../../images/plus.svg";
@@ -27,7 +27,7 @@ const style = {
 
 function ProfileEdit({ editedName, editedAvatar }) {
   const [open, setOpen] = useState(false);
-  const [name, setName] = useState("");
+  const [prevName, setPrevName] = useState("");
   const [avatar, setAvatar] = useState(
     "https://res.cloudinary.com/dca6x5lvh/image/upload/v1694451965/avatarDefault_hdfz3r.jpg"
   );
@@ -60,36 +60,62 @@ function ProfileEdit({ editedName, editedAvatar }) {
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     if (id === "name") {
-      setName(value);
+      setPrevName(value)
+      
     }
   };
+
+  useEffect(() => {
+    const fetchName = async () => {
+      try {
+        let response = await fetch(
+          `http://localhost:5000/api/users/name/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch username");
+        }
+
+        response = await response.json();
+
+        setPrevName(response.name);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchName();
+  }, [owner]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     Notiflix.Notify.init({
       position: "left-bottom",
     });
-    if (!name) {
+
+    if (!prevName) {
       Notiflix.Notify.warning(
         "Name is empty, please complete the missing content."
       );
       return;
     }
-
     let result = await fetch(`http://localhost:5000/api/users/name/${owner}`, {
       method: "PATCH",
-      body: JSON.stringify({ name }),
+      body: JSON.stringify({ name: prevName }),
       headers: {
         "Content-Type": "application/json",
       },
     });
     result = await result.json();
 
-    if (result) {
-      setName("");
-      Notiflix.Notify.success("Name changed succesfully!");
-    }
-    editedName(name);
+   
+    editedName(prevName);
     setOpen(false);
 
     let data = await fetch(`http://localhost:5000/api/upload/${owner}`, {
@@ -101,9 +127,8 @@ function ProfileEdit({ editedName, editedAvatar }) {
     });
     editedAvatar(avatar);
     data = await data.json();
-    if (data) {
-      setName("");
-      Notiflix.Notify.success("Avatar changed succesfully!");
+    if (data && result) {
+      Notiflix.Notify.success("Profile updated succesfully!");
     }
   };
 
@@ -168,7 +193,7 @@ function ProfileEdit({ editedName, editedAvatar }) {
             },
           }}
         >
-          <EditPen className={styles.editPen} />
+          <EditIcon className={styles.editPen} />
         </Button>
       </div>
       <Modal
@@ -200,6 +225,7 @@ function ProfileEdit({ editedName, editedAvatar }) {
               </div>
               <div className={styles.avatarContainer}>
                 <button
+                  type="button"
                   className={styles.avatarButton}
                   onClick={() => widgetRef.current.open()}
                 >
@@ -212,7 +238,7 @@ function ProfileEdit({ editedName, editedAvatar }) {
                   autoComplete="off"
                   type="text"
                   id="name"
-                  value={name}
+                  value={prevName}
                   onChange={(e) => handleInputChange(e)}
                   placeholder="First Name"
                   minLength={1}

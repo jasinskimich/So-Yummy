@@ -19,25 +19,79 @@ export const Footer = () => {
     Notiflix.Notify.init({
       position: "left-bottom",
     });
-    const response = await fetch("http://localhost:5000/api/users/newsletter", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      Notiflix.Notify.success(data.message);
-    } else {
-      const error = await response.json();
-      Notiflix.Notify.failure(error.message);
+   
+    try {
+      const response = await fetch("http://localhost:5000/api/users/newsletter", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+   
+      if (response.ok) {
+        const data = await response.json();
+        Notiflix.Notify.success(data.message);
+      } else {
+        throw new Error('User is already signed up for the newsletter!');
+      }
+    } catch (error) {
+      let errorData;
+      if ((error instanceof Response) && !error.ok) {
+        errorData = await error.json();
+      } else {
+        errorData = error.message;
+      }
+      Notiflix.Notify.failure(errorData);
     }
-  };
+   };
 
   const handleChange = (value) => {
     setEmail(value);
+  };
+
+  const FacebookIcon = () => {
+    return (
+      <div
+        className={styles.socialIcon}
+        onClick={() => window.open("https://www.facebook.com")}
+      >
+        <Facebook />
+      </div>
+    );
+  };
+
+  const TwitterIcon = () => {
+    return (
+      <div
+        className={styles.socialIcon}
+        onClick={() => window.open("https://www.twitter.com")}
+      >
+        <Twitter />
+      </div>
+    );
+  };
+
+  const InstagramIcon = () => {
+    return (
+      <div
+        className={styles.socialIcon}
+        onClick={() => window.open("https://www.instagram.com")}
+      >
+        <Instagram />
+      </div>
+    );
+  };
+
+  const YouTubeIcon = () => {
+    return (
+      <div
+        className={styles.socialIcon}
+        onClick={() => window.open("https://www.youtube.com")}
+      >
+        <YouTube />
+      </div>
+    );
   };
   return (
     <div>
@@ -149,9 +203,7 @@ export const Footer = () => {
                   placeholder="Enter your email"
                   onChange={(e) => handleChange(e.target.value)}
                   className={styles.newsletterInput}
-                >
-            
-                </input>
+                ></input>
                 <button className={styles.submitButton} type="submit">
                   Subscribe
                 </button>
@@ -160,22 +212,10 @@ export const Footer = () => {
           </div>
         </div>
         <div className={styles.socialContainer}>
-          <div className={styles.socialIcon}>
-            {" "}
-            <Facebook />
-          </div>
-          <div className={styles.socialIcon}>
-            {" "}
-            <YouTube />
-          </div>
-          <div className={styles.socialIcon}>
-            {" "}
-            <Twitter />
-          </div>
-          <div className={styles.socialIcon}>
-            {" "}
-            <Instagram />
-          </div>
+          <FacebookIcon />
+          <YouTubeIcon />
+          <TwitterIcon />
+          <InstagramIcon />
         </div>
       </div>
       <div className={styles.bottomContainer}>

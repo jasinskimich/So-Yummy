@@ -6,6 +6,7 @@ import Tab from "@mui/material/Tab";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Loader from "../../components/Loader/Loader";
+import { NoFound } from "../../components/NoFoundNHF/NoFound2";
 
 function Categories() {
   const { owner } = useParams();
@@ -17,6 +18,8 @@ function Categories() {
   const [value, setValue] = useState(0);
   const location = useLocation();
   const [details, setDetails] = useState(null);
+  const [notFound, setNotFound] = useState(false);
+
   const handleChange = (event, newValue) => {
     setIsLoading(true);
     setValue(newValue);
@@ -52,6 +55,7 @@ function Categories() {
           setValue(index);
         }
       } catch (error) {
+        
         console.error(error);
       }
     };
@@ -72,6 +76,7 @@ function Categories() {
         setDetails(data.recipes);
       } catch (error) {
         console.error(error);
+        setNotFound(true);
       }
     };
 
@@ -80,68 +85,71 @@ function Categories() {
 
   return (
     <div className={styles.main}>
-      <div className={styles.container}>
-        <span className={styles.title}>Categories</span>
-      </div>
+      {notFound ? (
+        <NoFound owner={owner} />
+      ) : (
+        <>
+          <div className={styles.container}>
+            <span className={styles.title}>Categories</span>
+          </div>
 
-      <div className={styles.searchNav}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs example"
-          TabIndicatorProps={{
-            style: {
-              backgroundColor: "#8BAA36",
-            },
-          }}
-        >
-          {categories.map((item) => (
-            <Tab
-              component={Link}
-              to={`/categories/${owner}/${item}`}
-              key={item}
-              disableRipple
-              label={item}
-              style={location.pathname.includes(item) ? style1 : style}
-            />
-          ))}
-        </Tabs>
-      </div>
-      {isLoading && <Loader />}
-      <div className={styles.details}>
-        {details && details.length > 0 ? (
-          details.slice((page - 1) * 8, page * 8).map((item, index) => (
-            <NavLink
-              key={index}
-              to={`/recipes/${owner}/${item._id}`}
+          <div className={styles.searchNav}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              variant="scrollable"
+              scrollButtons="auto"
+              aria-label="scrollable auto tabs example"
+              TabIndicatorProps={{
+                style: {
+                  backgroundColor: "#8BAA36",
+                },
+              }}
             >
-              <div className={styles.categoryItem}>
-                <img
-                  src={item.preview}
-                  alt={item.title}
-                  className={styles.categoryItemPic}
+              {categories.map((item) => (
+                <Tab
+                  component={Link}
+                  to={`/categories/${owner}/${item}`}
+                  key={item}
+                  disableRipple
+                  label={item}
+                  style={location.pathname.includes(item) ? style1 : style}
                 />
-                <div className={styles.categoryItemBox}>
-                  <span className={styles.categoryItemText}>
-                    {item.title}
-                  </span>
-                </div>
-              </div>
-            </NavLink>
-          ))
-        ) : (
-          <Loader />
-        )}
-      </div>
-      <Stack spacing={2}>
-        <Pagination
-          count={Math.ceil((details?.length || 0) / 8)}
-          page={page}
-          onChange={(event, value) => setPage(value)}
-        />
-      </Stack>
+              ))}
+            </Tabs>
+          </div>
+          {isLoading && <Loader />}
+          <div className={styles.details}>
+            {details && details.length > 0 ? (
+              details.slice((page - 1) * 8, page * 8).map((item, index) => (
+                <NavLink key={index} to={`/recipes/${owner}/${item._id}`}>
+                  <div className={styles.categoryItem}>
+                    <img
+                      src={item.preview}
+                      alt={item.title}
+                      className={styles.categoryItemPic}
+                    />
+                    <div className={styles.categoryItemBox}>
+                      <span className={styles.categoryItemText}>
+                        {item.title}
+                      </span>
+                    </div>
+                  </div>
+                </NavLink>
+              ))
+            ) : (
+              <Loader />
+            )}
+          </div>
+          <Stack spacing={2}>
+            <Pagination
+              count={Math.ceil((details?.length || 0) / 8)}
+              page={page}
+              onChange={(event, value) => setPage(value)}
+            />
+          </Stack>
+        </>
+      )}
     </div>
   );
 }

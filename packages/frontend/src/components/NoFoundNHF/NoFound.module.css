@@ -17,7 +17,6 @@
     background-repeat: no-repeat;
     background-position: top;
     background-size: contain;
-    
   }
   .text {
     display: flex;
@@ -25,7 +24,6 @@
     font-family: "Poppins", sans-serif;
     align-items: center;
     text-align: center;
-    margin-bottom: 100px;
   }
   .textHead {
     font-weight: 600;
@@ -51,14 +49,12 @@
     background-repeat: no-repeat;
     background-position: top;
     background-size: contain;
-    /* margin-top: 150px; */
   }
   .text {
     display: flex;
     flex-direction: column;
     font-family: "Poppins", sans-serif;
     align-items: center;
-    margin-bottom: 100px;
   }
   .textHead {
     font-weight: 600;

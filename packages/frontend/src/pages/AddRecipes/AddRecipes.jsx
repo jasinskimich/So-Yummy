@@ -9,6 +9,50 @@ import AddForm from "../../components/AddForm/AddForm";
 import Popular from "../../components/Popular/Popular";
 
 function AddReceipes() {
+  const FacebookIcon = () => {
+    return (
+      <div
+        className={styles.socialIcon}
+        onClick={() => window.open("https://www.facebook.com")}
+      >
+        <Facebook />
+      </div>
+    );
+  };
+
+  const TwitterIcon = () => {
+    return (
+      <div
+        className={styles.socialIcon}
+        onClick={() => window.open("https://www.twitter.com")}
+      >
+        <Twitter />
+      </div>
+    );
+  };
+
+  const InstagramIcon = () => {
+    return (
+      <div
+        className={styles.socialIcon}
+        onClick={() => window.open("https://www.instagram.com")}
+      >
+        <Instagram />
+      </div>
+    );
+  };
+
+  const YouTubeIcon = () => {
+    return (
+      <div
+        className={styles.socialIcon}
+        onClick={() => window.open("https://www.youtube.com")}
+      >
+        <YouTube />
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.main}>
@@ -24,22 +68,10 @@ function AddReceipes() {
                 <span className={styles.socialText}>Follow us</span>
               </div>
               <div className={styles.socialIconsContainer}>
-                <div className={styles.socialIcon}>
-                  {" "}
-                  <Facebook />
-                </div>
-                <div className={styles.socialIcon}>
-                  {" "}
-                  <YouTube />
-                </div>
-                <div className={styles.socialIcon}>
-                  {" "}
-                  <Twitter />
-                </div>
-                <div className={styles.socialIcon}>
-                  {" "}
-                  <Instagram />
-                </div>
+                <FacebookIcon />
+                <YouTubeIcon />
+                <TwitterIcon />
+                <InstagramIcon />
               </div>
             </div>
             <Popular />

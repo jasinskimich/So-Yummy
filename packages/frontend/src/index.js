@@ -5,9 +5,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import { dark } from "@mui/material/styles/createPalette";
-// import { Provider } from "react-redux";
-// import { store } from "./redux/store";
+
 const theme = createTheme({
   typography: {
     allVariants: {
@@ -18,6 +16,7 @@ const theme = createTheme({
   },
 });
  
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -82,7 +82,7 @@ function Favorites() {
         <span className={styles.title}>Favorites</span>
       </div>
       {filteredRecipes && filteredRecipes.length > 0 ? (
-        filteredRecipes.slice((page - 1) * 4, page * 4).map((item, index) => (
+        filteredRecipes.reverse().slice((page - 1) * 4, page * 4).map((item, index) => (
           <div key={index} className={styles.itemContainer}>
             <div className={styles.itemImageBox}>
               <img

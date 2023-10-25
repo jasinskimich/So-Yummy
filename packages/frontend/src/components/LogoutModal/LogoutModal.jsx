@@ -4,6 +4,8 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { ReactComponent as LogOut } from "../../images/LogoutButton.svg";
 import { ReactComponent as Close } from "../../images/closeModal.svg";
+import Notiflix from "notiflix";
+import axios from "axios";
 
 import styles from "./LogoutModal.module.css";
 
@@ -31,6 +33,30 @@ function LogoutModal() {
   };
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleLogout = () => {
+    const authToken = localStorage.getItem("authToken");
+    if (!authToken) {
+      console.error("Brak zdefiniowanego tokenu uwierzytelniania.");
+      return;
+    }
+
+    axios
+      .post(`http://localhost:5000/api/users/logout`, null, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      })
+      .then((response) => {
+        setOpen(false);
+        Notiflix.Notify.success("Logout successful");
+
+        setTimeout(() => {
+          window.location.replace("/login");
+          localStorage.setItem("authToken", null);
+        }, 1000);
+      });
   };
 
   return (
@@ -85,17 +111,10 @@ function LogoutModal() {
               Are you sure you want to log out?
             </span>
             <div className={styles.buttons}>
-              <button
-                className={styles.firstButton}
-                
-              >
+              <button className={styles.firstButton} onClick={handleLogout}>
                 Log out
               </button>
-              <button
-                className={styles.secondButton}
-                onClick={handleClose}
-               
-              >
+              <button className={styles.secondButton} onClick={handleClose}>
                 Cancel
               </button>
             </div>
