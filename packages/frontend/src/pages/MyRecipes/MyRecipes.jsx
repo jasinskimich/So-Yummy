@@ -5,7 +5,6 @@ import { ReactComponent as See } from "../../images/seeRecipe.svg";
 import Loader from "../../components/Loader/Loader";
 import DeleteModal from "../../components/RecipeDeleteModal/DeleteModal";
 import Notiflix from "notiflix";
-
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
