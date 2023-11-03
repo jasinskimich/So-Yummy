@@ -43,7 +43,7 @@ const sendVerificationEmail = async (email, verificationToken) => {
       console.log("Email sent");
     })
     .catch((error) => {
-      console.error(error);
+      console.error(error, "error");
     });
 };
 
