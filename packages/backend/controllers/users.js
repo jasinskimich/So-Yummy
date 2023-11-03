@@ -313,11 +313,11 @@ const verifyUser = async (req, res, next) => {
         font-size: 1.5em;
         color: #fafafa;
       }
+      div > span:first-child {
+        color: #8BAA36;
+      }
       div > span:nth-child(2) {
         color: #fafafa;
-      }
-      div > span:nth-child(3) {
-        color: #8BAA36;
       }
     </style>
   </head>
