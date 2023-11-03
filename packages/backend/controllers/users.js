@@ -287,9 +287,38 @@ const verifyUser = async (req, res, next) => {
     user.verificationToken = "null";
     await user.save();
 
-    res.send(
-      `<h1>Registration Complete!</h1><p>Click <a href="https://soyummy-mj.netlify.app/login"><strong>here</strong></a> to go to the login page.</p>`
-    );
+    res.send(`
+    <html>
+      <head>
+        <style>
+          body {
+            background-color: #2A2C36;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+          }
+          h1 {
+            font-size: 2em;
+          }
+          span {
+            font-size: 1.5em;
+          }
+          span:nth-child(2) {
+            color: #8BAA36;
+          }
+          span:nth-child(3) {
+            color: #fafafa;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Registration to <span>So</span><span>Yummy!</span>Completed</h1>
+        <p>Click <a href="https://soyummy-mj.netlify.app/login"><strong>here</strong></a> to go to the login page.</p>
+      </body>
+    </html>
+   `);
   } catch (error) {
     next(error);
   }
