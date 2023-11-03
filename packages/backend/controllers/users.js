@@ -294,6 +294,7 @@ const verifyUser = async (req, res, next) => {
           body {
             background-color: #2A2C36;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -302,8 +303,12 @@ const verifyUser = async (req, res, next) => {
           h1 {
             font-size: 2em;
           }
+          p {
+            color: #fafafa;
+          }
           span {
             font-size: 1.5em;
+            color: #fafafa;
           }
           span:nth-child(2) {
             color: #8BAA36;
