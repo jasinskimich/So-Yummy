@@ -60,10 +60,10 @@ const sendPasswordResetEmail = async (email) => {
 
   const msg = {
     to: email,
-    from: "SoYummyApp@gmail.com",
+    from: "soyummyverify@gmail.com",
     subject: "Reset Your Password",
-    text: `Click on the link to reset your password: http:/localhost:3000/reset-password/${resetToken}`,
-    html: `<p>Click <a href="http:/localhost:3000/reset-password/${resetToken}"><strong>here</strong></a> to reset your password.</p>`,
+    text: `Click on the link to reset your password: https://soyummy-mj.netlify.app/reset-password/${resetToken}`,
+    html: `<p>Click <a href="https://soyummy-mj.netlify.app/reset-password/${resetToken}"><strong>here</strong></a> to reset your password.</p>`,
   };
 
   return sgMail.send(msg);
@@ -288,7 +288,7 @@ const verifyUser = async (req, res, next) => {
     await user.save();
 
     res.send(
-      `<h1>Registration Complete!</h1><p>Click <a href="https://localhost:3000/login"><strong>here</strong></a> to go to the login page.</p>`
+      `<h1>Registration Complete!</h1><p>Click <a href="https://soyummy-mj.netlify.app/login"><strong>here</strong></a> to go to the login page.</p>`
     );
   } catch (error) {
     next(error);
