@@ -43,6 +43,7 @@
     background-color: #fafafa;
     color: #8baa36;
     transition: 0.3s;
+    cursor: pointer;
   }
   .regLink {
     background-color: transparent;
@@ -142,6 +143,7 @@
     background-color: #fafafa;
     color: #8baa36;
     transition: 0.3s;
+    cursor: pointer;
   }
   .regLink {
     background-color: transparent;
@@ -239,6 +241,7 @@
     background-color: #fafafa;
     color: #8baa36;
     transition: 0.3s;
+    cursor: pointer;
   }
   .regLink {
     background-color: transparent;

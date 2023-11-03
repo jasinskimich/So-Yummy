@@ -30,10 +30,10 @@ const auth = (req, res, next) => {
 const sendVerificationEmail = async (email, verificationToken) => {
   const msg = {
     to: email,
-    from: "walletavengersapp@gmail.com",
+    from: "SoYummyApp@gmail.com",
     subject: "Please verify your email and registration.",
     text: `URL to mail verification: ${verificationToken}`,
-    html: `<p>Click <a href="https://localhost:5000/api/users/verify/${verificationToken}"><strong>here</strong></a> to verify your email and registration.</p>`,
+    html: `<p>Click <a href="https://so-yummy-1f2e.onrender.com/api/users/verify/${verificationToken}"><strong>here</strong></a> to verify your email and registration.</p>`,
   };
 
   return sgMail
@@ -59,7 +59,7 @@ const sendPasswordResetEmail = async (email) => {
 
   const msg = {
     to: email,
-    from: "walletavengersapp@gmail.com",
+    from: "SoYummyApp@gmail.com",
     subject: "Reset Your Password",
     text: `Click on the link to reset your password: http:/localhost:3000/reset-password/${resetToken}`,
     html: `<p>Click <a href="http:/localhost:3000/reset-password/${resetToken}"><strong>here</strong></a> to reset your password.</p>`,

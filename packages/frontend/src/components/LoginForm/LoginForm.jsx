@@ -6,10 +6,12 @@ import { Box, FormControl, InputAdornment, Input } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
 import styles from "./LoginForm.module.css";
+import Loader from "../Loader/Loader";
 
 const LoginForm = ({ setLoggedName }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -25,7 +27,7 @@ const LoginForm = ({ setLoggedName }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(false);
     try {
       let response = await fetch(
         `https://so-yummy-1f2e.onrender.com/api/users/checkEmail/${email}`
@@ -34,6 +36,7 @@ const LoginForm = ({ setLoggedName }) => {
 
       if (!data.exists) {
         Notiflix.Notify.warning("Email or password is incorrect.");
+        setIsLoading(true);
         return;
       }
 
@@ -64,6 +67,7 @@ const LoginForm = ({ setLoggedName }) => {
         setPassword("");
       } else {
         Notiflix.Notify.warning("Email or password is incorrect.");
+        setIsLoading(true);
       }
     } catch (error) {
       console.error(error);
@@ -127,7 +131,24 @@ const LoginForm = ({ setLoggedName }) => {
           />
         </FormControl>
 
-        <button
+        {isLoading ? (
+          <>
+            <button
+              variant="contained"
+              type="submit"
+              className={styles.loginButton}
+            >
+              Sign In
+            </button>
+
+            <Link to="/register" className={styles.regLink}>
+              <button className={styles.registrationButton}>Sign Up</button>
+            </Link>
+          </>
+        ) : (
+          <Loader />
+        )}
+        {/* <button
           variant="contained"
           type="submit"
           className={styles.loginButton}
@@ -137,7 +158,7 @@ const LoginForm = ({ setLoggedName }) => {
 
         <Link to="/register" className={styles.regLink}>
           <button className={styles.registrationButton}>Sign Up</button>
-        </Link>
+        </Link> */}
 
         <div>
           <Link to="/reset-password">
