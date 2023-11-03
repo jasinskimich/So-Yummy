@@ -12,7 +12,6 @@ const Jimp = require("jimp");
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-
 const auth = (req, res, next) => {
   passport.authenticate("jwt", { session: false }, (err, user) => {
     if (!user || err) {
@@ -302,6 +301,7 @@ const verifyUser = async (req, res, next) => {
           }
           h1 {
             font-size: 2em;
+            color: #fafafa;
           }
           p {
             color: #fafafa;
@@ -311,15 +311,17 @@ const verifyUser = async (req, res, next) => {
             color: #fafafa;
           }
           span:nth-child(2) {
-            color: #8BAA36;
+            color: #fafafa;
           }
           span:nth-child(3) {
-            color: #fafafa;
+            
+            color: #8BAA36;
           }
         </style>
       </head>
       <body>
-        <h1>Registration to <span>So</span><span>Yummy!</span>Completed</h1>
+      <span>So</span><span>Yummy!</span>
+        <h1>Your account is now verified! </h1>
         <p>Click <a href="https://soyummy-mj.netlify.app/login"><strong>here</strong></a> to go to the login page.</p>
       </body>
     </html>
@@ -508,7 +510,6 @@ const editName = async (req, res, next) => {
   }
 };
 
-
 const updateNewsletter = async (req, res, next) => {
   try {
     const email = req.body.email;
@@ -518,15 +519,19 @@ const updateNewsletter = async (req, res, next) => {
 
     if (document) {
       if (document.newsletter === true) {
-        return res.status(400).json({ message: "User is already signed up for the newsletter" });
+        return res
+          .status(400)
+          .json({ message: "User is already signed up for the newsletter" });
       } else {
         const update = { newsletter: true };
         const options = {
           new: true, // return the updated document
-          upsert: false // do not create a new document if no match is found
+          upsert: false, // do not create a new document if no match is found
         };
         await User.findOneAndUpdate(filter, update, options);
-        res.status(200).json({ message: "Newsletter subscription updated successfully" });
+        res
+          .status(200)
+          .json({ message: "Newsletter subscription updated successfully" });
       }
     } else {
       return res.status(404).json({ message: "User not found" });
@@ -554,5 +559,5 @@ module.exports = {
   updateAvatar,
   editName,
   getUserAvatar,
-  updateNewsletter
+  updateNewsletter,
 };
