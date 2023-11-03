@@ -125,7 +125,12 @@ function Favorites() {
             </div>
           ))
       ) : (
-        <Loader />
+        <>
+        <div className={styles.classicContainer}>
+          <div className={styles.classicView}></div>
+          <span>Please add recipes as your favorite</span>
+        </div>
+      </>
       )}
 
       <Stack spacing={2}>

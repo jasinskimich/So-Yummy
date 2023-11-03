@@ -128,7 +128,12 @@ function ShoppingList() {
             </div>
           ))
         ) : (
-          <Loader />
+          <>
+          <div className={styles.classicContainer}>
+            <div className={styles.classicView}></div>
+            <span>Shopping list is empty! Please add products.</span>
+          </div>
+        </>
         )}
       </div>
 
