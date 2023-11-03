@@ -288,43 +288,45 @@ const verifyUser = async (req, res, next) => {
 
     res.send(`
     <html>
-      <head>
-        <style>
-          body {
-            background-color: #2A2C36;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-          }
-          h1 {
-            font-size: 2em;
-            color: #fafafa;
-          }
-          p {
-            color: #fafafa;
-          }
-          span {
-            font-size: 1.5em;
-            color: #fafafa;
-          }
-          span:nth-child(2) {
-            color: #fafafa;
-          }
-          span:nth-child(3) {
-            
-            color: #8BAA36;
-          }
-        </style>
-      </head>
-      <body>
-      <span>So</span><span>Yummy!</span>
-        <h1>Your account is now verified! </h1>
-        <p>Click <a href="https://soyummy-mj.netlify.app/login"><strong>here</strong></a> to go to the login page.</p>
-      </body>
-    </html>
+  <head>
+    <style>
+      body {
+        background-color: #2A2C36;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      a {
+        color: #8BAA36;
+      }
+      h1 {
+        font-size: 2em;
+        color: #fafafa;
+      }
+      p {
+        color: #fafafa;
+      }
+      div > span {
+        font-size: 1.5em;
+        color: #fafafa;
+      }
+      div > span:nth-child(2) {
+        color: #fafafa;
+      }
+      div > span:nth-child(3) {
+        color: #8BAA36;
+      }
+    </style>
+  </head>
+  <body>
+    <div><span>So</span><span>Yummy!</span></div>
+    <h1>Your account is now verified! </h1>
+    <p>Click <a href="https://soyummy-mj.netlify.app/login"><strong>here</strong></a> to go to the login page.</p>
+  </body>
+</html>
    `);
   } catch (error) {
     next(error);
