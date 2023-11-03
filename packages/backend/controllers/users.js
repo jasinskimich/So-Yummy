@@ -30,7 +30,7 @@ const auth = (req, res, next) => {
 const sendVerificationEmail = async (email, verificationToken) => {
   const msg = {
     to: email,
-    from: "SoYummyApp@gmail.com",
+    from: "walletavengersapp@gmail.com",
     subject: "Please verify your email and registration.",
     text: `URL to mail verification: ${verificationToken}`,
     html: `<p>Click <a href="https://so-yummy-1f2e.onrender.com/api/users/verify/${verificationToken}"><strong>here</strong></a> to verify your email and registration.</p>`,
