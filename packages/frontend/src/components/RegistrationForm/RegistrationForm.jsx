@@ -70,7 +70,7 @@ const RegistrationForm = () => {
         }
       );
       result = await result.json();
-      console.warn(result);
+      
       if (result) {
         setName("");
         setEmail("");
