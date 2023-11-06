@@ -4,8 +4,11 @@
   width: 35px;
   height: 35px;
 }
-.userNav1:hover {
+.userNav:hover .userNav1{
   transform: scale(1.1);
+}
+.userNav:hover .usernameText{
+  color: "#8baa36",
 }
 .usernameText {
   margin: 0;
