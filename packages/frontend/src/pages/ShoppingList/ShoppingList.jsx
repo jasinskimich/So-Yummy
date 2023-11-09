@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./ShoppingList.module.css";
-import Loader from "../../components/Loader/Loader";
 import { ReactComponent as Delete } from "../../images/close.svg";
 import Notiflix from "notiflix";
 import Pagination from "@mui/material/Pagination";

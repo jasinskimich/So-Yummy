@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import styles from "./Favorites.module.css";
 import { ReactComponent as See } from "../../images/seeRecipe.svg";
-import Loader from "../../components/Loader/Loader";
 import DeleteModal from "../../components/FavoriteDeleteModal/DeleteModal";
 import Notiflix from "notiflix";
 

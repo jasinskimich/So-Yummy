@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import styles from "./MyRecipes.module.css";
 import { ReactComponent as See } from "../../images/seeRecipe.svg";
-import Loader from "../../components/Loader/Loader";
 import DeleteModal from "../../components/RecipeDeleteModal/DeleteModal";
 import Notiflix from "notiflix";
 import Pagination from "@mui/material/Pagination";
@@ -102,12 +101,11 @@ function MyRecipes() {
         ))
       ) : (
         <>
-        <div className={styles.classicContainer}>
-          <div className={styles.classicView}></div>
-          <span>Please add your own recipe</span>
-        </div>
-      </>
-        
+          <div className={styles.classicContainer}>
+            <div className={styles.classicView}></div>
+            <span>Please add your own recipe</span>
+          </div>
+        </>
       )}
 
       <Stack spacing={2}>
